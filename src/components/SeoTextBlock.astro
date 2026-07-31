@@ -1,0 +1,155 @@
+---
+import { waLink } from '@/data/config';
+
+export interface Props {
+  variante: 'texto1' | 'texto2' | 'texto3';
+}
+
+const { variante } = Astro.props;
+---
+
+{variante === 'texto1' && (
+  <section class="py-16 relative overflow-hidden bg-dark-200/50">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-1/2 left-0 w-72 h-72 bg-neon-500/5 rounded-full blur-3xl -translate-y-1/2"></div>
+    <div class="absolute top-1/2 right-0 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl -translate-y-1/2"></div>
+
+    <div class="container-x relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-neon mb-6">Bienvenida a DRAUTOMOTRIZ</span>
+
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-8 leading-tight text-balance">
+          Mecánico a Domicilio en Santiago: <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Soluciones Automotrices Profesionales</span> sin Moverte de Casa 🚗💨
+        </h1>
+
+        <div class="space-y-5 text-base md:text-lg text-gray-300 leading-relaxed">
+          <p>
+            ¿Tu vehículo se detuvo inesperadamente o necesita mantenimiento y no tienes tiempo para ir al taller? En <strong class="text-white">DRAUTOMOTRIZ</strong> llevamos el taller mecánico directamente a la puerta de tu casa o lugar de trabajo en todo Santiago.
+          </p>
+          <p>
+            Ofrecemos <strong class="text-neon-400">servicio automotriz a domicilio</strong> integral, desde diagnóstico computarizado y escáner automotriz avanzado hasta cambio de aceite, afinamiento, reparación de frenos, suspensión, arranque y sistema eléctrico.
+          </p>
+          <p>
+            Ahorra tiempo, evita multas de grúa y deja tu auto en manos de expertos. ¡Agenda tu visita de inmediato por WhatsApp y te atendemos en terreno! 🛠️📲
+          </p>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={waLink()} target="_blank" rel="noopener" class="btn-whatsapp text-base animate-pulse-neon">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Agendar visita inmediata
+          </a>
+          <a href="#servicios" class="btn-outline-neon text-base">
+            Ver servicios disponibles
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{variante === 'texto2' && (
+  <section class="py-16 relative overflow-hidden bg-dark-200/50">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-neon-500/5 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <div class="max-w-4xl mx-auto">
+        <span class="badge-neon mb-6">Servicios y Especialidades</span>
+
+        <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-8 leading-tight text-balance">
+          Cobertura Total en <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Mecánica Rápida, Mantenimiento y Diagnóstico</span> en Terreno 🔧⚙️
+        </h2>
+
+        <div class="space-y-5 text-base md:text-lg text-gray-300 leading-relaxed">
+          <p>
+            No importa si tu auto requiere una simple revisión o una intervención técnica compleja; nuestro servicio de <strong class="text-neon-400">mecánico automotriz a domicilio</strong> está equipado para resolverlo todo en la Región Metropolitana.
+          </p>
+          <p>
+            Cubrimos desde la mecánica general y preventiva hasta especialidades como <strong class="text-white">reparación de aire acondicionado automotriz</strong>, cambio de kit de distribución, inyección electrónica, sistema de refrigeración y revisión de baterías.
+          </p>
+          <p>
+            Trabajamos con vehículos livianos, flotas y marcas líderes del mercado, garantizando <strong class="text-white">repuestos de calidad</strong> y diagnósticos precisos mediante <strong class="text-neon-400">escáner profesional</strong>, todo directamente donde lo necesites. 🚙⚡
+          </p>
+        </div>
+
+        <!-- Grid de especialidades destacadas -->
+        <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="card-neon text-center p-4">
+            <div class="text-3xl mb-2">🚗</div>
+            <div class="text-xs font-semibold text-neon-400 uppercase tracking-wide">Vehículos</div>
+            <div class="text-sm text-gray-300">Livianos y flotas</div>
+          </div>
+          <div class="card-neon text-center p-4">
+            <div class="text-3xl mb-2">🔧</div>
+            <div class="text-xs font-semibold text-neon-400 uppercase tracking-wide">Mecánica</div>
+            <div class="text-sm text-gray-300">General y preventiva</div>
+          </div>
+          <div class="card-neon text-center p-4">
+            <div class="text-3xl mb-2">💻</div>
+            <div class="text-xs font-semibold text-neon-400 uppercase tracking-wide">Diagnóstico</div>
+            <div class="text-sm text-gray-300">Escáner profesional</div>
+          </div>
+          <div class="card-neon text-center p-4">
+            <div class="text-3xl mb-2">❄️</div>
+            <div class="text-xs font-semibold text-neon-400 uppercase tracking-wide">Aire A/C</div>
+            <div class="text-sm text-gray-300">Reparación completa</div>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="/servicios" class="btn-outline-neon text-base">
+            Ver catálogo completo de servicios
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+{variante === 'texto3' && (
+  <section class="py-16 relative overflow-hidden bg-dark-200/50">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="badge-orange mb-6">Llamado a la Acción</span>
+
+        <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-8 leading-tight text-balance">
+          Tu Taller Mecánico de Confianza, <span class="text-transparent bg-clip-text bg-gradient-orange glow-text-orange">Ahora en la Puerta de tu Hogar</span> 📍🤝
+        </h2>
+
+        <div class="space-y-5 text-base md:text-lg text-gray-300 leading-relaxed">
+          <p>
+            Mantener tu vehículo en óptimas condiciones nunca fue tan fácil y transparente. Con nuestro servicio de <strong class="text-neon-400">reparación de autos a domicilio</strong>, obtienes la misma calidad y respaldo técnico de un taller tradicional, pero con la comodidad de no mover tu coche.
+          </p>
+          <p>
+            Ya sea que necesites un cambio de pastillas de frenos, solución a fallas de arranque, mantenimiento periódico o una revisión de urgencia, en <strong class="text-white">DRAUTOMOTRIZ</strong> estamos listos para ayudarte en cualquier comuna de Santiago.
+          </p>
+          <p>
+            Escríbenos ahora mismo, solicita tu cotización personalizada y experimenta la comodidad de la <strong class="text-neon-400">mecánica rápida a domicilio</strong>. ⏱️📞
+          </p>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href={waLink()} target="_blank" rel="noopener" class="btn-whatsapp text-base animate-pulse-neon">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            Solicitar cotización personalizada
+          </a>
+          <a href="/contacto" class="btn-outline-neon text-base">
+            Ir al formulario
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+)}
