@@ -8,9 +8,11 @@
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   body {
     @apply bg-dark-300 text-gray-100 font-sans antialiased;
+    overflow-x: hidden;
     background-image:
       radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 40%),
       radial-gradient(circle at 80% 60%, rgba(0, 212, 255, 0.06) 0%, transparent 40%),
@@ -24,6 +26,11 @@
   }
   ::selection {
     @apply bg-neon-500 text-dark-500;
+  }
+  /* Prevenir overflow horizontal en mobile */
+  img, video, svg {
+    max-width: 100%;
+    height: auto;
   }
 }
 
