@@ -17,7 +17,7 @@ export const config = {
     clientes: '2.500+',
     cobertura: '40+ comunas',
     experiencia: '8+ años',
-    rating: '4.9/5'
+    servicios: '13+ servicios'
   },
   email: 'contacto@drautomotriz.cl',
   dominio: 'https://drautomotriz.pages.dev',

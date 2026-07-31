@@ -1,0 +1,128 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { servicios } from '@/data/servicios';
+import { waLink } from '@/data/config';
+
+// Categorías para la galería (sin fotos reales aún, solo placeholders)
+const galeriaCategorias = [
+  { titulo: 'Revisión Técnica Sin Estrés', icono: '📋', color: 'orange', cantidad: 'Próximamente' },
+  { titulo: 'Mantención por Kilometraje', icono: '📊', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Frenos a Domicilio', icono: '🛑', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Tren Delantero', icono: '⚙️', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Escáner Autos y Camiones', icono: '💻', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Aire Acondicionado', icono: '❄️', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Dirección y Suspensión', icono: '🚗', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Kit de Distribución', icono: '⛓️', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Kit de Embrague', icono: '🪖', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Pulido de Ópticos', icono: '💡', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Pre-Compra', icono: '🔍', color: 'neon', cantidad: 'Próximamente' },
+  { titulo: 'Diagnósticos', icono: '🔬', color: 'neon', cantidad: 'Próximamente' }
+];
+
+// Schema.org para la galería
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Galería de Trabajos DRAUTOMOTRIZ",
+  "description": "Galería de trabajos mecánicos a domicilio realizados por DRAUTOMOTRIZ en Santiago. Próximamente con fotos reales.",
+  "url": "https://drautomotriz.pages.dev/galeria"
+};
+---
+
+<BaseLayout
+  title="Galería de Trabajos | DRAUTOMOTRIZ - Mecánico a Domicilio en Santiago"
+  description="Galería de trabajos mecánicos a domicilio realizados por DRAUTOMOTRIZ en Santiago. Próximamente con fotos reales de servicios."
+  canonical="/galeria"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(gallerySchema)} />
+
+  <section class="pt-16 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-neon-400">Galería</span>
+      </nav>
+
+      <div class="text-center mb-12">
+        <span class="badge-neon mb-4">Galería</span>
+        <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6 text-balance">
+          Galería de <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Trabajos</span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+          Próximamente: fotos reales de nuestros trabajos a domicilio en distintas comunas de Santiago. Mientras tanto, explora las categorías de servicios que documentaremos.
+        </p>
+      </div>
+
+      <!-- Aviso de próximamente -->
+      <div class="card-neon max-w-3xl mx-auto mb-12 text-center">
+        <div class="inline-flex items-center gap-2 mb-3">
+          <span class="relative flex h-3 w-3">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-500"></span>
+          </span>
+          <span class="text-orange-400 font-semibold uppercase tracking-wider text-sm">En preparación</span>
+        </div>
+        <h2 class="text-xl font-display font-bold text-white mb-3">Estamos documentando nuestros trabajos</h2>
+        <p class="text-gray-400 mb-6">
+          Próximamente subiremos fotos reales de cada servicio realizado a domicilio en Santiago. Si quieres ver ejemplos mientras tanto, síguenos en Instagram donde publicamos trabajos diarios.
+        </p>
+        <a href="https://instagram.com/dr_automotrizz" target="_blank" rel="noopener" class="btn-outline-neon">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          Ver Instagram
+        </a>
+      </div>
+
+      <!-- Categorías placeholder -->
+      <h2 class="text-2xl font-display font-bold text-white mb-6 text-center">Categorías de trabajos</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {galeriaCategorias.map(cat => (
+          <div class={`group relative aspect-square rounded-xl overflow-hidden border-2 ${cat.color === 'orange' ? 'border-orange-500/40 hover:border-orange-500' : 'border-neon-500/20 hover:border-neon-500/60'} transition-all`}>
+            <div class="absolute inset-0 bg-gradient-to-br from-dark-100 to-dark-300">
+              <div class="absolute inset-0 bg-grid opacity-30"></div>
+            </div>
+
+            <!-- Icono -->
+            <div class={`absolute inset-0 flex items-center justify-center text-6xl ${cat.color === 'orange' ? 'text-orange-500/40 group-hover:text-orange-500/60' : 'text-neon-500/30 group-hover:text-neon-500/50'} transition-colors`}>
+              {cat.icono}
+            </div>
+
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-400/95 via-dark-300/50 to-transparent flex items-end p-4">
+              <div>
+                <div class={`text-xs uppercase tracking-wide mb-1 ${cat.color === 'orange' ? 'text-orange-400' : 'text-neon-400'}`}>
+                  {cat.cantidad}
+                </div>
+                <h3 class="text-sm font-display font-bold text-white">{cat.titulo}</h3>
+              </div>
+            </div>
+
+            <!-- Top badge -->
+            {cat.color === 'orange' && (
+              <div class="absolute top-2 right-2 px-2 py-1 bg-orange-500/20 backdrop-blur rounded text-[10px] text-orange-400 uppercase tracking-wide border border-orange-500/40">
+                ★ Estrella
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center">
+        <h3 class="text-xl font-display font-bold text-white mb-4">¿Quieres ver un trabajo específico?</h3>
+        <p class="text-gray-400 mb-6">Escríbenos por WhatsApp y te enviamos ejemplos de trabajos realizados.</p>
+        <a href={waLink('Hola, quiero ver ejemplos de trabajos realizados')} target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Solicitar ejemplos
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

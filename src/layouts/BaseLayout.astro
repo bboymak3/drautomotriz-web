@@ -68,13 +68,13 @@ const fullUrl = new URL(currentUrl, config.dominio).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Structured Data -->
+    <!-- Structured Data: AutoRepair base (en cada página) -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "AutoRepair",
       "name": config.marca,
       "image": ogImage,
-      "description": description,
+      "description": "Servicio mecánico a domicilio en Santiago, Chile. Diagnóstico, mantención, frenos, batería, suspensión, revisión técnica sin estrés y auxilio 24/7.",
       "url": config.dominio,
       "telephone": `+${config.whatsappNumero}`,
       "address": {
@@ -87,6 +87,26 @@ const fullUrl = new URL(currentUrl, config.dominio).toString();
       "openingHours": "Mo-Sa 08:00-20:00, Su 00:00-24:00",
       "priceRange": "$$",
       "sameAs": [config.instagramUrl]
+    })} />
+
+    <!-- BreadcrumbList Schema (genérico para todas las páginas) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": config.dominio
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": title.split('|')[0].trim(),
+          "item": fullUrl
+        }
+      ]
     })} />
 
     <!-- Preconnect to WhatsApp for faster CTA -->

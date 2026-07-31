@@ -1,20 +1,71 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
+import RevisionTecnicaHighlight from '@/components/RevisionTecnicaHighlight.astro';
 import Services from '@/components/Services.astro';
 import HowItWorks from '@/components/HowItWorks.astro';
 import Gallery from '@/components/Gallery.astro';
-import Testimonials from '@/components/Testimonials.astro';
-import QuoteForm from '@/components/QuoteForm.astro';
 import ComunasHighlight from '@/components/ComunasHighlight.astro';
+import QuoteForm from '@/components/QuoteForm.astro';
+
+// Schema.org para la home: Organization + WebSite
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "DRAUTOMOTRIZ",
+  "alternateName": "DRAUTOMOTRIZ - Mecánico a Domicilio",
+  "description": "Servicio mecánico a domicilio en Santiago, Chile. Diagnóstico, mantención, frenos, batería, suspensión, revisión técnica sin estrés y auxilio 24/7.",
+  "url": "https://drautomotriz.pages.dev/",
+  "logo": "https://drautomotriz.pages.dev/favicon.svg",
+  "image": "https://drautomotriz.pages.dev/favicon.svg",
+  "telephone": "+56962408735",
+  "email": "contacto@drautomotriz.cl",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santiago",
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Santiago"},
+    {"@type": "AdministrativeArea", "name": "Región Metropolitana"}
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "sameAs": [
+    "https://instagram.com/dr_automotrizz",
+    "https://github.com/bboymak3/drautomotriz-web"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "2500",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+};
 ---
 
 <BaseLayout>
+  <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
   <Hero />
+  <RevisionTecnicaHighlight />
   <Services />
   <HowItWorks />
   <ComunasHighlight />
   <Gallery />
-  <Testimonials />
   <QuoteForm />
 </BaseLayout>

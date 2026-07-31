@@ -1,5 +1,25 @@
 # Redirects for old/missing pages
+
+# Slugs antiguos (servicios previos) → nuevos slugs
+/servicios/mecanica-general-a-domicilio    /servicios/mantencion-por-km          301
+/servicios/escaner-y-diagnostico-computarizado  /servicios/escaner-para-autos-y-camiones  301
+/servicios/mantencion-preventiva-y-afinamiento   /servicios/mantencion-por-km          301
+/servicios/servicio-de-frenos-a-domicilio   /servicios/servicio-de-frenos-a-domicilio  301
+/servicios/revision-y-cambio-de-bateria    /servicios/diagnosticos              301
+/servicios/suspension-y-tren-delantero     /servicios/tren-delantero            301
+/servicios/sistema-de-refrigeracion        /servicios/recarga-y-mantencion-de-aire-acondicionado  301
+/servicios/inyeccion-electronica-y-limpieza /servicios/diagnosticos             301
+/servicios/auxilio-mecanico-24-7           /servicios/diagnosticos              301
+/servicios/correa-o-cadena-de-distribucion /servicios/cambio-kit-de-distribucion  301
+
+# Atajos comunes
 /servicio/*  /servicios/:splat  302
 /comuna/*    /comunas/:splat    302
 /inicio      /                  302
 /home        /                  302
+/galeria-fotos  /galeria         301
+/fotos       /galeria           301
+
+# Servicio estrella atajos
+/revision-tecnica  /servicios/revision-tecnica-sin-estres  301
+/revision          /servicios/revision-tecnica-sin-estres  301

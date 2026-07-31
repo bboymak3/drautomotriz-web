@@ -47,6 +47,21 @@
            hover:shadow-neon-lg;
   }
 
+  .btn-orange {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
+           bg-orange-500 text-dark-500 font-bold uppercase tracking-wide
+           transition-all duration-300 hover:bg-orange-400
+           hover:shadow-orange-neon-lg hover:-translate-y-0.5
+           focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-offset-2 focus:ring-offset-dark-300;
+  }
+
+  .btn-outline-orange {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
+           border-2 border-orange-500 text-orange-500 font-bold uppercase tracking-wide
+           transition-all duration-300 hover:bg-orange-500 hover:text-dark-500
+           hover:shadow-orange-neon-lg;
+  }
+
   .btn-whatsapp {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg
            bg-[#25D366] text-white font-bold uppercase tracking-wide
@@ -83,8 +98,24 @@
            text-neon-400 text-xs font-semibold uppercase tracking-wider;
   }
 
+  .badge-orange {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full
+           bg-orange-500/10 border border-orange-500/40
+           text-orange-400 text-xs font-semibold uppercase tracking-wider;
+  }
+
+  .card-orange {
+    @apply bg-dark-200/80 backdrop-blur-sm border-2 border-orange-500/50
+           rounded-xl p-6 transition-all duration-300
+           hover:border-orange-500 hover:shadow-orange-neon-lg hover:-translate-y-1;
+  }
+
   .glow-text {
     text-shadow: 0 0 10px rgba(0, 212, 255, 0.8), 0 0 20px rgba(0, 212, 255, 0.5);
+  }
+
+  .glow-text-orange {
+    text-shadow: 0 0 10px rgba(255, 138, 0, 0.9), 0 0 20px rgba(255, 138,  0, 0.6), 0 0 30px rgba(255, 138, 0, 0.3);
   }
 
   .divider-neon {

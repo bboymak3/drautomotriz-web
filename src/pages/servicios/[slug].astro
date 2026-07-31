@@ -12,6 +12,17 @@ export function getStaticPaths() {
 
 const { servicio } = Astro.props;
 const relacionados = getServiciosRelacionados(servicio.slug);
+const esDestacado = servicio.destacado === true;
+
+// Color theme según si es destacado o no
+const colorText = esDestacado ? 'text-orange-400' : 'text-neon-400';
+const colorBadge = esDestacado ? 'badge-orange' : 'badge-neon';
+const colorBtn = esDestacado ? 'btn-orange' : 'btn-neon';
+const colorOutlineBtn = esDestacado ? 'btn-outline-orange' : 'btn-outline-neon';
+const colorCard = esDestacado ? 'card-orange' : 'card-neon';
+const colorGlow = esDestacado ? 'glow-text-orange' : 'glow-text';
+const colorBorder = esDestacado ? 'border-orange-500/30' : 'border-neon-500/30';
+const colorBg = esDestacado ? 'bg-orange-500/10' : 'bg-neon-500/10';
 
 // Schema.org para FAQ
 const faqSchema = {
@@ -30,13 +41,29 @@ const serviceSchema = {
   "@type": "Service",
   "name": servicio.nombre,
   "description": servicio.descripcionCorta,
+  "url": `https://drautomotriz.pages.dev/servicios/${servicio.slug}`,
   "provider": {
     "@type": "AutoRepair",
     "name": "DRAUTOMOTRIZ",
     "telephone": "+56962408735",
     "areaServed": "Santiago, Chile"
   },
-  "serviceType": servicio.categoria
+  "serviceType": servicio.categoria,
+  "areaServed": {
+    "@type": "City",
+    "name": "Santiago"
+  }
+};
+
+// Breadcrumb específico
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drautomotriz.pages.dev/servicios" },
+    { "@type": "ListItem", "position": 3, "name": servicio.nombre, "item": `https://drautomotriz.pages.dev/servicios/${servicio.slug}` }
+  ]
 };
 ---
 
@@ -48,33 +75,39 @@ const serviceSchema = {
   <!-- Schema.org data -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <!-- HERO del servicio -->
   <section class="relative pt-12 pb-16 overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-20"></div>
-    <div class="absolute top-0 right-0 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+    <div class={`absolute top-0 right-0 w-96 h-96 ${esDestacado ? 'bg-orange-500/10' : 'bg-neon-500/10'} rounded-full blur-3xl`}></div>
 
     <div class="container-x relative">
       <!-- Breadcrumb -->
-      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8 flex-wrap">
         <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
         <span>/</span>
         <a href="/servicios" class="hover:text-neon-400 transition-colors">Servicios</a>
         <span>/</span>
-        <span class="text-neon-400">{servicio.nombre}</span>
+        <span class={colorText}>{servicio.nombre}</span>
       </nav>
 
       <div class="grid lg:grid-cols-2 gap-12 items-start">
         <!-- Left: Info -->
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class="w-16 h-16 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-4xl shadow-neon">
+            <div class={`w-16 h-16 rounded-lg ${colorBg} border-2 ${esDestacado ? 'border-orange-500' : 'border-neon-500/30'} flex items-center justify-center text-4xl ${esDestacado ? 'shadow-orange-neon' : 'shadow-neon'} ${esDestacado ? 'animate-pulse-orange' : ''}`}>
               {servicio.icono}
             </div>
-            <span class="badge-neon">{servicio.categoria}</span>
+            <div class="flex flex-col gap-1">
+              <span class={colorBadge}>{servicio.categoria}</span>
+              {esDestacado && (
+                <span class="text-[10px] px-2 py-0.5 bg-orange-500 text-dark-500 rounded font-bold uppercase tracking-wider w-fit">★ Servicio Estrella</span>
+              )}
+            </div>
           </div>
 
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4 text-balance glow-text">
+          <h1 class={`text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4 text-balance ${colorGlow}`}>
             {servicio.h1}
           </h1>
 
@@ -84,13 +117,13 @@ const serviceSchema = {
 
           <!-- CTAs -->
           <div class="flex flex-col sm:flex-row gap-3 mb-8">
-            <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp animate-pulse-neon">
+            <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class={`btn-whatsapp ${esDestacado ? 'animate-pulse-neon' : ''}`}>
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
               </svg>
               Cotizar por WhatsApp
             </a>
-            <a href="#detalle" class="btn-outline-neon">
+            <a href="#detalle" class={colorOutlineBtn}>
               Ver qué incluye
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
@@ -100,15 +133,26 @@ const serviceSchema = {
 
           <!-- Quick badges -->
           <div class="flex flex-wrap gap-2">
-            <span class="badge-neon">Santiago</span>
-            <span class="badge-neon">A Domicilio</span>
-            <span class="badge-neon">Garantía escrita</span>
-            <span class="badge-neon">Repuestos OEM</span>
+            {esDestacado ? (
+              <>
+                <span class={colorBadge}>Santiago</span>
+                <span class={colorBadge}>Retiro y devolución</span>
+                <span class={colorBadge}>Sin filas</span>
+                <span class={colorBadge}>Garantía</span>
+              </>
+            ) : (
+              <>
+                <span class={colorBadge}>Santiago</span>
+                <span class={colorBadge}>A Domicilio</span>
+                <span class={colorBadge}>Garantía escrita</span>
+                <span class={colorBadge}>Repuestos OEM</span>
+              </>
+            )}
           </div>
         </div>
 
         <!-- Right: Card de contacto rápido -->
-        <div class="card-neon lg:sticky lg:top-24">
+        <div class={`${colorCard} lg:sticky lg:top-24`}>
           <h3 class="text-xl font-display font-bold text-white mb-4">Solicita este servicio</h3>
           <p class="text-sm text-gray-400 mb-6">
             Escríbenos por WhatsApp con el mensaje pre-armado y te respondemos en minutos con disponibilidad y valor estimado.
@@ -116,19 +160,19 @@ const serviceSchema = {
 
           <div class="space-y-3 mb-6">
             <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
               <span class="text-gray-300">Respuesta en 5-15 min</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
               <span class="text-gray-300">Presupuesto transparente</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
               <span class="text-gray-300">Atención en toda la RM</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
               <span class="text-gray-300">Garantía escrita</span>
             </div>
           </div>
@@ -139,7 +183,7 @@ const serviceSchema = {
             </svg>
             +569 6240 8735
           </a>
-          <a href="/contacto" class="btn-outline-neon w-full">Formulario de cotización</a>
+          <a href="/contacto" class={`${colorOutlineBtn} w-full`}>Formulario de cotización</a>
         </div>
       </div>
     </div>
@@ -152,7 +196,7 @@ const serviceSchema = {
         <!-- Main content -->
         <div class="lg:col-span-2 space-y-6">
           <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-6">
-            Sobre el servicio de <span class="text-neon-400">{servicio.nombre}</span>
+            Sobre el servicio de <span class={colorText}>{servicio.nombre.toLowerCase()}</span>
           </h2>
 
           {servicio.paragraphs.map(p => (
@@ -164,8 +208,8 @@ const serviceSchema = {
             <h3 class="text-xl font-display font-bold text-white mb-6">Beneficios del servicio</h3>
             <div class="grid sm:grid-cols-2 gap-4">
               {servicio.beneficios.map(b => (
-                <div class="card-neon">
-                  <h4 class="text-sm font-display font-bold text-neon-400 mb-2 uppercase tracking-wide">{b.title}</h4>
+                <div class={colorCard}>
+                  <h4 class={`text-sm font-display font-bold ${colorText} mb-2 uppercase tracking-wide`}>{b.title}</h4>
                   <p class="text-sm text-gray-400">{b.desc}</p>
                 </div>
               ))}
@@ -175,11 +219,11 @@ const serviceSchema = {
           <!-- Qué incluye -->
           <div class="mt-12">
             <h3 class="text-xl font-display font-bold text-white mb-6">¿Qué incluye el servicio?</h3>
-            <div class="card-neon">
+            <div class={colorCard}>
               <ul class="space-y-3">
                 {servicio.incluye.map(item => (
-                  <li class="flex items-start gap-3 text-sm text-gray-300">
-                    <svg class="w-5 h-5 text-neon-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <li class={`flex items-start gap-3 text-sm text-gray-300`}>
+                    <svg class={`w-5 h-5 ${colorText} shrink-0 mt-0.5`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
                     {item}
@@ -194,10 +238,10 @@ const serviceSchema = {
             <h3 class="text-xl font-display font-bold text-white mb-6">Preguntas Frecuentes</h3>
             <div class="space-y-3">
               {servicio.faq.map(f => (
-                <details class="card-neon group">
+                <details class={`${colorCard} group`}>
                   <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
                     {f.q}
-                    <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class={`w-5 h-5 ${colorText} transition-transform group-open:rotate-180 shrink-0`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                     </svg>
                   </summary>
@@ -212,8 +256,8 @@ const serviceSchema = {
         <aside class="space-y-6">
           <!-- Servicios relacionados -->
           {relacionados.length > 0 && (
-            <div class="card-neon">
-              <h3 class="text-sm font-display font-bold text-neon-400 uppercase tracking-wider mb-4">Servicios relacionados</h3>
+            <div class={colorCard}>
+              <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-4`}>Servicios relacionados</h3>
               <ul class="space-y-3">
                 {relacionados.map(rel => (
                   <li>
@@ -234,8 +278,8 @@ const serviceSchema = {
           )}
 
           <!-- CTA sidebar -->
-          <div class="card-neon text-center">
-            <div class="text-4xl mb-3">🚐</div>
+          <div class={`${colorCard} text-center`}>
+            <div class="text-4xl mb-3">{servicio.icono}</div>
             <h3 class="text-lg font-display font-bold text-white mb-2">¿Listo para agendar?</h3>
             <p class="text-sm text-gray-400 mb-4">Atendemos en toda la RM. Tiempo promedio de llegada: 45-60 min.</p>
             <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp w-full">
@@ -244,11 +288,23 @@ const serviceSchema = {
           </div>
 
           <!-- Coverage -->
-          <div class="card-neon">
-            <h3 class="text-sm font-display font-bold text-neon-400 uppercase tracking-wider mb-3">Cobertura</h3>
+          <div class={colorCard}>
+            <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-3`}>Cobertura</h3>
             <p class="text-sm text-gray-400 mb-3">Atendemos en más de 40 comunas de la Región Metropolitana.</p>
-            <a href="/comunas" class="text-sm text-neon-400 hover:underline inline-flex items-center gap-1">
+            <a href="/comunas" class={`text-sm ${colorText} hover:underline inline-flex items-center gap-1`}>
               Ver comunas cubiertas
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Enlace a galería -->
+          <div class={colorCard}>
+            <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-3`}>Galería</h3>
+            <p class="text-sm text-gray-400 mb-3">Próximamente fotos reales de este servicio.</p>
+            <a href="/galeria" class={`text-sm ${colorText} hover:underline inline-flex items-center gap-1`}>
+              Ver galería
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
@@ -266,7 +322,7 @@ const serviceSchema = {
 
     <div class="container-x relative text-center">
       <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-        ¿Necesitas <span class="text-neon-414 glow-text">{servicio.nombre.toLowerCase()}</span> en Santiago?
+        ¿Necesitas <span class={colorText}>{servicio.nombre.toLowerCase()}</span> en Santiago?
       </h2>
       <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
         Escríbenos por WhatsApp ahora mismo y coordina tu visita a domicilio. Sin compromiso, sin costos ocultos.
@@ -278,7 +334,7 @@ const serviceSchema = {
           </svg>
           WhatsApp: +569 6240 8735
         </a>
-        <a href="/servicios" class="btn-outline-neon">Ver otros servicios</a>
+        <a href="/servicios" class={colorOutlineBtn}>Ver otros servicios</a>
       </div>
     </div>
   </section>

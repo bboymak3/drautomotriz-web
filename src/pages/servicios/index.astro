@@ -1,31 +1,125 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { servicios } from '@/data/servicios';
+import { servicios, getServiciosDestacados, getServiciosRegulares } from '@/data/servicios';
 import { waLinkServicio } from '@/data/config';
+
+const destacados = getServiciosDestacados();
+const regulares = getServiciosRegulares();
+
+// Schema.org: ItemList de servicios
+const serviciosSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Servicios de mecánica a domicilio DRAUTOMOTRIZ",
+  "description": "Catálogo completo de servicios mecánicos a domicilio en Santiago.",
+  "numberOfItems": servicios.length,
+  "itemListElement": servicios.map((s, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Service",
+      "name": s.nombre,
+      "description": s.descripcionCorta,
+      "url": `https://drautomotriz.pages.dev/servicios/${s.slug}`,
+      "provider": {
+        "@type": "AutoRepair",
+        "name": "DRAUTOMOTRIZ",
+        "telephone": "+56962408735"
+      }
+    }
+  }))
+};
 ---
 
 <BaseLayout
   title="Servicios de Mecánica a Domicilio en Santiago | DRAUTOMOTRIZ"
-  description="Catálogo completo de 10 servicios de mecánica a domicilio en Santiago: mecánica general, escáner, mantención, frenos, batería, suspensión, refrigeración, inyección, auxilio 24/7 y distribución."
+  description="Catálogo completo de 14 servicios de mecánica a domicilio en Santiago: Revisión Técnica Sin Estrés, mantención por km, frenos, escáner, suspensión, embrague, distribución y más."
+  canonical="/servicios"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(serviciosSchema)} />
+
   <section class="pt-16 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-20"></div>
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
 
     <div class="container-x relative">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-neon-400">Servicios</span>
+      </nav>
+
       <div class="text-center mb-12">
         <span class="badge-neon mb-4">Catálogo</span>
         <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6 text-balance">
           Servicios de <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Mecánica a Domicilio</span>
         </h1>
         <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-          En DRAUTOMOTRIZ ofrecemos 10 servicios especializados de mecánica automotriz a domicilio en Santiago. Cada servicio tiene su propia página con detalles, precios, FAQ y botón directo de cotización por WhatsApp.
+          En DRAUTOMOTRIZ ofrecemos 14 servicios especializados de mecánica automotriz a domicilio en Santiago. Cada servicio tiene su propia página con detalles, FAQ y botón directo de cotización por WhatsApp.
         </p>
       </div>
 
-      <!-- Grid de servicios -->
+      <!-- Servicio destacado: Revisión Técnica Sin Estrés -->
+      {destacados.length > 0 && (
+        <div class="mb-12">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-2 h-8 bg-gradient-orange rounded"></div>
+            <h2 class="text-xl font-display font-bold text-orange-400 uppercase tracking-wider">★ Servicio Estrella</h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {destacados.map(servicio => (
+              <article class="card-orange group relative overflow-hidden md:col-span-2">
+                <div class="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
+                  <!-- Icono -->
+                  <div class="w-20 h-20 rounded-lg bg-orange-500/10 border-2 border-orange-500 flex items-center justify-center text-5xl shadow-orange-neon animate-pulse-orange shrink-0">
+                    {servicio.icono}
+                  </div>
+
+                  <!-- Info -->
+                  <div>
+                    <div class="text-xs text-orange-400 uppercase tracking-widest font-semibold mb-1">
+                      {servicio.categoria}
+                    </div>
+                    <h3 class="text-2xl font-display font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">
+                      <a href={`/servicios/${servicio.slug}`}>{servicio.nombre}</a>
+                    </h3>
+                    <p class="text-sm text-gray-300 mb-4">{servicio.tagline}</p>
+
+                    <!-- Proceso rápido -->
+                    <div class="flex flex-wrap gap-2 text-xs">
+                      <span class="badge-orange">1. Retiramos tu auto</span>
+                      <span class="badge-orange">2. Trámite en planta</span>
+                      <span class="badge-orange">3. Devolución con documento</span>
+                    </div>
+                  </div>
+
+                  <!-- CTAs -->
+                  <div class="flex flex-col gap-2 min-w-[200px]">
+                    <a href={`/servicios/${servicio.slug}`} class="btn-orange text-sm py-2">
+                      Ver detalles
+                    </a>
+                    <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp text-sm py-2">
+                      Cotizar por WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Servicios regulares -->
+      <div class="mb-6">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-2 h-8 bg-gradient-neon rounded"></div>
+          <h2 class="text-xl font-display font-bold text-neon-400 uppercase tracking-wider">Catálogo Completo</h2>
+        </div>
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {servicios.map((servicio) => (
+        {regulares.map((servicio) => (
           <article class="card-neon group">
             <div class="flex items-start gap-4 mb-4">
               <div class="w-14 h-14 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-3xl group-hover:shadow-neon transition-shadow shrink-0">
