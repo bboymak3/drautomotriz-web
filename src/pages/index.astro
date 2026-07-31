@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
+import BannerMidSize from '@/components/BannerMidSize.astro';
 import SeoTextBlock from '@/components/SeoTextBlock.astro';
 import RevisionTecnicaHighlight from '@/components/RevisionTecnicaHighlight.astro';
 import Services from '@/components/Services.astro';
@@ -64,6 +65,9 @@ const homeSchema = {
 
   <!-- HERO FULL-WIDTH CON BANNER -->
   <Hero />
+
+  <!-- Banner mediano (50% ancho) con revision-tecnica-sin-estres -->
+  <BannerMidSize />
 
   <!-- TEXTO SEO 1: Sección Principal (después del Hero) -->
   <SeoTextBlock variante="texto1" />
