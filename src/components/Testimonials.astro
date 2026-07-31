@@ -1,0 +1,54 @@
+---
+import { testimonios } from '@/data/testimonios';
+---
+
+<section id="testimonios" class="py-20 relative overflow-hidden">
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-neon-500/5 rounded-full blur-3xl"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-12">
+      <span class="badge-neon mb-4">Testimonios</span>
+      <h2 class="section-title">Clientes Satisfechos en Santiago</h2>
+      <p class="section-subtitle">
+        Más de 2.500 vehículos atendidos a domicilio en la Región Metropolitana. Esto es lo que dicen nuestros clientes sobre el servicio DRAUTOMOTRIZ.
+      </p>
+    </div>
+
+    <!-- Grid de testimonios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonios.slice(0, 6).map(t => (
+        <article class="card-neon relative">
+          <!-- Quote icon -->
+          <svg class="absolute top-4 right-4 w-12 h-12 text-neon-500/10" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z"/>
+          </svg>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-1 mb-4">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <svg class={`w-4 h-4 ${i < t.rating ? 'text-neon-400' : 'text-gray-700'}`} fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Texto -->
+          <p class="text-sm text-gray-300 mb-6 leading-relaxed italic">
+            "{t.texto}"
+          </p>
+
+          <!-- Autor -->
+          <div class="flex items-center gap-3 pt-4 border-t border-neon-500/10">
+            <div class="w-10 h-10 rounded-full bg-gradient-neon flex items-center justify-center text-dark-500 font-bold text-sm">
+              {t.autor.charAt(0)}
+            </div>
+            <div>
+              <div class="text-sm font-semibold text-white">{t.autor}</div>
+              <div class="text-xs text-gray-500">{t.comuna} · {new Date(t.fecha).toLocaleDateString('es-CL', { year: 'numeric', month: 'short' })}</div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

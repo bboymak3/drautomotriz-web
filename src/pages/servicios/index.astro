@@ -1,0 +1,59 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { servicios } from '@/data/servicios';
+import { waLinkServicio } from '@/data/config';
+---
+
+<BaseLayout
+  title="Servicios de Mecánica a Domicilio en Santiago | DRAUTOMOTRIZ"
+  description="Catálogo completo de 10 servicios de mecánica a domicilio en Santiago: mecánica general, escáner, mantención, frenos, batería, suspensión, refrigeración, inyección, auxilio 24/7 y distribución."
+>
+  <section class="pt-16 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <div class="text-center mb-12">
+        <span class="badge-neon mb-4">Catálogo</span>
+        <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6 text-balance">
+          Servicios de <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Mecánica a Domicilio</span>
+        </h1>
+        <p class="text-lg text-gray-400 max-w-3xl mx-auto">
+          En DRAUTOMOTRIZ ofrecemos 10 servicios especializados de mecánica automotriz a domicilio en Santiago. Cada servicio tiene su propia página con detalles, precios, FAQ y botón directo de cotización por WhatsApp.
+        </p>
+      </div>
+
+      <!-- Grid de servicios -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {servicios.map((servicio) => (
+          <article class="card-neon group">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-14 h-14 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-3xl group-hover:shadow-neon transition-shadow shrink-0">
+                {servicio.icono}
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-neon-400 uppercase tracking-widest font-semibold mb-1">
+                  {servicio.categoria}
+                </div>
+                <h2 class="text-lg font-display font-bold text-white group-hover:text-neon-400 transition-colors">
+                  <a href={`/servicios/${servicio.slug}`}>{servicio.nombre}</a>
+                </h2>
+              </div>
+            </div>
+
+            <p class="text-sm text-gray-400 mb-6">{servicio.descripcionCorta}</p>
+
+            <div class="flex flex-col gap-2">
+              <a href={`/servicios/${servicio.slug}`} class="btn-outline-neon text-xs py-2">
+                Ver detalles del servicio
+              </a>
+              <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp text-xs py-2">
+                Cotizar por WhatsApp
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

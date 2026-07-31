@@ -1,0 +1,5 @@
+# Redirects for old/missing pages
+/servicio/*  /servicios/:splat  302
+/comuna/*    /comunas/:splat    302
+/inicio      /                  302
+/home        /                  302

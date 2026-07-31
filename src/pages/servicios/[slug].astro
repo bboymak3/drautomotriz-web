@@ -1,0 +1,285 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { servicios, getServicioBySlug, getServiciosRelacionados } from '@/data/servicios';
+import { waLink, waLinkServicio } from '@/data/config';
+
+export function getStaticPaths() {
+  return servicios.map(s => ({
+    params: { slug: s.slug },
+    props: { servicio: s }
+  }));
+}
+
+const { servicio } = Astro.props;
+const relacionados = getServiciosRelacionados(servicio.slug);
+
+// Schema.org para FAQ
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": servicio.faq.map(f => ({
+    "@type": "Question",
+    "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+
+// Schema.org para Service
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": servicio.nombre,
+  "description": servicio.descripcionCorta,
+  "provider": {
+    "@type": "AutoRepair",
+    "name": "DRAUTOMOTRIZ",
+    "telephone": "+56962408735",
+    "areaServed": "Santiago, Chile"
+  },
+  "serviceType": servicio.categoria
+};
+---
+
+<BaseLayout
+  title={servicio.metaTitle}
+  description={servicio.metaDescription}
+  canonical={`/servicios/${servicio.slug}`}
+>
+  <!-- Schema.org data -->
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- HERO del servicio -->
+  <section class="relative pt-12 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/servicios" class="hover:text-neon-400 transition-colors">Servicios</a>
+        <span>/</span>
+        <span class="text-neon-400">{servicio.nombre}</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Info -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-16 h-16 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-4xl shadow-neon">
+              {servicio.icono}
+            </div>
+            <span class="badge-neon">{servicio.categoria}</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4 text-balance glow-text">
+            {servicio.h1}
+          </h1>
+
+          <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+            {servicio.tagline}
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3 mb-8">
+            <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp animate-pulse-neon">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Cotizar por WhatsApp
+            </a>
+            <a href="#detalle" class="btn-outline-neon">
+              Ver qué incluye
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Quick badges -->
+          <div class="flex flex-wrap gap-2">
+            <span class="badge-neon">Santiago</span>
+            <span class="badge-neon">A Domicilio</span>
+            <span class="badge-neon">Garantía escrita</span>
+            <span class="badge-neon">Repuestos OEM</span>
+          </div>
+        </div>
+
+        <!-- Right: Card de contacto rápido -->
+        <div class="card-neon lg:sticky lg:top-24">
+          <h3 class="text-xl font-display font-bold text-white mb-4">Solicita este servicio</h3>
+          <p class="text-sm text-gray-400 mb-6">
+            Escríbenos por WhatsApp con el mensaje pre-armado y te respondemos en minutos con disponibilidad y valor estimado.
+          </p>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Respuesta en 5-15 min</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Presupuesto transparente</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Atención en toda la RM</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Garantía escrita</span>
+            </div>
+          </div>
+
+          <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp w-full mb-3">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            +569 6240 8735
+          </a>
+          <a href="/contacto" class="btn-outline-neon w-full">Formulario de cotización</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETALLE: descripción extensa -->
+  <section id="detalle" class="py-16 relative">
+    <div class="container-x">
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Main content -->
+        <div class="lg:col-span-2 space-y-6">
+          <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-6">
+            Sobre el servicio de <span class="text-neon-400">{servicio.nombre}</span>
+          </h2>
+
+          {servicio.paragraphs.map(p => (
+            <p class="text-gray-300 leading-relaxed">{p}</p>
+          ))}
+
+          <!-- Beneficios -->
+          <div class="mt-12">
+            <h3 class="text-xl font-display font-bold text-white mb-6">Beneficios del servicio</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              {servicio.beneficios.map(b => (
+                <div class="card-neon">
+                  <h4 class="text-sm font-display font-bold text-neon-400 mb-2 uppercase tracking-wide">{b.title}</h4>
+                  <p class="text-sm text-gray-400">{b.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Qué incluye -->
+          <div class="mt-12">
+            <h3 class="text-xl font-display font-bold text-white mb-6">¿Qué incluye el servicio?</h3>
+            <div class="card-neon">
+              <ul class="space-y-3">
+                {servicio.incluye.map(item => (
+                  <li class="flex items-start gap-3 text-sm text-gray-300">
+                    <svg class="w-5 h-5 text-neon-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mt-12">
+            <h3 class="text-xl font-display font-bold text-white mb-6">Preguntas Frecuentes</h3>
+            <div class="space-y-3">
+              {servicio.faq.map(f => (
+                <details class="card-neon group">
+                  <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+                    {f.q}
+                    <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                  </summary>
+                  <p class="text-sm text-gray-400 mt-3 leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <!-- Servicios relacionados -->
+          {relacionados.length > 0 && (
+            <div class="card-neon">
+              <h3 class="text-sm font-display font-bold text-neon-400 uppercase tracking-wider mb-4">Servicios relacionados</h3>
+              <ul class="space-y-3">
+                {relacionados.map(rel => (
+                  <li>
+                    <a href={`/servicios/${rel.slug}`} class="flex items-center gap-3 group">
+                      <span class="text-2xl">{rel.icono}</span>
+                      <div class="flex-1">
+                        <div class="text-sm font-semibold text-white group-hover:text-neon-400 transition-colors">{rel.nombre}</div>
+                        <div class="text-xs text-gray-500 line-clamp-1">{rel.descripcionCorta}</div>
+                      </div>
+                      <svg class="w-4 h-4 text-neon-500/40 group-hover:text-neon-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- CTA sidebar -->
+          <div class="card-neon text-center">
+            <div class="text-4xl mb-3">🚐</div>
+            <h3 class="text-lg font-display font-bold text-white mb-2">¿Listo para agendar?</h3>
+            <p class="text-sm text-gray-400 mb-4">Atendemos en toda la RM. Tiempo promedio de llegada: 45-60 min.</p>
+            <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp w-full">
+              Agendar ahora
+            </a>
+          </div>
+
+          <!-- Coverage -->
+          <div class="card-neon">
+            <h3 class="text-sm font-display font-bold text-neon-400 uppercase tracking-wider mb-3">Cobertura</h3>
+            <p class="text-sm text-gray-400 mb-3">Atendemos en más de 40 comunas de la Región Metropolitana.</p>
+            <a href="/comunas" class="text-sm text-neon-400 hover:underline inline-flex items-center gap-1">
+              Ver comunas cubiertas
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-dark-400 via-dark-300 to-dark-400"></div>
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+
+    <div class="container-x relative text-center">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
+        ¿Necesitas <span class="text-neon-414 glow-text">{servicio.nombre.toLowerCase()}</span> en Santiago?
+      </h2>
+      <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+        Escríbenos por WhatsApp ahora mismo y coordina tu visita a domicilio. Sin compromiso, sin costos ocultos.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp: +569 6240 8735
+        </a>
+        <a href="/servicios" class="btn-outline-neon">Ver otros servicios</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

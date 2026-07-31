@@ -1,0 +1,184 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { config } from '@/data/config';
+
+const lastUpdate = '1 de agosto, 2026';
+---
+
+<BaseLayout
+  title="Políticas de Privacidad | DRAUTOMOTRIZ"
+  description="Políticas de privacidad de DRAUTOMOTRIZ. Conoce cómo tratamos tus datos personales cuando utilizas nuestro servicio de mecánica a domicilio en Santiago."
+  canonical="/politicas-de-privacidad"
+>
+  <section class="pt-16 pb-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+
+    <div class="container-x relative">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <span class="text-neon-400">Políticas de Privacidad</span>
+      </nav>
+
+      <div class="max-w-4xl mx-auto">
+        <div class="mb-12">
+          <span class="badge-neon mb-4">Legal</span>
+          <h1 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
+            Políticas de Privacidad
+          </h1>
+          <p class="text-sm text-gray-500">Última actualización: {lastUpdate}</p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Introducción -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">1. Introducción</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+              En DRAUTOMOTRIZ, con presencia en Santiago, Chile, respetamos tu privacidad y estamos comprometidos a proteger tus datos personales. Esta política describe cómo recopilamos, usamos, almacenamos y protegemos la información que nos proporcionas cuando utilizas nuestros servicios de mecánica a domicilio o interactúas con nuestro sitio web.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              Al utilizar nuestros servicios o completar formularios en nuestro sitio, aceptas las prácticas descritas en esta política. Si no estás de acuerdo con alguno de los términos, te pedimos que no utilices nuestros servicios digitales y te contactes directamente por teléfono para coordinar la atención.
+            </p>
+          </div>
+
+          <!-- Datos que recopilamos -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">2. Datos que recopilamos</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              Recopilamos los siguientes datos personales cuando utilizas nuestros servicios o completas formularios en nuestro sitio:
+            </p>
+            <ul class="space-y-2 text-gray-300">
+              <li class="flex items-start gap-3">
+                <span class="text-neon-400 mt-1">•</span>
+                <span><strong class="text-white">Datos de contacto:</strong> Nombre completo, número de teléfono, comuna de residencia.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-neon-400 mt-1">•</span>
+                <span><strong class="text-white">Datos del vehículo:</strong> Marca, modelo, año y patente (opcional) del vehículo a reparar.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-neon-400 mt-1">•</span>
+                <span><strong class="text-white">Detalles del servicio:</strong> Tipo de servicio solicitado, descripción del problema, fecha preferida de atención.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-neon-400 mt-1">•</span>
+                <span><strong class="text-white">Datos técnicos:</strong> Dirección IP, tipo de navegador, páginas visitadas (mediante cookies analíticas).</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-neon-400 mt-1">•</span>
+                <span><strong class="text-white">Comunicaciones:</strong> Registro de conversaciones por WhatsApp y correos electrónicos para dar seguimiento a tus solicitudes.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Uso de los datos -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">3. Uso de los datos</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              Utilizamos tus datos personales exclusivamente para los siguientes fines:
+            </p>
+            <ul class="space-y-2 text-gray-300">
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Prestar el servicio de mecánica a domicilio solicitado, incluyendo coordinación de visita, diagnóstico y reparación.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Comunicarnos contigo para informarte sobre el estado de tu solicitud, presupuestos y recordatorios de mantención.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Generar registros históricos de los servicios realizados a tus vehículos para un mejor seguimiento técnico.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Cumplir con obligaciones legales, incluyendo emisión de boletas electrónicas y registro tributario.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Mejorar la calidad de nuestro servicio mediante análisis de satisfacción del cliente.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Enviar información promocional sobre nuevos servicios o descuentos (solo si has dado tu consentimiento explícito).</span></li>
+            </ul>
+          </div>
+
+          <!-- Almacenamiento y seguridad -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">4. Almacenamiento y seguridad</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+              Tus datos se almacenan en la infraestructura de Cloudflare (Cloudflare Pages, D1 Database y R2), cumpliendo con estándares internacionales de seguridad. Los datos se mantienen almacenados durante el tiempo necesario para cumplir con los fines para los que fueron recopilados, incluyendo requisitos legales y tributarios.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              Implementamos medidas técnicas y organizativas apropiadas para proteger tus datos contra acceso no autorizado, alteración, divulgación o destrucción, incluyendo cifrado en tránsito (HTTPS), acceso restringido a personal autorizado y copias de seguridad periódicas.
+            </p>
+          </div>
+
+          <!-- Compartir datos -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">5. Compartir datos con terceros</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+              No vendemos ni alquilamos tus datos personales a terceros. Solo compartimos información en los siguientes casos:
+            </p>
+            <ul class="space-y-2 text-gray-300">
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Con proveedores de servicios necesarios para cumplir con tu solicitud (por ejemplo, servicios de grúa si el vehículo requiere traslado).</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Con autoridades competentes cuando sea requerido por ley, orden judicial o requerimiento legal válido.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span>Con servicios de procesamiento de pagos (transbank, Mercado Pago) exclusivamente para procesar transacciones autorizadas por ti.</span></li>
+            </ul>
+          </div>
+
+          <!-- Cookies -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">6. Cookies y tecnologías similares</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+              Nuestro sitio web utiliza cookies y tecnologías similares para mejorar la experiencia del usuario, analizar el tráfico del sitio y recordar tus preferencias. Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo.
+            </p>
+            <p class="text-gray-300 leading-relaxed">
+              Puedes configurar tu navegador para rechazar cookies, aunque esto puede afectar la funcionalidad de ciertas secciones del sitio. No utilizamos cookies de publicidad de terceros ni tracking cross-site.
+            </p>
+          </div>
+
+          <!-- Tus derechos -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">7. Tus derechos (Ley 19.628)</h2>
+            <p class="text-gray-300 leading-relaxed mb-3">
+              Conforme a la Ley 19.628 sobre Protección de la Vida Privada (Chile), tienes los siguientes derechos sobre tus datos personales:
+            </p>
+            <ul class="space-y-2 text-gray-300">
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span><strong class="text-white">Acceso:</strong> Solicitar una copia de los datos personales que tenemos sobre ti.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span><strong class="text-white">Rectificación:</strong> Solicitar la corrección de datos inexactos o incompletos.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span><strong class="text-white">Eliminación:</strong> Solicitar la eliminación de tus datos cuando ya no sean necesarios.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span><strong class="text-white">Oposición:</strong> Oponerte al tratamiento de tus datos para fines específicos.</span></li>
+              <li class="flex items-start gap-3"><span class="text-neon-400 mt-1">•</span><span><strong class="text-white">Portabilidad:</strong> Recibir tus datos en un formato estructurado y transferible.</span></li>
+            </ul>
+            <p class="text-gray-300 leading-relaxed mt-4">
+              Para ejercer estos derechos, escríbenos por WhatsApp al +569 6240 8735 indicando tu solicitud.
+            </p>
+          </div>
+
+          <!-- WhatsApp -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">8. Uso de WhatsApp</h2>
+            <p class="text-gray-300 leading-relaxed">
+              Al contactarnos por WhatsApp, aceptas que tus datos (nombre, número, contenido del mensaje) sean procesados tanto por DRAUTOMOTRIZ como por WhatsApp LLC, según la política de privacidad de esta última. No somos responsables de las prácticas de privacidad de WhatsApp y te recomendamos revisar su política en https://www.whatsapp.com/legal/privacy-policy.
+            </p>
+          </div>
+
+          <!-- Cambios a la política -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">9. Cambios a esta política</h2>
+            <p class="text-gray-300 leading-relaxed">
+              Podemos actualizar esta política de privacidad periódicamente para reflejar cambios en nuestras prácticas o requisitos legales. Te notificaremos sobre cambios significativos publicando la nueva política en esta página y actualizando la fecha de "última actualización" en la parte superior. Te recomendamos revisar esta página regularmente.
+            </p>
+          </div>
+
+          <!-- Contacto -->
+          <div class="card-neon">
+            <h2 class="text-xl font-display font-bold text-neon-400 mb-4">10. Contacto</h2>
+            <p class="text-gray-300 leading-relaxed mb-4">
+              Si tienes preguntas sobre esta política de privacidad o sobre cómo manejamos tus datos personales, contáctanos:
+            </p>
+            <div class="space-y-2 text-gray-300">
+              <div class="flex items-center gap-3">
+                <span class="text-neon-400">📱</span>
+                <span>WhatsApp: <a href={`https://wa.me/${config.whatsappNumero}`} target="_blank" rel="noopener" class="text-neon-400 hover:underline">+569 6240 8735</a></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-neon-400">📷</span>
+                <span>Instagram: <a href={config.instagramUrl} target="_blank" rel="noopener" class="text-neon-400 hover:underline">{config.instagram}</a></span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="text-neon-400">📍</span>
+                <span>Santiago, Región Metropolitana, Chile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

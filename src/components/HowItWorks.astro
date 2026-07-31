@@ -1,0 +1,81 @@
+---
+import { waLink } from '@/data/config';
+
+const steps = [
+  {
+    num: '01',
+    title: 'Agenda tu visita',
+    desc: 'Escríbenos por WhatsApp o completa el formulario web. Cuéntanos qué le pasa a tu auto y en qué comuna de Santiago estás. Te confirmamos horario en minutos.',
+    icon: '📲',
+    cta: { label: 'Abrir WhatsApp', href: waLink() }
+  },
+  {
+    num: '02',
+    title: 'El mecánico llega a ti',
+    desc: 'Nuestro técnico móvil llega a tu casa, oficina o estacionamiento en un promedio de 45 a 60 minutos dentro de Santiago. Lleva todas las herramientas y repuestos comunes.',
+    icon: '🚐',
+    cta: null
+  },
+  {
+    num: '03',
+    title: 'Diagnóstico y presupuesto',
+    desc: 'Diagnosticamos el problema en el lugar y te entregamos un presupuesto cerrado y transparente. Solo procedemos cuando autorizas. Sin sorpresas, sin costos ocultos.',
+    icon: '🔍',
+    cta: null
+  },
+  {
+    num: '04',
+    title: 'Reparamos en el lugar',
+    desc: 'Reparamos tu auto en el sitio, en la mayoría de los casos. Si requiere taller, coordinamos el traslado. Entregamos boleta, garantía escrita y check-list del trabajo realizado.',
+    icon: '✅',
+    cta: null
+  }
+];
+---
+
+<section id="como-funciona" class="py-20 relative overflow-hidden">
+  <div class="absolute top-1/2 left-0 w-72 h-72 bg-neon-500/5 rounded-full blur-3xl -translate-y-1/2"></div>
+  <div class="absolute top-1/2 right-0 w-72 h-72 bg-neon-500/5 rounded-full blur-3xl -translate-y-1/2"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-12">
+      <span class="badge-neon mb-4">Proceso</span>
+      <h2 class="section-title">Cómo Funciona DRAUTOMOTRIZ</h2>
+      <p class="section-subtitle">
+        Cuatro pasos simples para resolver el problema de tu auto sin moverte de tu casa u oficina. Rápido, transparente y profesional.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {steps.map((step, i) => (
+        <div class="relative">
+          {/* Línea conectora */}
+          {i < steps.length - 1 && (
+            <div class="hidden lg:block absolute top-12 left-[60%] w-full h-px bg-gradient-to-r from-neon-500/50 to-transparent"></div>
+          )}
+
+          <div class="card-neon h-full relative z-10">
+            <div class="flex items-start justify-between mb-4">
+              <div class="w-12 h-12 rounded-lg bg-gradient-neon flex items-center justify-center text-2xl shadow-neon">
+                {step.icon}
+              </div>
+              <div class="text-3xl font-display font-bold text-neon-500/20">{step.num}</div>
+            </div>
+
+            <h3 class="text-lg font-display font-bold text-white mb-3">{step.title}</h3>
+            <p class="text-sm text-gray-400 mb-4">{step.desc}</p>
+
+            {step.cta && (
+              <a href={step.cta.href} target="_blank" rel="noopener" class="text-sm font-semibold text-neon-400 hover:text-neon-300 transition-colors inline-flex items-center gap-1">
+                {step.cta.label}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

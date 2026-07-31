@@ -1,0 +1,211 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { comunas, getComunaBySlug } from '@/data/comunas';
+import { servicios } from '@/data/servicios';
+import { waLink, waLinkServicio } from '@/data/config';
+
+export function getStaticPaths() {
+  return comunas.map(c => ({
+    params: { slug: c.slug },
+    props: { comuna: c }
+  }));
+}
+
+const { comuna } = Astro.props;
+
+// Schema.org LocalBusiness
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": `DRAUTOMOTRIZ - Mecánico a Domicilio en ${comuna.nombre}`,
+  "image": "/imagen/drautomotriz/og-default.jpg",
+  "description": comuna.metaDescription,
+  "url": `https://drautomotriz.pages.dev/comunas/${comuna.slug}`,
+  "telephone": "+56962408735",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": comuna.nombre,
+    "addressRegion": "Región Metropolitana",
+    "addressCountry": "CL"
+  },
+  "areaServed": comuna.nombre,
+  "openingHours": "Mo-Sa 08:00-20:00, Su 00:00-24:00"
+};
+---
+
+<BaseLayout
+  title={comuna.metaTitle}
+  description={comuna.metaDescription}
+  canonical={`/comunas/${comuna.slug}`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <!-- HERO -->
+  <section class="relative pt-12 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="absolute top-0 left-0 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/comunas" class="hover:text-neon-400 transition-colors">Comunas</a>
+        <span>/</span>
+        <span class="text-neon-400">{comuna.nombre}</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-16 h-16 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center shadow-neon">
+              <svg class="w-8 h-8 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <span class="badge-neon">Zona {comuna.zona}</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4 text-balance glow-text">
+            {comuna.h1}
+          </h1>
+
+          <p class="text-lg text-gray-400 mb-8 leading-relaxed">
+            {comuna.descripcion}
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-3 mb-8">
+            <a href={waLink(`Hola, necesito un mecánico a domicilio en ${comuna.nombre}`)} target="_blank" rel="noopener" class="btn-whatsapp animate-pulse-neon">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Agenda por WhatsApp
+            </a>
+            <a href="#servicios-disponibles" class="btn-outline-neon">
+              Ver servicios disponibles
+            </a>
+          </div>
+
+          <!-- Sectores populares -->
+          <div>
+            <h3 class="text-sm font-display font-bold text-neon-400 uppercase tracking-widest mb-3">Sectores populares en {comuna.nombre}</h3>
+            <div class="flex flex-wrap gap-2">
+              {comuna.sectoresPopulares.map(s => (
+                <span class="badge-neon">{s}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Card lateral -->
+        <div class="card-neon lg:sticky lg:top-24">
+          <div class="text-center mb-6">
+            <div class="text-5xl mb-3">🚐</div>
+            <h3 class="text-xl font-display font-bold text-white">Mecánico a Domicilio en {comuna.nombre}</h3>
+            <p class="text-sm text-gray-400 mt-2">Tiempo promedio de llegada: 45-60 min</p>
+          </div>
+
+          <div class="space-y-3 mb-6">
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Atendemos en toda la comuna</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Auxilio mecánico 24/7</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Mecánicos certificados</span>
+            </div>
+            <div class="flex items-center gap-3 text-sm">
+              <div class="w-8 h-8 rounded bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-neon-400">✓</div>
+              <span class="text-gray-300">Garantía escrita</span>
+            </div>
+          </div>
+
+          <a href={waLink(`Hola, necesito un mecánico a domicilio en ${comuna.nombre}`)} target="_blank" rel="noopener" class="btn-whatsapp w-full">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+            </svg>
+            +569 6240 8735
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios disponibles en esta comuna -->
+  <section id="servicios-disponibles" class="py-16 relative">
+    <div class="container-x">
+      <div class="text-center mb-10">
+        <span class="badge-neon mb-4">Servicios en {comuna.nombre}</span>
+        <h2 class="text-3xl font-display font-bold text-white mb-4">
+          Servicios disponibles en <span class="text-neon-400">{comuna.nombre}</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Todos nuestros servicios de mecánica a domicilio están disponibles en {comuna.nombre}. Selecciona el que necesitas y contáctanos por WhatsApp.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {servicios.map(servicio => (
+          <div class="card-neon group">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-12 h-12 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-2xl">
+                {servicio.icono}
+              </div>
+              <h3 class="font-display font-bold text-white group-hover:text-neon-400 transition-colors">
+                <a href={`/servicios/${servicio.slug}`}>{servicio.nombre}</a>
+              </h3>
+            </div>
+            <p class="text-sm text-gray-400 mb-4">{servicio.descripcionCorta}</p>
+            <div class="flex flex-col gap-2">
+              <a href={`/servicios/${servicio.slug}`} class="text-xs font-semibold text-neon-400 hover:text-neon-300 inline-flex items-center gap-1">
+                Ver detalles
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a
+                href={waLink(`Hola, necesito el servicio de ${servicio.nombre} en ${comuna.nombre}`)}
+                target="_blank"
+                rel="noopener"
+                class="text-xs px-3 py-2 rounded-md bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all inline-flex items-center gap-1.5 w-fit"
+              >
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Cotizar en {comuna.nombre}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-dark-400 via-dark-300 to-dark-400"></div>
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+
+    <div class="container-x relative text-center">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
+        ¿Necesitas un mecánico a domicilio en <span class="text-neon-414 glow-text">{comuna.nombre}</span>?
+      </h2>
+      <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+        Escríbenos por WhatsApp ahora y coordina tu visita. Atención rápida, profesional y con garantía en toda la comuna de {comuna.nombre}.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href={waLink(`Hola, necesito un mecánico a domicilio en ${comuna.nombre}`)} target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp: +569 6240 8735
+        </a>
+        <a href="/comunas" class="btn-outline-neon">Ver otras comunas</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

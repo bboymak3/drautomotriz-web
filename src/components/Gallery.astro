@@ -1,0 +1,110 @@
+---
+// Galería: usaremos SVG/CSS placeholders porque NO usamos las fotos del repo base OptimusCars.
+// Cuando subas tus fotos reales a Cloudflare R2, reemplaza los `data-src` por las URLs del bucket.
+
+const galeriaItems = [
+  { titulo: 'Diagnóstico Computarizado', comuna: 'Las Condes', svg: 'scanner' },
+  { titulo: 'Cambio de Frenos', comuna: 'Providencia', svg: 'frenos' },
+  { titulo: 'Mantención Preventiva', comuna: 'Ñuñoa', svg: 'mantencion' },
+  { titulo: 'Cambio de Batería', comuna: 'Maipú', svg: 'bateria' },
+  { titulo: 'Reparación de Suspensión', comuna: 'Vitacura', svg: 'suspension' },
+  { titulo: 'Auxilio Mecánico 24/7', comuna: 'La Florida', svg: 'auxilio' },
+  { titulo: 'Sistema de Refrigeración', comuna: 'Lo Barnechea', svg: 'refrigeracion' },
+  { titulo: 'Limpieza de Inyectores', comuna: 'Santiago Centro', svg: 'inyeccion' },
+];
+---
+
+<section id="galeria" class="py-20 relative overflow-hidden">
+  <div class="container-x">
+    <div class="text-center mb-12">
+      <span class="badge-neon mb-4">Galería</span>
+      <h2 class="section-title">Trabajos Recientes en Santiago</h2>
+      <p class="section-subtitle">
+        Galería de trabajos reales realizados a domicilio en distintas comunas de la Región Metropolitana. Cada imagen representa el tipo de servicio que podemos realizar en tu vehículo.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {galeriaItems.map(item => (
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
+          <!-- SVG background -->
+          <div class="absolute inset-0 bg-gradient-to-br from-dark-100 to-dark-300">
+            <div class="absolute inset-0 bg-grid opacity-30"></div>
+
+            <!-- Icon based on type -->
+            <div class="absolute inset-0 flex items-center justify-center text-neon-500/30 group-hover:text-neon-500/50 transition-colors">
+              {item.svg === 'scanner' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="12" rx="2" stroke-width="1.5"/>
+                  <path d="M3 9h18M7 13h4" stroke-width="1.5"/>
+                  <path d="M12 20v-4" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'frenos' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
+                  <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
+                  <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'mantencion' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9-9-4-9-9z" stroke-width="1.5"/>
+                  <path d="M12 8v4l3 2" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'bateria' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <rect x="4" y="6" width="16" height="14" rx="2" stroke-width="1.5"/>
+                  <path d="M8 6V3M16 6V3M10 13l2-2v6M14 13h-4" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'suspension' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M4 20h16M6 20V10l6-6 6 6v10" stroke-width="1.5"/>
+                  <path d="M9 20v-4h6v4" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'auxilio' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2L4 7v6c0 5 3.5 8.5 8 9 4.5-.5 8-4 8-9V7l-8-5z" stroke-width="1.5"/>
+                  <path d="M9 12l2 2 4-4" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'refrigeracion' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19" stroke-width="1.5"/>
+                </svg>
+              )}
+              {item.svg === 'inyeccion' && (
+                <svg class="w-20 h-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 12h18M6 6l4 6-4 6M18 6l-4 6 4 6" stroke-width="1.5"/>
+                </svg>
+              )}
+            </div>
+          </div>
+
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-400/95 via-dark-300/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+            <div>
+              <div class="text-xs text-neon-400 uppercase tracking-wide mb-1">{item.comuna}</div>
+              <h3 class="text-sm font-display font-bold text-white">{item.titulo}</h3>
+            </div>
+          </div>
+
+          <!-- Top badge -->
+          <div class="absolute top-2 right-2 px-2 py-1 bg-dark-300/80 backdrop-blur rounded text-[10px] text-neon-400 uppercase tracking-wide border border-neon-500/30">
+            {item.comuna}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-10">
+      <p class="text-sm text-gray-500 mb-4">
+        ¿Quieres ver más trabajos o tienes preguntas sobre un servicio específico?
+      </p>
+      <a href="/contacto" class="btn-outline-neon text-sm">Solicitar más información</a>
+    </div>
+  </div>
+</section>
