@@ -135,6 +135,31 @@ const schema = {
     </div>
   </section>
 
+  <!-- Banner de la comuna (asistencia-automotriz personalizado) -->
+  <section class="py-8 md:py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="container-x relative">
+      <div class="relative max-w-6xl mx-auto w-full">
+        <!-- Glow detrás -->
+        <div class="absolute -inset-3 rounded-2xl bg-gradient-neon opacity-20 blur-2xl"></div>
+
+        <!-- Imagen del banner con texto de la comuna -->
+        <div class="relative aspect-[1915/821] rounded-2xl overflow-hidden border-2 border-neon-500/40 shadow-neon-lg">
+          <img
+            src={`/imagen/comunas/mecanico-a-domicilio-${comuna.slug}.png`}
+            alt={`Mecánico a Domicilio en ${comuna.nombre} - Servicio Automotriz a Domicilio DRAUTOMOTRIZ en Santiago`}
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+          <!-- Degradado superior sutil -->
+          <div class="absolute inset-x-0 top-0 h-12 md:h-16 bg-gradient-to-b from-dark-400/40 to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Servicios disponibles en esta comuna -->
   <section id="servicios-disponibles" class="py-16 relative">
     <div class="container-x">
