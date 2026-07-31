@@ -1,0 +1,373 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { marcas, getMarcaBySlug, allModelos } from '@/data/marcas';
+import { servicios } from '@/data/servicios';
+import { waLink, waLinkServicio } from '@/data/config';
+
+export function getStaticPaths() {
+  return allModelos.map(m => ({
+    params: { marca: m.marcaSlug, modelo: m.modeloSlug },
+    props: { modeloData: m }
+  }));
+}
+
+const { modeloData } = Astro.props;
+const marca = getMarcaBySlug(modeloData.marcaSlug);
+const vehiculoNombre = `${modeloData.marca} ${modeloData.modelo}`;
+const vehiculoSlug = `${modeloData.marcaSlug}-${modeloData.modeloSlug}`;
+const imagenVehiculo = modeloData.imagen;
+const altVehiculo = modeloData.alt;
+
+// Servicios para este vehículo (todos)
+const serviciosVehiculo = servicios;
+
+// Schema.org: Service + AutoRepair + BreadcrumbList + FAQPage
+const vehiculoSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Servicio mecánico a domicilio para ${vehiculoNombre}`,
+  "description": `Servicio mecánico a domicilio en Santiago para ${vehiculoNombre}. Diagnóstico, mantención, frenos, suspensión, batería, revisión técnica sin estrés y más. Cobertura en toda la Región Metropolitana.`,
+  "url": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`,
+  "image": imagenVehiculo ? `https://drautomotriz.pages.dev${imagenVehiculo}` : undefined,
+  "provider": {
+    "@type": "AutoRepair",
+    "name": "DRAUTOMOTRIZ",
+    "telephone": "+56962408735",
+    "areaServed": "Santiago, Chile"
+  },
+  "serviceType": "Mecánico a domicilio",
+  "areaServed": { "@type": "City", "name": "Santiago" }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drautomotriz.pages.dev/vehiculos" },
+    { "@type": "ListItem", "position": 3, "name": modeloData.marca, "item": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}` },
+    { "@type": "ListItem", "position": 4, "name": modeloData.modelo, "item": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}` }
+  ]
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `¿Ofrecen servicio mecánico a domicilio para ${vehiculoNombre} en Santiago?`,
+      "acceptedAnswer": { "@type": "Answer", "text": `Sí, en DRAUTOMOTRIZ ofrecemos servicio mecánico a domicilio para ${vehiculoNombre} en toda la Región Metropolitana. Diagnóstico, mantención, frenos, suspensión y más en tu casa u oficina.` }
+    },
+    {
+      "@type": "Question",
+      "name": `¿Cuánto demora el mecánico en llegar para atender mi ${vehiculoNombre}?`,
+      "acceptedAnswer": { "@type": "Answer", "text": "Nuestro tiempo promedio de respuesta en Santiago es de 45 a 60 minutos, dependiendo de la comuna y la hora del día." }
+    },
+    {
+      "@type": "Question",
+      "name": `¿Usan repuestos originales para ${vehiculoNombre}?`,
+      "acceptedAnswer": { "@type": "Answer", "text": `Sí, trabajamos con repuestos OEM o equivalentes de marcas reconocidas (Bosch, Mann, Gates, Mobil, etc.) para tu ${vehiculoNombre}, con garantía de fábrica.` }
+    }
+  ]
+};
+
+// Otros modelos de la misma marca
+const otrosModelos = marca ? marca.modelos.filter(m => (m.slug || m.nombre.toLowerCase().replace(/\s+/g, '-')) !== modeloData.modeloSlug).slice(0, 4) : [];
+---
+
+<BaseLayout
+  title={`Mecánico a Domicilio para ${vehiculoNombre} en Santiago | DRAUTOMOTRIZ`}
+  description={`Servicio mecánico a domicilio para ${vehiculoNombre} en Santiago. Diagnóstico computarizado, mantención por km, frenos, suspensión, batería, revisión técnica sin estrés. WhatsApp +56962408735.`}
+  canonical={`/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`}
+  ogImage={imagenVehiculo}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(vehiculoSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <!-- HERO -->
+  <section class="relative pt-8 pb-16 overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative">
+      <nav class="flex items-center gap-2 text-xs text-gray-500 mb-8 flex-wrap">
+        <a href="/" class="hover:text-neon-400 transition-colors">Inicio</a>
+        <span>/</span>
+        <a href="/vehiculos" class="hover:text-neon-400 transition-colors">Vehículos</a>
+        <span>/</span>
+        <a href={`/vehiculos/${modeloData.marcaSlug}`} class="hover:text-neon-400 transition-colors">{modeloData.marca}</a>
+        <span>/</span>
+        <span class="text-neon-400">{modeloData.modelo}</span>
+      </nav>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <!-- Left: Info -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <span class="badge-neon">{modeloData.marca}</span>
+            <span class="badge-neon">A Domicilio</span>
+            <span class="badge-neon">Garantía escrita</span>
+          </div>
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-display font-extrabold text-white mb-4 text-balance glow-text">
+            Mecánico a Domicilio para <span class="text-transparent bg-clip-text bg-gradient-neon">{vehiculoNombre}</span> en Santiago
+          </h1>
+
+          <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+            En DRAUTOMOTRIZ somos especialistas en servicio mecánico a domicilio para <strong class="text-white">{vehiculoNombre}</strong> en toda la Región Metropolitana. Nuestros mecánicos certificados llegan a tu casa, oficina o estacionamiento con todas las herramientas necesarias para diagnosticar, mantener y reparar tu {modeloData.marca} {modeloData.modelo} sin que tengas que desplazarte a un taller.
+          </p>
+
+          <p class="text-base text-gray-400 mb-8 leading-relaxed">
+            Atendemos {modeloData.marca} {modeloData.modelo} con repuestos OEM de calidad, equipamiento profesional de diagnóstico multimarca, y garantía escrita en todos los trabajos. Ya sea que necesites una mantención preventiva por kilometraje, cambio de frenos, diagnóstico computarizado de luces de Check Engine, o el servicio estrella de Revisión Técnica Sin Estrés, tenemos la solución para tu {vehiculoNombre}.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-3 mb-8">
+            <a href={waLink(`Hola, necesito un mecánico a domicilio para mi ${vehiculoNombre} en Santiago`)} target="_blank" rel="noopener" class="btn-whatsapp animate-pulse-neon">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+              </svg>
+              Agendar para mi {modeloData.modelo}
+            </a>
+            <a href="#servicios-vehiculo" class="btn-outline-neon">
+              Ver servicios para {modeloData.modelo}
+            </a>
+          </div>
+
+          <!-- Stats del vehículo -->
+          <div class="grid grid-cols-3 gap-4">
+            <div>
+              <div class="text-2xl font-display font-bold text-neon-400 glow-text">45-60</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Min llegada</div>
+            </div>
+            <div>
+              <div class="text-2xl font-display font-bold text-neon-400 glow-text">14</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Servicios</div>
+            </div>
+            <div>
+              <div class="text-2xl font-display font-bold text-neon-400 glow-text">40+</div>
+              <div class="text-xs text-gray-500 uppercase tracking-wide">Comunas RM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Imagen del vehículo -->
+        <div class="relative">
+          <div class="relative max-w-lg mx-auto">
+            <div class="absolute -inset-4 rounded-2xl bg-gradient-neon opacity-20 blur-2xl"></div>
+            {imagenVehiculo ? (
+              <div class="relative aspect-4/3 rounded-2xl overflow-hidden border-2 border-neon-500/40 shadow-neon-lg">
+                <img src={imagenVehiculo} alt={altVehiculo} class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
+                <div class="absolute inset-0 bg-gradient-to-t from-dark-400/80 via-transparent to-transparent"></div>
+                <div class="absolute bottom-4 left-4 right-4">
+                  <div class="text-xs text-neon-400 uppercase tracking-wider mb-1 font-semibold">{modeloData.marca}</div>
+                  <div class="text-white font-display font-bold text-2xl leading-tight">{modeloData.modelo}</div>
+                </div>
+              </div>
+            ) : (
+              <div class="relative aspect-4/3 rounded-2xl overflow-hidden border-2 border-neon-500/40 bg-dark-100 flex items-center justify-center">
+                <span class="text-9xl text-neon-500/30">🚗</span>
+              </div>
+            )}
+
+            <!-- Floating badges -->
+            <div class="absolute top-8 -right-4 card-neon p-3 animate-float">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🛡️</span>
+                <div>
+                  <div class="text-xs text-gray-400">Garantía</div>
+                  <div class="text-sm font-bold text-neon-400">3-12 meses</div>
+                </div>
+              </div>
+            </div>
+            <div class="absolute bottom-12 -left-4 card-neon p-3 animate-float" style="animation-delay: 1.5s;">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl">🔧</span>
+                <div>
+                  <div class="text-xs text-gray-400">Repuestos</div>
+                  <div class="text-sm font-bold text-neon-400">OEM premium</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PARA ESTE VEHÍCULO -->
+  <section id="servicios-vehiculo" class="py-16 relative">
+    <div class="container-x">
+      <div class="text-center mb-12">
+        <span class="badge-neon mb-4">Servicios para {vehiculoNombre}</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          Servicios para <span class="text-neon-400 glow-text">{modeloData.marca} {modeloData.modelo}</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto">
+          Todos nuestros servicios de mecánica a domicilio están disponibles para tu {vehiculoNombre}. Cada servicio se adapta a las especificaciones técnicas de {modeloData.marca} según el manual del fabricante.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {serviciosVehiculo.map(servicio => (
+          <div class={`card-${servicio.destacado ? 'orange' : 'neon'} group`}>
+            <div class="flex items-center gap-3 mb-3">
+              <div class={`w-12 h-12 rounded-lg ${servicio.destacado ? 'bg-orange-500/10 border-2 border-orange-500' : 'bg-neon-500/10 border border-neon-500/30'} flex items-center justify-center text-2xl shrink-0`}>
+                {servicio.icono}
+              </div>
+              <div class="flex-1 min-w-0">
+                {servicio.destacado && (
+                  <span class="text-[10px] text-orange-400 uppercase font-bold">★ Servicio Estrella</span>
+                )}
+                <h3 class={`font-display font-bold text-white group-hover:text-${servicio.destacado ? 'orange' : 'neon'}-400 transition-colors text-sm leading-tight`}>
+                  <a href={`/servicios/${servicio.slug}`}>{servicio.nombre}</a>
+                </h3>
+              </div>
+            </div>
+            <p class="text-xs text-gray-400 mb-4 line-clamp-3">{servicio.descripcionCorta}</p>
+            <div class="flex flex-col gap-2">
+              <a href={`/servicios/${servicio.slug}`} class={`text-xs font-semibold ${servicio.destacado ? 'text-orange-400' : 'text-neon-400'} hover:underline inline-flex items-center gap-1`}>
+                Ver detalles
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+              <a
+                href={waLink(`Hola, necesito el servicio de ${servicio.nombre} para mi ${vehiculoNombre} en Santiago`)}
+                target="_blank"
+                rel="noopener"
+                class="text-xs px-3 py-2 rounded-md bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] hover:bg-[#25D366] hover:text-white transition-all inline-flex items-center gap-1.5 w-fit"
+              >
+                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Cotizar para {modeloData.modelo}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO TÉCNICA -->
+  <section class="py-16 relative">
+    <div class="container-x">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-6">
+          Servicio mecánico especializado para {vehiculoNombre}
+        </h2>
+
+        <div class="space-y-4 text-gray-300 leading-relaxed">
+          <p>
+            El <strong class="text-white">{modeloData.marca} {modeloData.modelo}</strong> es uno de los vehículos que atendemos con mayor frecuencia en Santiago. Nuestros mecánicos conocen las fallas más comunes de este modelo, los intervalos de mantención recomendados por {modeloData.marca}, y los repuestos específicos que necesita para funcionar correctamente. Trabajamos con repuestos OEM o equivalentes de marcas reconocidas para garantizar durabilidad y rendimiento.
+          </p>
+          <p>
+            Para el {vehiculoNombre}, recomendamos realizar mantención preventiva cada 10.000 km en uso urbano (la mayoría de los vehículos en Santiago circulan principalmente en ciudad). Si tu {modeloData.marca} {modeloData.modelo} tiene más de 80.000 km, es importante revisar el kit de distribución, los frenos, y la suspensión para prevenir fallas mayores que pueden costar cientos de miles de pesos reparar.
+          </p>
+          <p>
+            También ofrecemos el servicio estrella de <strong class="text-orange-400">Revisión Técnica Sin Estrés</strong> para tu {vehiculoNombre}: vamos a buscar tu auto a la dirección que elijas, lo llevamos a la planta de revisión técnica autorizada, hacemos el trámite completo, y te lo devolvemos con el documento aprobado. Te ahorrarás entre 3 y 5 horas de filas y esperas.
+          </p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="mt-12">
+          <h3 class="text-xl font-display font-bold text-white mb-6">Preguntas frecuentes sobre {vehiculoNombre}</h3>
+          <div class="space-y-3">
+            <details class="card-neon group">
+              <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+                ¿Ofrecen servicio mecánico a domicilio para {vehiculoNombre} en Santiago?
+                <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                Sí, en DRAUTOMOTRIZ ofrecemos servicio mecánico a domicilio para {vehiculoNombre} en toda la Región Metropolitana. Nuestros mecánicos certificados llegan a tu casa u oficina con todas las herramientas necesarias, en un tiempo promedio de 45-60 minutos.
+              </p>
+            </details>
+            <details class="card-neon group">
+              <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+                ¿Usan repuestos originales para {vehiculoNombre}?
+                <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                Sí, trabajamos exclusivamente con repuestos OEM (Original Equipment Manufacturer) o equivalentes de marcas reconocidas como Bosch, Mann, Gates, Mobil, Castrol, KYB, Monroe, TRW, Lemförder. Todos con garantía de fábrica y entregamos garantía escrita de 3 a 12 meses sobre la mano de obra.
+              </p>
+            </details>
+            <details class="card-neon group">
+              <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+                ¿Pueden hacer la revisión técnica de mi {vehiculoNombre}?
+                <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                </svg>
+              </summary>
+              <p class="text-sm text-gray-400 mt-3 leading-relaxed">
+                Sí. Ofrecemos el servicio Revisión Técnica Sin Estrés: retiramos tu {vehiculoNombre} de tu casa u oficina, lo llevamos a la planta de revisión técnica autorizada más cercana, hacemos el trámite completo, y te lo devolvemos con el documento aprobado. Si el auto no aprueba, te cotizamos las reparaciones a domicilio.
+              </p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTROS MODELOS DE LA MARCA -->
+  {otrosModelos.length > 0 && (
+    <section class="py-16 relative">
+      <div class="container-x">
+        <h2 class="text-2xl font-display font-bold text-white mb-6 text-center">
+          Otros modelos de {modeloData.marca}
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {otrosModelos.map(mod => {
+            const modSlug = mod.slug || mod.nombre.toLowerCase().replace(/\s+/g, '-');
+            return (
+              <a href={`/vehiculos/${modeloData.marcaSlug}/${modSlug}`} class="card-neon group text-center">
+                <div class="aspect-square overflow-hidden rounded-lg mb-2 bg-dark-100">
+                  {mod.imagen ? (
+                    <img src={mod.imagen} alt={mod.alt || `${modeloData.marca} ${mod.nombre}`} loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  ) : (
+                    <div class="w-full h-full flex items-center justify-center">
+                      <span class="text-5xl text-neon-500/30">🚗</span>
+                    </div>
+                  )}
+                </div>
+                <div class="text-sm font-display font-bold text-white group-hover:text-neon-400 transition-colors">
+                  {mod.nombre}
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA FINAL -->
+  <section class="py-16 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-dark-400 via-dark-300 to-dark-400"></div>
+    <div class="absolute inset-0 bg-grid opacity-20"></div>
+
+    <div class="container-x relative text-center">
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
+        ¿Necesitas un mecánico para tu <span class="text-neon-400 glow-text">{vehiculoNombre}</span>?
+      </h2>
+      <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+        Escríbenos por WhatsApp ahora mismo y coordina tu visita a domicilio. Atendemos en toda la Región Metropolitana, con mecánicos certificados y repuestos OEM.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href={waLink(`Hola, necesito un mecánico a domicilio para mi ${vehiculoNombre}`)} target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          WhatsApp: +569 6240 8735
+        </a>
+        <a href="/vehiculos" class="btn-outline-neon">Ver otros vehículos</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

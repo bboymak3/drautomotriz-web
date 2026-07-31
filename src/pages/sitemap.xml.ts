@@ -1,12 +1,15 @@
 import type { APIRoute } from 'astro';
 import { servicios } from '@/data/servicios';
 import { comunas } from '@/data/comunas';
+import { allModelos } from '@/data/marcas';
 import { config } from '@/data/config';
 
 const staticPages = [
   '',
   '/servicios',
   '/comunas',
+  '/vehiculos',
+  '/galeria',
   '/quienes-somos',
   '/contacto',
   '/politicas-de-privacidad',
@@ -14,8 +17,9 @@ const staticPages = [
 
 const servicioPages = servicios.map(s => `/servicios/${s.slug}`);
 const comunaPages = comunas.map(c => `/comunas/${c.slug}`);
+const vehiculoPages = allModelos.map(m => `/vehiculos/${m.marcaSlug}/${m.modeloSlug}`);
 
-const allPages = [...staticPages, ...servicioPages, ...comunaPages];
+const allPages = [...staticPages, ...servicioPages, ...comunaPages, ...vehiculoPages];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

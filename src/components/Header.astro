@@ -2,6 +2,7 @@
 import { config } from '@/data/config';
 import { servicios, getServiciosRegulares } from '@/data/servicios';
 import { comunas, zonas, getComunasByZona } from '@/data/comunas';
+import { marcas } from '@/data/marcas';
 import { waLink } from '@/data/config';
 
 // Para el menú, excluimos el servicio destacado (se muestra aparte)
@@ -11,6 +12,7 @@ const revisionTecnica = servicios.find(s => s.destacado);
 const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Servicios', href: '/servicios', children: serviciosMenu.map(s => ({ label: s.nombre, href: `/servicios/${s.slug}` })) },
+  { label: 'Vehículos', href: '/vehiculos', children: marcas.slice(0, 8).map(m => ({ label: m.nombre, href: `/vehiculos#${m.slug}` })) },
   { label: 'Comunas', href: '/comunas', children: zonas.map(z => ({ label: `Zona ${z}`, href: `/comunas?zona=${z}`, children: getComunasByZona(z).map(c => ({ label: c.nombre, href: `/comunas/${c.slug}` })) })) },
   { label: 'Galería', href: '/galeria' },
   { label: 'Quiénes Somos', href: '/quienes-somos' },
@@ -22,14 +24,17 @@ const navItems = [
   <div class="container-x">
     <div class="flex items-center justify-between h-16 md:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-2 group">
+      <a href="/" class="flex items-center gap-2 group" aria-label="DRAUTOMOTRIZ inicio">
         <div class="relative">
           <div class="absolute inset-0 bg-neon-500 blur-lg opacity-50 group-hover:opacity-80 transition-opacity"></div>
-          <svg class="relative w-9 h-9 md:w-11 md:h-11" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2" y="2" width="36" height="36" rx="8" stroke="#00d4ff" stroke-width="2" fill="#0a0a0a"/>
-            <path d="M12 26 L20 12 L28 26 M15 22 L25 22" stroke="#00d4ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="20" cy="20" r="2" fill="#00d4ff"/>
-          </svg>
+          <img
+            src="/imagen/logo/drautomotriz-logo.webp"
+            alt="Logo DRAUTOMOTRIZ - Mecánico a Domicilio en Santiago"
+            width="44"
+            height="44"
+            class="relative w-11 h-11 md:w-12 md:h-12 object-contain rounded-lg"
+            loading="eager"
+          />
         </div>
         <div class="flex flex-col leading-none">
           <span class="font-display font-bold text-lg md:text-xl text-white glow-text tracking-wider">DRAUTOMOTRIZ</span>

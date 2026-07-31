@@ -15,6 +15,7 @@
 # Atajos comunes
 /servicio/*  /servicios/:splat  302
 /comuna/*    /comunas/:splat    302
+/vehiculo/*  /vehiculos/:splat  302
 /inicio      /                  302
 /home        /                  302
 /galeria-fotos  /galeria         301

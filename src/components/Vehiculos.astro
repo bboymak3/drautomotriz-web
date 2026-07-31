@@ -1,0 +1,76 @@
+---
+import { marcas, allModelos, totalModelos } from '@/data/marcas';
+import { waLink } from '@/data/config';
+
+// Mostrar todos los modelos con foto (los que tienen imagen asignada)
+const modelosConFoto = allModelos.filter(m => m.imagen).slice(0, 16);
+---
+
+<section id="vehiculos" class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-500/5 rounded-full blur-3xl"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-12">
+      <span class="badge-neon mb-4">Vehículos que atendemos</span>
+      <h2 class="section-title">Especialistas en {totalModelos}+ Modelos</h2>
+      <p class="section-subtitle">
+        Atendemos vehículos de todas las marcas: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot, Renault, Subaru, Volkswagen y más. Cada modelo tiene su propia landing con información específica de los servicios que ofrecemos para tu vehículo.
+      </p>
+    </div>
+
+    <!-- Grid de vehículos con foto -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+      {modelosConFoto.map((mod, i) => (
+        <a
+          href={`/vehiculos/${mod.marcaSlug}/${mod.modeloSlug}`}
+          class="group relative card-neon overflow-hidden"
+        >
+          <!-- Imagen del vehículo -->
+          <div class="aspect-4/3 overflow-hidden rounded-lg mb-3 bg-dark-100 relative">
+            <img
+              src={mod.imagen}
+              alt={mod.alt}
+              loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-400/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+            <!-- Badge marca -->
+            <div class="absolute top-2 left-2 px-2 py-1 bg-dark-300/80 backdrop-blur rounded text-[10px] text-neon-400 uppercase tracking-wide border border-neon-500/30">
+              {mod.marca}
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="px-1">
+            <h3 class="text-base font-display font-bold text-white group-hover:text-neon-400 transition-colors mb-1">
+              {mod.marca} {mod.modelo}
+            </h3>
+            <div class="flex items-center justify-between text-xs text-gray-400">
+              <span>Servicio a domicilio</span>
+              <svg class="w-4 h-4 text-neon-500/40 group-hover:text-neon-400 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- CTA ver todas las marcas -->
+    <div class="text-center mt-10">
+      <p class="text-sm text-gray-400 mb-4">
+        ¿No ves tu vehículo? Atendemos todas las marcas y modelos en Santiago.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/vehiculos" class="btn-outline-neon text-sm">
+          Ver todas las marcas ({marcas.length})
+        </a>
+        <a href={waLink('Hola, ¿atienden mi vehículo?')} target="_blank" rel="noopener" class="btn-whatsapp text-sm">
+          Consultar mi vehículo
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
