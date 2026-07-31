@@ -3,6 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { comunas, getComunaBySlug } from '@/data/comunas';
 import { servicios } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
+import MarcasQueAtendemos from '@/components/MarcasQueAtendemos.astro';
 
 export function getStaticPaths() {
   return comunas.map(c => ({
@@ -209,6 +210,9 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- Widget: Marcas y Modelos que atendemos en esta comuna -->
+  <MarcasQueAtendemos comunaNombre={comuna.nombre} />
 
   <!-- CTA final -->
   <section class="py-16 relative overflow-hidden">
