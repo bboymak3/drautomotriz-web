@@ -2,7 +2,7 @@
 import { config, waLink } from '@/data/config';
 import { servicios } from '@/data/servicios';
 import { comunas } from '@/data/comunas';
-import { marcas } from '@/data/marcas';
+import { marcas, totalVehiculos } from '@/data/marcas';
 
 const year = new Date().getFullYear();
 
@@ -124,7 +124,7 @@ const marcasTop = marcas.slice(0, 10);
             </li>
           ))}
           <li>
-            <a href="/vehiculos" class="text-sm text-neon-400 font-semibold hover:underline">Ver todos los vehículos →</a>
+            <a href="/vehiculos/todos" class="text-sm text-neon-400 font-semibold hover:underline">★ Ver todos los vehículos ({totalVehiculos}) →</a>
           </li>
         </ul>
       </div>

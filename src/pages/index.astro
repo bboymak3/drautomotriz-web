@@ -11,7 +11,7 @@ import QuoteForm from '@/components/QuoteForm.astro';
 import CotizacionBanner from '@/components/CotizacionBanner.astro';
 import { config, waLink } from '@/data/config';
 import { servicios } from '@/data/servicios';
-import { marcas, totalModelos } from '@/data/marcas';
+import { marcas, totalVehiculos } from '@/data/marcas';
 import { comunas } from '@/data/comunas';
 
 // Schema.org para la home
@@ -78,7 +78,7 @@ const homeSchema = {
             <strong class="text-white">DRAUTOMOTRIZ</strong> es el servicio de mecánica automotriz a domicilio líder en Santiago, Chile. Llevamos el taller mecánico directamente hasta tu casa, oficina o estacionamiento, eliminando la necesidad de trasladar tu vehículo, esperar en filas de taller, o perder horas valiosas de tu día. Nuestro modelo de servicio móvil cubre toda la Región Metropolitana con más de 40 comunas atendidas, desde Las Condes y Providencia hasta Maipú, La Florida, Puente Alto y San Bernardo.
           </p>
           <p>
-            Contamos con un equipo de mecánicos certificados con más de 8 años de experiencia, equipamiento profesional de diagnóstico computarizado multimarca, y repuestos OEM de calidad de marcas reconocidas como Bosch, Mann, Gates, Mobil, Castrol, KYB, Monroe y TRW. Atendemos todos los tipos de vehículos: autos livianos, SUVs, camionetas, vans comerciales y vehículos pesados. Actualmente damos cobertura a <strong class="text-neon-400">{totalModelos}+ modelos</strong> de <strong class="text-neon-400">{marcas.length} marcas</strong> distintas, incluyendo Chevrolet, Toyota, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Suzuki, Peugeot, Renault, Subaru y Volkswagen.
+            Contamos con un equipo de mecánicos certificados con más de 8 años de experiencia, equipamiento profesional de diagnóstico computarizado multimarca, y repuestos OEM de calidad de marcas reconocidas como Bosch, Mann, Gates, Mobil, Castrol, KYB, Monroe y TRW. Atendemos todos los tipos de vehículos: autos livianos, SUVs, camionetas, vans comerciales y vehículos pesados. Actualmente damos cobertura a <strong class="text-neon-400">{totalVehiculos} modelos reales</strong> de <strong class="text-neon-400">{marcas.length} marcas</strong> distintas: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot, Renault, Subaru, Volkswagen, Fiat y MG.
           </p>
           <p>
             Nuestro catálogo de servicios incluye <strong class="text-white">{servicios.length} servicios especializados</strong>: mantención por kilometraje, escáner y diagnóstico computarizado, frenos a domicilio, tren delantero, dirección y suspensión, cambio de kit de distribución, kit de embrague, recarga de aire acondicionado, pulido de ópticos, venta de aceites motor, diagnóstico de pre-compra, y el servicio estrella de <strong class="text-orange-400">Revisión Técnica Sin Estrés</strong> donde retiramos tu auto, lo llevamos a la planta oficial, y te lo devolvemos con el documento aprobado.

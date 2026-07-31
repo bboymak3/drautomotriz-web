@@ -1,14 +1,14 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { marcas, totalModelos, allModelos } from '@/data/marcas';
+import { marcas, totalVehiculos, allModelos } from '@/data/marcas';
 import { waLink } from '@/data/config';
 
 const vehiculosSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
   "name": "Vehículos atendidos por DRAUTOMOTRIZ",
-  "description": `Catálogo de ${totalModelos} modelos de ${marcas.length} marcas que atendemos con servicio mecánico a domicilio en Santiago.`,
-  "numberOfItems": totalModelos,
+  "description": `Catálogo de ${totalVehiculos} vehículos reales de ${marcas.length} marcas que atendemos con servicio mecánico a domicilio en Santiago.`,
+  "numberOfItems": totalVehiculos,
   "itemListElement": allModelos.slice(0, 20).map((m, i) => ({
     "@type": "ListItem",
     "position": i + 1,
@@ -22,8 +22,8 @@ const vehiculosSchema = {
 ---
 
 <BaseLayout
-  title={`Vehículos que Atendemos en Santiago | ${totalModelos}+ Modelos | DRAUTOMOTRIZ`}
-  description={`Servicio mecánico a domicilio en Santiago para ${totalModelos}+ modelos de ${marcas.length} marcas: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot y más. WhatsApp +56962408735.`}
+  title={`Vehículos que Atendemos en Santiago | ${totalVehiculos} Modelos | DRAUTOMOTRIZ`}
+  description={`Servicio mecánico a domicilio en Santiago para ${totalVehiculos} vehículos reales de ${marcas.length} marcas: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot, Renault, Subaru, Volkswagen, Fiat y MG. WhatsApp +56962408735.`}
   canonical="/vehiculos"
 >
   <script type="application/ld+json" set:html={JSON.stringify(vehiculosSchema)} />
@@ -45,7 +45,7 @@ const vehiculosSchema = {
           Vehículos que <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Atendemos</span>
         </h1>
         <p class="text-lg text-gray-400 max-w-3xl mx-auto">
-          Atendemos <strong class="text-white">{totalModelos}+ modelos</strong> de <strong class="text-white">{marcas.length} marcas</strong> distintas con servicio mecánico a domicilio en toda la Región Metropolitana. Cada vehículo tiene su propia landing con información específica de los servicios disponibles, fotografías y botón directo de cotización por WhatsApp.
+          Atendemos <strong class="text-white">{totalVehiculos} vehículos reales</strong> de <strong class="text-white">{marcas.length} marcas</strong> con servicio mecánico a domicilio en toda la Región Metropolitana. Cada vehículo tiene su propia landing con fotografía real, información específica de los servicios disponibles y botón directo de cotización por WhatsApp.
         </p>
       </div>
 

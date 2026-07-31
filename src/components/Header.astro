@@ -12,7 +12,7 @@ const revisionTecnica = servicios.find(s => s.destacado);
 const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Servicios', href: '/servicios', children: serviciosMenu.map(s => ({ label: s.nombre, href: `/servicios/${s.slug}` })) },
-  { label: 'Vehículos', href: '/vehiculos', children: marcas.slice(0, 8).map(m => ({ label: m.nombre, href: `/vehiculos#${m.slug}` })) },
+  { label: 'Vehículos', href: '/vehiculos', children: [{ label: '★ Ver todos los vehículos', href: '/vehiculos/todos' }, ...marcas.slice(0, 12).map(m => ({ label: `${m.nombre} (${m.modelos.length})`, href: `/vehiculos#${m.slug}` }))] },
   { label: 'Comunas', href: '/comunas', children: zonas.map(z => ({ label: `Zona ${z}`, href: `/comunas?zona=${z}`, children: getComunasByZona(z).map(c => ({ label: c.nombre, href: `/comunas/${c.slug}` })) })) },
   { label: 'Galería', href: '/galeria' },
   { label: 'Quiénes Somos', href: '/quienes-somos' },

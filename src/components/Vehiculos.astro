@@ -1,9 +1,9 @@
 ---
-import { marcas, allModelos, totalModelos } from '@/data/marcas';
+import { marcas, allModelos, totalVehiculos } from '@/data/marcas';
 import { waLink } from '@/data/config';
 
-// Mostrar todos los modelos con foto (los que tienen imagen asignada)
-const modelosConFoto = allModelos.filter(m => m.imagen).slice(0, 16);
+// Mostrar los 32 vehículos con foto
+const modelosConFoto = allModelos.filter(m => m.imagen);
 ---
 
 <section id="vehiculos" class="py-20 relative overflow-hidden">
@@ -13,15 +13,15 @@ const modelosConFoto = allModelos.filter(m => m.imagen).slice(0, 16);
   <div class="container-x relative">
     <div class="text-center mb-12">
       <span class="badge-neon mb-4">Vehículos que atendemos</span>
-      <h2 class="section-title">Especialistas en {totalModelos}+ Modelos</h2>
+      <h2 class="section-title">Especialistas en {totalVehiculos} Modelos Reales</h2>
       <p class="section-subtitle">
-        Atendemos vehículos de todas las marcas: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot, Renault, Subaru, Volkswagen y más. Cada modelo tiene su propia landing con información específica de los servicios que ofrecemos para tu vehículo.
+        Atendemos {totalVehiculos} vehículos de {marcas.length} marcas con servicio mecánico a domicilio en Santiago: Chevrolet, Toyota, Suzuki, Hyundai, Kia, Nissan, Mazda, Honda, Ford, Peugeot, Renault, Subaru, Volkswagen, Fiat y MG. Cada modelo tiene su propia landing con servicios específicos y fotografías reales.
       </p>
     </div>
 
     <!-- Grid de vehículos con foto -->
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-      {modelosConFoto.map((mod, i) => (
+      {modelosConFoto.map((mod) => (
         <a
           href={`/vehiculos/${mod.marcaSlug}/${mod.modeloSlug}`}
           class="group relative card-neon overflow-hidden"
@@ -40,6 +40,11 @@ const modelosConFoto = allModelos.filter(m => m.imagen).slice(0, 16);
             <div class="absolute top-2 left-2 px-2 py-1 bg-dark-300/80 backdrop-blur rounded text-[10px] text-neon-400 uppercase tracking-wide border border-neon-500/30">
               {mod.marca}
             </div>
+            {mod.tipo && (
+              <div class="absolute top-2 right-2 px-2 py-1 bg-dark-300/80 backdrop-blur rounded text-[10px] text-gray-300 uppercase tracking-wide border border-neon-500/20">
+                {mod.tipo}
+              </div>
+            )}
           </div>
 
           <!-- Info -->
@@ -58,14 +63,14 @@ const modelosConFoto = allModelos.filter(m => m.imagen).slice(0, 16);
       ))}
     </div>
 
-    <!-- CTA ver todas las marcas -->
+    <!-- CTA ver todos -->
     <div class="text-center mt-10">
       <p class="text-sm text-gray-400 mb-4">
-        ¿No ves tu vehículo? Atendemos todas las marcas y modelos en Santiago.
+        ¿No ves tu vehículo? Atendemos otras marcas y modelos en Santiago.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
         <a href="/vehiculos" class="btn-outline-neon text-sm">
-          Ver todas las marcas ({marcas.length})
+          Ver catálogo completo ({totalVehiculos} vehículos)
         </a>
         <a href={waLink('Hola, ¿atienden mi vehículo?')} target="_blank" rel="noopener" class="btn-whatsapp text-sm">
           Consultar mi vehículo

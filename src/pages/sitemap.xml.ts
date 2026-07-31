@@ -9,6 +9,7 @@ const staticPages = [
   '/servicios',
   '/comunas',
   '/vehiculos',
+  '/vehiculos/todos',
   '/galeria',
   '/quienes-somos',
   '/contacto',
