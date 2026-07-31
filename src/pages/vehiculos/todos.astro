@@ -7,8 +7,8 @@ import { waLink } from '@/data/config';
 const todosSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  "name": `Todos los vehículos atendidos por DRAUTOMOTRIZ - ${totalVehiculos} modelos`,
-  "description": `Catálogo completo con los ${totalVehiculos} vehículos que atendemos con servicio mecánico a domicilio en Santiago.`,
+  "name": `Todos los vehículos atendidos por DRAUTOMOTRIZ`,
+  "description": `Catálogo completo con los vehículos que atendemos con servicio mecánico a domicilio en Santiago.`,
   "numberOfItems": totalVehiculos,
   "itemListElement": vehiculos.map((v, i) => ({
     "@type": "ListItem",
@@ -34,8 +34,8 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout
-  title={`Todos los Vehículos | ${totalVehiculos} Modelos con Foto Real | DRAUTOMOTRIZ`}
-  description={`Catálogo completo con los ${totalVehiculos} vehículos reales que atendemos con servicio mecánico a domicilio en Santiago. Fotos reales de cada modelo con su landing específica.`}
+  title={`Todos los Vehículos | Modelos con Foto Real | DRAUTOMOTRIZ`}
+  description={`Catálogo completo con los vehículos reales que atendemos con servicio mecánico a domicilio en Santiago. Fotos reales de cada modelo con su landing específica.`}
   canonical="/vehiculos/todos"
 >
   <script type="application/ld+json" set:html={JSON.stringify(todosSchema)} />
@@ -57,7 +57,7 @@ const breadcrumbSchema = {
       <div class="text-center mb-12">
         <span class="badge-neon mb-4">Catálogo completo</span>
         <h1 class="text-4xl md:text-5xl font-display font-extrabold text-white mb-6 text-balance">
-          Todos los <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">{totalVehiculos} Vehículos</span> que Atendemos
+          Todos los <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Vehículos</span> que Atendemos
         </h1>
         <p class="text-lg text-gray-400 max-w-3xl mx-auto">
           Catálogo completo con todos los vehículos que atendemos con servicio mecánico a domicilio en Santiago. Cada vehículo tiene su propia landing con fotografía real, lista de servicios disponibles, información técnica específica y botón directo de cotización por WhatsApp.
@@ -67,7 +67,7 @@ const breadcrumbSchema = {
       <!-- Filtros por marca -->
       <div class="flex flex-wrap justify-center gap-2 mb-10">
         <button data-marca="todos" class="filtro-marca active px-4 py-2 rounded-lg text-sm font-medium border-2 border-neon-500 bg-neon-500 text-dark-500 transition-all">
-          Todos ({totalVehiculos})
+          Todos
         </button>
         {marcas.map(m => (
           <button data-marca={m.slug} class="filtro-marca px-4 py-2 rounded-lg text-sm font-medium border-2 border-neon-500/30 text-gray-300 hover:bg-neon-500 hover:text-dark-500 hover:border-neon-500 transition-all">
