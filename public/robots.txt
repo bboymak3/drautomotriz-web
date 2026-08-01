@@ -1,5 +1,41 @@
+# robots.txt - DRAUTOMOTRIZ
+# https://drautomotriz.pages.dev/
+
 User-agent: *
 Allow: /
 
-# Sitemap
+# No indexar archivos del sistema
+Disallow: /api/
+Disallow: /functions/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemaps
 Sitemap: https://drautomotriz.pages.dev/sitemap.xml
+
+# Bot-specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
