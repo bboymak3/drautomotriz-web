@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BannerServicio from '@/components/BannerServicio.astro';
 import { servicios, getServiciosDestacados, getServiciosRegulares } from '@/data/servicios';
 import { waLinkServicio } from '@/data/config';
 
@@ -37,6 +38,9 @@ const serviciosSchema = {
   canonical="/servicios"
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviciosSchema)} />
+
+  <!-- Banner difuminado al top -->
+  <BannerServicio />
 
   <section class="pt-16 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-20"></div>

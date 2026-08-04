@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import BannerServicio from '@/components/BannerServicio.astro';
 import { servicios, getServicioBySlug, getServiciosRelacionados } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 
@@ -76,6 +77,9 @@ const breadcrumbSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+
+  <!-- Banner difuminado al top -->
+  <BannerServicio />
 
   <!-- HERO del servicio -->
   <section class="relative pt-12 pb-16 overflow-hidden">
