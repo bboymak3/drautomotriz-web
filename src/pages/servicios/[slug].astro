@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BannerServicio from '@/components/BannerServicio.astro';
+import GaleriaServicio from '@/components/GaleriaServicio.astro';
 import { servicios, getServicioBySlug, getServiciosRelacionados } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 
@@ -318,6 +319,9 @@ const breadcrumbSchema = {
       </div>
     </div>
   </section>
+
+  <!-- Galeria de fotos del servicio -->
+  <GaleriaServicio servicioSlug={servicio.slug} servicioNombre={servicio.nombre} />
 
   <!-- CTA final -->
   <section class="py-16 relative overflow-hidden">

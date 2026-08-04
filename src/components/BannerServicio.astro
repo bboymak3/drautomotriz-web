@@ -1,24 +1,19 @@
 ---
-// Banner difuminado para paginas de servicio
+// Banner para paginas de servicio
 // Imagen: mecanico-a-domicilio-en-santiago-region-metropolitana-chile-drautomotriz.png
-// Se muestra al top de cada landing de servicio con efecto difuminado
+// Reducido 40% (alturas originales: 200/280/320 -> 120/168/192)
+// Sin difuminado (imagen original tal cual)
 ---
 
-<section class="relative w-full h-[200px] md:h-[280px] lg:h-[320px] overflow-hidden">
-  <!-- Imagen de fondo difuminada -->
+<section class="relative w-full h-[120px] md:h-[168px] lg:h-[192px] overflow-hidden">
+  <!-- Imagen de fondo sin difuminado -->
   <div class="absolute inset-0 z-0">
     <img
-      src="/imagen/banner/banner-servicio-difuminado-1920.png"
+      src="/imagen/banner/banner-servicio-top.png"
       alt="Mecánico a Domicilio en Santiago Región Metropolitana Chile - DRAUTOMOTRIZ servicio automotriz móvil"
       class="w-full h-full object-cover"
       loading="eager"
       fetchpriority="high"
     />
   </div>
-
-  <!-- Degradado superior para transición con header -->
-  <div class="absolute inset-x-0 top-0 h-20 md:h-24 bg-gradient-to-b from-dark-400 via-dark-400/60 to-transparent z-10 pointer-events-none"></div>
-
-  <!-- Degradado inferior para transición con contenido -->
-  <div class="absolute inset-x-0 bottom-0 h-20 md:h-24 bg-gradient-to-t from-dark-400 via-dark-400/60 to-transparent z-10 pointer-events-none"></div>
 </section>
