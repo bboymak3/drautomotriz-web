@@ -4,6 +4,7 @@ import { comunas, getComunaBySlug } from '@/data/comunas';
 import { servicios } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 import MarcasQueAtendemos from '@/components/MarcasQueAtendemos.astro';
+import ComunaContenidoSEO from '@/components/ComunaContenidoSEO.astro';
 
 export function getStaticPaths() {
   return comunas.map(c => ({
@@ -210,6 +211,15 @@ const schema = {
       </div>
     </div>
   </section>
+
+  <!-- Contenido SEO detallado personalizado por comuna -->
+  <ComunaContenidoSEO
+    comunaNombre={comuna.nombre}
+    comunaSlug={comuna.slug}
+    comunaDescripcion={comuna.descripcion}
+    sectoresPopulares={comuna.sectoresPopulares}
+    zona={comuna.zona}
+  />
 
   <!-- Widget: Marcas y Modelos que atendemos en esta comuna -->
   <MarcasQueAtendemos comunaNombre={comuna.nombre} />

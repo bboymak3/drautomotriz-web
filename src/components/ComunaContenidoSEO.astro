@@ -1,0 +1,239 @@
+---
+import { servicios } from '@/data/servicios';
+import { waLink } from '@/data/config';
+
+interface Props {
+  comunaNombre: string;
+  comunaSlug: string;
+  comunaDescripcion: string;
+  sectoresPopulares: string[];
+  zona: string;
+}
+
+const { comunaNombre, comunaSlug, sectoresPopulares, zona } = Astro.props;
+
+// Generar texto personalizado según la comuna
+const sectorTexto = sectoresPopulares.length > 0
+  ? sectoresPopulares.slice(0, 3).join(', ')
+  : 'la comuna';
+
+const zonaTexto = zona === 'Norte' ? 'sector norte de Santiago'
+  : zona === 'Oriente' ? 'sector oriente de Santiago'
+  : zona === 'Sur' ? 'sector sur de Santiago'
+  : zona === 'Poniente' ? 'sector suroeste de Santiago'
+  : 'la Región Metropolitana';
+
+// Servicios destacados para la comuna
+const serviciosDestacados = [
+  { titulo: `Mecánico a Domicilio en ${comunaNombre}`, icono: '🔧', texto: `DRAUTOMOTRIZ lleva el taller mecánico hasta la puerta de tu hogar en ${comunaNombre}, ${zonaTexto}. No tienes que perder tiempo en traslados ni esperas en talleres: nuestros técnicos certificados llegan con herramientas de diagnóstico profesional y repuestos de calidad para atender tu vehículo directamente en tu domicilio. Conectamos con los barrios de ${sectorTexto} para ofrecerte un servicio rápido y confiable, sin costos ocultos ni sorpresas. Agenda por WhatsApp y recibe atención personalizada.` },
+  { titulo: `Escáner Automotriz en ${comunaNombre}`, icono: '💻', texto: `El escáner automotriz es la herramienta clave para un diagnóstico preciso sin adivinanzas. En DRAUTOMOTRIZ, realizamos escaneos electrónicos completos en ${comunaNombre} para detectar fallas en sensores, módulos ECU, sistemas de inyección, ABS, airbag y más. Los vehículos que circulan por ${zonaTexto} enfrentan condiciones de tráfico y clima que generan códigos de error específicos. Nuestros técnicos interpretan cada código y ofrecen soluciones reales para que tu auto vuelva a funcionar como nuevo a domicilio.` },
+  { titulo: `Frenos y Pastillas en ${comunaNombre}`, icono: '🛑', texto: `La seguridad de tu familia depende del estado de los frenos. En DRAUTOMOTRIZ revisamos pastillas, discos, calipers, latiguillos y fluido hidráulico directamente en ${comunaNombre}. El tráfico frecuente por ${zonaTexto} acelera el desgaste de los componentes de frenado. Nuestro servicio incluye medición digital del espesor de pastillas, diagnóstico de vibraciones en frenada y reemplazo con componentes de alta especificación. No arriesgues: agenda tu revisión de frenos a domicilio en ${comunaNombre} hoy.` },
+  { titulo: `Cambio de Aceite en ${comunaNombre}`, icono: '🛢️', texto: `El cambio de aceite periódico es la inversión más importante para proteger el motor de tu vehículo. DRAUTOMOTRIZ realiza este servicio a domicilio en ${comunaNombre} con aceites sintéticos y semi-sintéticos premium de marcas como Castrol, Mobil y Shell. Incluimos filtro de aceite, revisión del filtro de aire y chequeo de líquidos. Para los vehículos que circulan por ${zonaTexto}, las condiciones de uso urbano requieren intervalos de cambio de entre 5.000 y 10.000 km. Agenda rápido por WhatsApp.` },
+  { titulo: `Alineación y Suspensión en ${comunaNombre}`, icono: '🚗', texto: `Las calles y avenidas de ${comunaNombre} pueden afectar la alineación y suspensión de tu vehículo. Baches, badenes y resaltos generan desgaste en amortiguadores, rótulas, terminales y bujes. DRAUTOMOTRIZ realiza alineación computarizada y revisión completa de suspensión a domicilio en ${comunaNombre}. Detectamos vibraciones en el volante, desgaste irregular de neumáticos y desalineación con equipos de precisión, devolviendo estabilidad y seguridad a tu vehículo sin que salgas de casa.` },
+  { titulo: `Reparación de Motores en ${comunaNombre}`, icono: '⚙️', texto: `Cuando tu vehículo presenta pérdida de potencia, consumo excesivo de aceite, humo en el escape o ruidos anormales, puede que necesites una revisión del motor a fondo. En DRAUTOMOTRIZ, atendemos vehículos en ${comunaNombre} con diagnóstico avanzado que incluye prueba de compresión y pre-compresión para evaluar el estado interno de cilindros, pistones y anillos. Nuestros mecánicos resuelven desde fallas menores por alto kilometraje como juntas de tapa de válvulas hasta reparaciones mayores del bloque.` },
+  { titulo: `Embrague y Correa de Distribución en ${comunaNombre}`, icono: '⛓️', texto: `El embrague y la correa de distribución son componentes críticos que no pueden fallar. Un embrague desgastado dificulta los cambios de marcha, mientras que una correa rota puede dañar irreversiblemente el motor. DRAUTOMOTRIZ atiende emergencias mecánicas en ${comunaNombre} para reemplazar estos componentes con kits completos de calidad OEM. Atendemos vehículos con repuestos certificados, garantizando un trabajo profesional sin tener que remolcar tu vehículo a un taller.` },
+  { titulo: `Servicio de Batería y Electricidad en ${comunaNombre}`, icono: '🔋', texto: `Si tu vehículo no arranca, las luces se ven débiles o escuchas click al girar la llave, el problema puede ser la batería o el sistema eléctrico. En DRAUTOMOTRIZ realizamos diagnóstico de electricidad automotriz completo a domicilio en ${comunaNombre}: medimos carga de batería, probamos el alternador, verificamos el motor de arranque y revisamos cableado. Los cambios de temperatura en ${zonaTexto} afectan directamente la vida útil de la batería. Respondemos emergencias 24/7 para que no te quedes varado.` },
+  { titulo: `Cambio de Bujías y Mantención en ${comunaNombre}`, icono: '🔧', texto: `Las bujías desgastadas aumentan el consumo de combustible y reducen la potencia de tu vehículo. En DRAUTOMOTRIZ, reemplazamos bujías con las especificaciones exactas del fabricante a domicilio en ${comunaNombre}. Complementamos con un plan de mantención preventiva que incluye revisión de filtros, aceites, líquido de frenos, anticongelante y correas. Un vehículo bien mantenido dura más años y evita reparaciones costosas. Agenda tu mantención preventiva en ${comunaNombre}.` },
+  { titulo: `Emergencias 24/7 en ${comunaNombre}`, icono: '🆘', texto: `Si tu vehículo se queda varado en ${comunaNombre} o sufres una emergencia mecánica en ${zonaTexto}, DRAUTOMOTRIZ responde las 24 horas del día. Somos el taller mecánico a domicilio más cercano a ti: llegamos en menos de 60 minutos para emergencias. Desde baterías descargadas hasta fallas de motor, nuestros técnicos ofrecen soluciones inmediatas en ${sectorTexto} y alrededores. No importa la hora ni el lugar: DRAUTOMOTRIZ es tu mecánico de confianza en ${comunaNombre} para cualquier emergencia automotriz.` },
+];
+---
+
+<!-- Contenido SEO detallado por comuna -->
+<section class="py-16 relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-5"></div>
+
+  <div class="container-x relative">
+    <div class="max-w-4xl mx-auto">
+      <!-- Titulo -->
+      <div class="text-center mb-10">
+        <span class="badge-neon mb-4">Servicios Mecánicos en {comunaNombre}</span>
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">
+          Todos los servicios automotrices que necesitas directamente en tu comuna, sin moverte de casa
+        </h2>
+      </div>
+
+      <!-- Servicios destacados -->
+      <div class="space-y-8">
+        {serviciosDestacados.map((serv, i) => (
+          <div class={`flex flex-col ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 items-start`}>
+            <div class="w-full md:w-20 shrink-0 flex md:flex-col items-center gap-3">
+              <div class="w-14 h-14 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-3xl">
+                {serv.icono}
+              </div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-display font-bold text-neon-400 mb-3">{serv.titulo}</h3>
+              <p class="text-gray-300 leading-relaxed text-sm md:text-base">{serv.texto}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Como funciona -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-display font-bold text-white mb-8 text-center">
+          CÓMO FUNCIONA NUESTRO SERVICIO DE MECÁNICA A DOMICILIO
+        </h3>
+        <p class="text-gray-400 text-center mb-10 max-w-2xl mx-auto">
+          Nuestro proceso es simple, rápido y pensado para que no pierdas tiempo. Nos encargamos de todo: desde la cotización hasta la entrega de tu vehículo funcionando en perfectas condiciones.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="card-neon text-center">
+            <div class="w-12 h-12 rounded-full bg-neon-500 text-dark-500 font-display font-bold flex items-center justify-center text-xl mx-auto mb-4">1</div>
+            <h4 class="text-white font-bold mb-2">COTIZA</h4>
+            <p class="text-sm text-gray-400">Escríbenos al WhatsApp y cotiza tu servicio en {comunaNombre} de forma rápida y sin compromiso.</p>
+          </div>
+          <div class="card-neon text-center">
+            <div class="w-12 h-12 rounded-full bg-neon-500 text-dark-500 font-display font-bold flex items-center justify-center text-xl mx-auto mb-4">2</div>
+            <h4 class="text-white font-bold mb-2">AGENDA</h4>
+            <p class="text-sm text-gray-400">Elige el día y hora que más te acomode. Nuestro técnico llega a tu ubicación en {comunaNombre}.</p>
+          </div>
+          <div class="card-neon text-center">
+            <div class="w-12 h-12 rounded-full bg-neon-500 text-dark-500 font-display font-bold flex items-center justify-center text-xl mx-auto mb-4">3</div>
+            <h4 class="text-white font-bold mb-2">TU AUTO LISTO</h4>
+            <p class="text-sm text-gray-400">Sin filas, sin quedarte a pie. Tu vehículo reparado directamente en {comunaNombre}.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Por que elegirnos -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-display font-bold text-white mb-8 text-center">
+          Por Qué Elegirnos para tu Servicio Mecánico a Domicilio en {comunaNombre}
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Técnicos calificados y verificados</h4>
+            <p class="text-xs text-gray-400">Profesionales con experiencia comprobada y certificaciones.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Diagnóstico preciso y transparente</h4>
+            <p class="text-xs text-gray-400">Te explicamos cada falla antes de reparar.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Servicio sin anticipos ni sorpresas</h4>
+            <p class="text-xs text-gray-400">Solo pagas después de recibir el servicio.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Cobertura total en {comunaNombre}</h4>
+            <p class="text-xs text-gray-400">Atendemos {sectorTexto} y toda la comuna.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Más de 5.000 clientes atendidos</h4>
+            <p class="text-xs text-gray-400">Calificación 4.9/5 en Google con 148+ reseñas.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">✓</div>
+            <h4 class="text-sm font-bold text-white mb-1">Servicio de emergencia 24/7</h4>
+            <p class="text-xs text-gray-400">Auxilio mecánico en la vía a cualquier hora.</p>
+          </div>
+        </div>
+        <p class="text-gray-400 text-center mt-8 italic">
+          Nuestro objetivo es que tengas la seguridad de estar en manos profesionales, sin moverte de casa en {comunaNombre}.
+        </p>
+      </div>
+
+      <!-- FAQ -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-display font-bold text-white mb-8 text-center">
+          Preguntas Frecuentes - {comunaNombre}
+        </h3>
+        <p class="text-gray-400 text-center mb-8">Resolvemos tus dudas sobre nuestro servicio de mecánico a domicilio en {comunaNombre}.</p>
+        <div class="space-y-3">
+          <details class="card-neon group">
+            <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+              ¿Buscas un mecánico a domicilio en {comunaNombre}?
+              <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">En DRAUTOMOTRIZ somos la respuesta inmediata. No importa si estás en tu hogar, oficina o varado en la calle de {comunaNombre}; nuestro servicio de mecánico a domicilio cubre toda la Región Metropolitana con rapidez y profesionalismo. Llevamos el taller mecánico a tu ubicación para que no pierdas tiempo ni dinero en grúas.</p>
+          </details>
+          <details class="card-neon group">
+            <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+              ¿Cuánto demoran en llegar a {comunaNombre}?
+              <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">Nuestro tiempo promedio de llegada a {comunaNombre} es de 45 a 60 minutos, dependiendo de la hora del día y el tráfico. Para emergencias 24/7, priorizamos tu solicitud y llegamos lo antes posible.</p>
+          </details>
+          <details class="card-neon group">
+            <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+              ¿Cuánto cuesta el mecánico a domicilio en {comunaNombre}?
+              <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">El costo varía según el servicio y repuestos necesarios. Te entregamos un presupuesto transparente y sin compromiso antes de comenzar cualquier trabajo. No cobramos traslado a {comunaNombre}. Escríbenos por WhatsApp para una cotización personalizada.</p>
+          </details>
+          <details class="card-neon group">
+            <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+              ¿Hacen reparaciones de aire acondicionado en {comunaNombre}?
+              <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">Sí, realizamos recarga de gas refrigerante, limpieza de conductos, cambio de filtros y revisión del compresor a domicilio en {comunaNombre}. Trabajamos con gases R134a y R1234yf según tu vehículo.</p>
+          </details>
+          <details class="card-neon group">
+            <summary class="cursor-pointer text-sm font-semibold text-white flex items-center justify-between gap-3 list-none">
+              ¿El diagnóstico incluye escáner en {comunaNombre}?
+              <svg class="w-5 h-5 text-neon-400 transition-transform group-open:rotate-180 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p class="text-sm text-gray-400 mt-3 leading-relaxed">Sí, nuestro diagnóstico incluye escáner computarizado completo multimarca. Leemos códigos de falla activos y pendientes en todos los módulos del vehículo (motor, ABS, airbag, transmisión) directamente en {comunaNombre}.</p>
+          </details>
+        </div>
+      </div>
+
+      <!-- Mantención preventiva -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-display font-bold text-white mb-8 text-center">
+          Mantenimiento Preventivo en {comunaNombre}
+        </h3>
+        <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+          La mejor reparación es la que no se necesita. Con un mantenimiento preventivo regular en {comunaNombre} evitas fallas costosas y prolongas la vida útil de tu vehículo.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="card-neon">
+            <div class="text-2xl mb-2">🛢️</div>
+            <h4 class="text-sm font-bold text-white mb-1">Cambio de Aceite y Filtro</h4>
+            <p class="text-xs text-gray-400">El cambio periódico de aceite es fundamental para proteger el motor. Utilizamos aceites recomendados por el fabricante.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">🛑</div>
+            <h4 class="text-sm font-bold text-white mb-1">Frenos y Seguridad</h4>
+            <p class="text-xs text-gray-400">Revisión completa del sistema de frenos: pastillas, discos, líquido y ABS. Tu seguridad es nuestra prioridad.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">⚡</div>
+            <h4 class="text-sm font-bold text-white mb-1">Sistema Eléctrico</h4>
+            <p class="text-xs text-gray-400">Revisión de batería, alternador, luces y sistema de arranque. Evita quedarte varado por una falla eléctrica.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">❄️</div>
+            <h4 class="text-sm font-bold text-white mb-1">Aire Acondicionado</h4>
+            <p class="text-xs text-gray-400">Recarga de gas, revisión de compresor y climatización. Mantén el confort en tu vehículo en cualquier temporada.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">💻</div>
+            <h4 class="text-sm font-bold text-white mb-1">Escáner Diagnóstico</h4>
+            <p class="text-xs text-gray-400">Diagnóstico computarizado completo para detectar fallas antes de que se conviertan en problemas mayores.</p>
+          </div>
+          <div class="card-neon">
+            <div class="text-2xl mb-2">📋</div>
+            <h4 class="text-sm font-bold text-white mb-1">Preparación Revisión Técnica</h4>
+            <p class="text-xs text-gray-400">Revisamos todos los puntos críticos para que tu vehículo apruebe la revisión técnica sin rechazos en {comunaNombre}.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 text-center">
+        <a href={waLink(`Hola, necesito un mecánico a domicilio en ${comunaNombre}`)} target="_blank" rel="noopener" class="btn-whatsapp">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Agenda tu servicio en {comunaNombre}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

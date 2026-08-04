@@ -1,19 +1,27 @@
 ---
 // Banner para paginas de servicio
 // Imagen: mecanico-a-domicilio-en-santiago-region-metropolitana-chile-drautomotriz.png
-// Reducido 40% (alturas originales: 200/280/320 -> 120/168/192)
-// Sin difuminado (imagen original tal cual)
+// Reducido 30% mas (alturas: 120/168/192 -> 84/118/134 aprox)
+// object-contain para que se vea la imagen completa sin recortes
 ---
 
-<section class="relative w-full h-[120px] md:h-[168px] lg:h-[192px] overflow-hidden">
-  <!-- Imagen de fondo sin difuminado -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/imagen/banner/banner-servicio-top.png"
-      alt="Mecánico a Domicilio en Santiago Región Metropolitana Chile - DRAUTOMOTRIZ servicio automotriz móvil"
-      class="w-full h-full object-cover"
-      loading="eager"
-      fetchpriority="high"
-    />
-  </div>
+<section class="relative w-full overflow-hidden flex items-center justify-center" style="height: 84px;">
+  <img
+    src="/imagen/banner/banner-servicio-top.png"
+    alt="Mecánico a Domicilio en Santiago Región Metropolitana Chile - DRAUTOMOTRIZ servicio automotriz móvil"
+    class="w-full h-full"
+    style="object-fit: contain;"
+    loading="eager"
+    fetchpriority="high"
+  />
 </section>
+
+<!-- Responsive: en pantallas medianas y grandes, altura mayor -->
+<style>
+  @media (min-width: 768px) {
+    section { height: 118px !important; }
+  }
+  @media (min-width: 1024px) {
+    section { height: 134px !important; }
+  }
+</style>
