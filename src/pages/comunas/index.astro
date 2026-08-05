@@ -2,12 +2,43 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { comunas, zonas, getComunasByZona } from '@/data/comunas';
 import { waLink } from '@/data/config';
+
+// Schema: ItemList con todas las comunas
+const comunasListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Comunas con cobertura de mecánico a domicilio en Santiago",
+  "description": `Listado de ${comunas.length} comunas de la Región Metropolitana donde DRAUTOMOTRIZ ofrece servicio mecánico a domicilio.`,
+  "numberOfItems": comunas.length,
+  "itemListElement": comunas.map((c, i) => ({
+    "@type": "ListItem",
+    "position": i + 1,
+    "item": {
+      "@type": "Service",
+      "name": `Mecánico a Domicilio en ${c.nombre}`,
+      "url": `https://drautomotriz.pages.dev/comunas/${c.slug}`,
+      "provider": { "@type": "AutoRepair", "name": "DRAUTOMOTRIZ" }
+    }
+  }))
+};
+
+// Schema: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drautomotriz.pages.dev/comunas" }
+  ]
+};
 ---
 
 <BaseLayout
   title="Comunas que Cubrimos en Santiago | DRAUTOMOTRIZ"
   description="Mecánico a domicilio en más de 40 comunas de Santiago. Encuentra tu comuna y solicita el servicio. Atendemos Las Condes, Providencia, Maipú, La Florida, Ñuñoa y toda la RM."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(comunasListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <section class="pt-16 pb-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-20"></div>
     <div class="absolute top-0 right-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>

@@ -38,23 +38,51 @@ const faqSchema = {
   }))
 };
 
-// Schema.org para Service
+// Schema.org para Service - con nombre del servicio
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": servicio.nombre,
+  "name": `${servicio.nombre} - Mecánico a Domicilio en Santiago`,
+  "alternateName": servicio.nombre,
   "description": servicio.descripcionCorta,
   "url": `https://drautomotriz.pages.dev/servicios/${servicio.slug}`,
+  "image": "https://drautomotriz.pages.dev/imagen/banner/banner-servicio-top.png",
+  "serviceType": servicio.categoria,
+  "termsOfService": "Garantía escrita de 3 a 12 meses según el servicio.",
   "provider": {
     "@type": "AutoRepair",
     "name": "DRAUTOMOTRIZ",
     "telephone": "+56962408735",
-    "areaServed": "Santiago, Chile"
+    "email": "contacto@drautomotriz.cl",
+    "image": "https://drautomotriz.pages.dev/imagen/logo/drautomotriz-logo.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Santiago",
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    }
   },
-  "serviceType": servicio.categoria,
   "areaServed": {
     "@type": "City",
     "name": "Santiago"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": `Servicios incluidos en ${servicio.nombre}`,
+    "itemListElement": servicio.incluye.map((item, i) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": item
+      }
+    }))
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "148"
   }
 };
 

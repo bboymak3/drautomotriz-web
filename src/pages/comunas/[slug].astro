@@ -15,23 +15,139 @@ export function getStaticPaths() {
 
 const { comuna } = Astro.props;
 
-// Schema.org LocalBusiness
-const schema = {
+// Schema 1: LocalBusiness (AutoRepair) especifico de la comuna
+const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "AutoRepair",
   "name": `DRAUTOMOTRIZ - Mecánico a Domicilio en ${comuna.nombre}`,
-  "image": "/imagen/drautomotriz/og-default.jpg",
-  "description": comuna.metaDescription,
+  "alternateName": `Mecánico a Domicilio ${comuna.nombre}`,
+  "image": "https://drautomotriz.pages.dev/og-image.png",
+  "logo": "https://drautomotriz.pages.dev/imagen/logo/drautomotriz-logo.webp",
+  "description": `Servicio de mecánico a domicilio en ${comuna.nombre}, ${comuna.zona === 'Norte' ? 'sector norte' : comuna.zona === 'Oriente' ? 'sector oriente' : comuna.zona === 'Sur' ? 'sector sur' : 'sector poniente'} de Santiago. Diagnóstico computarizado, mantención, frenos, suspensión, batería, revisión técnica sin estrés y auxilio mecánico 24/7.`,
   "url": `https://drautomotriz.pages.dev/comunas/${comuna.slug}`,
   "telephone": "+56962408735",
+  "email": "contacto@drautomotriz.cl",
+  "priceRange": "$$",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": comuna.nombre,
     "addressRegion": "Región Metropolitana",
     "addressCountry": "CL"
   },
-  "areaServed": comuna.nombre,
-  "openingHours": "Mo-Sa 08:00-20:00, Su 00:00-24:00"
+  "areaServed": {
+    "@type": "City",
+    "name": comuna.nombre
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "sameAs": [
+    "https://instagram.com/dr_automotrizz",
+    "https://github.com/bboymak3/drautomotriz-web"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "148"
+  }
+};
+
+// Schema 2: Service - Mecanico a Domicilio en la comuna
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": `Mecánico a Domicilio en ${comuna.nombre}`,
+  "serviceType": "Mecánico a Domicilio",
+  "description": `Servicio mecánico a domicilio en ${comuna.nombre}, Santiago. Diagnóstico computarizado, mantención preventiva, frenos, suspensión, batería, revisión técnica sin estrés y auxilio mecánico 24/7 directamente en tu casa u oficina.`,
+  "url": `https://drautomotriz.pages.dev/comunas/${comuna.slug}`,
+  "image": "https://drautomotriz.pages.dev/imagen/comunas/mecanico-a-domicilio-" + comuna.slug + ".png",
+  "provider": {
+    "@type": "AutoRepair",
+    "name": "DRAUTOMOTRIZ",
+    "telephone": "+56962408735",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": comuna.nombre,
+      "addressRegion": "Región Metropolitana",
+      "addressCountry": "CL"
+    }
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": comuna.nombre
+  }
+};
+
+// Schema 3: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
+    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drautomotriz.pages.dev/comunas" },
+    { "@type": "ListItem", "position": 3, "name": comuna.nombre, "item": `https://drautomotriz.pages.dev/comunas/${comuna.slug}` }
+  ]
+};
+
+// Schema 4: FAQPage con preguntas frecuentes de la comuna
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `¿Ofrecen servicio de mecánico a domicilio en ${comuna.nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Sí, en DRAUTOMOTRIZ ofrecemos servicio mecánico a domicilio en ${comuna.nombre}. Nuestros técnicos certificados llegan a tu casa u oficina con herramientas de diagnóstico profesional y repuestos de calidad. El tiempo promedio de llegada es de 45 a 60 minutos.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿Cuánto demoran en llegar a ${comuna.nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Nuestro tiempo promedio de llegada a ${comuna.nombre} es de 45 a 60 minutos, dependiendo de la hora del día y el tráfico. Para emergencias 24/7, priorizamos tu solicitud y llegamos lo antes posible.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿Cuánto cuesta el mecánico a domicilio en ${comuna.nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `El costo varía según el servicio y repuestos necesarios. Te entregamos un presupuesto transparente y sin compromiso antes de comenzar cualquier trabajo. No cobramos traslado a ${comuna.nombre}. Escríbenos por WhatsApp para una cotización personalizada.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿Hacen reparaciones de aire acondicionado en ${comuna.nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Sí, realizamos recarga de gas refrigerante, limpieza de conductos, cambio de filtros y revisión del compresor a domicilio en ${comuna.nombre}. Trabajamos con gases R134a y R1234yf según tu vehículo.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `¿El diagnóstico incluye escáner en ${comuna.nombre}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Sí, nuestro diagnóstico incluye escáner computarizado completo multimarca. Leemos códigos de falla activos y pendientes en todos los módulos del vehículo (motor, ABS, airbag, transmisión) directamente en ${comuna.nombre}.`
+      }
+    }
+  ]
 };
 ---
 
@@ -40,7 +156,10 @@ const schema = {
   description={comuna.metaDescription}
   canonical={`/comunas/${comuna.slug}`}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <!-- HERO -->
   <section class="relative pt-12 pb-16 overflow-hidden">
