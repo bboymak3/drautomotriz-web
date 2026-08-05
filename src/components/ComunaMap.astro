@@ -1,0 +1,216 @@
+---
+import { comunas, zonas } from '@/data/comunas';
+
+// Coordenadas reales aproximadas de cada comuna de Santiago
+const comunaCoords: Record<string, [number, number]> = {
+  'conchali': [-33.3635, -70.6767],
+  'huechuraba': [-33.3586, -70.6472],
+  'independencia': [-33.4061, -70.6567],
+  'quilicura': [-33.3411, -70.7264],
+  'recoleta': [-33.4146, -70.6419],
+  'renca': [-33.3936, -70.7067],
+  'las-condes': [-33.4089, -70.5544],
+  'lo-barnechea': [-33.3456, -70.5194],
+  'macul': [-33.4789, -70.6064],
+  'nunoa': [-33.4628, -70.5994],
+  'penalolen': [-33.4906, -70.5869],
+  'providencia': [-33.4378, -70.6108],
+  'la-reina': [-33.4478, -70.5606],
+  'el-bosque': [-33.5522, -70.6764],
+  'la-cisterna': [-33.5294, -70.6639],
+  'la-florida': [-33.5189, -70.5872],
+  'la-granja': [-33.5483, -70.6314],
+  'la-pintana': [-33.5825, -70.6358],
+  'lo-espejo': [-33.5242, -70.7217],
+  'san-bernardo': [-33.5856, -70.7008],
+  'san-joaquin': [-33.5028, -70.6367],
+  'san-miguel': [-33.4986, -70.6539],
+  'san-ramon': [-33.5506, -70.5808],
+  'santiago-centro': [-33.4489, -70.6693],
+  'vitacura': [-33.3956, -70.5997],
+  'puente-alto': [-33.6117, -70.5758],
+  'pirque': [-33.7364, -70.5794],
+  'cerrillos': [-33.4858, -70.7233],
+  'estacion-central': [-33.4514, -70.7036],
+  'lo-prado': [-33.4453, -70.7128],
+  'maipu': [-33.5189, -70.7594],
+  'pedro-aguirre-cerda': [-33.5108, -70.6864],
+  'pudahuel': [-33.4314, -70.7567],
+  'quinta-normal': [-33.4417, -70.6944],
+  'cerro-navia': [-33.4389, -70.7331],
+};
+
+// Generar array de comunas con coordenadas
+const comunasMapa = comunas.map(c => ({
+  ...c,
+  coords: comunaCoords[c.slug] || [-33.4489, -70.6693],
+}));
+
+const zonaColores: Record<string, string> = {
+  'Norte': '#3B82F6',
+  'Oriente': '#00d4ff',
+  'Sur': '#ff8a00',
+  'Poniente': '#A855F7',
+};
+
+// Serializar datos para el script
+const comunasJson = JSON.stringify(comunasMapa.map(c => ({
+  nombre: c.nombre,
+  slug: c.slug,
+  zona: c.zona,
+  coords: c.coords,
+  color: zonaColores[c.zona] || '#00d4ff',
+})));
+---
+
+<!-- Contenedor del mapa Leaflet -->
+<div id="comuna-map-leaflet" style="height: 520px; background: #0a0a0a; border-radius: 12px; overflow: hidden; border: 1px solid rgba(0, 212, 255, 0.2);"></div>
+
+<!-- Leyenda de zonas -->
+<div class="flex flex-wrap gap-3 mt-4 justify-center">
+  {zonas.map(zona => (
+    <div class="flex items-center gap-2">
+      <div class="w-3 h-3 rounded-full" style={`background: ${zonaColores[zona]}; box-shadow: 0 0 8px ${zonaColores[zona]};`}></div>
+      <span class="text-xs text-gray-400">Zona {zona}</span>
+    </div>
+  ))}
+</div>
+
+<script is:inline define:vars={{ comunasJson }}>
+  (function() {
+    const comunas = JSON.parse(comunasJson);
+    let map = null;
+    let markers = [];
+
+    function initMap() {
+      const container = document.getElementById('comuna-map-leaflet');
+      if (!container || typeof L === 'undefined') return;
+      if (map) { map.remove(); map = null; markers = []; }
+
+      // Crear mapa centrado en Santiago
+      map = L.map('comuna-map-leaflet', {
+        center: [-33.45, -70.65],
+        zoom: 10,
+        zoomControl: true,
+        attributionControl: true,
+        scrollWheelZoom: false,
+      });
+
+      // Tile layer dark de CARTO
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap, © CARTO',
+        maxZoom: 18,
+      }).addTo(map);
+
+      // Agregar marcadores para cada comuna
+      comunas.forEach(function(c) {
+        const marker = L.circleMarker(c.coords, {
+          radius: 6,
+          fillColor: c.color,
+          color: '#ffffff',
+          weight: 1.5,
+          opacity: 0.9,
+          fillOpacity: 0.6,
+        }).addTo(map);
+
+        marker.bindTooltip(
+          '<div style="font-weight:600;color:' + c.color + ';">' + c.nombre + '</div>' +
+          '<div style="font-size:0.7rem;color:#94a3b8;">Zona ' + c.zona + '</div>' +
+          '<div style="font-size:0.7rem;color:#00d4ff;margin-top:4px;">Click para ver servicios</div>',
+          {
+            className: 'comuna-tooltip',
+            direction: 'top',
+            offset: [0, -8],
+          }
+        );
+
+        marker.on('click', function() {
+          window.location.href = '/comunas/' + c.slug + '/';
+        });
+
+        // Hover effect
+        marker.on('mouseover', function() {
+          marker.setStyle({ radius: 9, fillOpacity: 0.9 });
+        });
+        marker.on('mouseout', function() {
+          marker.setStyle({ radius: 6, fillOpacity: 0.6 });
+        });
+
+        markers.push(marker);
+      });
+
+      // Habilitar scroll zoom al hacer click en el mapa
+      container.addEventListener('click', function() {
+        map.scrollWheelZoom.enable();
+      });
+      container.addEventListener('mouseleave', function() {
+        map.scrollWheelZoom.disable();
+      });
+    }
+
+    // Cargar Leaflet si no está cargado
+    if (typeof L === 'undefined') {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+      script.onload = initMap;
+      document.head.appendChild(script);
+      // Agregar CSS si no está
+      if (!document.querySelector('link[href*="leaflet"]')) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+        document.head.appendChild(link);
+      }
+    } else {
+      initMap();
+    }
+
+    // Re-inicializar cuando se abre el modal
+    window.initComunaMap = initMap;
+
+    // MutationObserver para detectar cuando el div se hace visible
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(m) {
+        if (m.target.style.display !== 'none' && m.target.classList.contains('flex')) {
+          setTimeout(initMap, 100);
+        }
+      });
+    });
+    const modal = document.getElementById('comunaMapaModal');
+    if (modal) {
+      observer.observe(modal, { attributes: true, attributeFilter: ['class', 'style'] });
+    }
+  })();
+</script>
+
+<style>
+  .comuna-tooltip {
+    background: #0a0a0a !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  }
+  .comuna-tooltip::before {
+    border-top-color: #0a0a0a !important;
+  }
+  .leaflet-container {
+    background: #0a0a0a !important;
+  }
+  .leaflet-control-zoom a {
+    background: #141414 !important;
+    color: #00d4ff !important;
+    border: 1px solid rgba(0, 212, 255, 0.2) !important;
+  }
+  .leaflet-control-zoom a:hover {
+    background: #00d4ff !important;
+    color: #0a0a0a !important;
+  }
+  .leaflet-control-attribution {
+    background: rgba(10, 10, 10, 0.8) !important;
+    color: #64748b !important;
+  }
+  .leaflet-control-attribution a {
+    color: #00d4ff !important;
+  }
+</style>

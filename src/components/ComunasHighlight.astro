@@ -1,6 +1,7 @@
 ---
 import { comunas, zonas, getComunasByZona } from '@/data/comunas';
 import { waLink } from '@/data/config';
+import ComunaMap from '@/components/ComunaMap.astro';
 
 const zonaColores: Record<string, string> = {
   'Norte': 'from-blue-500 to-cyan-500',
@@ -116,8 +117,11 @@ const zonaColores: Record<string, string> = {
 
     <!-- Contenido -->
     <div class="p-6 overflow-y-auto max-h-[calc(90vh-60px)]">
+      <!-- Mapa interactivo Leaflet -->
+      <ComunaMap />
+
       <!-- Buscador dentro del modal -->
-      <div class="relative mb-6">
+      <div class="relative mt-6 mb-4">
         <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
           <svg class="w-5 h-5 text-neon-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
@@ -249,6 +253,10 @@ const zonaColores: Record<string, string> = {
     mapaModal?.classList.remove('hidden');
     mapaModal?.classList.add('flex');
     document.body.style.overflow = 'hidden';
+    // Inicializar mapa al abrir el modal
+    setTimeout(() => {
+      if (window.initComunaMap) window.initComunaMap();
+    }, 200);
   });
 
   function closeMapa() {

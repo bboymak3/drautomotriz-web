@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BannerServicio from '@/components/BannerServicio.astro';
 import GaleriaServicio from '@/components/GaleriaServicio.astro';
+import ComunaMap from '@/components/ComunaMap.astro';
 import { servicios, getServicioBySlug, getServiciosRelacionados } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 
@@ -317,6 +318,23 @@ const breadcrumbSchema = {
           </div>
         </aside>
       </div>
+    </div>
+  </section>
+
+  <!-- Mapa interactivo de comunas donde atendemos -->
+  <section class="py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="container-x relative">
+      <div class="text-center mb-8">
+        <span class="badge-neon mb-3">Cobertura</span>
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">
+          Dónde Atendemos en Santiago
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm">
+          Mapa interactivo con las {servicios.length > 0 ? '35' : ''} comunas donde ofrecemos este servicio. Haz click en un marcador para ver la landing de esa comuna.
+        </p>
+      </div>
+      <ComunaMap />
     </div>
   </section>
 
