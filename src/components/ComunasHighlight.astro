@@ -9,6 +9,13 @@ const zonaColores: Record<string, string> = {
   'Sur': 'from-orange-500 to-amber-500',
   'Poniente': 'from-purple-500 to-pink-500',
 };
+
+const zonaColoresHex: Record<string, string> = {
+  'Norte': '#3B82F6',
+  'Oriente': '#00d4ff',
+  'Sur': '#ff8a00',
+  'Poniente': '#A855F7',
+};
 ---
 
 <section class="py-16 relative overflow-hidden">
@@ -22,272 +29,132 @@ const zonaColores: Record<string, string> = {
         Comunas que <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Cubrimos en Santiago</span>
       </h2>
       <p class="text-gray-400 max-w-2xl mx-auto">
-        Atendemos en más de {comunas.length} comunas de la Región Metropolitana. Busca tu comuna o explora el mapa interactivo.
+        Atendemos en {comunas.length} comunas de la Región Metropolitana. Selecciona tu comuna en la lista o haz click en el mapa para ver los servicios disponibles.
       </p>
     </div>
 
-    <!-- Buscador interactivo -->
-    <div class="max-w-2xl mx-auto mb-8">
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-          <svg class="w-5 h-5 text-neon-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-        </div>
-        <input
-          id="comuna-search-input"
-          type="text"
-          placeholder="Escribe tu comuna... (ej: Las Condes, Maipú)"
-          autocomplete="off"
-          class="w-full pl-12 pr-12 py-4 bg-dark-200 border-2 border-neon-500/20 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-neon-500 focus:ring-1 focus:ring-neon-500/30 transition-all duration-300"
-        />
-        <button id="search-clear-btn" class="absolute inset-y-0 right-0 pr-4 flex items-center cursor-pointer text-gray-600 hover:text-neon-400 transition-colors hidden">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
-      <!-- Dropdown de resultados -->
-      <div id="comuna-search-results" class="absolute z-50 w-full mt-2 bg-dark-200 border border-neon-500/20 rounded-xl overflow-hidden shadow-neon hidden max-h-[420px] overflow-y-auto" style="left: 50%; transform: translateX(-50%); width: 100%; max-width: 42rem;"></div>
-    </div>
+    <!-- Layout: lista de comunas (izquierda) + mapa (derecha) -->
+    <div class="grid lg:grid-cols-2 gap-6">
 
-    <!-- Botón para abrir el modal del mapa -->
-    <div class="text-center mb-10">
-      <button id="openComunaMapa" class="btn-outline-neon text-sm">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
-        </svg>
-        Ver mapa interactivo
-      </button>
-    </div>
-
-    <!-- Grid de comunas por zona (acordeón) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto" id="comunas-grid">
-      {zonas.map(zona => {
-        const lista = getComunasByZona(zona);
-        const color = zonaColores[zona] || 'from-neon-500 to-cyan-500';
-        return (
-          <div class="card-neon">
-            <div class="flex items-center gap-3 mb-4">
-              <div class={`w-2 h-10 bg-gradient-to-r ${color} rounded`}></div>
-              <div>
-                <h3 class="text-lg font-display font-bold text-white">Zona {zona}</h3>
-                <span class="text-xs text-gray-500">{lista.length} comunas</span>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              {lista.map(c => (
-                <a href={`/comunas/${c.slug}`} class="comuna-chip px-3 py-1.5 rounded-lg text-xs font-medium text-gray-300 bg-dark-100 border border-neon-500/20 hover:bg-neon-500 hover:text-dark-500 hover:border-neon-500 transition-all" data-comuna={c.nombre.toLowerCase()}>
-                  {c.nombre}
-                </a>
-              ))}
-            </div>
+      <!-- Columna izquierda: Lista de comunas por zona -->
+      <div class="space-y-4">
+        <!-- Buscador -->
+        <div class="relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
+            <svg class="w-5 h-5 text-neon-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
           </div>
-        );
-      })}
-    </div>
+          <input
+            id="comuna-search-input"
+            type="text"
+            placeholder="Buscar comuna... (ej: Las Condes, Maipú)"
+            autocomplete="off"
+            class="w-full pl-12 pr-4 py-3 bg-dark-200 border-2 border-neon-500/20 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-neon-500 focus:ring-1 focus:ring-neon-500/30 transition-all duration-300"
+          />
+        </div>
 
-    <!-- CTA -->
-    <div class="text-center mt-10">
-      <p class="text-sm text-gray-400 mb-4">¿No ves tu comuna? Probablemente también te atendemos.</p>
-      <a href={waLink('Hola, ¿atienden en mi comuna de Santiago?')} target="_blank" rel="noopener" class="btn-whatsapp text-sm">
-        Consultar cobertura
-      </a>
+        <!-- Lista de comunas por zona (scrollable) -->
+        <div class="bg-dark-200/50 rounded-xl border border-neon-500/20 max-h-[460px] overflow-y-auto p-4 space-y-4" id="comunas-lista-container">
+          {zonas.map(zona => {
+            const lista = getComunasByZona(zona);
+            const colorHex = zonaColoresHex[zona] || '#00d4ff';
+            return (
+              <div data-zona={zona}>
+                <div class="flex items-center gap-2 mb-2 sticky top-0 bg-dark-200/95 backdrop-blur py-1 z-10">
+                  <div class="w-2 h-6 rounded" style={`background: ${colorHex}; box-shadow: 0 0 8px ${colorHex};`}></div>
+                  <h4 class="font-display font-bold text-white text-sm">Zona {zona}</h4>
+                  <span class="text-xs text-gray-500">({lista.length})</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  {lista.map(c => (
+                    <button
+                      class="comuna-lista-btn px-2 py-1.5 rounded text-xs text-gray-300 bg-dark-100/50 border border-neon-500/10 hover:bg-neon-500 hover:text-dark-500 hover:border-neon-500 transition-all text-left"
+                      data-comuna-nombre={c.nombre}
+                      data-comuna-slug={c.slug}
+                    >
+                      {c.nombre}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center">
+          <p class="text-xs text-gray-500 mb-2">¿No ves tu comuna? Probablemente también te atendemos.</p>
+          <a href={waLink('Hola, ¿atienden en mi comuna de Santiago?')} target="_blank" rel="noopener" class="btn-whatsapp text-xs">
+            Consultar cobertura
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Mapa interactivo -->
+      <div>
+        <ComunaMap />
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- Modal del mapa interactivo -->
-<div id="comunaMapaModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
-  <div class="absolute inset-0 bg-dark-500/90 backdrop-blur-sm" id="comunaMapaOverlay"></div>
-  <div class="relative bg-dark-200 rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border-2 border-neon-500/30">
-    <!-- Header -->
-    <div class="sticky top-0 z-10 bg-dark-300 border-b border-neon-500/20 px-6 py-4 flex items-center justify-between">
-      <h3 class="text-lg font-display font-bold text-white flex items-center gap-2">
-        <svg class="w-5 h-5 text-neon-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-        Mapa de Comunas - Santiago
-      </h3>
-      <button id="closeComunaMapa" class="w-8 h-8 rounded-full bg-dark-100 hover:bg-neon-500 hover:text-dark-500 text-gray-400 flex items-center justify-center transition-colors">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-
-    <!-- Contenido -->
-    <div class="p-6 overflow-y-auto max-h-[calc(90vh-60px)]">
-      <!-- Mapa interactivo Leaflet -->
-      <ComunaMap />
-
-      <!-- Buscador dentro del modal -->
-      <div class="relative mt-6 mb-4">
-        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-          <svg class="w-5 h-5 text-neon-500/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-        </div>
-        <input id="comuna-map-search" type="text" placeholder="Buscar comuna..." autocomplete="off" class="w-full pl-12 pr-4 py-3 bg-dark-100 border-2 border-neon-500/20 rounded-xl text-white text-sm placeholder-gray-500 focus:outline-none focus:border-neon-500 transition-all" />
-      </div>
-
-      <!-- Grid de zonas con comunas -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {zonas.map(zona => {
-          const lista = getComunasByZona(zona);
-          const color = zonaColores[zona] || 'from-neon-500 to-cyan-500';
-          return (
-            <div class="bg-dark-100/50 rounded-xl p-4 border border-neon-500/10" data-zona={zona}>
-              <div class="flex items-center gap-2 mb-3">
-                <div class={`w-2 h-8 bg-gradient-to-r ${color} rounded`}></div>
-                <h4 class="font-display font-bold text-white text-sm">Zona {zona}</h4>
-                <span class="text-xs text-gray-500">({lista.length})</span>
-              </div>
-              <div class="grid grid-cols-2 gap-1.5">
-                {lista.map(c => (
-                  <a href={`/comunas/${c.slug}`} class="mapa-comuna px-2 py-1.5 rounded text-xs text-gray-300 hover:bg-neon-500 hover:text-dark-500 transition-all" data-comuna={c.nombre.toLowerCase()}>
-                    {c.nombre}
-                  </a>
-                ))}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modal eliminado: el mapa ahora está siempre visible -->
 
 <script>
-  // Buscador de comunas (sección principal)
+  // Buscador de comunas (filtra la lista)
   const searchInput = document.getElementById('comuna-search-input');
-  const searchResults = document.getElementById('comuna-search-results');
-  const clearBtn = document.getElementById('search-clear-btn');
+  const listaContainer = document.getElementById('comunas-lista-container');
 
-  const comunasData = [
-    {nombre: 'Conchalí', slug: 'conchali', zona: 'Norte'},
-    {nombre: 'Huechuraba', slug: 'huechuraba', zona: 'Norte'},
-    {nombre: 'Independencia', slug: 'independencia', zona: 'Norte'},
-    {nombre: 'Quilicura', slug: 'quilicura', zona: 'Norte'},
-    {nombre: 'Recoleta', slug: 'recoleta', zona: 'Norte'},
-    {nombre: 'Renca', slug: 'renca', zona: 'Norte'},
-    {nombre: 'Las Condes', slug: 'las-condes', zona: 'Oriente'},
-    {nombre: 'Lo Barnechea', slug: 'lo-barnechea', zona: 'Oriente'},
-    {nombre: 'Macul', slug: 'macul', zona: 'Oriente'},
-    {nombre: 'Ñuñoa', slug: 'nunoa', zona: 'Oriente'},
-    {nombre: 'Peñalolén', slug: 'penalolen', zona: 'Oriente'},
-    {nombre: 'Providencia', slug: 'providencia', zona: 'Oriente'},
-    {nombre: 'La Reina', slug: 'la-reina', zona: 'Oriente'},
-    {nombre: 'El Bosque', slug: 'el-bosque', zona: 'Sur'},
-    {nombre: 'La Cisterna', slug: 'la-cisterna', zona: 'Sur'},
-    {nombre: 'La Florida', slug: 'la-florida', zona: 'Sur'},
-    {nombre: 'La Granja', slug: 'la-granja', zona: 'Sur'},
-    {nombre: 'La Pintana', slug: 'la-pintana', zona: 'Sur'},
-    {nombre: 'Lo Espejo', slug: 'lo-espejo', zona: 'Sur'},
-    {nombre: 'San Bernardo', slug: 'san-bernardo', zona: 'Sur'},
-    {nombre: 'San Joaquín', slug: 'san-joaquin', zona: 'Sur'},
-    {nombre: 'San Miguel', slug: 'san-miguel', zona: 'Sur'},
-    {nombre: 'San Ramón', slug: 'san-ramon', zona: 'Sur'},
-    {nombre: 'Santiago Centro', slug: 'santiago-centro', zona: 'Sur'},
-    {nombre: 'Vitacura', slug: 'vitacura', zona: 'Sur'},
-    {nombre: 'Puente Alto', slug: 'puente-alto', zona: 'Sur'},
-    {nombre: 'Pirque', slug: 'pirque', zona: 'Sur'},
-    {nombre: 'Cerrillos', slug: 'cerrillos', zona: 'Poniente'},
-    {nombre: 'Estación Central', slug: 'estacion-central', zona: 'Poniente'},
-    {nombre: 'Lo Prado', slug: 'lo-prado', zona: 'Poniente'},
-    {nombre: 'Maipú', slug: 'maipu', zona: 'Poniente'},
-    {nombre: 'Pedro Aguirre Cerda', slug: 'pedro-aguirre-cerda', zona: 'Poniente'},
-    {nombre: 'Pudahuel', slug: 'pudahuel', zona: 'Poniente'},
-    {nombre: 'Quinta Normal', slug: 'quinta-normal', zona: 'Poniente'},
-    {nombre: 'Cerro Navia', slug: 'cerro-navia', zona: 'Poniente'},
-  ];
-
-  function renderResults(query) {
-    if (!query || query.trim() === '') {
-      searchResults?.classList.add('hidden');
-      clearBtn?.classList.add('hidden');
-      return;
-    }
-    clearBtn?.classList.remove('hidden');
-    const q = query.toLowerCase().trim();
-    const matches = comunasData.filter(c => c.nombre.toLowerCase().includes(q));
-
-    if (matches.length === 0) {
-      searchResults.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">No encontramos tu comuna. <a href="https://wa.me/56962408735?text=Hola,%20%C2%BFatienden%20en%20mi%20comuna%20de%20Santiago?" target="_blank" class="text-neon-400 hover:underline">Consulta por WhatsApp</a></div>';
-    } else {
-      searchResults.innerHTML = matches.map(c => `
-        <a href="/comunas/${c.slug}" class="block px-4 py-3 hover:bg-neon-500/10 transition-colors border-b border-neon-500/5 last:border-0">
-          <div class="flex items-center justify-between">
-            <div>
-              <div class="text-sm font-semibold text-white">${c.nombre}</div>
-              <div class="text-xs text-gray-500">Zona ${c.zona}</div>
-            </div>
-            <svg class="w-4 h-4 text-neon-500/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-          </div>
-        </a>
-      `).join('');
-    }
-    searchResults?.classList.remove('hidden');
-  }
-
-  searchInput?.addEventListener('input', (e) => renderResults(e.target.value));
-  clearBtn?.addEventListener('click', () => {
-    if (searchInput) searchInput.value = '';
-    renderResults('');
-  });
-
-  // Ocultar resultados al hacer click fuera
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('#comuna-search-input') && !e.target.closest('#comuna-search-results')) {
-      searchResults?.classList.add('hidden');
-    }
-  });
-
-  // Modal del mapa interactivo
-  const mapaModal = document.getElementById('comunaMapaModal');
-  const openMapaBtn = document.getElementById('openComunaMapa');
-  const closeMapaBtn = document.getElementById('closeComunaMapa');
-  const mapaOverlay = document.getElementById('comunaMapaOverlay');
-  const mapaSearch = document.getElementById('comuna-map-search');
-
-  openMapaBtn?.addEventListener('click', () => {
-    mapaModal?.classList.remove('hidden');
-    mapaModal?.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    // Inicializar mapa al abrir el modal
-    setTimeout(() => {
-      if (window.initComunaMap) window.initComunaMap();
-    }, 200);
-  });
-
-  function closeMapa() {
-    mapaModal?.classList.add('hidden');
-    mapaModal?.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  closeMapaBtn?.addEventListener('click', closeMapa);
-  mapaOverlay?.addEventListener('click', closeMapa);
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && mapaModal && !mapaModal.classList.contains('hidden')) closeMapa();
-  });
-
-  // Buscador dentro del modal
-  mapaSearch?.addEventListener('input', (e) => {
+  searchInput?.addEventListener('input', (e) => {
     const q = e.target.value.toLowerCase().trim();
-    const comunaItems = document.querySelectorAll('.mapa-comuna');
-    comunaItems.forEach(item => {
-      const nombre = item.getAttribute('data-comuna') || '';
+    const botones = document.querySelectorAll('.comuna-lista-btn');
+    botones.forEach(btn => {
+      const nombre = (btn.getAttribute('data-comuna-nombre') || '').toLowerCase();
       if (q === '' || nombre.includes(q)) {
-        item.style.display = '';
+        btn.style.display = '';
       } else {
-        item.style.display = 'none';
+        btn.style.display = 'none';
       }
     });
-
     // Ocultar zonas sin comunas visibles
     document.querySelectorAll('[data-zona]').forEach(zona => {
-      const visibles = zona.querySelectorAll('.mapa-comuna:not([style*="display: none"])');
+      const visibles = zona.querySelectorAll('.comuna-lista-btn:not([style*="display: none"])');
       zona.style.display = visibles.length > 0 ? '' : 'none';
+    });
+  });
+
+  // Click en comuna de la lista: resaltar en mapa + ir a landing al segundo click
+  let comunaSeleccionada = null;
+
+  document.querySelectorAll('.comuna-lista-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const slug = btn.getAttribute('data-comuna-slug');
+      const nombre = btn.getAttribute('data-comuna-nombre');
+
+      if (comunaSeleccionada === slug) {
+        // Segundo click: ir a la landing
+        window.location.href = '/comunas/' + slug + '/';
+      } else {
+        // Primer click: resaltar en el mapa
+        comunaSeleccionada = slug;
+        // Actualizar visual de botones
+        document.querySelectorAll('.comuna-lista-btn').forEach(b => {
+          b.classList.remove('bg-neon-500', 'text-dark-500', 'border-neon-500');
+          b.classList.add('bg-dark-100/50', 'text-gray-300', 'border-neon-500/10');
+        });
+        btn.classList.add('bg-neon-500', 'text-dark-500', 'border-neon-500');
+        btn.classList.remove('bg-dark-100/50', 'text-gray-300', 'border-neon-500/10');
+
+        // Resaltar marcador en el mapa
+        if (window.resaltarComunaEnMapa) {
+          window.resaltarComunaEnMapa(slug, nombre);
+        }
+
+        // Cambiar tooltip del botón
+        btn.title = 'Click nuevamente para ir a la landing de ' + nombre;
+      }
     });
   });
 </script>

@@ -148,6 +148,28 @@ const comunasJson = JSON.stringify(comunasMapa.map(c => ({
       });
     }
 
+    // Funcion para resaltar una comuna en el mapa (llamada desde la lista)
+    window.resaltarComunaEnMapa = function(slug, nombre) {
+      if (!map) { initMap(); }
+      if (!map) return;
+
+      // Reset todos los marcadores
+      markers.forEach(function(m) {
+        m.setStyle({ radius: 6, fillOpacity: 0.6, weight: 1.5 });
+      });
+
+      // Encontrar y resaltar el marcador de la comuna seleccionada
+      const idx = comunas.findIndex(function(c) { return c.slug === slug; });
+      if (idx >= 0 && markers[idx]) {
+        const c = comunas[idx];
+        const marker = markers[idx];
+        marker.setStyle({ radius: 12, fillOpacity: 1, weight: 3, color: '#ffffff' });
+        marker.openTooltip();
+        // Hacer zoom hacia la comuna
+        map.flyTo(c.coords, 12, { duration: 0.8 });
+      }
+    };
+
     // Cargar Leaflet si no está cargado
     if (typeof L === 'undefined') {
       var script = document.createElement('script');
