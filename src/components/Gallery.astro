@@ -7,9 +7,25 @@ import path from 'node:path';
 const galeriaDir = path.join(process.cwd(), 'public', 'imagen', 'drautomotriz');
 let fotosHome: { src: string; alt: string; categoria: string }[] = [];
 try {
-  const allFiles = fs.readdirSync(galeriaDir)
+  const allFilesRaw = fs.readdirSync(galeriaDir)
     .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
     .sort();
+
+  // Si hay versión .webp de un archivo, preferirla sobre .png/.jpeg/.jpg
+  const allFiles = [];
+  const seen = new Set();
+  for (const f of allFilesRaw) {
+    const baseName = f.replace(/\.(jpg|jpeg|png|webp)$/i, '');
+    if (seen.has(baseName)) continue;
+    const webpVersion = baseName + '.webp';
+    if (allFilesRaw.includes(webpVersion)) {
+      allFiles.push(webpVersion);
+      seen.add(baseName);
+    } else {
+      allFiles.push(f);
+      seen.add(baseName);
+    }
+  }
 
   fotosHome = allFiles.slice(0, 12).map(f => {
     const src = `/imagen/drautomotriz/${f}`;

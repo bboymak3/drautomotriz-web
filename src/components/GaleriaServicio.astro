@@ -34,9 +34,17 @@ if (servicioSlug) {
 const galeriaDir = path.join(process.cwd(), 'public', 'imagen', 'drautomotriz');
 let fotosGaleria: { src: string; alt: string; categoria: string }[] = [];
 try {
-  const allFiles = fs.readdirSync(galeriaDir)
+  const allFilesRaw = fs.readdirSync(galeriaDir)
     .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
     .sort();
+
+  // Solo WebP, excluir PNG/JPEG duplicados
+  const webpBases = new Set(allFilesRaw.filter(f => f.endsWith('.webp')).map(f => f.replace(/\.webp$/i, '')));
+  const allFiles = allFilesRaw.filter(f => {
+    if (f.endsWith('.webp')) return true;
+    const base = f.replace(/\.(jpg|jpeg|png)$/i, '');
+    return !webpBases.has(base);
+  });
 
   fotosGaleria = allFiles.map(f => {
     const src = `/imagen/drautomotriz/${f}`;

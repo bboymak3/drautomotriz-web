@@ -15,7 +15,7 @@ export interface Vehiculo {
 }
 
 // Helper para generar rutas
-const vimg = (slug: string, ext: string = 'png') => `/imagen/vehiculos/drautomotriz-${slug}.${ext}`;
+const vimg = (slug: string, ext: string = 'webp') => `/imagen/vehiculos/drautomotriz-${slug}.${ext}`;
 
 export const vehiculos: Vehiculo[] = [
   // Chevrolet
@@ -24,7 +24,7 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'chevrolet-spark', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Spark', imagen: vimg('chevrolet-spark'), alt: 'Chevrolet Spark mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Hatchback' },
 
   // Fiat
-  { slug: 'fiat-bravo-tjet', marca: 'Fiat', marcaSlug: 'fiat', modelo: 'Bravo T-Jet', imagen: vimg('fiat-bravo-tjet', 'jpg'), alt: 'Fiat Bravo T-Jet servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2016, tipo: 'Hatchback' },
+  { slug: 'fiat-bravo-tjet', marca: 'Fiat', marcaSlug: 'fiat', modelo: 'Bravo T-Jet', imagen: vimg('fiat-bravo-tjet', 'webp'), alt: 'Fiat Bravo T-Jet servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2016, tipo: 'Hatchback' },
 
   // Ford
   { slug: 'ford-ecosport', marca: 'Ford', marcaSlug: 'ford', modelo: 'EcoSport', imagen: vimg('ford-ecosport'), alt: 'Ford EcoSport servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'SUV' },
@@ -41,7 +41,7 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'hyundai-tucson', marca: 'Hyundai', marcaSlug: 'hyundai', modelo: 'Tucson', imagen: vimg('hyundai-tucson'), alt: 'Hyundai Tucson servicio automotriz a domicilio - DRAUTOMOTRIZ', anioInicio: 2015, tipo: 'SUV' },
 
   // Kia
-  { slug: 'kia-morning', marca: 'Kia', marcaSlug: 'kia', modelo: 'Morning', imagen: vimg('kia-morning', 'jpg'), alt: 'Kia Morning servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
+  { slug: 'kia-morning', marca: 'Kia', marcaSlug: 'kia', modelo: 'Morning', imagen: vimg('kia-morning', 'webp'), alt: 'Kia Morning servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
   { slug: 'kia-rio', marca: 'Kia', marcaSlug: 'kia', modelo: 'Rio', imagen: vimg('kia-rio'), alt: 'Kia Rio diagnostico computarizado a domicilio - DRAUTOMOTRIZ', anioInicio: 2015, tipo: 'Sedán/Hatchback' },
 
   // Mazda

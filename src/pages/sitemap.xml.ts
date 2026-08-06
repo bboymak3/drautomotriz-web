@@ -94,11 +94,11 @@ function getImagesForPage(page: string): string[] {
 
   if (page === '/') {
     // Home: banner asistencia-automotriz + banner vehiculo empresa + revision-tecnica
-    images.push('/imagen/banner/asistencia-automotriz.png');
-    images.push('/imagen/banner/vehiculo-empresa-drautomotriz.jpg');
-    images.push('/imagen/banner/revision-tecnica-sin-estres-02.png');
-    images.push('/imagen/banner/agenda-tu-servicio.jpeg');
-    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.png');
+    images.push('/imagen/banner/asistencia-automotriz.webp');
+    images.push('/imagen/banner/vehiculo-empresa-drautomotriz.webp');
+    images.push('/imagen/banner/revision-tecnica-sin-estres-02.webp');
+    images.push('/imagen/banner/agenda-tu-servicio.webp');
+    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.webp');
     // Primeras 12 imágenes de galería
     const galeriaDir = path.join(process.cwd(), 'public', 'imagen', 'drautomotriz');
     if (fs.existsSync(galeriaDir)) {
@@ -116,8 +116,8 @@ function getImagesForPage(page: string): string[] {
     // Páginas de comunas: banner específico de la comuna + banner revisión técnica
     const slug = page.split('/comunas/')[1].replace('/', '');
     images.push(`/imagen/comunas/mecanico-a-domicilio-${slug}.png`);
-    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.png');
-    images.push('/imagen/banner/asistencia-automotriz.png');
+    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.webp');
+    images.push('/imagen/banner/asistencia-automotriz.webp');
     // Todos los vehículos (para el widget MarcasQueAtendemos)
     vehiculos.forEach(v => images.push(v.imagen));
   } else if (page.includes('/vehiculos/') && page !== '/vehiculos/' && page !== '/vehiculos/todos/') {
@@ -135,7 +135,7 @@ function getImagesForPage(page: string): string[] {
         images.push(vehiculo.imagen);
       }
     }
-    images.push('/imagen/banner/asistencia-automotriz.png');
+    images.push('/imagen/banner/asistencia-automotriz.webp');
   } else if (page === '/galeria/') {
     // Galería: todas las imágenes de /public/imagen/drautomotriz/
     const galeriaDir = path.join(process.cwd(), 'public', 'imagen', 'drautomotriz');
@@ -167,8 +167,8 @@ function getImagesForPage(page: string): string[] {
     }
   } else if (page.includes('/servicios/')) {
     // Servicios: banner asistencia + algunos vehículos
-    images.push('/imagen/banner/asistencia-automotriz.png');
-    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.png');
+    images.push('/imagen/banner/asistencia-automotriz.webp');
+    images.push('/imagen/banner/revision-tecnica-servicio-domicilio.webp');
     vehiculos.slice(0, 6).forEach(v => images.push(v.imagen));
   }
 
