@@ -1,35 +1,50 @@
 // ============================================================
 // DRAUTOMOTRIZ - Comunas de Santiago con cobertura
-// Organizadas por 4 sectores: Norte, Oriente, Sur, Poniente
-// 28 comunas totales, cada una con su propia landing page (SEO local)
+// 52 comunas totales (32 Provincia Santiago + 20 Periféricas)
+// 7 comunas marcadas como excluidas (no generan landing, noindex)
 // ============================================================
 
 export interface Comuna {
   slug: string;
   nombre: string;
-  zona: 'Norte' | 'Oriente' | 'Sur' | 'Poniente';
+  zona: 'Norte' | 'Oriente' | 'Sur' | 'Poniente' | 'Cordillera' | 'Maipo' | 'Chacabuco' | 'Talagante' | 'Melipilla';
   descripcion: string;
   h1: string;
   metaTitle: string;
   metaDescription: string;
   keywords: string[];
   sectoresPopulares: string[];
+  excluida?: boolean;
 }
 
 export const comunas: Comuna[] = [
   // =====================================================
-  // SECTOR NORTE (6 comunas)
+  // PROVINCIA DE SANTIAGO (32 comunas)
   // =====================================================
+
+  // SECTOR NORTE
+  {
+    slug: 'conchali',
+    nombre: 'Conchalí',
+    zona: 'Norte',
+    descripcion: 'Atención mecánica a domicilio en Conchalí, cubriendo Av. Independencia, El Guanaco, San Pablo y todo el sector norte de la comuna.',
+    h1: 'Mecánico a Domicilio en Conchalí | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Conchalí | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Conchalí. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio conchali', 'mecanico conchali', 'auxilio mecanico conchali'],
+    sectoresPopulares: ['Av. Independencia', 'El Guanaco', 'San Pablo'],
+    excluida: true,
+  },
   {
     slug: 'huechuraba',
     nombre: 'Huechuraba',
     zona: 'Norte',
-    descripcion: 'Cobertura en Huechuraba, incluyendo Ciudad Empresarial, Los Trapiales, Huechuraba Alto y el sector de El Cobres. Atendemos en oficinas corporativas y condominios.',
+    descripcion: 'Cobertura en Huechuraba, incluyendo Ciudad Empresarial, Los Trapiales, Huechuraba Alto y el sector de El Cobres.',
     h1: 'Mecánico a Domicilio en Huechuraba | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Huechuraba | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Huechuraba. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Ciudad Empresarial. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio huechuraba', 'mecanico huechuraba', 'ciudad empresarial mecanico', 'auxilio mecanico huechuraba'],
-    sectoresPopulares: ['Ciudad Empresarial', 'Los Trapiales', 'Huechuraba Alto', 'El Cobres']
+    keywords: ['mecanico a domicilio huechuraba', 'mecanico huechuraba', 'ciudad empresarial mecanico'],
+    sectoresPopulares: ['Ciudad Empresarial', 'Los Trapiales', 'Huechuraba Alto', 'El Cobres'],
   },
   {
     slug: 'independencia',
@@ -40,7 +55,7 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Independencia | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Independencia. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio independencia', 'mecanico independencia', 'auxilio mecanico independencia'],
-    sectoresPopulares: ['Av. Independencia', 'Barrio Independencia', 'Huelén', 'Universidad de Chile']
+    sectoresPopulares: ['Av. Independencia', 'Barrio Independencia', 'Huelén', 'Universidad de Chile'],
   },
   {
     slug: 'quilicura',
@@ -51,44 +66,54 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Quilicura | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Quilicura. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio quilicura', 'mecanico quilicura', 'auxilio mecanico quilicura'],
-    sectoresPopulares: ['Los Andes', 'Industrial', 'Residencial', 'Lo Echevers']
+    sectoresPopulares: ['Los Andes', 'Industrial', 'Residencial', 'Lo Echevers'],
   },
   {
     slug: 'recoleta',
     nombre: 'Recoleta',
     zona: 'Norte',
-    descripcion: 'Cobertura en Recoleta, desde Plaza Baquedano hasta Av. Independencia, incluyendo La Feria, Patronato, Vega Central y el sector del Cerro San Cristóbal. Atención en edificios y casas.',
+    descripcion: 'Cobertura en Recoleta, desde Plaza Baquedano hasta Av. Independencia, incluyendo La Feria, Patronato, Vega Central y el sector del Cerro San Cristóbal.',
     h1: 'Mecánico a Domicilio en Recoleta | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Recoleta | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Recoleta. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Patronato, La Vega, Av. Independencia. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio recoleta', 'mecanico recoleta', 'auxilio mecanico recoleta', 'patronato mecanico'],
-    sectoresPopulares: ['La Feria', 'Patronato', 'Vega Central', 'Cerro San Cristóbal', 'Av. Independencia']
+    sectoresPopulares: ['La Feria', 'Patronato', 'Vega Central', 'Cerro San Cristóbal', 'Av. Independencia'],
+  },
+  {
+    slug: 'renca',
+    nombre: 'Renca',
+    zona: 'Norte',
+    descripcion: 'Atención mecánica a domicilio en Renca, cubriendo Plaza de Armas, Av. Cerro Navia, Renca Centro y el sector del Cerro Renca.',
+    h1: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Renca. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio renca', 'mecanico renca', 'auxilio mecanico renca'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Cerro Navia', 'Renca Centro', 'Cerro Renca'],
+    excluida: true,
   },
 
-  // =====================================================
-  // SECTOR ORIENTE (7 comunas)
-  // =====================================================
+  // SECTOR ORIENTE
   {
     slug: 'las-condes',
     nombre: 'Las Condes',
     zona: 'Oriente',
-    descripcion: 'Cubrimos toda la comuna de Las Condes, desde Apoquindo hasta San Carlos de Apoquindo, incluyendo El Golf, Manquehue, Vitacura Sur y La Dehesa. Atendemos en condominios, edificios corporativos y casas particulares sin inconvenientes de acceso.',
+    descripcion: 'Cubrimos toda la comuna de Las Condes, desde Apoquindo hasta San Carlos de Apoquindo, incluyendo El Golf, Manquehue, Vitacura Sur y La Dehesa.',
     h1: 'Mecánico a Domicilio en Las Condes | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Las Condes | DRAUTOMOTRIZ',
     metaDescription: 'Servicio mecánico a domicilio en Las Condes. Diagnóstico, mantención, frenos, batería y auxilio 24/7. Atendemos en El Golf, Manquehue, La Dehesa. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio las condes', 'mecanico las condes', 'auxilio mecanico las condes', 'servicio automotriz las condes'],
-    sectoresPopulares: ['El Golf', 'Manquehue', 'La Dehesa', 'San Carlos de Apoquindo', 'Apoquindo', 'Vitacura Sur', 'Las Tranqueras']
+    keywords: ['mecanico a domicilio las condes', 'mecanico las condes', 'auxilio mecanico las condes'],
+    sectoresPopulares: ['El Golf', 'Manquehue', 'La Dehesa', 'San Carlos de Apoquindo', 'Apoquindo', 'Vitacura Sur', 'Las Tranqueras'],
   },
   {
     slug: 'lo-barnechea',
     nombre: 'Lo Barnechea',
     zona: 'Oriente',
-    descripcion: 'Atendemos toda la comuna de Lo Barnechea, desde Plaza Lo Barnechea hasta Los Trapiales, incluyendo Paseo Las Trapiales, La Dehesa y el sector de Valle Escondido. Cobertura extendida hasta pies de cordillera.',
+    descripcion: 'Atendemos toda la comuna de Lo Barnechea, desde Plaza Lo Barnechea hasta Los Trapiales, incluyendo Paseo Las Trapiales, La Dehesa y el sector de Valle Escondido.',
     h1: 'Mecánico a Domicilio en Lo Barnechea | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Lo Barnechea | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Lo Barnechea. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos La Dehesa, Paseo Las Trapiales. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio lo barnechea', 'mecanico lo barnechea', 'auxilio mecanico lo barnechea', 'la dehesa mecanico'],
-    sectoresPopulares: ['La Dehesa', 'Paseo Las Trapiales', 'Lo Barnechea Centro', 'Los Trapiales', 'Valle Escondido']
+    sectoresPopulares: ['La Dehesa', 'Paseo Las Trapiales', 'Lo Barnechea Centro', 'Los Trapiales', 'Valle Escondido'],
   },
   {
     slug: 'macul',
@@ -99,18 +124,18 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Macul | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Macul. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio macul', 'mecanico macul', 'auxilio mecanico macul'],
-    sectoresPopulares: ['Av. Macul', 'Plaza de Armas', 'Av. Quilín', 'Villa Macul']
+    sectoresPopulares: ['Av. Macul', 'Plaza de Armas', 'Av. Quilín', 'Villa Macul'],
   },
   {
     slug: 'nunoa',
     nombre: 'Ñuñoa',
     zona: 'Oriente',
-    descripcion: 'Servicio mecánico a domicilio en Ñuñoa, cubriendo Plaza Ñuñoa, Avenida Irarrázaval, Parque Bustamante, Simón Bolívar y todo el sector norte y sur de la comuna. Atención rápida en promedio 45 minutos.',
+    descripcion: 'Servicio mecánico a domicilio en Ñuñoa, cubriendo Plaza Ñuñoa, Avenida Irarrázaval, Parque Bustamante, Simón Bolívar y todo el sector norte y sur de la comuna.',
     h1: 'Mecánico a Domicilio en Ñuñoa | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Ñuñoa | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Ñuñoa. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Plaza Ñuñoa, Irarrázaval, Simón Bolívar. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio nuñoa', 'mecanico nuñoa', 'auxilio mecanico nuñoa', 'servicio automotriz nuñoa'],
-    sectoresPopulares: ['Plaza Ñuñoa', 'Irarrázaval', 'Parque Bustamante', 'Simón Bolívar', 'Patronato', 'Dublé Almeyda']
+    keywords: ['mecanico a domicilio nuñoa', 'mecanico nuñoa', 'auxilio mecanico nuñoa'],
+    sectoresPopulares: ['Plaza Ñuñoa', 'Irarrázaval', 'Parque Bustamante', 'Simón Bolívar', 'Patronato', 'Dublé Almeyda'],
   },
   {
     slug: 'penalolen',
@@ -121,34 +146,32 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Peñalolén | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Peñalolén. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio penalolen', 'mecanico penalolen', 'auxilio mecanico penalolen'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Grecia', 'Las Parcelas', 'Peñalolén Alto']
+    sectoresPopulares: ['Plaza de Armas', 'Av. Grecia', 'Las Parcelas', 'Peñalolén Alto'],
   },
   {
     slug: 'providencia',
     nombre: 'Providencia',
     zona: 'Oriente',
-    descripcion: 'Servicio mecánico a domicilio en Providencia, cubriendo desde Plaza Italia hasta Tobalaba, incluyendo Barrio Italia, Pedro de Valdivia, El Salvador y Los Leones. Atendemos en edificios con estacionamiento subterráneo y casas.',
+    descripcion: 'Servicio mecánico a domicilio en Providencia, cubriendo desde Plaza Italia hasta Tobalaba, incluyendo Barrio Italia, Pedro de Valdivia, El Salvador y Los Leones.',
     h1: 'Mecánico a Domicilio en Providencia | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Providencia | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Providencia. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Barrio Italia, Pedro de Valdivia, El Salvador. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio providencia', 'mecanico providencia', 'auxilio mecanico providencia', 'servicio automotriz providencia'],
-    sectoresPopulares: ['Barrio Italia', 'Pedro de Valdivia', 'El Salvador', 'Los Leones', 'Plaza Italia', 'Tobalaba']
+    keywords: ['mecanico a domicilio providencia', 'mecanico providencia', 'auxilio mecanico providencia'],
+    sectoresPopulares: ['Barrio Italia', 'Pedro de Valdivia', 'El Salvador', 'Los Leones', 'Plaza Italia', 'Tobalaba'],
   },
   {
     slug: 'la-reina',
     nombre: 'La Reina',
     zona: 'Oriente',
-    descripcion: 'Cobertura en toda la comuna de La Reina, desde Plaza Los Dominicos hasta Av. Larraín, incluyendo Villa La Reina, Renato Sánchez y el sector de Los Dominicos. Atención en condominios y casas particulares.',
+    descripcion: 'Cobertura en toda la comuna de La Reina, desde Plaza Los Dominicos hasta Av. Larraín, incluyendo Villa La Reina, Renato Sánchez y el sector de Los Dominicos.',
     h1: 'Mecánico a Domicilio en La Reina | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en La Reina | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en La Reina. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Plaza Los Dominicos, Av. Larraín. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio la reina', 'mecanico la reina', 'auxilio mecanico la reina', 'los dominicos mecanico'],
-    sectoresPopulares: ['Plaza Los Dominicos', 'Av. Larraín', 'Villa La Reina', 'Renato Sánchez', 'Los Dominicos']
+    sectoresPopulares: ['Plaza Los Dominicos', 'Av. Larraín', 'Villa La Reina', 'Renato Sánchez', 'Los Dominicos'],
   },
 
-  // =====================================================
-  // SECTOR SUR (8 comunas)
-  // =====================================================
+  // SECTOR SUR
   {
     slug: 'el-bosque',
     nombre: 'El Bosque',
@@ -158,7 +181,7 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en El Bosque | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en El Bosque. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio el bosque', 'mecanico el bosque', 'auxilio mecanico el bosque'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa', 'Granjas Sur']
+    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa', 'Granjas Sur'],
   },
   {
     slug: 'la-cisterna',
@@ -169,7 +192,7 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en La Cisterna | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en La Cisterna. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio la cisterna', 'mecanico la cisterna', 'auxilio mecanico la cisterna'],
-    sectoresPopulares: ['El Parque', 'La Cisterna Centro', 'Av. Graneros', 'Metro La Cisterna']
+    sectoresPopulares: ['El Parque', 'La Cisterna Centro', 'Av. Graneros', 'Metro La Cisterna'],
   },
   {
     slug: 'la-florida',
@@ -180,7 +203,31 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en La Florida | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en La Florida. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Villa O\'Higgins, Vicuña Mackenna. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio la florida', 'mecanico la florida', 'auxilio mecanico la florida'],
-    sectoresPopulares: ['Plaza La Florida', 'Villa O\'Higgins', 'Las Parcelas', 'Rojas Magallanes', 'Vicuña Mackenna']
+    sectoresPopulares: ['Plaza La Florida', 'Villa O\'Higgins', 'Las Parcelas', 'Rojas Magallanes', 'Vicuña Mackenna'],
+  },
+  {
+    slug: 'la-granja',
+    nombre: 'La Granja',
+    zona: 'Sur',
+    descripcion: 'Servicio mecánico a domicilio en La Granja, cubriendo Plaza de Armas, Av. Santa Rosa y todo el sector sur de la comuna.',
+    h1: 'Mecánico a Domicilio en La Granja | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en La Granja | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en La Granja. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio la granja', 'mecanico la granja', 'auxilio mecanico la granja'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa'],
+    excluida: true,
+  },
+  {
+    slug: 'la-pintana',
+    nombre: 'La Pintana',
+    zona: 'Sur',
+    descripcion: 'Atención mecánica a domicilio en La Pintana, cubriendo Plaza de Armas, Av. Santa Rosa, sector San Ramón y todo el sector sur oriente de la comuna.',
+    h1: 'Mecánico a Domicilio en La Pintana | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en La Pintana | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en La Pintana. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio la pintana', 'mecanico la pintana', 'auxilio mecanico la pintana'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa', 'San Ramón'],
+    excluida: true,
   },
   {
     slug: 'lo-espejo',
@@ -191,7 +238,7 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Lo Espejo | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Lo Espejo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio lo espejo', 'mecanico lo espejo', 'auxilio mecanico lo espejo'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Lo Espejo']
+    sectoresPopulares: ['Plaza de Armas', 'Av. Lo Espejo'],
   },
   {
     slug: 'san-joaquin',
@@ -202,93 +249,8 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en San Joaquín | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en San Joaquín. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio san joaquin', 'mecanico san joaquin', 'auxilio mecanico san joaquin'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Vicuña Mackenna', 'Universidad Católica']
+    sectoresPopulares: ['Plaza de Armas', 'Av. Vicuña Mackenna', 'Universidad Católica'],
   },
-
-  // =====================================================
-  // SECTOR PONIENTE (8 comunas)
-  // =====================================================
-  {
-    slug: 'cerrillos',
-    nombre: 'Cerrillos',
-    zona: 'Poniente',
-    descripcion: 'Atención mecánica a domicilio en Cerrillos, cubriendo Plaza de Armas, Av. Pedro Aguirre Cerda, Mall Plaza Oeste y todo el sector poniente de la comuna.',
-    h1: 'Mecánico a Domicilio en Cerrillos | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Cerrillos | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Cerrillos. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio cerrillos', 'mecanico cerrillos', 'auxilio mecanico cerrillos'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Pedro Aguirre Cerda', 'Mall Plaza Oeste']
-  },
-  {
-    slug: 'estacion-central',
-    nombre: 'Estación Central',
-    zona: 'Poniente',
-    descripcion: 'Atención en Estación Central, incluyendo el sector del Alameda, Av. General Bonilla, Blanqueado y el entorno de la Universidad de Santiago (USACH).',
-    h1: 'Mecánico a Domicilio en Estación Central | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Estación Central | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Estación Central. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio estacion central', 'mecanico estacion central', 'auxilio mecanico estacion central'],
-    sectoresPopulares: ['Alameda', 'Av. General Bonilla', 'Blanqueado', 'USACH']
-  },
-  {
-    slug: 'maipu',
-    nombre: 'Maipú',
-    zona: 'Poniente',
-    descripcion: 'Servicio mecánico a domicilio en Maipú, cubriendo Plaza de Armas, Av. Pajaritos, Los Pinos, Ciudad Gateway, Tres Poniente y todo el sector poniente de la comuna más grande de Chile.',
-    h1: 'Mecánico a Domicilio en Maipú | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Maipú | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Maipú. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Pajaritos, Los Pinos, Tres Poniente. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio maipu', 'mecanico maipu', 'auxilio mecanico maipu'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Pajaritos', 'Los Pinos', 'Ciudad Gateway', 'Tres Poniente']
-  },
-  {
-    slug: 'pedro-aguirre-cerda',
-    nombre: 'Pedro Aguirre Cerda',
-    zona: 'Poniente',
-    descripcion: 'Atención mecánica a domicilio en Pedro Aguirre Cerda, cubriendo Plaza de Armas, Av. Pedro Aguirre Cerda y todo el sector poniente sur de la comuna.',
-    h1: 'Mecánico a Domicilio en Pedro Aguirre Cerda | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Pedro Aguirre Cerda | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Pedro Aguirre Cerda. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio pedro aguirre cerda', 'mecanico pedro aguirre cerda', 'auxilio mecanico pedro aguirre cerda'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Pedro Aguirre Cerda']
-  },
-  {
-    slug: 'pudahuel',
-    nombre: 'Pudahuel',
-    zona: 'Poniente',
-    descripcion: 'Atención mecánica a domicilio en Pudahuel, incluyendo El Bosque, Pudahuel Sur, Lo Cruchaga, Ciudad Pudahuel y el entorno del Aeropuerto Arturo Merino Benítez.',
-    h1: 'Mecánico a Domicilio en Pudahuel | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Pudahuel | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Pudahuel. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio pudahuel', 'mecanico pudahuel', 'auxilio mecanico pudahuel', 'aeropuerto mecanico'],
-    sectoresPopulares: ['El Bosque', 'Pudahuel Sur', 'Lo Cruchaga', 'Ciudad Pudahuel', 'Aeropuerto']
-  },
-  {
-    slug: 'quinta-normal',
-    nombre: 'Quinta Normal',
-    zona: 'Poniente',
-    descripcion: 'Cobertura en Quinta Normal, incluyendo el Parque Quinta Normal, Matucana, Blanco Encalada y el entorno del Museo Nacional de Historia Natural.',
-    h1: 'Mecánico a Domicilio en Quinta Normal | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Quinta Normal | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Quinta Normal. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio quinta normal', 'mecanico quinta normal', 'auxilio mecanico quinta normal'],
-    sectoresPopulares: ['Parque Quinta Normal', 'Matucana', 'Blanco Encalada']
-  },
-  {
-    slug: 'cerro-navia',
-    nombre: 'Cerro Navia',
-    zona: 'Poniente',
-    descripcion: 'Cobertura en Cerro Navia, desde Av. Neptuno hasta Huelén, incluyendo Cerro Navia Centro, Las Parcelas y Av. San Pablo.',
-    h1: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Cerro Navia. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio cerro navia', 'mecanico cerro navia', 'auxilio mecanico cerro navia'],
-    sectoresPopulares: ['Av. Neptuno', 'Cerro Navia Centro', 'Las Parcelas', 'Av. San Pablo']
-  },
-
-  // =====================================================
-  // SECTOR SUR - comunas adicionales
-  // =====================================================
   {
     slug: 'san-miguel',
     nombre: 'San Miguel',
@@ -298,7 +260,19 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en San Miguel | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en San Miguel. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio san miguel', 'mecanico san miguel', 'auxilio mecanico san miguel'],
-    sectoresPopulares: ['Av. Grande', 'San Miguel Centro', 'Departamental', 'Lo Valledor']
+    sectoresPopulares: ['Av. Grande', 'San Miguel Centro', 'Departamental', 'Lo Valledor'],
+  },
+  {
+    slug: 'san-ramon',
+    nombre: 'San Ramón',
+    zona: 'Sur',
+    descripcion: 'Atención mecánica a domicilio en San Ramón, cubriendo Plaza de Armas, Av. Santa Rosa y todo el sector sur de la comuna.',
+    h1: 'Mecánico a Domicilio en San Ramón | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en San Ramón | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en San Ramón. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio san ramon', 'mecanico san ramon', 'auxilio mecanico san ramon'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa'],
+    excluida: true,
   },
   {
     slug: 'santiago-centro',
@@ -309,44 +283,344 @@ export const comunas: Comuna[] = [
     metaTitle: 'Mecánico a Domicilio en Santiago Centro | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Santiago Centro. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Barrio Brasil, Lastarria, Bellas Artes. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio santiago centro', 'mecanico santiago centro', 'auxilio mecanico santiago centro', 'barrio brasil mecanico'],
-    sectoresPopulares: ['Plaza de Armas', 'Barrio Brasil', 'Lastarria', 'Bellas Artes', 'Parque Forestal', 'Av. Matta']
+    sectoresPopulares: ['Plaza de Armas', 'Barrio Brasil', 'Lastarria', 'Bellas Artes', 'Parque Forestal', 'Av. Matta'],
   },
   {
     slug: 'vitacura',
     nombre: 'Vitacura',
     zona: 'Sur',
-    descripcion: 'Cobertura completa en Vitacura, incluyendo Vitacura Alto, Bajo y Centro, así como el sector de Santa María y Costa Centauro. Atendemos vehículos de alta gama con equipos de diagnóstico especializados.',
+    descripcion: 'Cobertura completa en Vitacura, incluyendo Vitacura Alto, Bajo y Centro, así como el sector de Santa María y Costa Centauro.',
     h1: 'Mecánico a Domicilio en Vitacura | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Vitacura | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Vitacura. Diagnóstico multimarca, mantención premium, frenos y auxilio 24/7. Atendemos vehículos de alta gama. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio vitacura', 'mecanico vitacura', 'auxilio mecanico vitacura', 'servicio automotriz vitacura alta gama'],
-    sectoresPopulares: ['Vitacura Alto', 'Vitacura Bajo', 'Santa María', 'Costa Centauro', 'Lo Saldes']
+    keywords: ['mecanico a domicilio vitacura', 'mecanico vitacura', 'auxilio mecanico vitacura'],
+    sectoresPopulares: ['Vitacura Alto', 'Vitacura Bajo', 'Santa María', 'Costa Centauro', 'Lo Saldes'],
+  },
+
+  // SECTOR PONIENTE
+  {
+    slug: 'cerrillos',
+    nombre: 'Cerrillos',
+    zona: 'Poniente',
+    descripcion: 'Atención mecánica a domicilio en Cerrillos, cubriendo Plaza de Armas, Av. Pedro Aguirre Cerda, Mall Plaza Oeste y todo el sector poniente de la comuna.',
+    h1: 'Mecánico a Domicilio en Cerrillos | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Cerrillos | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Cerrillos. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio cerrillos', 'mecanico cerrillos', 'auxilio mecanico cerrillos'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Pedro Aguirre Cerda', 'Mall Plaza Oeste'],
+  },
+  {
+    slug: 'cerro-navia',
+    nombre: 'Cerro Navia',
+    zona: 'Poniente',
+    descripcion: 'Cobertura en Cerro Navia, desde Av. Neptuno hasta Huelén, incluyendo Cerro Navia Centro, Las Parcelas y Av. San Pablo.',
+    h1: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Cerro Navia. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio cerro navia', 'mecanico cerro navia', 'auxilio mecanico cerro navia'],
+    sectoresPopulares: ['Av. Neptuno', 'Cerro Navia Centro', 'Las Parcelas', 'Av. San Pablo'],
+  },
+  {
+    slug: 'estacion-central',
+    nombre: 'Estación Central',
+    zona: 'Poniente',
+    descripcion: 'Atención en Estación Central, incluyendo el sector del Alameda, Av. General Bonilla, Blanqueado y el entorno de la Universidad de Santiago (USACH).',
+    h1: 'Mecánico a Domicilio en Estación Central | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Estación Central | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Estación Central. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio estacion central', 'mecanico estacion central', 'auxilio mecanico estacion central'],
+    sectoresPopulares: ['Alameda', 'Av. General Bonilla', 'Blanqueado', 'USACH'],
+  },
+  {
+    slug: 'lo-prado',
+    nombre: 'Lo Prado',
+    zona: 'Poniente',
+    descripcion: 'Servicio mecánico a domicilio en Lo Prado, cubriendo Av. San Pablo, Neptuno, El Salto y todo el sector poniente de la comuna.',
+    h1: 'Mecánico a Domicilio en Lo Prado | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Lo Prado | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Lo Prado. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio lo prado', 'mecanico lo prado', 'auxilio mecanico lo prado'],
+    sectoresPopulares: ['Av. San Pablo', 'Neptuno', 'El Salto'],
+    excluida: true,
+  },
+  {
+    slug: 'maipu',
+    nombre: 'Maipú',
+    zona: 'Poniente',
+    descripcion: 'Servicio mecánico a domicilio en Maipú, cubriendo Plaza de Armas, Av. Pajaritos, Los Pinos, Ciudad Gateway, Tres Poniente y todo el sector poniente de la comuna más grande de Chile.',
+    h1: 'Mecánico a Domicilio en Maipú | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Maipú | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Maipú. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Pajaritos, Los Pinos, Tres Poniente. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio maipu', 'mecanico maipu', 'auxilio mecanico maipu'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Pajaritos', 'Los Pinos', 'Ciudad Gateway', 'Tres Poniente'],
+  },
+  {
+    slug: 'pedro-aguirre-cerda',
+    nombre: 'Pedro Aguirre Cerda',
+    zona: 'Poniente',
+    descripcion: 'Atención mecánica a domicilio en Pedro Aguirre Cerda, cubriendo Plaza de Armas, Av. Pedro Aguirre Cerda y todo el sector poniente sur de la comuna.',
+    h1: 'Mecánico a Domicilio en Pedro Aguirre Cerda | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Pedro Aguirre Cerda | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Pedro Aguirre Cerda. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio pedro aguirre cerda', 'mecanico pedro aguirre cerda'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Pedro Aguirre Cerda'],
+  },
+  {
+    slug: 'pudahuel',
+    nombre: 'Pudahuel',
+    zona: 'Poniente',
+    descripcion: 'Atención mecánica a domicilio en Pudahuel, incluyendo El Bosque, Pudahuel Sur, Lo Cruchaga, Ciudad Pudahuel y el entorno del Aeropuerto Arturo Merino Benítez.',
+    h1: 'Mecánico a Domicilio en Pudahuel | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Pudahuel | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Pudahuel. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio pudahuel', 'mecanico pudahuel', 'auxilio mecanico pudahuel', 'aeropuerto mecanico'],
+    sectoresPopulares: ['El Bosque', 'Pudahuel Sur', 'Lo Cruchaga', 'Ciudad Pudahuel', 'Aeropuerto'],
+  },
+  {
+    slug: 'quinta-normal',
+    nombre: 'Quinta Normal',
+    zona: 'Poniente',
+    descripcion: 'Cobertura en Quinta Normal, incluyendo el Parque Quinta Normal, Matucana, Blanco Encalada y el entorno del Museo Nacional de Historia Natural.',
+    h1: 'Mecánico a Domicilio en Quinta Normal | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Quinta Normal | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Quinta Normal. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio quinta normal', 'mecanico quinta normal', 'auxilio mecanico quinta normal'],
+    sectoresPopulares: ['Parque Quinta Normal', 'Matucana', 'Blanco Encalada'],
   },
 
   // =====================================================
-  // PROVINCIA CORDILLERA (2 comunas)
+  // COMUNAS PERIFÉRICAS Y RURALES (20 comunas)
   // =====================================================
-  {
-    slug: 'puente-alto',
-    nombre: 'Puente Alto',
-    zona: 'Sur',
-    descripcion: 'Servicio mecánico a domicilio en Puente Alto, cubriendo Plaza de Armas, Las Mercedes, Plaza Oeste, Avenida Concha y Toro y todo el sector sur poniente de la comuna.',
-    h1: 'Mecánico a Domicilio en Puente Alto | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Puente Alto | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Puente Alto. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Las Mercedes, Concha y Toro. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio puente alto', 'mecanico puente alto', 'auxilio mecanico puente alto'],
-    sectoresPopulares: ['Plaza de Armas', 'Las Mercedes', 'Plaza Oeste', 'Concha y Toro']
-  },
+
+  // PROVINCIA DE CORDILLERA (3)
   {
     slug: 'pirque',
     nombre: 'Pirque',
-    zona: 'Sur',
+    zona: 'Cordillera',
     descripcion: 'Atención mecánica a domicilio en Pirque, cubriendo Plaza de Armas, Av. Concha y Toro, sector Viña Cousiño y zonas rurales aledañas de la Provincia Cordillera.',
     h1: 'Mecánico a Domicilio en Pirque | DRAUTOMOTRIZ',
     metaTitle: 'Mecánico a Domicilio en Pirque | DRAUTOMOTRIZ',
     metaDescription: 'Mecánico a domicilio en Pirque. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio pirque', 'mecanico pirque', 'auxilio mecanico pirque'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Concha y Toro', 'Viña Cousiño']
+    sectoresPopulares: ['Plaza de Armas', 'Av. Concha y Toro', 'Viña Cousiño'],
+  },
+  {
+    slug: 'puente-alto',
+    nombre: 'Puente Alto',
+    zona: 'Cordillera',
+    descripcion: 'Servicio mecánico a domicilio en Puente Alto, cubriendo Plaza de Armas, Las Mercedes, Plaza Oeste, Avenida Concha y Toro y todo el sector sur poniente de la comuna.',
+    h1: 'Mecánico a Domicilio en Puente Alto | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Puente Alto | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Puente Alto. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Las Mercedes, Concha y Toro. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio puente alto', 'mecanico puente alto', 'auxilio mecanico puente alto'],
+    sectoresPopulares: ['Plaza de Armas', 'Las Mercedes', 'Plaza Oeste', 'Concha y Toro'],
+  },
+  {
+    slug: 'san-jose-de-maipo',
+    nombre: 'San José de Maipo',
+    zona: 'Cordillera',
+    descripcion: 'Atención mecánica a domicilio en San José de Maipo, cubriendo el sector cordillerano de la Provincia de Cordillera, incluyendo El Volcán, El Ingenio y Guayacán.',
+    h1: 'Mecánico a Domicilio en San José de Maipo | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en San José de Maipo | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en San José de Maipo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio san jose de maipo', 'mecanico san jose de maipo', 'cajon del maipo mecanico'],
+    sectoresPopulares: ['San José de Maipo', 'El Volcán', 'El Ingenio', 'Guayacán'],
+  },
+
+  // PROVINCIA DE MAIPO (4)
+  {
+    slug: 'buin',
+    nombre: 'Buin',
+    zona: 'Maipo',
+    descripcion: 'Servicio mecánico a domicilio en Buin, cubriendo Plaza de Armas, Av. Bernardo O\'Higgins y todo el sector urbano de la comuna.',
+    h1: 'Mecánico a Domicilio en Buin | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Buin | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Buin. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio buin', 'mecanico buin', 'auxilio mecanico buin'],
+    sectoresPopulares: ['Plaza de Armas', 'Av. Bernardo O\'Higgins'],
+  },
+  {
+    slug: 'calera-de-tango',
+    nombre: 'Calera de Tango',
+    zona: 'Maipo',
+    descripcion: 'Atención mecánica a domicilio en Calera de Tango, cubriendo el sector urbano y rural de la comuna en la Provincia de Maipo.',
+    h1: 'Mecánico a Domicilio en Calera de Tango | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Calera de Tango | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Calera de Tango. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio calera de tango', 'mecanico calera de tango'],
+    sectoresPopulares: ['Plaza de Armas', 'Sector Rural'],
+  },
+  {
+    slug: 'paine',
+    nombre: 'Paine',
+    zona: 'Maipo',
+    descripcion: 'Servicio mecánico a domicilio en Paine, cubriendo Plaza de Armas, sector urbano y rural de la Provincia de Maipo.',
+    h1: 'Mecánico a Domicilio en Paine | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Paine | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Paine. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio paine', 'mecanico paine', 'auxilio mecanico paine'],
+    sectoresPopulares: ['Plaza de Armas', 'Sector Urbano'],
+  },
+  {
+    slug: 'san-bernardo',
+    nombre: 'San Bernardo',
+    zona: 'Maipo',
+    descripcion: 'Cobertura en San Bernardo, incluyendo Plaza de Armas, Santa Rosa, El Pinto, Maipo y todo el sector sur de la comuna. Atención en empresas, condominios y casas.',
+    h1: 'Mecánico a Domicilio en San Bernardo | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en San Bernardo | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en San Bernardo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio san bernardo', 'mecanico san bernardo', 'auxilio mecanico san bernardo'],
+    sectoresPopulares: ['Plaza de Armas', 'Santa Rosa', 'El Pinto', 'Maipo'],
+    excluida: true,
+  },
+
+  // PROVINCIA DE CHACABUCO (3)
+  {
+    slug: 'colina',
+    nombre: 'Colina',
+    zona: 'Chacabuco',
+    descripcion: 'Cobertura en Colina, incluyendo Chicureo, Ciudad de Colina, Las Canteras y todo el sector norte de la comuna.',
+    h1: 'Mecánico a Domicilio en Colina | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Colina | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Colina. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio colina', 'mecanico colina', 'chicureo mecanico', 'auxilio mecanico colina'],
+    sectoresPopulares: ['Chicureo', 'Ciudad de Colina', 'Las Canteras'],
+  },
+  {
+    slug: 'lampa',
+    nombre: 'Lampa',
+    zona: 'Chacabuco',
+    descripcion: 'Servicio mecánico a domicilio en Lampa, incluyendo el sector urbano, Valle Grande y las zonas rurales aledañas.',
+    h1: 'Mecánico a Domicilio en Lampa | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Lampa | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Lampa. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio lampa', 'mecanico lampa', 'auxilio mecanico lampa'],
+    sectoresPopulares: ['Lampa Centro', 'Valle Grande'],
+  },
+  {
+    slug: 'tiltil',
+    nombre: 'Tiltil',
+    zona: 'Chacabuco',
+    descripcion: 'Atención mecánica a domicilio en Tiltil, cubriendo el sector urbano y rural de la Provincia de Chacabuco.',
+    h1: 'Mecánico a Domicilio en Tiltil | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Tiltil | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Tiltil. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio tiltil', 'mecanico tiltil', 'auxilio mecanico tiltil'],
+    sectoresPopulares: ['Tiltil Centro', 'Sector Rural'],
+  },
+
+  // PROVINCIA DE TALAGANTE (5)
+  {
+    slug: 'el-monte',
+    nombre: 'El Monte',
+    zona: 'Talagante',
+    descripcion: 'Servicio mecánico a domicilio en El Monte, cubriendo el sector urbano y rural de la Provincia de Talagante.',
+    h1: 'Mecánico a Domicilio en El Monte | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en El Monte | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en El Monte. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio el monte', 'mecanico el monte', 'auxilio mecanico el monte'],
+    sectoresPopulares: ['El Monte Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'isla-de-maipo',
+    nombre: 'Isla de Maipo',
+    zona: 'Talagante',
+    descripcion: 'Atención mecánica a domicilio en Isla de Maipo, cubriendo el sector urbano y rural de la Provincia de Talagante.',
+    h1: 'Mecánico a Domicilio en Isla de Maipo | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Isla de Maipo | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Isla de Maipo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio isla de maipo', 'mecanico isla de maipo'],
+    sectoresPopulares: ['Isla de Maipo Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'padre-hurtado',
+    nombre: 'Padre Hurtado',
+    zona: 'Talagante',
+    descripcion: 'Servicio mecánico a domicilio en Padre Hurtado, cubriendo el sector urbano de la Provincia de Talagante.',
+    h1: 'Mecánico a Domicilio en Padre Hurtado | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Padre Hurtado | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Padre Hurtado. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio padre hurtado', 'mecanico padre hurtado'],
+    sectoresPopulares: ['Padre Hurtado Centro'],
+  },
+  {
+    slug: 'penaflor',
+    nombre: 'Peñaflor',
+    zona: 'Talagante',
+    descripcion: 'Atención mecánica a domicilio en Peñaflor, cubriendo el sector urbano y rural de la Provincia de Talagante.',
+    h1: 'Mecánico a Domicilio en Peñaflor | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Peñaflor | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Peñaflor. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio penaflor', 'mecanico penaflor'],
+    sectoresPopulares: ['Peñaflor Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'talagante',
+    nombre: 'Talagante',
+    zona: 'Talagante',
+    descripcion: 'Servicio mecánico a domicilio en Talagante, cubriendo Plaza de Armas, sector urbano y rural de la Provincia de Talagante.',
+    h1: 'Mecánico a Domicilio en Talagante | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Talagante | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Talagante. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio talagante', 'mecanico talagante', 'auxilio mecanico talagante'],
+    sectoresPopulares: ['Plaza de Armas', 'Talagante Centro', 'Sector Rural'],
+  },
+
+  // PROVINCIA DE MELIPILLA (5)
+  {
+    slug: 'alhue',
+    nombre: 'Alhué',
+    zona: 'Melipilla',
+    descripcion: 'Atención mecánica a domicilio en Alhué, cubriendo el sector urbano y rural de la Provincia de Melipilla.',
+    h1: 'Mecánico a Domicilio en Alhué | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Alhué | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Alhué. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio alhue', 'mecanico alhue'],
+    sectoresPopulares: ['Alhué Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'curacavi',
+    nombre: 'Curacaví',
+    zona: 'Melipilla',
+    descripcion: 'Servicio mecánico a domicilio en Curacaví, cubriendo el sector urbano y rural de la Provincia de Melipilla.',
+    h1: 'Mecánico a Domicilio en Curacaví | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Curacaví | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Curacaví. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio curacavi', 'mecanico curacavi'],
+    sectoresPopulares: ['Curacaví Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'maria-pinto',
+    nombre: 'María Pinto',
+    zona: 'Melipilla',
+    descripcion: 'Atención mecánica a domicilio en María Pinto, cubriendo el sector urbano y rural de la Provincia de Melipilla.',
+    h1: 'Mecánico a Domicilio en María Pinto | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en María Pinto | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en María Pinto. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio maria pinto', 'mecanico maria pinto'],
+    sectoresPopulares: ['María Pinto Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'melipilla',
+    nombre: 'Melipilla',
+    zona: 'Melipilla',
+    descripcion: 'Servicio mecánico a domicilio en Melipilla, cubriendo Plaza de Armas, sector urbano y rural de la Provincia de Melipilla.',
+    h1: 'Mecánico a Domicilio en Melipilla | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en Melipilla | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en Melipilla. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio melipilla', 'mecanico melipilla', 'auxilio mecanico melipilla'],
+    sectoresPopulares: ['Plaza de Armas', 'Melipilla Centro', 'Sector Rural'],
+  },
+  {
+    slug: 'san-pedro',
+    nombre: 'San Pedro',
+    zona: 'Melipilla',
+    descripcion: 'Atención mecánica a domicilio en San Pedro, cubriendo el sector urbano y rural de la Provincia de Melipilla.',
+    h1: 'Mecánico a Domicilio en San Pedro | DRAUTOMOTRIZ',
+    metaTitle: 'Mecánico a Domicilio en San Pedro | DRAUTOMOTRIZ',
+    metaDescription: 'Mecánico a domicilio en San Pedro. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
+    keywords: ['mecanico a domicilio san pedro', 'mecanico san pedro'],
+    sectoresPopulares: ['San Pedro Centro', 'Sector Rural'],
   },
 ];
 
@@ -357,5 +631,13 @@ export const getComunaBySlug = (slug: string): Comuna | undefined =>
 export const getComunasByZona = (zona: string): Comuna[] =>
   comunas.filter(c => c.zona === zona);
 
-// Actualizado: 4 sectores en lugar de 5
-export const zonas: string[] = ['Norte', 'Oriente', 'Sur', 'Poniente'];
+// Comunas activas (no excluidas) - para landing pages, sitemap, footer, mapa
+export const getComunasActivas = (): Comuna[] =>
+  comunas.filter(c => !c.excluida);
+
+// Comunas excluidas (para noindex)
+export const getComunasExcluidas = (): Comuna[] =>
+  comunas.filter(c => c.excluida);
+
+// Zonas
+export const zonas: string[] = ['Norte', 'Oriente', 'Sur', 'Poniente', 'Cordillera', 'Maipo', 'Chacabuco', 'Talagante', 'Melipilla'];

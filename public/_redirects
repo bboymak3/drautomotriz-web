@@ -25,7 +25,7 @@
 /revision-tecnica  /servicios/revision-tecnica-sin-estres  301
 /revision          /servicios/revision-tecnica-sin-estres  301
 
-# Comunas eliminadas - devolver 410 Gone para que Google las desindexe
+# Comunas excluidas - devolver 410 Gone para que Google las desindexe
 /comunas/lo-prado        /comunas/lo-prado        410
 /comunas/la-pintana      /comunas/la-pintana      410
 /comunas/la-granja       /comunas/la-granja       410

@@ -10,7 +10,7 @@ Disallow: /functions/
 Disallow: /.git/
 Disallow: /node_modules/
 
-# Comunas eliminadas - no indexar
+# Comunas excluidas - no indexar
 Disallow: /comunas/lo-prado
 Disallow: /comunas/la-pintana
 Disallow: /comunas/la-granja
