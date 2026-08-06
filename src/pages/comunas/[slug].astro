@@ -4,6 +4,7 @@ import { comunas, getComunaBySlug } from '@/data/comunas';
 import { servicios } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 import MarcasQueAtendemos from '@/components/MarcasQueAtendemos.astro';
+import Gallery from '@/components/Gallery.astro';
 import ComunaContenidoSEO from '@/components/ComunaContenidoSEO.astro';
 
 export function getStaticPaths() {
@@ -342,6 +343,9 @@ const faqSchema = {
 
   <!-- Widget: Marcas y Modelos que atendemos en esta comuna -->
   <MarcasQueAtendemos comunaNombre={comuna.nombre} />
+
+  <!-- Galeria de trabajos -->
+  <Gallery />
 
   <!-- CTA final -->
   <section class="py-16 relative overflow-hidden">
