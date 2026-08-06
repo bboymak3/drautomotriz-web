@@ -10,6 +10,15 @@ Disallow: /functions/
 Disallow: /.git/
 Disallow: /node_modules/
 
+# Comunas eliminadas - no indexar
+Disallow: /comunas/lo-prado
+Disallow: /comunas/la-pintana
+Disallow: /comunas/la-granja
+Disallow: /comunas/san-bernardo
+Disallow: /comunas/san-ramon
+Disallow: /comunas/conchali
+Disallow: /comunas/renca
+
 # Sitemaps
 Sitemap: https://drmecanicoautomotriz.com/sitemap.xml
 

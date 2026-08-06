@@ -1,7 +1,7 @@
 // ============================================================
 // DRAUTOMOTRIZ - Comunas de Santiago con cobertura
 // Organizadas por 4 sectores: Norte, Oriente, Sur, Poniente
-// 30 comunas totales, cada una con su propia landing page (SEO local)
+// 28 comunas totales, cada una con su propia landing page (SEO local)
 // ============================================================
 
 export interface Comuna {
@@ -20,17 +20,6 @@ export const comunas: Comuna[] = [
   // =====================================================
   // SECTOR NORTE (6 comunas)
   // =====================================================
-  {
-    slug: 'conchali',
-    nombre: 'Conchalí',
-    zona: 'Norte',
-    descripcion: 'Atención mecánica a domicilio en Conchalí, cubriendo Av. Independencia, El Guanaco, San Pablo y todo el sector norte de la comuna.',
-    h1: 'Mecánico a Domicilio en Conchalí | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Conchalí | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Conchalí. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio conchali', 'mecanico conchali', 'auxilio mecanico conchali'],
-    sectoresPopulares: ['Av. Independencia', 'El Guanaco', 'San Pablo']
-  },
   {
     slug: 'huechuraba',
     nombre: 'Huechuraba',
@@ -74,17 +63,6 @@ export const comunas: Comuna[] = [
     metaDescription: 'Mecánico a domicilio en Recoleta. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Patronato, La Vega, Av. Independencia. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio recoleta', 'mecanico recoleta', 'auxilio mecanico recoleta', 'patronato mecanico'],
     sectoresPopulares: ['La Feria', 'Patronato', 'Vega Central', 'Cerro San Cristóbal', 'Av. Independencia']
-  },
-  {
-    slug: 'renca',
-    nombre: 'Renca',
-    zona: 'Norte',
-    descripcion: 'Atención mecánica a domicilio en Renca, cubriendo Plaza de Armas, Av. Cerro Navia, Renca Centro y el sector del Cerro Renca.',
-    h1: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Renca. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio renca', 'mecanico renca', 'auxilio mecanico renca'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Cerro Navia', 'Renca Centro', 'Cerro Renca']
   },
 
   // =====================================================
@@ -205,17 +183,6 @@ export const comunas: Comuna[] = [
     sectoresPopulares: ['Plaza La Florida', 'Villa O\'Higgins', 'Las Parcelas', 'Rojas Magallanes', 'Vicuña Mackenna']
   },
   {
-    slug: 'la-granja',
-    nombre: 'La Granja',
-    zona: 'Sur',
-    descripcion: 'Servicio mecánico a domicilio en La Granja, cubriendo Plaza de Armas, Av. Santa Rosa y todo el sector sur de la comuna.',
-    h1: 'Mecánico a Domicilio en La Granja | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en La Granja | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en La Granja. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio la granja', 'mecanico la granja', 'auxilio mecanico la granja'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa']
-  },
-  {
     slug: 'lo-espejo',
     nombre: 'Lo Espejo',
     zona: 'Sur',
@@ -227,17 +194,6 @@ export const comunas: Comuna[] = [
     sectoresPopulares: ['Plaza de Armas', 'Av. Lo Espejo']
   },
   {
-    slug: 'san-bernardo',
-    nombre: 'San Bernardo',
-    zona: 'Sur',
-    descripcion: 'Cobertura en San Bernardo, incluyendo Plaza de Armas, Santa Rosa, El Pinto, Maipo y todo el sector sur de la comuna. Atención en empresas, condominios y casas.',
-    h1: 'Mecánico a Domicilio en San Bernardo | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en San Bernardo | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en San Bernardo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio san bernardo', 'mecanico san bernardo', 'auxilio mecanico san bernardo'],
-    sectoresPopulares: ['Plaza de Armas', 'Santa Rosa', 'El Pinto', 'Maipo']
-  },
-  {
     slug: 'san-joaquin',
     nombre: 'San Joaquín',
     zona: 'Sur',
@@ -247,17 +203,6 @@ export const comunas: Comuna[] = [
     metaDescription: 'Mecánico a domicilio en San Joaquín. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio san joaquin', 'mecanico san joaquin', 'auxilio mecanico san joaquin'],
     sectoresPopulares: ['Plaza de Armas', 'Av. Vicuña Mackenna', 'Universidad Católica']
-  },
-  {
-    slug: 'san-ramon',
-    nombre: 'San Ramón',
-    zona: 'Sur',
-    descripcion: 'Atención mecánica a domicilio en San Ramón, cubriendo Plaza de Armas, Av. Santa Rosa y todo el sector sur de la comuna.',
-    h1: 'Mecánico a Domicilio en San Ramón | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en San Ramón | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en San Ramón. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio san ramon', 'mecanico san ramon', 'auxilio mecanico san ramon'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa']
   },
 
   // =====================================================
@@ -284,17 +229,6 @@ export const comunas: Comuna[] = [
     metaDescription: 'Mecánico a domicilio en Estación Central. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio estacion central', 'mecanico estacion central', 'auxilio mecanico estacion central'],
     sectoresPopulares: ['Alameda', 'Av. General Bonilla', 'Blanqueado', 'USACH']
-  },
-  {
-    slug: 'lo-prado',
-    nombre: 'Lo Prado',
-    zona: 'Poniente',
-    descripcion: 'Servicio mecánico a domicilio en Lo Prado, cubriendo Av. San Pablo, Neptuno, El Salto y todo el sector poniente de la comuna.',
-    h1: 'Mecánico a Domicilio en Lo Prado | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Lo Prado | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Lo Prado. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio lo prado', 'mecanico lo prado', 'auxilio mecanico lo prado'],
-    sectoresPopulares: ['Av. San Pablo', 'Neptuno', 'El Salto']
   },
   {
     slug: 'maipu',
@@ -355,17 +289,6 @@ export const comunas: Comuna[] = [
   // =====================================================
   // SECTOR SUR - comunas adicionales
   // =====================================================
-  {
-    slug: 'la-pintana',
-    nombre: 'La Pintana',
-    zona: 'Sur',
-    descripcion: 'Atención mecánica a domicilio en La Pintana, cubriendo Plaza de Armas, Av. Santa Rosa, sector San Ramón y todo el sector sur oriente de la comuna.',
-    h1: 'Mecánico a Domicilio en La Pintana | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en La Pintana | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en La Pintana. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio la pintana', 'mecanico la pintana', 'auxilio mecanico la pintana'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Santa Rosa', 'San Ramón']
-  },
   {
     slug: 'san-miguel',
     nombre: 'San Miguel',
