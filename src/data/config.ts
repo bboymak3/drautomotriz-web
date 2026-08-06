@@ -20,7 +20,7 @@ export const config = {
     servicios: '13+ servicios'
   },
   email: 'contacto@drautomotriz.cl',
-  dominio: 'https://drautomotriz.pages.dev',
+  dominio: 'https://drmecanicoautomotriz.com',
 };
 
 // Helper para generar enlace de WhatsApp con contexto

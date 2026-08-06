@@ -27,8 +27,8 @@ const vehiculoSchema = {
   "@type": "Service",
   "name": `Servicio mecánico a domicilio para ${vehiculoNombre}`,
   "description": `Servicio mecánico a domicilio en Santiago para ${vehiculoNombre}. Diagnóstico, mantención, frenos, suspensión, batería, revisión técnica sin estrés y más. Cobertura en toda la Región Metropolitana.`,
-  "url": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`,
-  "image": imagenVehiculo ? `https://drautomotriz.pages.dev${imagenVehiculo}` : undefined,
+  "url": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`,
+  "image": imagenVehiculo ? `https://drmecanicoautomotriz.com${imagenVehiculo}` : undefined,
   "provider": {
     "@type": "AutoRepair",
     "name": "DRAUTOMOTRIZ",
@@ -43,10 +43,10 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
-    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drautomotriz.pages.dev/vehiculos" },
-    { "@type": "ListItem", "position": 3, "name": modeloData.marca, "item": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}` },
-    { "@type": "ListItem", "position": 4, "name": modeloData.modelo, "item": `https://drautomotriz.pages.dev/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}` }
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drmecanicoautomotriz.com/vehiculos" },
+    { "@type": "ListItem", "position": 3, "name": modeloData.marca, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}` },
+    { "@type": "ListItem", "position": 4, "name": modeloData.modelo, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}` }
   ]
 };
 

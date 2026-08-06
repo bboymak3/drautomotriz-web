@@ -16,8 +16,8 @@ const todosSchema = {
     "item": {
       "@type": "Thing",
       "name": `${v.marca} ${v.modelo}`,
-      "image": `https://drautomotriz.pages.dev${v.imagen}`,
-      "url": `https://drautomotriz.pages.dev/vehiculos/${v.marcaSlug}/${v.slug.split('-').slice(1).join('-') || v.modelo.toLowerCase().replace(/\s+/g, '-')}`
+      "image": `https://drmecanicoautomotriz.com${v.imagen}`,
+      "url": `https://drmecanicoautomotriz.com/vehiculos/${v.marcaSlug}/${v.slug.split('-').slice(1).join('-') || v.modelo.toLowerCase().replace(/\s+/g, '-')}`
     }
   }))
 };
@@ -26,9 +26,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
-    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drautomotriz.pages.dev/vehiculos" },
-    { "@type": "ListItem", "position": 3, "name": "Todos los vehículos", "item": "https://drautomotriz.pages.dev/vehiculos/todos" }
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drmecanicoautomotriz.com/vehiculos" },
+    { "@type": "ListItem", "position": 3, "name": "Todos los vehículos", "item": "https://drmecanicoautomotriz.com/vehiculos/todos" }
   ]
 };
 ---

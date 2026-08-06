@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://drautomotriz.pages.dev',
+  site: 'https://drmecanicoautomotriz.com',
   integrations: [tailwind()],
   build: {
     inlineStylesheets: 'auto',

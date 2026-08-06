@@ -45,8 +45,8 @@ const serviceSchema = {
   "name": `${servicio.nombre} - Mecánico a Domicilio en Santiago`,
   "alternateName": servicio.nombre,
   "description": servicio.descripcionCorta,
-  "url": `https://drautomotriz.pages.dev/servicios/${servicio.slug}`,
-  "image": "https://drautomotriz.pages.dev/imagen/banner/banner-servicio-top.webp",
+  "url": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}`,
+  "image": "https://drmecanicoautomotriz.com/imagen/banner/banner-servicio-top.webp",
   "serviceType": servicio.categoria,
   "termsOfService": "Garantía escrita de 3 a 12 meses según el servicio.",
   "provider": {
@@ -54,7 +54,7 @@ const serviceSchema = {
     "name": "DRAUTOMOTRIZ",
     "telephone": "+56962408735",
     "email": "contacto@drautomotriz.cl",
-    "image": "https://drautomotriz.pages.dev/imagen/logo/drautomotriz-logo.webp",
+    "image": "https://drmecanicoautomotriz.com/imagen/logo/drautomotriz-logo.webp",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Santiago",
@@ -91,9 +91,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
-    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drautomotriz.pages.dev/servicios" },
-    { "@type": "ListItem", "position": 3, "name": servicio.nombre, "item": `https://drautomotriz.pages.dev/servicios/${servicio.slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drmecanicoautomotriz.com/servicios" },
+    { "@type": "ListItem", "position": 3, "name": servicio.nombre, "item": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}` }
   ]
 };
 ---

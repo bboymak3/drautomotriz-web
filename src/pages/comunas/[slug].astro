@@ -21,10 +21,10 @@ const localBusinessSchema = {
   "@type": "AutoRepair",
   "name": `DRAUTOMOTRIZ - Mecánico a Domicilio en ${comuna.nombre}`,
   "alternateName": `Mecánico a Domicilio ${comuna.nombre}`,
-  "image": "https://drautomotriz.pages.dev/og-image.png",
-  "logo": "https://drautomotriz.pages.dev/imagen/logo/drautomotriz-logo.webp",
+  "image": "https://drmecanicoautomotriz.com/og-image.png",
+  "logo": "https://drmecanicoautomotriz.com/imagen/logo/drautomotriz-logo.webp",
   "description": `Servicio de mecánico a domicilio en ${comuna.nombre}, ${comuna.zona === 'Norte' ? 'sector norte' : comuna.zona === 'Oriente' ? 'sector oriente' : comuna.zona === 'Sur' ? 'sector sur' : 'sector poniente'} de Santiago. Diagnóstico computarizado, mantención, frenos, suspensión, batería, revisión técnica sin estrés y auxilio mecánico 24/7.`,
-  "url": `https://drautomotriz.pages.dev/comunas/${comuna.slug}`,
+  "url": `https://drmecanicoautomotriz.com/comunas/${comuna.slug}`,
   "telephone": "+56962408735",
   "email": "contacto@drautomotriz.cl",
   "priceRange": "$$",
@@ -72,8 +72,8 @@ const serviceSchema = {
   "name": `Mecánico a Domicilio en ${comuna.nombre}`,
   "serviceType": "Mecánico a Domicilio",
   "description": `Servicio mecánico a domicilio en ${comuna.nombre}, Santiago. Diagnóstico computarizado, mantención preventiva, frenos, suspensión, batería, revisión técnica sin estrés y auxilio mecánico 24/7 directamente en tu casa u oficina.`,
-  "url": `https://drautomotriz.pages.dev/comunas/${comuna.slug}`,
-  "image": "https://drautomotriz.pages.dev/imagen/comunas/mecanico-a-domicilio-" + comuna.slug + ".png",
+  "url": `https://drmecanicoautomotriz.com/comunas/${comuna.slug}`,
+  "image": "https://drmecanicoautomotriz.com/imagen/comunas/mecanico-a-domicilio-" + comuna.slug + ".png",
   "provider": {
     "@type": "AutoRepair",
     "name": "DRAUTOMOTRIZ",
@@ -96,9 +96,9 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drautomotriz.pages.dev/" },
-    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drautomotriz.pages.dev/comunas" },
-    { "@type": "ListItem", "position": 3, "name": comuna.nombre, "item": `https://drautomotriz.pages.dev/comunas/${comuna.slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drmecanicoautomotriz.com/comunas" },
+    { "@type": "ListItem", "position": 3, "name": comuna.nombre, "item": `https://drmecanicoautomotriz.com/comunas/${comuna.slug}` }
   ]
 };
 

@@ -1,5 +1,5 @@
 # robots.txt - DRAUTOMOTRIZ
-# https://drautomotriz.pages.dev/
+# https://drmecanicoautomotriz.com/
 
 User-agent: *
 Allow: /
@@ -11,7 +11,7 @@ Disallow: /.git/
 Disallow: /node_modules/
 
 # Sitemaps
-Sitemap: https://drautomotriz.pages.dev/sitemap.xml
+Sitemap: https://drmecanicoautomotriz.com/sitemap.xml
 
 # Bot-specific rules
 User-agent: Googlebot
