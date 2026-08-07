@@ -27,7 +27,7 @@ const vehiculoSchema = {
   "@type": "Service",
   "name": `Servicio mecánico a domicilio para ${vehiculoNombre}`,
   "description": `Servicio mecánico a domicilio en Santiago para ${vehiculoNombre}. Diagnóstico, mantención, frenos, suspensión, batería, revisión técnica sin estrés y más. Cobertura en toda la Región Metropolitana.`,
-  "url": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`,
+  "url": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}/`,
   "image": imagenVehiculo ? `https://drmecanicoautomotriz.com${imagenVehiculo}` : undefined,
   "provider": {
     "@type": "AutoRepair",
@@ -44,9 +44,9 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drmecanicoautomotriz.com/vehiculos" },
-    { "@type": "ListItem", "position": 3, "name": modeloData.marca, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}` },
-    { "@type": "ListItem", "position": 4, "name": modeloData.modelo, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}` }
+    { "@type": "ListItem", "position": 2, "name": "Vehículos", "item": "https://drmecanicoautomotriz.com/vehiculos/" },
+    { "@type": "ListItem", "position": 3, "name": modeloData.marca, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/` },
+    { "@type": "ListItem", "position": 4, "name": modeloData.modelo, "item": `https://drmecanicoautomotriz.com/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}/` }
   ]
 };
 
@@ -79,8 +79,10 @@ const otrosModelos = marca ? marca.modelos.filter(m => (m.slug || m.nombre.toLow
 <BaseLayout
   title={`Mecánico a Domicilio para ${vehiculoNombre} en Santiago | DRAUTOMOTRIZ`}
   description={`Servicio mecánico a domicilio para ${vehiculoNombre} en Santiago. Diagnóstico computarizado, mantención por km, frenos, suspensión, batería, revisión técnica sin estrés. WhatsApp +56962408735.`}
-  canonical={`/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}`}
+  canonical={`/vehiculos/${modeloData.marcaSlug}/${modeloData.modeloSlug}/`}
   ogImage={imagenVehiculo}
+  skipBreadcrumb={true}
+  skipAutoRepair={true}
 >
   <script type="application/ld+json" set:html={JSON.stringify(vehiculoSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

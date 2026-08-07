@@ -16,7 +16,7 @@ const comunasListSchema = {
     "item": {
       "@type": "Service",
       "name": `Mecánico a Domicilio en ${c.nombre}`,
-      "url": `https://drmecanicoautomotriz.com/comunas/${c.slug}`,
+      "url": `https://drmecanicoautomotriz.com/comunas/${c.slug}/`,
       "provider": { "@type": "AutoRepair", "name": "DRAUTOMOTRIZ" }
     }
   }))
@@ -28,7 +28,7 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drmecanicoautomotriz.com/comunas" }
+    { "@type": "ListItem", "position": 2, "name": "Comunas", "item": "https://drmecanicoautomotriz.com/comunas/" }
   ]
 };
 ---
@@ -36,6 +36,8 @@ const breadcrumbSchema = {
 <BaseLayout
   title="Comunas que Cubrimos en Santiago | DRAUTOMOTRIZ"
   description="Mecánico a domicilio en más de 40 comunas de Santiago. Encuentra tu comuna y solicita el servicio. Atendemos Las Condes, Providencia, Maipú, La Florida, Ñuñoa y toda la RM."
+  canonical="/comunas/"
+  skipBreadcrumb={true}
 >
   <script type="application/ld+json" set:html={JSON.stringify(comunasListSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

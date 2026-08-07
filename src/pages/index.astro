@@ -60,8 +60,15 @@ const homeSchema = {
 };
 ---
 
-<BaseLayout>
+<BaseLayout skipBreadcrumb={true} skipAutoRepair={true}>
   <script type="application/ld+json" set:html={JSON.stringify(homeSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" }
+    ]
+  })} />
 
   <!-- HERO FULL-WIDTH CON BANNER -->
   <Hero />

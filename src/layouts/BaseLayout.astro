@@ -13,6 +13,8 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonical?: string;
+  skipBreadcrumb?: boolean;
+  skipAutoRepair?: boolean;
 }
 
 const {
@@ -20,6 +22,8 @@ const {
   description = 'Servicio automotriz y mecánico a domicilio en Santiago. Diagnóstico computarizado, mantención preventiva, frenos, suspensión, batería y auxilio 24/7. Agenda por WhatsApp.',
   ogImage = '/og-image.png',
   canonical,
+  skipBreadcrumb = false,
+  skipAutoRepair = false,
 } = Astro.props;
 
 const currentUrl = canonical || Astro.url.pathname;
@@ -90,46 +94,50 @@ const ogImageUrl = new URL(ogImage, config.dominio).toString();
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Structured Data: AutoRepair base (en cada página) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "AutoRepair",
-      "name": config.marca,
-      "image": ogImage,
-      "description": "Servicio mecánico a domicilio en Santiago, Chile. Diagnóstico, mantención, frenos, batería, suspensión, revisión técnica sin estrés y auxilio 24/7.",
-      "url": config.dominio,
-      "telephone": `+${config.whatsappNumero}`,
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Santiago",
-        "addressRegion": "Región Metropolitana",
-        "addressCountry": "CL"
-      },
-      "areaServed": "Santiago, Región Metropolitana",
-      "openingHours": "Mo-Sa 08:00-20:00, Su 00:00-24:00",
-      "priceRange": "$$",
-      "sameAs": [config.instagramUrl]
-    })} />
-
-    <!-- BreadcrumbList Schema (genérico para todas las páginas) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Inicio",
-          "item": config.dominio
+    <!-- Structured Data: AutoRepair base (solo si la página no define el suyo propio) -->
+    {!skipAutoRepair && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": config.marca,
+        "image": ogImage,
+        "description": "Servicio mecánico a domicilio en Santiago, Chile. Diagnóstico, mantención, frenos, batería, suspensión, revisión técnica sin estrés y auxilio 24/7.",
+        "url": config.dominio,
+        "telephone": `+${config.whatsappNumero}`,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Santiago",
+          "addressRegion": "Región Metropolitana",
+          "addressCountry": "CL"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": title.split('|')[0].trim(),
-          "item": fullUrl
-        }
-      ]
-    })} />
+        "areaServed": "Santiago, Región Metropolitana",
+        "openingHours": "Mo-Sa 08:00-20:00, Su 00:00-24:00",
+        "priceRange": "$$",
+        "sameAs": [config.instagramUrl]
+      })} />
+    )}
+
+    <!-- BreadcrumbList Schema (genérico - solo si la página no define el suyo) -->
+    {!skipBreadcrumb && (
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": `${config.dominio}/`
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": title.split('|')[0].trim(),
+            "item": fullUrl.endsWith('/') ? fullUrl : `${fullUrl}/`
+          }
+        ]
+      })} />
+    )}
 
     <!-- Preconnect to WhatsApp for faster CTA -->
     <link rel="preconnect" href="https://wa.me" />

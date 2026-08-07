@@ -45,7 +45,7 @@ const serviceSchema = {
   "name": `${servicio.nombre} - Mecánico a Domicilio en Santiago`,
   "alternateName": servicio.nombre,
   "description": servicio.descripcionCorta,
-  "url": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}`,
+  "url": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}/`,
   "image": "https://drmecanicoautomotriz.com/imagen/banner/banner-servicio-top.webp",
   "serviceType": servicio.categoria,
   "termsOfService": "Garantía escrita de 3 a 12 meses según el servicio.",
@@ -55,6 +55,7 @@ const serviceSchema = {
     "telephone": "+56962408735",
     "email": "contacto@drautomotriz.cl",
     "image": "https://drmecanicoautomotriz.com/imagen/logo/drautomotriz-logo.webp",
+    "priceRange": "$$",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Santiago",
@@ -70,10 +71,15 @@ const serviceSchema = {
     "@type": "OfferCatalog",
     "name": `Servicios incluidos en ${servicio.nombre}`,
     "itemListElement": servicio.incluye.map((item, i) => ({
-      "@type": "Offer",
-      "itemOffered": {
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
         "@type": "Service",
-        "name": item
+        "name": item,
+        "provider": {
+          "@type": "AutoRepair",
+          "name": "DRAUTOMOTRIZ"
+        }
       }
     }))
   },
@@ -92,8 +98,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drmecanicoautomotriz.com/servicios" },
-    { "@type": "ListItem", "position": 3, "name": servicio.nombre, "item": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}` }
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drmecanicoautomotriz.com/servicios/" },
+    { "@type": "ListItem", "position": 3, "name": servicio.nombre, "item": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}/` }
   ]
 };
 ---
@@ -101,7 +107,9 @@ const breadcrumbSchema = {
 <BaseLayout
   title={servicio.metaTitle}
   description={servicio.metaDescription}
-  canonical={`/servicios/${servicio.slug}`}
+  canonical={`/servicios/${servicio.slug}/`}
+  skipBreadcrumb={true}
+  skipAutoRepair={true}
 >
   <!-- Schema.org data -->
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />

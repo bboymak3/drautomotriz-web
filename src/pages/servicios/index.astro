@@ -21,7 +21,7 @@ const serviciosSchema = {
       "@type": "Service",
       "name": s.nombre,
       "description": s.descripcionCorta,
-      "url": `https://drmecanicoautomotriz.com/servicios/${s.slug}`,
+      "url": `https://drmecanicoautomotriz.com/servicios/${s.slug}/`,
       "provider": {
         "@type": "AutoRepair",
         "name": "DRAUTOMOTRIZ",
@@ -35,9 +35,18 @@ const serviciosSchema = {
 <BaseLayout
   title="Servicios de Mecánica a Domicilio en Santiago | DRAUTOMOTRIZ"
   description="Catálogo completo de 14 servicios de mecánica a domicilio en Santiago: Revisión Técnica Sin Estrés, mantención por km, frenos, escáner, suspensión, embrague, distribución y más."
-  canonical="/servicios"
+  canonical="/servicios/"
+  skipBreadcrumb={true}
 >
   <script type="application/ld+json" set:html={JSON.stringify(serviciosSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://drmecanicoautomotriz.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://drmecanicoautomotriz.com/servicios/" }
+    ]
+  })} />
 
   <!-- Banner servicio top v2 -->
   <BannerServicio />
