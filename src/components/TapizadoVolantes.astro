@@ -1,0 +1,146 @@
+---
+/**
+ * TapizadoVolantes.astro
+ * Ficha promocional con link a https://tapizadodevolante.com/
+ * Se incluye antes del Footer en TODAS las páginas del sitio.
+ */
+const TAPIZADO_URL = 'https://tapizadodevolante.com/';
+const TAPIZADO_IMG = 'https://tapizadodevolante.com/images/forrar-un-volante-con-cuero-forrar-volante-coche-en-santiago-monocromatico.jpg';
+---
+
+<section class="tapizado-volantes-section">
+  <div class="tapizado-volantes-card">
+    <div class="row align-items-center justify-content-center g-0">
+      <div class="col-12 text-center mb-4">
+        <img
+          src={TAPIZADO_IMG}
+          class="tapizado-volantes-img"
+          alt="Tapizado de Volantes en Santiago - Cuero de alta calidad"
+          loading="lazy"
+          width="800"
+          height="400"
+        />
+      </div>
+      <div class="col-12 text-center">
+        <h2 class="tapizado-volantes-title">
+          Tapizado de volantes EN TALLER en SANTIAGO
+        </h2>
+        <p class="tapizado-volantes-text">
+          tapizado de volantes en Santiago para renovar la imagen de tu auto. Trabajamos cuero de alta calidad, mejorando el agarre y estética del volante. Solución rápida y cómoda sin salir de casa.
+        </p>
+        <p class="tapizado-volantes-lead">
+          Si quieres informacion para el tapizado de volantes en santiago en taller entra al siguiente enlace.
+        </p>
+        <a
+          href={TAPIZADO_URL}
+          class="tapizado-volantes-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          IR AL SITIO WEB <i class="fas fa-external-link-alt ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.tapizado-volantes-section {
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #0e1a2b 100%);
+  border-top: 2px solid #00d4ff;
+  border-bottom: 2px solid #00d4ff;
+  margin-top: 2rem;
+}
+
+.tapizado-volantes-card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: rgba(13, 17, 23, 0.85);
+  border: 2px solid #00d4ff;
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 212, 255, 0.18), 0 0 0 1px rgba(0, 212, 255, 0.08) inset;
+  padding: 2.5rem 2rem;
+}
+
+.tapizado-volantes-img {
+  max-height: 400px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border: 3px solid #00d4ff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.25);
+  display: block;
+  margin: 0 auto;
+}
+
+.tapizado-volantes-title {
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #00d4ff;
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0, 212, 255, 0.35);
+}
+
+.tapizado-volantes-text {
+  text-align: justify;
+  color: #c9d1d9;
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.tapizado-volantes-lead {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #e6f3ff;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.tapizado-volantes-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2rem;
+  background: linear-gradient(135deg, #00d4ff 0%, #0a84ff 100%);
+  color: #0a0a0a;
+  font-weight: 800;
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 6px 20px rgba(0, 212, 255, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  font-size: 1rem;
+}
+
+.tapizado-volantes-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(0, 212, 255, 0.55);
+  filter: brightness(1.08);
+}
+
+.tapizado-volantes-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.tapizado-volantes-btn .fa-external-link-alt {
+  font-size: 0.85em;
+}
+
+@media (max-width: 575.98px) {
+  .tapizado-volantes-card {
+    padding: 1.5rem 1rem;
+  }
+  .tapizado-volantes-img {
+    max-height: 260px;
+  }
+  .tapizado-volantes-text {
+    text-align: left;
+  }
+}
+</style>
