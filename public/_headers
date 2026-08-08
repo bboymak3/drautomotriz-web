@@ -30,3 +30,37 @@
 /robots.txt
   Cache-Control: public, max-age=3600
   Content-Type: text/plain; charset=utf-8
+
+# Comunas eliminadas - no cachear (deben devolver 410 siempre)
+/comunas/la-granja
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/la-granja/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/la-pintana
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/la-pintana/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/lo-prado
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/lo-prado/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/puente-alto
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/puente-alto/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/san-bernardo
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/san-bernardo/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/san-ramon
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/san-ramon/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/conchali
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/conchali/
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/renca
+  Cache-Control: no-cache, no-store, must-revalidate
+/comunas/renca/
+  Cache-Control: no-cache, no-store, must-revalidate
