@@ -64,3 +64,5 @@
   Cache-Control: no-cache, no-store, must-revalidate
 /comunas/renca/
   Cache-Control: no-cache, no-store, must-revalidate
+
+# cache-bust: Sat Aug  8 17:31:28 UTC 2026
