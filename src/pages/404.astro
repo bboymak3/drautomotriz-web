@@ -1,0 +1,38 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { config } from '@/data/config';
+---
+<BaseLayout
+  title="Página no encontrada - 404 | DRAUTOMOTRIZ"
+  description="La página que buscas no existe o fue eliminada. Explora nuestros servicios de mecánico a domicilio en Santiago."
+  skipBreadcrumb={true}
+>
+  <section class="py-20 md:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl"></div>
+
+    <div class="container-x relative text-center">
+      <div class="text-9xl md:text-[12rem] font-display font-extrabold text-neon-400 glow-text mb-4 leading-none">
+        404
+      </div>
+      <h1 class="text-2xl md:text-4xl font-display font-bold text-white mb-4">
+        Página no encontrada
+      </h1>
+      <p class="text-gray-400 max-w-2xl mx-auto mb-8">
+        La página que buscas no existe o fue eliminada. Es posible que la URL sea incorrecta
+        o que el contenido haya sido movido a otra ubicación.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="/" class="btn-neon">
+          Volver al inicio
+        </a>
+        <a href="/servicios" class="btn-outline-neon">
+          Ver servicios
+        </a>
+        <a href="/comunas" class="btn-outline-neon">
+          Ver comunas
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

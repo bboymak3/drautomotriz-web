@@ -25,11 +25,19 @@
 /revision-tecnica  /servicios/revision-tecnica-sin-estres  301
 /revision          /servicios/revision-tecnica-sin-estres  301
 
-# Comunas excluidas - devolver 410 Gone para que Google las desindexe
-/comunas/lo-prado        /comunas/lo-prado        410
-/comunas/la-pintana      /comunas/la-pintana      410
-/comunas/la-granja       /comunas/la-granja       410
-/comunas/san-bernardo    /comunas/san-bernardo    410
-/comunas/san-ramon       /comunas/san-ramon       410
-/comunas/conchali        /comunas/conchali        410
-/comunas/renca           /comunas/renca           410
+# Comunas eliminadas - devolver 410 Gone para que Google las desindexe
+# Cloudflare Pages: el destino se sirve con el status code indicado (410)
+/comunas/lo-prado        /404.html        410
+/comunas/la-pintana      /404.html        410
+/comunas/la-granja       /404.html        410
+/comunas/san-bernardo    /404.html        410
+/comunas/san-ramon       /404.html        410
+/comunas/lo-prado/       /404.html        410
+/comunas/la-pintana/     /404.html        410
+/comunas/la-granja/      /404.html        410
+/comunas/san-bernardo/   /404.html        410
+/comunas/san-ramon/      /404.html        410
+/comunas/conchali        /404.html        410
+/comunas/renca           /404.html        410
+/comunas/conchali/       /404.html        410
+/comunas/renca/          /404.html        410
