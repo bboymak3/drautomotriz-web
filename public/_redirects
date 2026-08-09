@@ -155,12 +155,14 @@
 /comunas/renca/       /404.html        410
 
 # ====== Query strings problemáticas - redirigir a /comunas/ ======
-/comunas?zona=Norte       /comunas/       301
-/comunas?zona=Sur           /comunas/       301
-/comunas?zona=Oriente       /comunas/       301
-/comunas?zona=Poniente      /comunas/       301
-/comunas?zona=Cordillera    /comunas/       301
-/comunas?zona=Maipo         /comunas/       301
-/comunas?zona=Chacabuco     /comunas/       301
-/comunas?zona=Melipilla     /comunas/       301
-/comunas?zona=Talagante     /comunas/       301
+# Sintaxis Cloudflare Pages: query parameter matching
+/comunas  /comunas/  302
+  zona=Norte
+  zona=Sur
+  zona=Oriente
+  zona=Poniente
+  zona=Cordillera
+  zona=Maipo
+  zona=Chacabuco
+  zona=Melipilla
+  zona=Talagante
