@@ -1,58 +1,166 @@
-# Redirects for old/missing pages
+# ============================================================
+# DRAUTOMOTRIZ - Redirecciones 301 para URLs sin trailing slash
+# Cloudflare Pages por defecto usa 308, lo cual Google reporta
+# como 'Página con redirección'. Cambiamos a 301 explícito.
+# ============================================================
 
-# Forzar trailing slash en /servicios/* y /comunas/* y /vehiculos/*
-# Para evitar URLs duplicadas en Google Search Console
-/servicios/cambio-kit-de-embrague        /servicios/cambio-kit-de-embrague/              301
-/servicios/cambio-kit-de-distribucion    /servicios/cambio-kit-de-distribucion/          301
-/servicios/diagnosticos                 /servicios/diagnosticos/                        301
-/servicios/direccion-y-suspension       /servicios/direccion-y-suspension/             301
-/servicios/escaner-para-autos-y-camiones /servicios/escaner-para-autos-y-camiones/      301
-/servicios/mantencion-por-km            /servicios/mantencion-por-km/                   301
-/servicios/pulido-de-opticos-focos-delanteros /servicios/pulido-de-opticos-focos-delanteros/ 301
-/servicios/revision-tecnica-sin-estres  /servicios/revision-tecnica-sin-estres/        301
-/servicios/servicio-de-frenos-a-domicilio /servicios/servicio-de-frenos-a-domicilio/    301
-/servicios/servicio-de-pre-compra       /servicios/servicio-de-pre-compra/             301
-/servicios/tren-delantero               /servicios/tren-delantero/                     301
-/servicios/recarga-y-mantencion-de-aire-acondicionado /servicios/recarga-y-mantencion-de-aire-acondicionado/ 301
+# ====== Páginas estáticas (redirección a trailing slash) ======
+/galeria        /galeria/        301
+/politicas-de-privacidad        /politicas-de-privacidad/        301
+/quienes-somos        /quienes-somos/        301
+/contacto        /contacto/        301
+/faq        /faq/        301
+/comunas        /comunas/        301
+/vehiculos        /vehiculos/        301
+/vehiculos/todos        /vehiculos/todos/        301
+/servicios        /servicios/        301
+/marcas_automotrices        /marcas_automotrices/        301
 
-# Slugs antiguos (servicios previos) → nuevos slugs
-/servicios/mecanica-general-a-domicilio    /servicios/mantencion-por-km          301
-/servicios/escaner-y-diagnostico-computarizado  /servicios/escaner-para-autos-y-camiones  301
-/servicios/mantencion-preventiva-y-afinamiento   /servicios/mantencion-por-km          301
-/servicios/servicio-de-frenos-a-domicilio   /servicios/servicio-de-frenos-a-domicilio  301
-/servicios/revision-y-cambio-de-bateria    /servicios/diagnosticos              301
-/servicios/suspension-y-tren-delantero     /servicios/tren-delantero            301
-/servicios/sistema-de-refrigeracion        /servicios/recarga-y-mantencion-de-aire-acondicionado  301
-/servicios/inyeccion-electronica-y-limpieza /servicios/diagnosticos             301
-/servicios/auxilio-mecanico-24-7           /servicios/diagnosticos              301
-/servicios/correa-o-cadena-de-distribucion /servicios/cambio-kit-de-distribucion  301
+# ====== Servicios (12) ======
+/servicios/cambio-kit-de-embrague        /servicios/cambio-kit-de-embrague/        301
+/servicios/cambio-kit-de-distribucion        /servicios/cambio-kit-de-distribucion/        301
+/servicios/diagnosticos        /servicios/diagnosticos/        301
+/servicios/direccion-y-suspension        /servicios/direccion-y-suspension/        301
+/servicios/escaner-para-autos-y-camiones        /servicios/escaner-para-autos-y-camiones/        301
+/servicios/mantencion-por-km        /servicios/mantencion-por-km/        301
+/servicios/pulido-de-opticos-focos-delanteros        /servicios/pulido-de-opticos-focos-delanteros/        301
+/servicios/revision-tecnica-sin-estres        /servicios/revision-tecnica-sin-estres/        301
+/servicios/servicio-de-frenos-a-domicilio        /servicios/servicio-de-frenos-a-domicilio/        301
+/servicios/servicio-de-pre-compra        /servicios/servicio-de-pre-compra/        301
+/servicios/tren-delantero        /servicios/tren-delantero/        301
+/servicios/recarga-y-mantencion-de-aire-acondicionado        /servicios/recarga-y-mantencion-de-aire-acondicionado/        301
 
-# Atajos comunes
+# ====== Comunas (47) ======
+/comunas/conchali        /comunas/conchali/        301
+/comunas/huechuraba        /comunas/huechuraba/        301
+/comunas/independencia        /comunas/independencia/        301
+/comunas/quilicura        /comunas/quilicura/        301
+/comunas/recoleta        /comunas/recoleta/        301
+/comunas/renca        /comunas/renca/        301
+/comunas/las-condes        /comunas/las-condes/        301
+/comunas/lo-barnechea        /comunas/lo-barnechea/        301
+/comunas/macul        /comunas/macul/        301
+/comunas/nunoa        /comunas/nunoa/        301
+/comunas/penalolen        /comunas/penalolen/        301
+/comunas/providencia        /comunas/providencia/        301
+/comunas/la-reina        /comunas/la-reina/        301
+/comunas/el-bosque        /comunas/el-bosque/        301
+/comunas/la-cisterna        /comunas/la-cisterna/        301
+/comunas/la-florida        /comunas/la-florida/        301
+/comunas/lo-espejo        /comunas/lo-espejo/        301
+/comunas/san-joaquin        /comunas/san-joaquin/        301
+/comunas/san-miguel        /comunas/san-miguel/        301
+/comunas/santiago-centro        /comunas/santiago-centro/        301
+/comunas/vitacura        /comunas/vitacura/        301
+/comunas/cerrillos        /comunas/cerrillos/        301
+/comunas/cerro-navia        /comunas/cerro-navia/        301
+/comunas/estacion-central        /comunas/estacion-central/        301
+/comunas/maipu        /comunas/maipu/        301
+/comunas/pedro-aguirre-cerda        /comunas/pedro-aguirre-cerda/        301
+/comunas/pudahuel        /comunas/pudahuel/        301
+/comunas/quinta-normal        /comunas/quinta-normal/        301
+/comunas/pirque        /comunas/pirque/        301
+/comunas/san-jose-de-maipo        /comunas/san-jose-de-maipo/        301
+/comunas/buin        /comunas/buin/        301
+/comunas/calera-de-tango        /comunas/calera-de-tango/        301
+/comunas/paine        /comunas/paine/        301
+/comunas/colina        /comunas/colina/        301
+/comunas/lampa        /comunas/lampa/        301
+/comunas/tiltil        /comunas/tiltil/        301
+/comunas/el-monte        /comunas/el-monte/        301
+/comunas/isla-de-maipo        /comunas/isla-de-maipo/        301
+/comunas/padre-hurtado        /comunas/padre-hurtado/        301
+/comunas/penaflor        /comunas/penaflor/        301
+/comunas/talagante        /comunas/talagante/        301
+/comunas/alhue        /comunas/alhue/        301
+/comunas/curacavi        /comunas/curacavi/        301
+/comunas/maria-pinto        /comunas/maria-pinto/        301
+/comunas/melipilla        /comunas/melipilla/        301
+/comunas/san-pedro        /comunas/san-pedro/        301
+
+# ====== Vehículos (32) ======
+/vehiculos/mg/3        /vehiculos/mg/3/        301
+/vehiculos/mg/zs        /vehiculos/mg/zs/        301
+/vehiculos/toyota/corolla        /vehiculos/toyota/corolla/        301
+/vehiculos/toyota/yaris        /vehiculos/toyota/yaris/        301
+/vehiculos/chevrolet/spark        /vehiculos/chevrolet/spark/        301
+/vehiculos/chevrolet/sonic        /vehiculos/chevrolet/sonic/        301
+/vehiculos/chevrolet/sail        /vehiculos/chevrolet/sail/        301
+/vehiculos/kia/morning        /vehiculos/kia/morning/        301
+/vehiculos/kia/rio        /vehiculos/kia/rio/        301
+/vehiculos/honda/civic        /vehiculos/honda/civic/        301
+/vehiculos/honda/city        /vehiculos/honda/city/        301
+/vehiculos/honda/cr-v        /vehiculos/honda/cr-v/        301
+/vehiculos/nissan/kicks        /vehiculos/nissan/kicks/        301
+/vehiculos/nissan/versa        /vehiculos/nissan/versa/        301
+/vehiculos/mazda/3        /vehiculos/mazda/3/        301
+/vehiculos/mazda/cx-5        /vehiculos/mazda/cx-5/        301
+/vehiculos/fiat/bravo-tjet        /vehiculos/fiat/bravo-tjet/        301
+/vehiculos/subaru/forester        /vehiculos/subaru/forester/        301
+/vehiculos/subaru/xv        /vehiculos/subaru/xv/        301
+/vehiculos/suzuki/swift        /vehiculos/suzuki/swift/        301
+/vehiculos/suzuki/celerio        /vehiculos/suzuki/celerio/        301
+/vehiculos/suzuki/baleno        /vehiculos/suzuki/baleno/        301
+/vehiculos/renault/duster        /vehiculos/renault/duster/        301
+/vehiculos/renault/logan        /vehiculos/renault/logan/        301
+/vehiculos/peugeot/3008        /vehiculos/peugeot/3008/        301
+/vehiculos/peugeot/208        /vehiculos/peugeot/208/        301
+/vehiculos/hyundai/grand-i10        /vehiculos/hyundai/grand-i10/        301
+/vehiculos/hyundai/tucson        /vehiculos/hyundai/tucson/        301
+/vehiculos/hyundai/accent        /vehiculos/hyundai/accent/        301
+/vehiculos/volkswagen/gol        /vehiculos/volkswagen/gol/        301
+/vehiculos/ford/ecosport        /vehiculos/ford/ecosport/        301
+/vehiculos/ford/fiesta        /vehiculos/ford/fiesta/        301
+
+# ====== Slugs antiguos de servicios (301 a nuevo slug) ======
+/servicios/mecanica-general-a-domicilio    /servicios/mantencion-por-km/          301
+/servicios/escaner-y-diagnostico-computarizado  /servicios/escaner-para-autos-y-camiones/  301
+/servicios/mantencion-preventiva-y-afinamiento   /servicios/mantencion-por-km/          301
+/servicios/revision-y-cambio-de-bateria    /servicios/diagnosticos/              301
+/servicios/suspension-y-tren-delantero     /servicios/tren-delantero/            301
+/servicios/sistema-de-refrigeracion        /servicios/recarga-y-mantencion-de-aire-acondicionado/  301
+/servicios/inyeccion-electronica-y-limpieza /servicios/diagnosticos/             301
+/servicios/auxilio-mecanico-24-7           /servicios/diagnosticos/              301
+/servicios/correa-o-cadena-de-distribucion /servicios/cambio-kit-de-distribucion/  301
+
+# ====== Atajos comunes ======
 /servicio/*  /servicios/:splat  302
 /comuna/*    /comunas/:splat    302
 /vehiculo/*  /vehiculos/:splat  302
 /inicio      /                  302
 /home        /                  302
-/galeria-fotos  /galeria         301
-/fotos       /galeria           301
+/galeria-fotos  /galeria/         301
+/fotos       /galeria/           301
 
-# Servicio estrella atajos
-/revision-tecnica  /servicios/revision-tecnica-sin-estres  301
-/revision          /servicios/revision-tecnica-sin-estres  301
+# ====== Servicio estrella atajos ======
+/revision-tecnica  /servicios/revision-tecnica-sin-estres/  301
+/revision          /servicios/revision-tecnica-sin-estres/  301
 
-# Comunas eliminadas - devolver 410 Gone para que Google las desindexe
-# Cloudflare Pages: el destino se sirve con el status code indicado (410)
+# ====== Comunas eliminadas - 410 Gone para que Google desindexe ======
 /comunas/lo-prado        /404.html        410
-/comunas/la-pintana      /404.html        410
-/comunas/la-granja       /404.html        410
-/comunas/san-bernardo    /404.html        410
-/comunas/san-ramon       /404.html        410
 /comunas/lo-prado/       /404.html        410
-/comunas/la-pintana/     /404.html        410
-/comunas/la-granja/      /404.html        410
-/comunas/san-bernardo/   /404.html        410
-/comunas/san-ramon/      /404.html        410
+/comunas/la-pintana        /404.html        410
+/comunas/la-pintana/       /404.html        410
+/comunas/la-granja        /404.html        410
+/comunas/la-granja/       /404.html        410
+/comunas/san-bernardo        /404.html        410
+/comunas/san-bernardo/       /404.html        410
+/comunas/san-ramon        /404.html        410
+/comunas/san-ramon/       /404.html        410
+/comunas/puente-alto        /404.html        410
+/comunas/puente-alto/       /404.html        410
 /comunas/conchali        /404.html        410
-/comunas/renca           /404.html        410
 /comunas/conchali/       /404.html        410
-/comunas/renca/          /404.html        410
+/comunas/renca        /404.html        410
+/comunas/renca/       /404.html        410
+
+# ====== Query strings problemáticas - redirigir a /comunas/ ======
+/comunas?zona=Norte       /comunas/       301
+/comunas?zona=Sur           /comunas/       301
+/comunas?zona=Oriente       /comunas/       301
+/comunas?zona=Poniente      /comunas/       301
+/comunas?zona=Cordillera    /comunas/       301
+/comunas?zona=Maipo         /comunas/       301
+/comunas?zona=Chacabuco     /comunas/       301
+/comunas?zona=Melipilla     /comunas/       301
+/comunas?zona=Talagante     /comunas/       301
