@@ -1,5 +1,20 @@
 # Redirects for old/missing pages
 
+# Forzar trailing slash en /servicios/* y /comunas/* y /vehiculos/*
+# Para evitar URLs duplicadas en Google Search Console
+/servicios/cambio-kit-de-embrague        /servicios/cambio-kit-de-embrague/              301
+/servicios/cambio-kit-de-distribucion    /servicios/cambio-kit-de-distribucion/          301
+/servicios/diagnosticos                 /servicios/diagnosticos/                        301
+/servicios/direccion-y-suspension       /servicios/direccion-y-suspension/             301
+/servicios/escaner-para-autos-y-camiones /servicios/escaner-para-autos-y-camiones/      301
+/servicios/mantencion-por-km            /servicios/mantencion-por-km/                   301
+/servicios/pulido-de-opticos-focos-delanteros /servicios/pulido-de-opticos-focos-delanteros/ 301
+/servicios/revision-tecnica-sin-estres  /servicios/revision-tecnica-sin-estres/        301
+/servicios/servicio-de-frenos-a-domicilio /servicios/servicio-de-frenos-a-domicilio/    301
+/servicios/servicio-de-pre-compra       /servicios/servicio-de-pre-compra/             301
+/servicios/tren-delantero               /servicios/tren-delantero/                     301
+/servicios/recarga-y-mantencion-de-aire-acondicionado /servicios/recarga-y-mantencion-de-aire-acondicionado/ 301
+
 # Slugs antiguos (servicios previos) → nuevos slugs
 /servicios/mecanica-general-a-domicilio    /servicios/mantencion-por-km          301
 /servicios/escaner-y-diagnostico-computarizado  /servicios/escaner-para-autos-y-camiones  301
