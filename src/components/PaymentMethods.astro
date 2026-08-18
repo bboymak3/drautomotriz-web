@@ -1,0 +1,30 @@
+---
+/**
+ * PaymentMethods.astro
+ * 
+ * Sección de métodos de pago aceptados.
+ * Muestra el logo de Webpay/Transbank + tarjetas + Red Compra.
+ * Se incluye antes del footer en todas las páginas.
+ */
+---
+
+<section class="py-8 bg-dark-300 border-t border-neon-500/20">
+  <div class="container mx-auto px-4">
+    <div class="text-center">
+      <p class="text-sm font-bold text-white uppercase tracking-widest mb-4">
+        💳 Medios de Pago Aceptados
+      </p>
+      <div class="flex justify-center items-center gap-4 flex-wrap">
+        <img
+          src="/imagen/payment/payment-methods.jpg"
+          alt="Medios de pago: Webpay Plus, VISA, MasterCard, Magna, American Express, Diners Club, Red Compra, Transbank"
+          class="max-w-md w-full rounded-lg"
+          loading="lazy"
+        />
+      </div>
+      <p class="text-xs text-white mt-3">
+        Aceptamos Webpay Plus · VISA · MasterCard · Magna · American Express · Diners Club · Red Compra · Transbank
+      </p>
+    </div>
+  </div>
+</section>

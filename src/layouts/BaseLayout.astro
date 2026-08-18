@@ -6,6 +6,7 @@ import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 import BottomNav from '@/components/BottomNav.astro';
 import GoogleReviewsModal from '@/components/GoogleReviewsModal.astro';
 import TapizadoVolantes from '@/components/TapizadoVolantes.astro';
+import PaymentMethods from '@/components/PaymentMethods.astro';
 import { config } from '@/data/config';
 
 interface Props {
@@ -173,6 +174,7 @@ const ogImageUrl = new URL(ogImage, config.dominio).toString();
       <slot />
     </main>
     <TapizadoVolantes />
+    <PaymentMethods />
     <Footer />
     <WhatsAppCTA />
     <BottomNav />
