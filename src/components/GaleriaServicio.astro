@@ -16,8 +16,10 @@ let categoriaFiltro = 'todos';
 if (servicioSlug) {
   const servicio = servicios.find(s => s.slug === servicioSlug);
   if (servicio) {
+    // Primero chequear slugs específicos
+    if (servicio.slug === 'servicio-de-pre-compra') categoriaFiltro = 'mantencion';
     // Mapear categoria del servicio a categoria de galería
-    if (servicio.categoria.toLowerCase().includes('frenos')) categoriaFiltro = 'frenos';
+    else if (servicio.categoria.toLowerCase().includes('frenos')) categoriaFiltro = 'frenos';
     else if (servicio.categoria.toLowerCase().includes('motor')) categoriaFiltro = 'motor';
     else if (servicio.categoria.toLowerCase().includes('suspension') || servicio.categoria.toLowerCase().includes('dirección')) categoriaFiltro = 'suspension';
     else if (servicio.categoria.toLowerCase().includes('diagnóstic') || servicio.categoria.toLowerCase().includes('escáner')) categoriaFiltro = 'diagnostico';
@@ -26,6 +28,8 @@ if (servicioSlug) {
     else if (servicio.categoria.toLowerCase().includes('embrague')) categoriaFiltro = 'embrague';
     else if (servicio.categoria.toLowerCase().includes('óptic') || servicio.categoria.toLowerCase().includes('focos')) categoriaFiltro = 'opticos';
     else if (servicio.categoria.toLowerCase().includes('aceite')) categoriaFiltro = 'aceites';
+    else if (servicio.categoria.toLowerCase().includes('mantenim') || servicio.categoria.toLowerCase().includes('mantención')) categoriaFiltro = 'mantencion';
+    else if (servicio.slug === 'servicio-de-pre-compra') categoriaFiltro = 'mantencion';
     else if (servicio.categoria.toLowerCase().includes('revisión') || servicio.categoria.toLowerCase().includes('trámite')) categoriaFiltro = 'revision';
   }
 }
@@ -59,6 +63,7 @@ try {
     else if (f.includes('embrague')) categoria = 'embrague';
     else if (f.includes('opticos') || f.includes('focos')) categoria = 'opticos';
     else if (f.includes('aceite')) categoria = 'aceites';
+    else if (f.includes('mantencion') || f.includes('pre-compra') || f.includes('ahorro-bencina')) categoria = 'mantencion';
     else if (f.includes('revision')) categoria = 'revision';
     else if (f.includes('taller') || f.includes('logo')) categoria = 'taller';
     else if (f.match(/drautomotriz-(chevrolet|toyota|hyundai|kia|mazda|honda|ford|peugeot|renault|subaru|suzuki|volkswagen|nissan|fiat|mg)/)) categoria = 'vehiculo';

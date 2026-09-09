@@ -27,6 +27,19 @@ const colorGlow = esDestacado ? 'glow-text-orange' : 'glow-text';
 const colorBorder = esDestacado ? 'border-orange-500/30' : 'border-neon-500/30';
 const colorBg = esDestacado ? 'bg-orange-500/10' : 'bg-neon-500/10';
 
+// Hero photo map para servicios con foto representativa
+const heroPhotoMap: Record<string, { src: string; alt: string }> = {
+  'servicio-de-pre-compra': {
+    src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp',
+    alt: 'Inspección pre compra de auto usado en Santiago - DRAUTOMOTRIZ'
+  },
+  'mantencion-por-km': {
+    src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp',
+    alt: 'Mantención preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ'
+  },
+};
+const heroPhoto = heroPhotoMap[servicio.slug];
+
 // Schema.org para FAQ
 const faqSchema = {
   "@context": "https://schema.org",
@@ -111,6 +124,25 @@ const breadcrumbSchema = {
 
   <!-- Banner servicio top v2 -->
   <BannerServicio />
+
+  <!-- Hero photo para servicios con imagen destacada -->
+  {heroPhoto && (
+    <section class="relative w-full overflow-hidden" style="max-height: 360px;">
+      <img
+        src={heroPhoto.src}
+        alt={heroPhoto.alt}
+        class="w-full h-full object-cover"
+        style="max-height: 360px;"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-dark-400 via-dark-400/60 to-transparent"></div>
+      <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
+        <div class={`text-xs md:text-sm ${colorText} uppercase tracking-wider mb-1 font-semibold`}>{servicio.categoria}</div>
+        <div class="text-white font-display font-bold text-lg md:text-2xl lg:text-3xl leading-tight max-w-2xl">{servicio.h1}</div>
+      </div>
+    </section>
+  )}
 
   <!-- HERO del servicio -->
   <section class="relative pt-12 pb-16 overflow-hidden">

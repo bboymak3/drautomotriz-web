@@ -75,6 +75,7 @@ const categorias = [
   { id: 'suspension', nombre: 'Suspensión', icono: '🚗' },
   { id: 'vehiculo', nombre: 'Vehículos', icono: '🚙' },
   { id: 'taller', nombre: 'Taller', icono: '🏭' },
+  { id: 'mantencion', nombre: 'Mantención', icono: '📊' },
   { id: 'revision', nombre: 'Revisión Técnica', icono: '📋' },
 ];
 ---
@@ -133,6 +134,7 @@ const categorias = [
           else if (filename.includes('vehiculo') || filename.includes('drautomotriz-chevrolet') || filename.includes('drautomotriz-toyota') || filename.includes('drautomotriz-hyundai') || filename.includes('drautomotriz-kia') || filename.includes('drautomotriz-mazda') || filename.includes('drautomotriz-honda') || filename.includes('drautomotriz-ford') || filename.includes('drautomotriz-peugeot') || filename.includes('drautomotriz-renault') || filename.includes('drautomotriz-subaru') || filename.includes('drautomotriz-suzuki') || filename.includes('drautomotriz-volkswagen') || filename.includes('drautomotriz-nissan')) categoria = 'vehiculo';
           else if (filename.includes('taller') || filename.includes('logo')) categoria = 'taller';
           else if (filename.includes('revision')) categoria = 'revision';
+          else if (filename.includes('mantencion') || filename.includes('pre-compra') || filename.includes('ahorro-bencina')) categoria = 'mantencion';
           else if (filename.includes('mecanica') || filename.includes('bomba') || filename.includes('aceite') || filename.includes('filtro')) categoria = 'mecanica';
 
           // Generar alt descriptivo
