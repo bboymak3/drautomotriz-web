@@ -62,9 +62,13 @@ const serviciosRegulares = getServiciosRegulares();
           </div>
 
           <div class="relative">
-            <!-- Icono -->
-            <div class="w-14 h-14 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center mb-4 group-hover:shadow-neon transition-shadow">
-              <span class="text-3xl">{servicio.icono}</span>
+            <!-- Icono: foto real si el servicio define imagen, emoji como fallback -->
+            <div class="w-14 h-14 rounded-lg overflow-hidden bg-neon-500/10 border border-neon-500/30 flex items-center justify-center mb-4 group-hover:shadow-neon transition-shadow">
+              {servicio.imagen ? (
+                <img src={servicio.imagen} alt={servicio.nombre} class="w-full h-full object-cover" loading="lazy" />
+              ) : (
+                <span class="text-3xl">{servicio.icono}</span>
+              )}
             </div>
 
             <!-- Categoría -->
