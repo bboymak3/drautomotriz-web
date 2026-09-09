@@ -34,7 +34,7 @@ export const servicios: Servicio[] = [
     h1: 'Revisión Técnica Sin Estrés en Santiago | Retiro y Devolución a Domicilio',
     metaTitle: 'Revisión Técnica Sin Estrés a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Servicio de revisión técnica sin estrés en Santiago. Retiramos tu auto, lo llevamos a la planta de revisión técnica y te lo devolvemos con el documento aprobado. Agenda al +56962408735.',
-    icono: '📋',
+    icono: '⚙️',
     descripcionCorta: 'Retiramos tu vehículo, lo llevamos a la planta de revisión técnica y te lo devolvemos con el documento aprobado. Sin filas, sin pérdida de tiempo.',
     paragraphs: [
       'El servicio de Revisión Técnica Sin Estrés es nuestra propuesta estrella para resolver uno de los trámites más tediosos que deben realizar los conductores en Chile. La revisión técnica obligatoria es un trámite lento que puede tomar entre 2 y 4 horas entre traslado, fila, espera y el proceso mismo, lo que la convierte en una pesadilla para quienes trabajan o tienen responsabilidades familiares. Con nuestro servicio, tú te quedas en casa u oficina y nosotros nos encargamos de todo.',
@@ -414,7 +414,7 @@ export const servicios: Servicio[] = [
     h1: 'Cambio Kit de Distribución a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaTitle: 'Cambio Kit de Distribución a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Cambio de kit de distribución a domicilio en Santiago. Correa/cadena, tensor, rodillos y bomba de agua. Garantía 12 meses. WhatsApp +56962408735.',
-    icono: '🔩',
+    icono: '⚙️',
     descripcionCorta: 'Cambio completo de kit de distribución: correa/cadena, tensor, rodillos y bomba de agua.',
     paragraphs: [
       'La correa o cadena de distribución es uno de los componentes más críticos del motor: sincroniza el movimiento de los árboles de levas con el cigüeñal, y si se rompe mientras el motor está funcionando, los pistones pueden golpear las válvulas causando daños que requieren la reconstrucción completa del motor, con costos que fácilmente superan el millón de pesos. Por eso, el cambio programado según el kilometraje es la mantención más importante que debes hacer a tu vehículo.',
