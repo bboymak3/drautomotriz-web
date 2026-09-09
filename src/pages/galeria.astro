@@ -37,6 +37,23 @@ try {
   console.warn('No se pudo leer directorio galeria extra:', e);
 }
 
+// También las fotos nuevas de /public/imagen/nuevoset/ (escaneo recursivo con subcarpetas)
+const nuevosetDir = path.join(process.cwd(), 'public', 'imagen', 'nuevoset');
+let imagenesNuevoset: string[] = [];
+try {
+  const scanDir = (dir: string, prefix: string) => {
+    for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, f.name);
+      if (f.isDirectory()) scanDir(full, prefix + f.name + '/');
+      else if (/\.(jpg|jpeg|png|webp)$/i.test(f.name)) imagenesNuevoset.push(prefix + f.name);
+    }
+  };
+  scanDir(nuevosetDir, '/imagen/nuevoset/');
+  imagenesNuevoset.sort();
+} catch (e) {
+  console.warn('No se pudo leer nuevoset:', e);
+}
+
 // Y banners
 const bannerDir = path.join(process.cwd(), 'public', 'imagen', 'banner');
 let imagenesBanner: string[] = [];
@@ -49,7 +66,7 @@ try {
   console.warn('No se pudo leer directorio banner:', e);
 }
 
-const todasLasImagenes = [...todasImagenes, ...imagenesExtra, ...imagenesBanner];
+const todasLasImagenes = [...imagenesNuevoset, ...todasImagenes, ...imagenesExtra, ...imagenesBanner];
 const totalImagenes = todasLasImagenes.length;
 
 // Schema.org ImageGallery
@@ -134,8 +151,8 @@ const categorias = [
           else if (filename.includes('vehiculo') || filename.includes('drautomotriz-chevrolet') || filename.includes('drautomotriz-toyota') || filename.includes('drautomotriz-hyundai') || filename.includes('drautomotriz-kia') || filename.includes('drautomotriz-mazda') || filename.includes('drautomotriz-honda') || filename.includes('drautomotriz-ford') || filename.includes('drautomotriz-peugeot') || filename.includes('drautomotriz-renault') || filename.includes('drautomotriz-subaru') || filename.includes('drautomotriz-suzuki') || filename.includes('drautomotriz-volkswagen') || filename.includes('drautomotriz-nissan')) categoria = 'vehiculo';
           else if (filename.includes('taller') || filename.includes('logo')) categoria = 'taller';
           else if (filename.includes('revision')) categoria = 'revision';
-          else if (filename.includes('mantencion') || filename.includes('pre-compra') || filename.includes('ahorro-bencina')) categoria = 'mantencion';
-          else if (filename.includes('mecanica') || filename.includes('bomba') || filename.includes('aceite') || filename.includes('filtro')) categoria = 'mecanica';
+          else if (filename.includes('mantencion') || filename.includes('manutencion') || filename.includes('pre-compra') || filename.includes('ahorro-bencina')) categoria = 'mantencion';
+          else if (filename.includes('mecanica') || filename.includes('mecanico') || filename.includes('bujia') || filename.includes('culata') || filename.includes('empaque') || filename.includes('bomba') || filename.includes('aceite') || filename.includes('filtro')) categoria = 'mecanica';
 
           // Generar alt descriptivo
           const alt = filename
