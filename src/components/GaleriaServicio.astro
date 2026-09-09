@@ -1,4 +1,4 @@
-﻿---
+---
 import fs from 'node:fs';
 import path from 'node:path';
 import { servicios } from '@/data/servicios';
@@ -11,26 +11,26 @@ interface Props {
 
 const { servicioSlug, servicioNombre } = Astro.props;
 
-// Categor├¡a basada en el servicio
+// Categoría basada en el servicio
 let categoriaFiltro = 'todos';
 if (servicioSlug) {
   const servicio = servicios.find(s => s.slug === servicioSlug);
   if (servicio) {
-    // Primero chequear slugs espec├¡ficos
+    // Primero chequear slugs específicos
     if (servicio.slug === 'servicio-de-pre-compra') categoriaFiltro = 'mantencion';
-    // Mapear categoria del servicio a categoria de galer├¡a
+    // Mapear categoria del servicio a categoria de galería
     else if (servicio.categoria.toLowerCase().includes('frenos')) categoriaFiltro = 'frenos';
     else if (servicio.categoria.toLowerCase().includes('motor')) categoriaFiltro = 'motor';
-    else if (servicio.categoria.toLowerCase().includes('suspension') || servicio.categoria.toLowerCase().includes('direcci├│n')) categoriaFiltro = 'suspension';
-    else if (servicio.categoria.toLowerCase().includes('diagn├│stic') || servicio.categoria.toLowerCase().includes('esc├íner')) categoriaFiltro = 'diagnostico';
+    else if (servicio.categoria.toLowerCase().includes('suspension') || servicio.categoria.toLowerCase().includes('dirección')) categoriaFiltro = 'suspension';
+    else if (servicio.categoria.toLowerCase().includes('diagnóstic') || servicio.categoria.toLowerCase().includes('escáner')) categoriaFiltro = 'diagnostico';
     else if (servicio.categoria.toLowerCase().includes('aire') || servicio.categoria.toLowerCase().includes('refriger')) categoriaFiltro = 'refrigeracion';
     else if (servicio.categoria.toLowerCase().includes('distribuc')) categoriaFiltro = 'distribucion';
     else if (servicio.categoria.toLowerCase().includes('embrague')) categoriaFiltro = 'embrague';
-    else if (servicio.categoria.toLowerCase().includes('├│ptic') || servicio.categoria.toLowerCase().includes('focos')) categoriaFiltro = 'opticos';
+    else if (servicio.categoria.toLowerCase().includes('óptic') || servicio.categoria.toLowerCase().includes('focos')) categoriaFiltro = 'opticos';
     else if (servicio.categoria.toLowerCase().includes('aceite')) categoriaFiltro = 'aceites';
-    else if (servicio.categoria.toLowerCase().includes('mantenim') || servicio.categoria.toLowerCase().includes('mantenci├│n')) categoriaFiltro = 'mantencion';
+    else if (servicio.categoria.toLowerCase().includes('mantenim') || servicio.categoria.toLowerCase().includes('mantención')) categoriaFiltro = 'mantencion';
     else if (servicio.slug === 'servicio-de-pre-compra') categoriaFiltro = 'mantencion';
-    else if (servicio.categoria.toLowerCase().includes('revisi├│n') || servicio.categoria.toLowerCase().includes('tr├ímite')) categoriaFiltro = 'revision';
+    else if (servicio.categoria.toLowerCase().includes('revisión') || servicio.categoria.toLowerCase().includes('trámite')) categoriaFiltro = 'revision';
   }
 }
 
@@ -101,12 +101,12 @@ const totalFotos = fotosServicio.length;
 
   <div class="container-x relative">
     <div class="text-center mb-8">
-      <span class="badge-neon mb-3">Galer├¡a</span>
+      <span class="badge-neon mb-3">Galería</span>
       <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">
-        {servicioNombre ? `Fotos de ${servicioNombre}` : 'Galer├¡a de Trabajos'}
+        {servicioNombre ? `Fotos de ${servicioNombre}` : 'Galería de Trabajos'}
       </h2>
       <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-        Galer├¡a de trabajos realizados en Santiago. Cada foto representa el tipo de servicio que podemos realizar en tu veh├¡culo.
+        Galería de trabajos realizados en Santiago. Cada foto representa el tipo de servicio que podemos realizar en tu vehículo.
       </p>
     </div>
 
@@ -136,10 +136,10 @@ const totalFotos = fotosServicio.length;
       ))}
     </div>
 
-    <!-- Bot├│n Ver m├ís -->
+    <!-- Botón Ver más -->
     <div class="text-center mt-8">
       <a href="/galeria" class="btn-outline-neon text-sm">
-        Ver galer├¡a completa ({totalFotos} fotos)
+        Ver galería completa ({totalFotos} fotos)
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
         </svg>
