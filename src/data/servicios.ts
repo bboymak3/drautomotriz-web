@@ -575,7 +575,7 @@ export const servicios: Servicio[] = [
     h1: 'Diagnósticos Automotrices a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaTitle: 'Diagnósticos Automotrices a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Diagnóstico mecánico, electrónico y visual a domicilio en Santiago. Identificamos cualquier falla antes de reparar. WhatsApp +56962408735.',
-    icono: '🔬',
+    icono: '⚙️',
     descripcionCorta: 'Diagnóstico mecánico, electrónico y visual completo para identificar cualquier falla en tu vehículo.',
     paragraphs: [
       'El diagnóstico es el primer paso fundamental antes de cualquier reparación. Sin un diagnóstico correcto, cualquier trabajo es a ciegas y puede resultar en cambios innecesarios de repuestos, pérdida de tiempo y dinero, y la falla original sigue presente. En DRAUTOMOTRIZ realizamos diagnósticos profesionales que combinan tres enfoques: electrónico (escáner computarizado), mecánico (inspección visual y funcional) y dinámico (prueba de ruta).',
