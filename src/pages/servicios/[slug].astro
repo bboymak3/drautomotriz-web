@@ -40,6 +40,55 @@ const heroPhotoMap: Record<string, { src: string; alt: string }> = {
 };
 const heroPhoto = heroPhotoMap[servicio.slug];
 
+// Galería completa de fotos nuevas para pre-compra y mantención
+const nuevasFotosMap: Record<string, { src: string; alt: string; label: string }[]> = {
+  'servicio-de-pre-compra': [
+    { src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp', alt: 'Inspección pre compra de auto usado en Santiago', label: 'Pre Compra' },
+    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp', alt: 'Diagnóstico computarizado de motor', label: 'Diagnóstico' },
+    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp', alt: 'Escáner computarizado automotriz', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp', alt: 'Diagnóstico con escáner a domicilio', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp', alt: 'Escáner automotriz profesional', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp', alt: 'Mantención preventiva de auto', label: 'Mantención' },
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp', alt: 'Inspección preventiva automotriz', label: 'Mantención' },
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp', alt: 'Mantención para ahorro de bencina', label: 'Rendimiento' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp', alt: 'Mecánica automotriz diagnóstico y reparación', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp', alt: 'Servicio técnico automotriz', label: 'Servicio' },
+    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp', alt: 'Servicio técnico automotriz a domicilio', label: 'Servicio' },
+    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-5w-30-mantenimiento.webp', alt: 'Cambio aceite motor 5W-30', label: 'Aceite' },
+    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp', alt: 'Aceite motor sintético', label: 'Aceite' },
+    { src: '/imagen/drautomotriz/drautomotriz-filtros-automotriz-cambio-7a76b097.webp', alt: 'Cambio filtros automotriz', label: 'Filtros' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp', alt: 'Cambio bujías de motor', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp', alt: 'Bujías iridio usadas vs nuevas', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp', alt: 'Bujías Mazda comparación', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp', alt: 'Mecánica automotriz a domicilio', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp', alt: 'Servicio mecánico a domicilio', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp', alt: 'Taller móvil con escáner de diagnóstico', label: 'Taller' },
+  ],
+  'mantencion-por-km': [
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp', alt: 'Mantención preventiva de auto en Santiago', label: 'Mantención' },
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp', alt: 'Inspección preventiva automotriz', label: 'Mantención' },
+    { src: '/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp', alt: 'Mantención para ahorro de bencina y rendimiento', label: 'Rendimiento' },
+    { src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp', alt: 'Inspección pre compra de vehículo', label: 'Pre Compra' },
+    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp', alt: 'Diagnóstico computarizado de motor', label: 'Diagnóstico' },
+    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp', alt: 'Escáner computarizado automotriz', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp', alt: 'Diagnóstico con escáner a domicilio', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp', alt: 'Escáner automotriz profesional', label: 'Escáner' },
+    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-5w-30-mantenimiento.webp', alt: 'Cambio aceite motor 5W-30', label: 'Aceite' },
+    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp', alt: 'Aceite motor sintético', label: 'Aceite' },
+    { src: '/imagen/drautomotriz/drautomotriz-filtros-automotriz-cambio-7a76b097.webp', alt: 'Cambio filtros automotriz', label: 'Filtros' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp', alt: 'Cambio bujías de motor', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp', alt: 'Bujías iridio usadas vs nuevas', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp', alt: 'Bujías Mazda comparación', label: 'Bujías' },
+    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp', alt: 'Servicio técnico automotriz', label: 'Servicio' },
+    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp', alt: 'Servicio técnico automotriz a domicilio', label: 'Servicio' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp', alt: 'Mecánica automotriz diagnóstico y reparación', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp', alt: 'Mecánica automotriz a domicilio', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp', alt: 'Servicio mecánico a domicilio', label: 'Mecánica' },
+    { src: '/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp', alt: 'Taller móvil con escáner de diagnóstico', label: 'Taller' },
+  ],
+};
+const nuevasFotos = nuevasFotosMap[servicio.slug] || [];
+
 // Schema.org para FAQ
 const faqSchema = {
   "@context": "https://schema.org",
@@ -140,6 +189,49 @@ const breadcrumbSchema = {
       <div class="absolute bottom-4 left-4 md:bottom-6 md:left-6">
         <div class={`text-xs md:text-sm ${colorText} uppercase tracking-wider mb-1 font-semibold`}>{servicio.categoria}</div>
         <div class="text-white font-display font-bold text-lg md:text-2xl lg:text-3xl leading-tight max-w-2xl">{servicio.h1}</div>
+      </div>
+    </section>
+  )}
+
+  <!-- Galería completa de fotos nuevas -->
+  {nuevasFotos.length > 0 && (
+    <section class="py-8 md:py-12 relative overflow-hidden">
+      <div class="absolute inset-0 bg-grid opacity-10"></div>
+      <div class="container-x relative">
+        <div class="text-center mb-8">
+          <span class="badge-neon mb-3">📸 Galería</span>
+          <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">
+            Fotos de <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">{servicio.nombre}</span>
+          </h2>
+          <p class="text-gray-400 max-w-2xl mx-auto text-sm">
+            {nuevasFotos.length} fotos reales de trabajos de {servicio.nombre.toLowerCase()} realizados por DRAUTOMOTRIZ en Santiago.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+          {nuevasFotos.map((foto, i) => (
+            <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
+              <img
+                src={foto.src}
+                alt={foto.alt}
+                loading={i < 5 ? 'eager' : 'lazy'}
+                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-400/90 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity"></div>
+              <div class="absolute bottom-1.5 left-1.5 right-1.5">
+                <div class="text-[8px] text-neon-400 uppercase tracking-wide font-semibold">{foto.label}</div>
+                <div class="text-[9px] text-white font-bold leading-tight line-clamp-2">{foto.alt.split(' ').slice(0,5).join(' ')}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="text-center mt-6">
+          <a href="/galeria" class="btn-outline-neon text-sm">
+            Ver galería completa
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   )}
