@@ -17,7 +17,7 @@ const { servicio } = Astro.props;
 const relacionados = getServiciosRelacionados(servicio.slug);
 const esDestacado = servicio.destacado === true;
 
-// Color theme según si es destacado o no
+// Color theme seg├║n si es destacado o no
 const colorText = esDestacado ? 'text-orange-400' : 'text-neon-400';
 const colorBadge = esDestacado ? 'badge-orange' : 'badge-neon';
 const colorBtn = esDestacado ? 'btn-orange' : 'btn-neon';
@@ -31,60 +31,60 @@ const colorBg = esDestacado ? 'bg-orange-500/10' : 'bg-neon-500/10';
 const heroPhotoMap: Record<string, { src: string; alt: string }> = {
   'servicio-de-pre-compra': {
     src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp',
-    alt: 'Inspección pre compra de auto usado en Santiago - DRAUTOMOTRIZ'
+    alt: 'Inspecci├│n pre compra de auto usado en Santiago - DRAUTOMOTRIZ'
   },
   'mantencion-por-km': {
     src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp',
-    alt: 'Mantención preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ'
+    alt: 'Mantenci├│n preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ'
   },
 };
 const heroPhoto = heroPhotoMap[servicio.slug];
 
+// Galer├¡a completa de fotos nuevas para pre-compra y mantenci├│n
 // Galería completa de fotos nuevas para pre-compra y mantención
 const nuevasFotosMap: Record<string, { src: string; alt: string; label: string }[]> = {
   'servicio-de-pre-compra': [
-    { src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp', alt: 'Inspección pre compra de auto usado en Santiago', label: 'Pre Compra' },
-    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp', alt: 'Diagnóstico computarizado de motor', label: 'Diagnóstico' },
-    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp', alt: 'Escáner computarizado automotriz', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp', alt: 'Diagnóstico con escáner a domicilio', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp', alt: 'Escáner automotriz profesional', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp', alt: 'Mantención preventiva de auto', label: 'Mantención' },
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp', alt: 'Inspección preventiva automotriz', label: 'Mantención' },
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp', alt: 'Mantención para ahorro de bencina', label: 'Rendimiento' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp', alt: 'Mecánica automotriz diagnóstico y reparación', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp', alt: 'Servicio técnico automotriz', label: 'Servicio' },
-    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp', alt: 'Servicio técnico automotriz a domicilio', label: 'Servicio' },
-    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-5w-30-mantenimiento.webp', alt: 'Cambio aceite motor 5W-30', label: 'Aceite' },
-    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp', alt: 'Aceite motor sintético', label: 'Aceite' },
-    { src: '/imagen/drautomotriz/drautomotriz-filtros-automotriz-cambio-7a76b097.webp', alt: 'Cambio filtros automotriz', label: 'Filtros' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp', alt: 'Cambio bujías de motor', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp', alt: 'Bujías iridio usadas vs nuevas', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp', alt: 'Bujías Mazda comparación', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp', alt: 'Mecánica automotriz a domicilio', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp', alt: 'Servicio mecánico a domicilio', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp', alt: 'Taller móvil con escáner de diagnóstico', label: 'Taller' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-1.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-2.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-3.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-4.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-5.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-6.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-7.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-8.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-9.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-2.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-3.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-4.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-5.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-6.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-7.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-8.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-motor.jpeg', alt: 'Mecánico a domicilio - Motor', label: 'Motor' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-frenos.jpeg', alt: 'Mecánico a domicilio - Frenos', label: 'Frenos' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-aceite.jpeg', alt: 'Mecánico a domicilio - Aceite', label: 'Aceite' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-cambio-de-bujias.jpeg', alt: 'Mecánico a domicilio - Cambio de bujías', label: 'Bujías' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-culata.jpeg', alt: 'Mecánico a domicilio - Culata', label: 'Motor' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-empaques-embriage.jpeg', alt: 'Mecánico a domicilio - Empaques embrague', label: 'Embrague' },
+    { src: '/imagen/nuevoset/manutencion-por-kilometraje.jpeg', alt: 'Mantención por kilometraje', label: 'Mantención' },
   ],
   'mantencion-por-km': [
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp', alt: 'Mantención preventiva de auto en Santiago', label: 'Mantención' },
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp', alt: 'Inspección preventiva automotriz', label: 'Mantención' },
-    { src: '/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp', alt: 'Mantención para ahorro de bencina y rendimiento', label: 'Rendimiento' },
-    { src: '/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp', alt: 'Inspección pre compra de vehículo', label: 'Pre Compra' },
-    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp', alt: 'Diagnóstico computarizado de motor', label: 'Diagnóstico' },
-    { src: '/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp', alt: 'Escáner computarizado automotriz', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp', alt: 'Diagnóstico con escáner a domicilio', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp', alt: 'Escáner automotriz profesional', label: 'Escáner' },
-    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-5w-30-mantenimiento.webp', alt: 'Cambio aceite motor 5W-30', label: 'Aceite' },
-    { src: '/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp', alt: 'Aceite motor sintético', label: 'Aceite' },
-    { src: '/imagen/drautomotriz/drautomotriz-filtros-automotriz-cambio-7a76b097.webp', alt: 'Cambio filtros automotriz', label: 'Filtros' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp', alt: 'Cambio bujías de motor', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp', alt: 'Bujías iridio usadas vs nuevas', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp', alt: 'Bujías Mazda comparación', label: 'Bujías' },
-    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp', alt: 'Servicio técnico automotriz', label: 'Servicio' },
-    { src: '/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp', alt: 'Servicio técnico automotriz a domicilio', label: 'Servicio' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp', alt: 'Mecánica automotriz diagnóstico y reparación', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp', alt: 'Mecánica automotriz a domicilio', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp', alt: 'Servicio mecánico a domicilio', label: 'Mecánica' },
-    { src: '/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp', alt: 'Taller móvil con escáner de diagnóstico', label: 'Taller' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-1.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-2.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-3.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-4.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-5.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-6.jpeg', alt: 'Mantención por km Nissan March', label: 'Mantención' },
+    { src: '/imagen/nuevoset/manutencion-por-kilometraje.jpeg', alt: 'Mantención por kilometraje', label: 'Mantención' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-motor.jpeg', alt: 'Mecánico a domicilio - Motor', label: 'Motor' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-frenos.jpeg', alt: 'Mecánico a domicilio - Frenos', label: 'Frenos' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-aceite.jpeg', alt: 'Mecánico a domicilio - Aceite', label: 'Aceite' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-cambio-de-bujias.jpeg', alt: 'Mecánico a domicilio - Cambio de bujías', label: 'Bujías' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-culata.jpeg', alt: 'Mecánico a domicilio - Culata', label: 'Motor' },
+    { src: '/imagen/nuevoset/mecanico-a-domicilio-en-santiago-empaques-embriage.jpeg', alt: 'Mecánico a domicilio - Empaques embrague', label: 'Embrague' },
+    { src: '/imagen/nuevoset/inspeccion/subaru/inspeccion-pre-compra-subaru-crosstrek-1.jpeg', alt: 'Inspección pre compra Subaru Crosstrek', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-2.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
+    { src: '/imagen/nuevoset/inspeccion/volkswagen-tiguan-r/inspeccion-pre-compra-volkswagen-tiguan-3.jpeg', alt: 'Inspección pre compra Volkswagen Tiguan R', label: 'Pre Compra' },
   ],
 };
 const nuevasFotos = nuevasFotosMap[servicio.slug] || [];
@@ -104,13 +104,13 @@ const faqSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": `${servicio.nombre} - Mecánico a Domicilio en Santiago`,
+  "name": `${servicio.nombre} - Mec├ínico a Domicilio en Santiago`,
   "alternateName": servicio.nombre,
   "description": servicio.descripcionCorta,
   "url": `https://drmecanicoautomotriz.com/servicios/${servicio.slug}/`,
   "image": "https://drmecanicoautomotriz.com/imagen/banner/banner-servicio-top.webp",
   "serviceType": servicio.categoria,
-  "termsOfService": "Garantía escrita de 3 a 12 meses según el servicio.",
+  "termsOfService": "Garant├¡a escrita de 3 a 12 meses seg├║n el servicio.",
   "provider": {
     "@type": "AutoRepair",
     "name": "DRAUTOMOTRIZ",
@@ -121,7 +121,7 @@ const serviceSchema = {
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Santiago",
-      "addressRegion": "Región Metropolitana",
+      "addressRegion": "Regi├│n Metropolitana",
       "addressCountry": "CL"
     }
   },
@@ -147,7 +147,7 @@ const serviceSchema = {
   }
 };
 
-// Breadcrumb específico
+// Breadcrumb espec├¡fico
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -193,13 +193,13 @@ const breadcrumbSchema = {
     </section>
   )}
 
-  <!-- Galería completa de fotos nuevas -->
+  <!-- Galer├¡a completa de fotos nuevas -->
   {nuevasFotos.length > 0 && (
     <section class="py-8 md:py-12 relative overflow-hidden">
       <div class="absolute inset-0 bg-grid opacity-10"></div>
       <div class="container-x relative">
         <div class="text-center mb-8">
-          <span class="badge-neon mb-3">📸 Galería</span>
+          <span class="badge-neon mb-3">­ƒô© Galer├¡a</span>
           <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">
             Fotos de <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">{servicio.nombre}</span>
           </h2>
@@ -226,7 +226,7 @@ const breadcrumbSchema = {
         </div>
         <div class="text-center mt-6">
           <a href="/galeria" class="btn-outline-neon text-sm">
-            Ver galería completa
+            Ver galer├¡a completa
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
             </svg>
@@ -261,7 +261,7 @@ const breadcrumbSchema = {
             <div class="flex flex-col gap-1">
               <span class={colorBadge}>{servicio.categoria}</span>
               {esDestacado && (
-                <span class="text-[10px] px-2 py-0.5 bg-orange-500 text-dark-500 rounded font-bold uppercase tracking-wider w-fit">★ Servicio Estrella</span>
+                <span class="text-[10px] px-2 py-0.5 bg-orange-500 text-dark-500 rounded font-bold uppercase tracking-wider w-fit">Ôÿà Servicio Estrella</span>
               )}
             </div>
           </div>
@@ -283,7 +283,7 @@ const breadcrumbSchema = {
               Cotizar por WhatsApp
             </a>
             <a href="#detalle" class={colorOutlineBtn}>
-              Ver qué incluye
+              Ver qu├® incluye
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
               </svg>
@@ -295,44 +295,44 @@ const breadcrumbSchema = {
             {esDestacado ? (
               <>
                 <span class={colorBadge}>Santiago</span>
-                <span class={colorBadge}>Retiro y devolución</span>
+                <span class={colorBadge}>Retiro y devoluci├│n</span>
                 <span class={colorBadge}>Sin filas</span>
-                <span class={colorBadge}>Garantía</span>
+                <span class={colorBadge}>Garant├¡a</span>
               </>
             ) : (
               <>
                 <span class={colorBadge}>Santiago</span>
                 <span class={colorBadge}>A Domicilio</span>
-                <span class={colorBadge}>Garantía escrita</span>
+                <span class={colorBadge}>Garant├¡a escrita</span>
                 <span class={colorBadge}>Repuestos OEM</span>
               </>
             )}
           </div>
         </div>
 
-        <!-- Right: Card de contacto rápido -->
+        <!-- Right: Card de contacto r├ípido -->
         <div class={`${colorCard} lg:sticky lg:top-24`}>
           <h3 class="text-xl font-display font-bold text-white mb-4">Solicita este servicio</h3>
           <p class="text-sm text-gray-400 mb-6">
-            Escríbenos por WhatsApp con el mensaje pre-armado y te respondemos en minutos con disponibilidad y valor estimado.
+            Escr├¡benos por WhatsApp con el mensaje pre-armado y te respondemos en minutos con disponibilidad y valor estimado.
           </p>
 
           <div class="space-y-3 mb-6">
             <div class="flex items-center gap-3 text-sm">
-              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>Ô£ô</div>
               <span class="text-gray-300">Respuesta en 5-15 min</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>Ô£ô</div>
               <span class="text-gray-300">Presupuesto transparente</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
-              <span class="text-gray-300">Atención en toda la RM</span>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>Ô£ô</div>
+              <span class="text-gray-300">Atenci├│n en toda la RM</span>
             </div>
             <div class="flex items-center gap-3 text-sm">
-              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>✓</div>
-              <span class="text-gray-300">Garantía escrita</span>
+              <div class={`w-8 h-8 rounded ${colorBg} border ${colorBorder} flex items-center justify-center ${colorText}`}>Ô£ô</div>
+              <span class="text-gray-300">Garant├¡a escrita</span>
             </div>
           </div>
 
@@ -342,13 +342,13 @@ const breadcrumbSchema = {
             </svg>
             +569 6240 8735
           </a>
-          <a href="/contacto" class={`${colorOutlineBtn} w-full`}>Formulario de cotización</a>
+          <a href="/contacto" class={`${colorOutlineBtn} w-full`}>Formulario de cotizaci├│n</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- DETALLE: descripción extensa -->
+  <!-- DETALLE: descripci├│n extensa -->
   <section id="detalle" class="py-16 relative">
     <div class="container-x">
       <div class="grid lg:grid-cols-3 gap-8">
@@ -375,9 +375,9 @@ const breadcrumbSchema = {
             </div>
           </div>
 
-          <!-- Qué incluye -->
+          <!-- Qu├® incluye -->
           <div class="mt-12">
-            <h3 class="text-xl font-display font-bold text-white mb-6">¿Qué incluye el servicio?</h3>
+            <h3 class="text-xl font-display font-bold text-white mb-6">┬┐Qu├® incluye el servicio?</h3>
             <div class={colorCard}>
               <ul class="space-y-3">
                 {servicio.incluye.map(item => (
@@ -439,7 +439,7 @@ const breadcrumbSchema = {
           <!-- CTA sidebar -->
           <div class={`${colorCard} text-center`}>
             <div class="text-4xl mb-3">{servicio.icono}</div>
-            <h3 class="text-lg font-display font-bold text-white mb-2">¿Listo para agendar?</h3>
+            <h3 class="text-lg font-display font-bold text-white mb-2">┬┐Listo para agendar?</h3>
             <p class="text-sm text-gray-400 mb-4">Atendemos en toda la RM. Tiempo promedio de llegada: 45-60 min.</p>
             <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp w-full">
               Agendar ahora
@@ -449,7 +449,7 @@ const breadcrumbSchema = {
           <!-- Coverage -->
           <div class={colorCard}>
             <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-3`}>Cobertura</h3>
-            <p class="text-sm text-gray-400 mb-3">Atendemos en más de 40 comunas de la Región Metropolitana.</p>
+            <p class="text-sm text-gray-400 mb-3">Atendemos en m├ís de 40 comunas de la Regi├│n Metropolitana.</p>
             <a href="/comunas" class={`text-sm ${colorText} hover:underline inline-flex items-center gap-1`}>
               Ver comunas cubiertas
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -458,12 +458,12 @@ const breadcrumbSchema = {
             </a>
           </div>
 
-          <!-- Enlace a galería -->
+          <!-- Enlace a galer├¡a -->
           <div class={colorCard}>
-            <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-3`}>Galería</h3>
-            <p class="text-sm text-gray-400 mb-3">Próximamente fotos reales de este servicio.</p>
+            <h3 class={`text-sm font-display font-bold ${colorText} uppercase tracking-wider mb-3`}>Galer├¡a</h3>
+            <p class="text-sm text-gray-400 mb-3">Pr├│ximamente fotos reales de este servicio.</p>
             <a href="/galeria" class={`text-sm ${colorText} hover:underline inline-flex items-center gap-1`}>
-              Ver galería
+              Ver galer├¡a
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
               </svg>
@@ -481,7 +481,7 @@ const breadcrumbSchema = {
       <div class="text-center mb-8">
         <span class="badge-neon mb-3">Cobertura</span>
         <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">
-          Dónde Atendemos en Santiago
+          D├│nde Atendemos en Santiago
         </h2>
         <p class="text-gray-400 max-w-2xl mx-auto text-sm">
           Mapa interactivo con las {servicios.length > 0 ? '35' : ''} comunas donde ofrecemos este servicio. Haz click en un marcador para ver la landing de esa comuna.
@@ -501,10 +501,10 @@ const breadcrumbSchema = {
 
     <div class="container-x relative text-center">
       <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-4">
-        ¿Necesitas <span class={colorText}>{servicio.nombre.toLowerCase()}</span> en Santiago?
+        ┬┐Necesitas <span class={colorText}>{servicio.nombre.toLowerCase()}</span> en Santiago?
       </h2>
       <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
-        Escríbenos por WhatsApp ahora mismo y coordina tu visita a domicilio. Sin compromiso, sin costos ocultos.
+        Escr├¡benos por WhatsApp ahora mismo y coordina tu visita a domicilio. Sin compromiso, sin costos ocultos.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
         <a href={waLinkServicio(servicio.nombre)} target="_blank" rel="noopener" class="btn-whatsapp">

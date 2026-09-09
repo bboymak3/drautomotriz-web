@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
 import BannerMidSize from '@/components/BannerMidSize.astro';
@@ -21,8 +21,8 @@ const homeSchema = {
   "@context": "https://schema.org",
   "@type": "AutoRepair",
   "name": "DRAUTOMOTRIZ",
-  "alternateName": "DRAUTOMOTRIZ - Mecánico a Domicilio",
-  "description": "Servicio mecánico a domicilio en Santiago, Chile. Diagnóstico, mantención, frenos, batería, suspensión, revisión técnica sin estrés y auxilio 24/7.",
+  "alternateName": "DRAUTOMOTRIZ - Mec├ínico a Domicilio",
+  "description": "Servicio mec├ínico a domicilio en Santiago, Chile. Diagn├│stico, mantenci├│n, frenos, bater├¡a, suspensi├│n, revisi├│n t├®cnica sin estr├®s y auxilio 24/7.",
   "url": "https://drmecanicoautomotriz.com/",
   "logo": "https://drmecanicoautomotriz.com/imagen/logo/drautomotriz-logo.webp",
   "image": "https://drmecanicoautomotriz.com/og-image.png",
@@ -32,12 +32,12 @@ const homeSchema = {
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Santiago",
-    "addressRegion": "Región Metropolitana",
+    "addressRegion": "Regi├│n Metropolitana",
     "addressCountry": "CL"
   },
   "areaServed": [
     {"@type": "City", "name": "Santiago"},
-    {"@type": "AdministrativeArea", "name": "Región Metropolitana"}
+    {"@type": "AdministrativeArea", "name": "Regi├│n Metropolitana"}
   ],
   "openingHoursSpecification": [
     {
@@ -76,10 +76,10 @@ const homeSchema = {
   <!-- Banner mediano (50% ancho) con revision-tecnica-sin-estres -->
   <BannerMidSize />
 
-  <!-- TEXTO SEO 1: Sección Principal (después del Hero) -->
+  <!-- TEXTO SEO 1: Secci├│n Principal (despu├®s del Hero) -->
   <SeoTextBlock variante="texto1" />
 
-  <!-- Servicio Estrella: Revisión Técnica Sin Estrés -->
+  <!-- Servicio Estrella: Revisi├│n T├®cnica Sin Estr├®s -->
   <RevisionTecnicaHighlight />
 
   <!-- TEXTO SEO 2: Servicios y Especialidades (antes del grid de servicios) -->
@@ -88,101 +88,101 @@ const homeSchema = {
   <!-- Grid de Servicios -->
   <Services />
 
-  <!-- ====== MANTENCIÓN PRE COMPRA ====== -->
+  <!-- ====== MANTENCI├ôN PRE COMPRA ====== -->
   <section class="py-16 md:py-20 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-10"></div>
     <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="container-x relative">
       <div class="text-center mb-12">
-        <span class="badge-neon mb-4">🔍 Inspección Profesional</span>
+        <span class="badge-neon mb-4">­ƒöì Inspecci├│n Profesional</span>
         <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
-          Mantención <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Pre Compra</span>
+          Mantenci├│n <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Pre Compra</span>
         </h2>
         <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
-          Inspección técnica completa antes de comprar un auto usado y mantenciones preventivas que alargan la vida útil de tu vehículo. Evita malas compras y sorpresas costosas con un diagnóstico profesional a domicilio.
+          Inspecci├│n t├®cnica completa antes de comprar un auto usado y mantenciones preventivas que alargan la vida ├║til de tu veh├¡culo. Evita malas compras y sorpresas costosas con un diagn├│stico profesional a domicilio.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
         <!-- Pre Compra -->
         <div class="neon-card rounded-2xl overflow-hidden flex flex-col">
-          <img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspección pre compra de auto usado en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
+          <img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspecci├│n pre compra de auto usado en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
           <div class="p-6 flex flex-col flex-1">
             <div class="flex items-center gap-3 mb-3">
               <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-neon-500/10 border border-neon-500/20 shrink-0">
-                <span class="text-xl">🔍</span>
+                <span class="text-xl">­ƒöì</span>
               </div>
               <h3 class="text-lg font-display font-bold text-white">Servicio de Pre-Compra</h3>
             </div>
-            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Inspección técnica completa de 150+ puntos antes de comprar un auto usado. Escáner computarizado, revisión de motor, transmisión, frenos, suspensión, carrocería y documentos. Informe PDF con fotos y calificación final.</p>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Inspecci├│n t├®cnica completa de 150+ puntos antes de comprar un auto usado. Esc├íner computarizado, revisi├│n de motor, transmisi├│n, frenos, suspensi├│n, carrocer├¡a y documentos. Informe PDF con fotos y calificaci├│n final.</p>
             <div class="flex flex-wrap gap-2">
               <a href="/servicios/servicio-de-pre-compra" class="btn-neon text-xs py-2 px-4">Ver servicio</a>
-              <a href={waLink('Hola! Quiero cotizar una inspección pre compra de auto usado')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
+              <a href={waLink('Hola! Quiero cotizar una inspecci├│n pre compra de auto usado')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
             </div>
           </div>
         </div>
 
-        <!-- Mantención Preventiva -->
+        <!-- Mantenci├│n Preventiva -->
         <div class="neon-card rounded-2xl overflow-hidden flex flex-col">
-          <img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantención preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
+          <img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantenci├│n preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
           <div class="p-6 flex flex-col flex-1">
             <div class="flex items-center gap-3 mb-3">
               <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-neon-500/10 border border-neon-500/20 shrink-0">
-                <span class="text-xl">📊</span>
+                <span class="text-xl">­ƒôè</span>
               </div>
-              <h3 class="text-lg font-display font-bold text-white">Mantención Preventiva</h3>
+              <h3 class="text-lg font-display font-bold text-white">Mantenci├│n Preventiva</h3>
             </div>
-            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Mantenciones programadas según kilometraje (10k, 20k, 40k, 60k, 100k km) con repuestos OEM premium. Informe detallado y recordatorio automático para tu próxima mantención. Todo a domicilio.</p>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Mantenciones programadas seg├║n kilometraje (10k, 20k, 40k, 60k, 100k km) con repuestos OEM premium. Informe detallado y recordatorio autom├ítico para tu pr├│xima mantenci├│n. Todo a domicilio.</p>
             <div class="flex flex-wrap gap-2">
               <a href="/servicios/mantencion-por-km" class="btn-neon text-xs py-2 px-4">Ver servicio</a>
-              <a href={waLink('Hola! Quiero cotizar una mantención preventiva')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
+              <a href={waLink('Hola! Quiero cotizar una mantenci├│n preventiva')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Galería completa de fotos nuevas de inspección y mantención -->
+      <!-- Galer├¡a completa de fotos nuevas de inspecci├│n y mantenci├│n -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 max-w-6xl mx-auto">
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspección pre compra de vehículo usado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Pre Compra</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantención preventiva de auto en Santiago" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp" alt="Inspección preventiva automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp" alt="Mantención automotriz ahorro bencina" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Rendimiento</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp" alt="Diagnóstico computarizado de motor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Diagnóstico</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp" alt="Escáner computarizado automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Escáner</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp" alt="Diagnóstico con escáner a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Escáner</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp" alt="Escáner automotriz profesional" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Escáner</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspecci├│n pre compra de veh├¡culo usado" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Pre Compra</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantenci├│n preventiva de auto en Santiago" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantenci├│n</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp" alt="Inspecci├│n preventiva automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantenci├│n</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp" alt="Mantenci├│n automotriz ahorro bencina" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Rendimiento</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-45f63cbb.webp" alt="Diagn├│stico computarizado de motor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Diagn├│stico</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-diagnostico-computarizado-motor-60459afb.webp" alt="Esc├íner computarizado automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Esc├íner</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-automotriz-diagnostico-scanner-domicilio.webp" alt="Diagn├│stico con esc├íner a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Esc├íner</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-escaner-automotriz-profesional-26ca67c1.webp" alt="Esc├íner automotriz profesional" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Esc├íner</span></div></div>
         <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-aceite-motor-5w-30-mantenimiento.webp" alt="Cambio aceite motor 5W-30" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Aceite</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp" alt="Aceite motor sintético" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Aceite</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-aceite-motor-sintetico-ffe1caf7.webp" alt="Aceite motor sint├®tico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Aceite</span></div></div>
         <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-filtros-automotriz-cambio-7a76b097.webp" alt="Cambio filtros automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Filtros</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp" alt="Cambio bujías de motor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Bujías</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp" alt="Bujías iridio usadas vs nuevas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Bujías</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp" alt="Bujías Mazda comparación" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Bujías</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp" alt="Mecánica automotriz diagnóstico y reparación" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mecánica</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp" alt="Mecánica automotriz a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mecánica</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp" alt="Servicio mecánico a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mecánica</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp" alt="Servicio técnico automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Servicio</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp" alt="Servicio técnico automotriz a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Servicio</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp" alt="Taller móvil con escáner de diagnóstico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Taller</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-cambio-motor-31f2ea87.webp" alt="Cambio buj├¡as de motor" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Buj├¡as</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-iridio-usadas-nuevas.webp" alt="Buj├¡as iridio usadas vs nuevas" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Buj├¡as</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-bujias-mazda-usadas-nuevas.webp" alt="Buj├¡as Mazda comparaci├│n" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Buj├¡as</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-diagnostico-reparacion-mantenimiento.webp" alt="Mec├ínica automotriz diagn├│stico y reparaci├│n" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mec├ínica</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-5d6696ec.webp" alt="Mec├ínica automotriz a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mec├ínica</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-mecanica-automotriz-domicilio-77bc0082.webp" alt="Servicio mec├ínico a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mec├ínica</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-0c67538d.webp" alt="Servicio t├®cnico automotriz" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Servicio</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-servicio-tecnico-automotriz-447f3892.webp" alt="Servicio t├®cnico automotriz a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Servicio</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/drautomotriz/drautomotriz-taller-logo-automotriz-diagnostico.webp" alt="Taller m├│vil con esc├íner de diagn├│stico" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Taller</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Banner asistencia-automotriz antes de vehículos -->
+  <!-- Banner asistencia-automotriz antes de veh├¡culos -->
   <section class="py-8 md:py-12 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-10"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
     <div class="container-x relative">
       <div class="relative max-w-6xl mx-auto w-full">
-        <!-- Glow detrás -->
+        <!-- Glow detr├ís -->
         <div class="absolute -inset-3 rounded-2xl bg-gradient-neon opacity-20 blur-2xl"></div>
 
         <!-- Imagen del banner -->
         <div class="relative aspect-[1915/821] rounded-2xl overflow-hidden border-2 border-neon-500/40 shadow-neon-lg">
           <img
             src="/imagen/banner/asistencia-automotriz.webp"
-            alt="Asistencia Automotriz a Domicilio en Santiago - DRAUTOMOTRIZ servicio mecánico móvil 24/7 en toda la Región Metropolitana"
+            alt="Asistencia Automotriz a Domicilio en Santiago - DRAUTOMOTRIZ servicio mec├ínico m├│vil 24/7 en toda la Regi├│n Metropolitana"
             class="w-full h-full object-cover"
             loading="lazy"
           />
@@ -194,7 +194,7 @@ const homeSchema = {
           <div class="absolute bottom-3 left-3 right-3 md:bottom-5 md:left-5 md:right-5">
             <div class="text-xs md:text-sm text-neon-400 uppercase tracking-wider mb-1 font-semibold">Asistencia Automotriz 24/7</div>
             <div class="text-white font-display font-bold text-sm md:text-lg lg:text-xl leading-tight">
-              Servicio mecánico móvil en toda la Región Metropolitana
+              Servicio mec├ínico m├│vil en toda la Regi├│n Metropolitana
             </div>
           </div>
         </div>
@@ -202,25 +202,25 @@ const homeSchema = {
     </div>
   </section>
 
-  <!-- Vehículos que atendemos -->
+  <!-- Veh├¡culos que atendemos -->
   <Vehiculos />
 
-  <!-- Cómo funciona -->
+  <!-- C├│mo funciona -->
   <HowItWorks />
 
   <!-- Comunas -->
   <ComunasHighlight />
 
-  <!-- Banner de Cotización -->
+  <!-- Banner de Cotizaci├│n -->
   <CotizacionBanner />
 
-  <!-- Galería de trabajos -->
+  <!-- Galer├¡a de trabajos -->
   <Gallery />
 
   <!-- TEXTO SEO 3: Cierre y CTA (antes del formulario) -->
   <SeoTextBlock variante="texto3" />
 
-  <!-- Formulario de cotización -->
+  <!-- Formulario de cotizaci├│n -->
   <QuoteForm />
 </BaseLayout>
 <!-- cache-bust-v2 -->
