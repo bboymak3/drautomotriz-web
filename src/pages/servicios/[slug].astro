@@ -255,9 +255,15 @@ const breadcrumbSchema = {
         <!-- Left: Info -->
         <div>
           <div class="flex items-center gap-3 mb-6">
-            <div class={`w-16 h-16 rounded-lg ${colorBg} border-2 ${esDestacado ? 'border-orange-500' : 'border-neon-500/30'} flex items-center justify-center text-4xl ${esDestacado ? 'shadow-orange-neon' : 'shadow-neon'} ${esDestacado ? 'animate-pulse-orange' : ''}`}>
-              {servicio.icono}
-            </div>
+            {servicio.slug === 'mantencion-por-km' ? (
+              <div class="w-16 h-16 rounded-lg overflow-hidden border-2 border-neon-500/30 shrink-0">
+                <img src="/imagen/nuevoset/manutencion-por-kilometraje.jpeg" alt="Mantención por kilometraje - DRAUTOMOTRIZ" class="w-full h-full object-cover" loading="eager" />
+              </div>
+            ) : (
+              <div class={`w-16 h-16 rounded-lg ${colorBg} border-2 ${esDestacado ? 'border-orange-500' : 'border-neon-500/30'} flex items-center justify-center text-4xl ${esDestacado ? 'shadow-orange-neon' : 'shadow-neon'} ${esDestacado ? 'animate-pulse-orange' : ''}`}>
+                {servicio.icono}
+              </div>
+            )}
             <div class="flex flex-col gap-1">
               <span class={colorBadge}>{servicio.categoria}</span>
               {esDestacado && (

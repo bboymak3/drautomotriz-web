@@ -85,7 +85,7 @@ export const servicios: Servicio[] = [
     h1: 'Mantención por Kilometraje a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaTitle: 'Mantención por Km a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Mantención por kilometraje a domicilio en Santiago. Planes programados para 10k, 20k, 40k, 60k y 100k km con repuestos OEM. Agenda al +56962408735.',
-    icono: '📊',
+    icono: '🚗',
     descripcionCorta: 'Mantenciones programadas según el kilometraje de tu vehículo: 10.000, 20.000, 40.000, 60.000 y 100.000 km.',
     paragraphs: [
       'La mantención por kilometraje es la forma profesional y recomendada por los fabricantes para cuidar tu vehículo a lo largo de su vida útil. Cada vez que tu auto acumula cierta cantidad de kilómetros, requiere atención específica en componentes que se desgastan de forma predecible: aceite, filtros, bujías, correas, líquidos y partes mecánicas críticas. En DRAUTOMOTRIZ seguimos al pie de la letra los planes de mantención de cada marca y modelo.',
@@ -414,7 +414,7 @@ export const servicios: Servicio[] = [
     h1: 'Cambio Kit de Distribución a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaTitle: 'Cambio Kit de Distribución a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Cambio de kit de distribución a domicilio en Santiago. Correa/cadena, tensor, rodillos y bomba de agua. Garantía 12 meses. WhatsApp +56962408735.',
-    icono: '⛓️',
+    icono: '🔩',
     descripcionCorta: 'Cambio completo de kit de distribución: correa/cadena, tensor, rodillos y bomba de agua.',
     paragraphs: [
       'La correa o cadena de distribución es uno de los componentes más críticos del motor: sincroniza el movimiento de los árboles de levas con el cigüeñal, y si se rompe mientras el motor está funcionando, los pistones pueden golpear las válvulas causando daños que requieren la reconstrucción completa del motor, con costos que fácilmente superan el millón de pesos. Por eso, el cambio programado según el kilometraje es la mantención más importante que debes hacer a tu vehículo.',
@@ -454,7 +454,7 @@ export const servicios: Servicio[] = [
     h1: 'Cambio Kit de Embrague a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaTitle: 'Cambio Kit de Embrague a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Cambio de kit de embrague a domicilio en Santiago. Disco, prensa, collarín y cilindro hidráulico. Garantía 12 meses. WhatsApp +56962408735.',
-    icono: '🪖',
+    icono: '🔧',
     descripcionCorta: 'Cambio completo de kit de embrague: disco, prensa, collarín y cilindro hidráulico.',
     paragraphs: [
       'El embrague es el componente que te permite cambiar de marcha y transmitir la potencia del motor a las ruedas en vehículos con transmisión manual. Con el uso, el disco de embrague se desgasta, la prensa pierde fuerza, y el collarín o cojinete de empuje puede fallar, causando síntomas como: dificultad para cambiar marchas, pedal duro, el embrague "patina" (el motor acelera pero el auto no avanza), o ruidos al pisar el pedal.',
