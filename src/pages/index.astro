@@ -88,6 +88,70 @@ const homeSchema = {
   <!-- Grid de Servicios -->
   <Services />
 
+  <!-- ====== MANTENCIÓN PRE COMPRA ====== -->
+  <section class="py-16 md:py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="container-x relative">
+      <div class="text-center mb-12">
+        <span class="badge-neon mb-4">🔍 Inspección Profesional</span>
+        <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
+          Mantención <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Pre Compra</span>
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+          Inspección técnica completa antes de comprar un auto usado y mantenciones preventivas que alargan la vida útil de tu vehículo. Evita malas compras y sorpresas costosas con un diagnóstico profesional a domicilio.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-10">
+        <!-- Pre Compra -->
+        <div class="neon-card rounded-2xl overflow-hidden flex flex-col">
+          <img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspección pre compra de auto usado en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-neon-500/10 border border-neon-500/20 shrink-0">
+                <span class="text-xl">🔍</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-white">Servicio de Pre-Compra</h3>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Inspección técnica completa de 150+ puntos antes de comprar un auto usado. Escáner computarizado, revisión de motor, transmisión, frenos, suspensión, carrocería y documentos. Informe PDF con fotos y calificación final.</p>
+            <div class="flex flex-wrap gap-2">
+              <a href="/servicios/servicio-de-pre-compra" class="btn-neon text-xs py-2 px-4">Ver servicio</a>
+              <a href={waLink('Hola! Quiero cotizar una inspección pre compra de auto usado')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mantención Preventiva -->
+        <div class="neon-card rounded-2xl overflow-hidden flex flex-col">
+          <img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantención preventiva automotriz a domicilio en Santiago - DRAUTOMOTRIZ" class="w-full h-56 object-cover" loading="lazy" width="640" height="280" />
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 flex items-center justify-center rounded-xl bg-neon-500/10 border border-neon-500/20 shrink-0">
+                <span class="text-xl">📊</span>
+              </div>
+              <h3 class="text-lg font-display font-bold text-white">Mantención Preventiva</h3>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5 flex-1">Mantenciones programadas según kilometraje (10k, 20k, 40k, 60k, 100k km) con repuestos OEM premium. Informe detallado y recordatorio automático para tu próxima mantención. Todo a domicilio.</p>
+            <div class="flex flex-wrap gap-2">
+              <a href="/servicios/mantencion-por-km" class="btn-neon text-xs py-2 px-4">Ver servicio</a>
+              <a href={waLink('Hola! Quiero cotizar una mantención preventiva')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Galería de fotos de inspección -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mx-auto">
+        <img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-40b628be.webp" alt="Mantención preventiva de auto en Santiago" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" />
+        <img src="/imagen/drautomotriz/drautomotriz-mantencion-preventiva-auto-a5a67ace.webp" alt="Inspección preventiva automotriz" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" />
+        <img src="/imagen/drautomotriz/drautomotriz-pre-compra-inspeccion-auto-f2c530f4.webp" alt="Inspección pre compra de vehículo" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" />
+        <img src="/imagen/drautomotriz/drautomotriz-mantencion-automotriz-ahorro-bencina-rendimiento.webp" alt="Mantención automotriz ahorro bencina" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
   <!-- Banner asistencia-automotriz antes de vehículos -->
   <section class="py-8 md:py-12 relative overflow-hidden">
     <div class="absolute inset-0 bg-grid opacity-10"></div>
