@@ -87,7 +87,7 @@ export const servicios: Servicio[] = [
     metaTitle: 'Mantención por Km a Domicilio en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Mantención por kilometraje a domicilio en Santiago. Planes programados para 10k, 20k, 40k, 60k y 100k km con repuestos OEM. Agenda al +56962408735.',
     icono: '🚗',
-    imagen: '/imagen/nuevoset/manutencion-por-kilometraje.jpeg',
+    imagen: '/imagen/nuevoset/manutencion-por-kilometraje.webp',
     descripcionCorta: 'Mantenciones programadas según el kilometraje de tu vehículo: 10.000, 20.000, 40.000, 60.000 y 100.000 km.',
     paragraphs: [
       'La mantención por kilometraje es la forma profesional y recomendada por los fabricantes para cuidar tu vehículo a lo largo de su vida útil. Cada vez que tu auto acumula cierta cantidad de kilómetros, requiere atención específica en componentes que se desgastan de forma predecible: aceite, filtros, bujías, correas, líquidos y partes mecánicas críticas. En DRAUTOMOTRIZ seguimos al pie de la letra los planes de mantención de cada marca y modelo.',

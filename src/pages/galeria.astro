@@ -41,15 +41,21 @@ try {
 const nuevosetDir = path.join(process.cwd(), 'public', 'imagen', 'nuevoset');
 let imagenesNuevoset: string[] = [];
 try {
+  const collected: string[] = [];
   const scanDir = (dir: string, prefix: string) => {
     for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, f.name);
       if (f.isDirectory()) scanDir(full, prefix + f.name + '/');
-      else if (/\.(jpg|jpeg|png|webp)$/i.test(f.name)) imagenesNuevoset.push(prefix + f.name);
+      else if (/\.(jpg|jpeg|png|webp)$/i.test(f.name)) collected.push(prefix + f.name);
     }
   };
   scanDir(nuevosetDir, '/imagen/nuevoset/');
-  imagenesNuevoset.sort();
+  // Si existe versión .webp de una foto, preferirla sobre .jpeg/.png (evita duplicados)
+  const webpBases = new Set(collected.filter(f => f.endsWith('.webp')).map(f => f.replace(/\.webp$/i, '')));
+  imagenesNuevoset = collected.filter(f => {
+    if (f.endsWith('.webp')) return true;
+    return !webpBases.has(f.replace(/\.(jpe?g|png)$/i, ''));
+  }).sort();
 } catch (e) {
   console.warn('No se pudo leer nuevoset:', e);
 }
