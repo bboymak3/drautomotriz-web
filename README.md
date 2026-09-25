@@ -4,19 +4,22 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 
 ## 🚀 En producción
 
-- **URL**: https://drautomotriz.pages.dev/
+- **Dominio**: https://drmecanicoautomotriz.com (migrado desde drautomotriz.pages.dev en ago-2026)
+- **URL Pages**: https://drautomotriz.pages.dev/
 - **Repositorio**: https://github.com/bboymak3/drautomotriz-web
 - **Plataforma**: Cloudflare Pages
 - **Stack**: Astro + Tailwind CSS + Cloudflare D1 + Cloudflare R2
 
 ## 📊 Estadísticas
 
-- **90 páginas** HTML generadas
-- **35 comunas** de Santiago con landing individual
-- **32 vehículos** reales con landing individual
-- **14 servicios** con landing individual
-- **105+ imágenes** en la galería
-- **1.974 imágenes** indexables en el sitemap
+*(Actualizado sep-2026, verificado con `npm run build`)*
+
+- **91 páginas** HTML generadas
+- **35 comunas** con landing individual, en 6 zonas (Norte 6, Oriente 7, Sur 8, Poniente 7, Cordillera 2, Talagante 5)
+- **32 vehículos** de 15 marcas con landing individual
+- **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
+- **~200 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/`)
+- **1.977 imágenes** indexables en el sitemap (290 entradas `<url>`)
 
 ## 🛠️ Tecnologías
 
@@ -39,6 +42,9 @@ src/
 │   ├── Footer.astro     # Pie de página con 5 columnas
 │   ├── Hero.astro       # Sección principal (texto + imagen)
 │   ├── Services.astro   # Grid de 14 servicios
+│   ├── PaymentMethods.astro     # Métodos de pago (Webpay/Transbank)
+│   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
+│   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── Vehiculos.astro  # Grid de 32 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
@@ -50,7 +56,7 @@ src/
 ├── data/                # Datos centralizados
 │   ├── config.ts        # Configuración global (WhatsApp, dominio, etc.)
 │   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
-│   ├── comunas.ts        # 35 comunas en 4 zonas
+│   ├── comunas.ts       # 35 comunas en 6 zonas
 │   └── marcas.ts        # 32 vehículos de 15 marcas
 ├── layouts/
 │   └── BaseLayout.astro # Layout base con GTM, GA4, favicon, OG image
@@ -66,11 +72,12 @@ src/
 │   │   ├── index.astro          # Catálogo por marca
 │   │   ├── todos.astro          # Grid completo con filtros
 │   │   └── [marca]/[modelo].astro  # Landing por vehículo (32)
-│   ├── galeria.astro            # Galería con lightbox
+│   ├── galeria.astro            # Galería con lightbox y filtro por categoría
+│   ├── 404.astro                # Página 404 (también usada para 410 de comunas eliminadas)
 │   ├── quienes-somos.astro
 │   ├── contacto.astro
 │   ├── politicas-de-privacidad.astro
-│   └── sitemap.xml.ts           # Sitemap dinámico (290 URLs + 1.974 imágenes)
+│   └── sitemap.xml.ts           # Sitemap dinámico (290 URLs + 1.977 imágenes)
 ├── styles/
 │   └── global.css       # Estilos globales con paleta neón
 └── functions/
@@ -83,15 +90,39 @@ public/
 │   ├── banner/          # Banners (asistencia-automotriz, revisión-técnica, etc.)
 │   ├── comunas/         # 35 banners personalizados por comuna
 │   ├── vehiculos/       # 32 fotos de vehículos
-│   └── drautomotriz/    # 105 fotos de galería
+│   ├── drautomotriz/    # 105 fotos de galería
+│   ├── galeria/         # 11 fotos temáticas (nombres SEO)
+│   ├── payment/         # Imagen de métodos de pago
+│   └── nuevoset/        # Fotos reales de trabajos (sep-2026), .webp + .jpeg original
+│       ├── Peugeot/             # 14 fotos (distribución, filtros, frenos 3008...)
+│       ├── nissan-march/        # 6 fotos mantención por km
+│       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg
 ├── og-image.png         # 1200x630 para redes sociales
 ├── robots.txt           # Reglas para bots + sitemap
 ├── _headers             # CORS + cache headers
-├── _redirects           # Redirecciones 301 de slugs antiguos
+├── _redirects           # 301 a trailing slash + 410 para comunas eliminadas
 └── site.webmanifest     # PWA manifest
 ```
+
+## 🧭 Contexto y convenciones
+
+- **Imágenes**: todas las fotos se sirven en **WebP**; el `.jpeg` original se conserva al lado. Nombres de archivo en minúsculas, con guiones y palabras clave SEO (ej. `cambio-filtro-de-aire-peugeot-santiago.webp`), nunca con espacios.
+- **Galerías por servicio**: `GaleriaServicio.astro` muestra fotos de `nuevoset/` en pre-compra y mantención por km; `/galeria` y la home también las incluyen con labels y categorías.
+- **Iconos de servicios**: se unificaron a ⚙️ (engranaje) / 🔧 en vez de emojis variados.
+- **URLs**: siempre con trailing slash; los redirects 301 están explícitos en `_redirects` (Cloudflare usa 308 por defecto).
+- **Comunas eliminadas**: responden **410 Gone** vía `_redirects` para que Google las desindexe. Al quitar una comuna: borrarla de `comunas.ts`, agregar la regla 410 y quitar su 301.
+- **Schemas**: sin `aggregateRating` (causaba errores en Google Search Console).
+- **Encoding**: los archivos son UTF-8. Ojo al editar desde Windows (hubo un incidente de mojibake CP850 en `galeria`/`[slug]`/`GaleriaServicio`).
+- **Dominio canónico**: `config.dominio` en `src/data/config.ts` y `site` en `astro.config.mjs` → `https://drmecanicoautomotriz.com`.
+
+## ⚠️ Pendientes conocidos
+
+- `sitemap.xml` repite `/galeria/` ~200 veces (una `<url>` por foto); convendría agrupar todas las imágenes bajo una sola entrada.
+- `_redirects` aún tiene 301 de comunas que ya no existen (el comentario dice 47) y referencias a `/faq/` y `/marcas_automotrices/`.
+- `wrangler.toml` tiene los bindings de D1 y R2 comentados; `/api/lead` requiere configurarlos.
+- `src/images/` contiene fotos originales sin usar (nombres `WhatsApp Image ...`).
 
 ## 🎨 Paleta de colores
 
