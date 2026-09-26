@@ -19,7 +19,7 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 - **32 vehículos** de 15 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **~200 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/`)
-- **1.977 imágenes** indexables en el sitemap (290 entradas `<url>`)
+- **1.902 imágenes** indexables en el sitemap (90 URLs únicas; la galería agrupa todas las fotos en `/galeria/`)
 
 ## 🛠️ Tecnologías
 
@@ -77,12 +77,14 @@ src/
 │   ├── quienes-somos.astro
 │   ├── contacto.astro
 │   ├── politicas-de-privacidad.astro
-│   └── sitemap.xml.ts           # Sitemap dinámico (290 URLs + 1.977 imágenes)
+│   └── sitemap.xml.ts           # Sitemap dinámico (90 URLs + 1.902 imágenes)
 ├── styles/
 │   └── global.css       # Estilos globales con paleta neón
 └── functions/
-    └── api/
-        └── lead.ts      # Pages Function para guardar leads en D1
+    ├── api/
+    │   └── lead.ts      # Pages Function para guardar leads en D1
+    └── comunas/
+        └── _middleware.ts  # 410 Gone para comunas eliminadas
 
 public/
 ├── imagen/
@@ -102,7 +104,7 @@ public/
 ├── og-image.png         # 1200x630 para redes sociales
 ├── robots.txt           # Reglas para bots + sitemap
 ├── _headers             # CORS + cache headers
-├── _redirects           # 301 a trailing slash + 410 para comunas eliminadas
+├── _redirects           # 301 a trailing slash + slugs antiguos
 └── site.webmanifest     # PWA manifest
 ```
 
@@ -112,16 +114,14 @@ public/
 - **Galerías por servicio**: `GaleriaServicio.astro` muestra fotos de `nuevoset/` en pre-compra y mantención por km; `/galeria` y la home también las incluyen con labels y categorías.
 - **Iconos de servicios**: se unificaron a ⚙️ (engranaje) / 🔧 en vez de emojis variados.
 - **URLs**: siempre con trailing slash; los redirects 301 están explícitos en `_redirects` (Cloudflare usa 308 por defecto).
-- **Comunas eliminadas**: responden **410 Gone** vía `_redirects` para que Google las desindexe. Al quitar una comuna: borrarla de `comunas.ts`, agregar la regla 410 y quitar su 301.
+- **Comunas eliminadas**: responden **410 Gone** desde `functions/comunas/_middleware.ts` (Pages no soporta 410 en `_redirects`). Al quitar una comuna: borrarla de `comunas.ts`, agregar su slug a `COMUNAS_ELIMINADAS` y quitar su 301 de `_redirects`.
 - **Schemas**: sin `aggregateRating` (causaba errores en Google Search Console).
 - **Encoding**: los archivos son UTF-8. Ojo al editar desde Windows (hubo un incidente de mojibake CP850 en `galeria`/`[slug]`/`GaleriaServicio`).
 - **Dominio canónico**: `config.dominio` en `src/data/config.ts` y `site` en `astro.config.mjs` → `https://drmecanicoautomotriz.com`.
 
 ## ⚠️ Pendientes conocidos
 
-- `sitemap.xml` repite `/galeria/` ~200 veces (una `<url>` por foto); convendría agrupar todas las imágenes bajo una sola entrada.
-- `_redirects` aún tiene 301 de comunas que ya no existen (el comentario dice 47) y referencias a `/faq/` y `/marcas_automotrices/`.
-- `wrangler.toml` tiene los bindings de D1 y R2 comentados; `/api/lead` requiere configurarlos.
+- `wrangler.toml` tiene los bindings de D1 y R2 comentados: `/api/lead` responde igual (devuelve el link de WhatsApp) pero no guarda los leads hasta configurar D1.
 - `src/images/` contiene fotos originales sin usar (nombres `WhatsApp Image ...`).
 
 ## 🎨 Paleta de colores
