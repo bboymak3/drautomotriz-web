@@ -81,7 +81,7 @@ const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto,
     </div>
 
     <div class="p-5">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+      <div class={`grid grid-cols-2 ${fotos.length === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-3`}>
         {fotos.map(f => (
           <figure class="group relative aspect-[3/4] rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
             <img src={f.src} alt={f.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="1280" />

@@ -50,6 +50,7 @@ src/
 │   ├── TrabajoModal.astro        # Tarjeta + modal de fotos reutilizable para trabajos realizados
 │   ├── TrabajoNissanTiida.astro  # Módulo home: Nissan Tiida mantención por km (usa TrabajoModal)
 │   ├── TrabajoVolkswagenGolf.astro # Módulo home: VW Golf radiador + aire acondicionado (usa TrabajoModal)
+│   ├── TrabajoChevroletOnix.astro  # Módulo home: Chevrolet Onix cambio kit de embrague (usa TrabajoModal)
 │   ├── Vehiculos.astro  # Grid de 32 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
@@ -104,7 +105,8 @@ public/
 │       ├── Peugeot/             # 14 fotos (distribución, filtros, frenos 3008...)
 │       ├── nissan-march/        # 6 fotos mantención por km
 │       ├── chevrolet-nkr-512/   # 7 fotos cambio kit de embrague (taller en Peñalolén)
-│       ├── nissan-tiida/        # 9 fotos mantención por km, correa de accesorios, cuerpo de aceleración
+│       ├── nissan-tiida/        # 8 fotos mantención por km, correa de accesorios, cuerpo de aceleración
+│       ├── chevrolet-onix/      # 4 fotos cambio kit de embrague
 │       ├── volkswagen-golf/     # 6 fotos cambio de radiador + recarga de aire acondicionado
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
