@@ -95,6 +95,7 @@ const categorias = [
   { id: 'mecanica', nombre: 'Mecánica General', icono: '🔧' },
   { id: 'frenos', nombre: 'Frenos', icono: '🛑' },
   { id: 'motor', nombre: 'Motor', icono: '⚙️' },
+  { id: 'embrague', nombre: 'Embrague', icono: '🔩' },
   { id: 'suspension', nombre: 'Suspensión', icono: '🚗' },
   { id: 'vehiculo', nombre: 'Vehículos', icono: '🚙' },
   { id: 'taller', nombre: 'Taller', icono: '🏭' },
@@ -151,7 +152,8 @@ const categorias = [
           // Determinar categoría basada en el nombre del archivo
           const filename = src.split('/').pop() || '';
           let categoria = 'todos';
-          if (filename.includes('frenos')) categoria = 'frenos';
+          if (filename.includes('kit-de-embrague')) categoria = 'embrague';
+          else if (filename.includes('frenos')) categoria = 'frenos';
           else if (filename.includes('motor') || filename.includes('distribucion') || filename.includes('correa') || filename.includes('refrigerante') || filename.includes('turbo') || filename.includes('desarme') || filename.includes('tablero') || filename.includes('interior')) categoria = 'motor';
           else if (filename.includes('suspension') || filename.includes('neumatico')) categoria = 'suspension';
           else if (filename.includes('vehiculo') || filename.includes('drautomotriz-chevrolet') || filename.includes('drautomotriz-toyota') || filename.includes('drautomotriz-hyundai') || filename.includes('drautomotriz-kia') || filename.includes('drautomotriz-mazda') || filename.includes('drautomotriz-honda') || filename.includes('drautomotriz-ford') || filename.includes('drautomotriz-peugeot') || filename.includes('drautomotriz-renault') || filename.includes('drautomotriz-subaru') || filename.includes('drautomotriz-suzuki') || filename.includes('drautomotriz-volkswagen') || filename.includes('drautomotriz-nissan')) categoria = 'vehiculo';

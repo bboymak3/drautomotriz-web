@@ -7,6 +7,7 @@ import BottomNav from '@/components/BottomNav.astro';
 import GoogleReviewsModal from '@/components/GoogleReviewsModal.astro';
 import TapizadoVolantes from '@/components/TapizadoVolantes.astro';
 import PaymentMethods from '@/components/PaymentMethods.astro';
+import LocalPenalolen from '@/components/LocalPenalolen.astro';
 import { config } from '@/data/config';
 
 interface Props {
@@ -16,6 +17,7 @@ interface Props {
   canonical?: string;
   skipBreadcrumb?: boolean;
   skipAutoRepair?: boolean;
+  skipLocalPenalolen?: boolean;
 }
 
 const {
@@ -25,6 +27,7 @@ const {
   canonical,
   skipBreadcrumb = false,
   skipAutoRepair = false,
+  skipLocalPenalolen = false,
 } = Astro.props;
 
 const currentUrl = canonical || Astro.url.pathname;
@@ -173,6 +176,7 @@ const ogImageUrl = new URL(ogImage, config.dominio).toString();
     <main class="flex-1">
       <slot />
     </main>
+    {!skipLocalPenalolen && <LocalPenalolen />}
     <TapizadoVolantes />
     <PaymentMethods />
     <Footer />
