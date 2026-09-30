@@ -96,6 +96,7 @@ const categorias = [
   { id: 'frenos', nombre: 'Frenos', icono: '🛑' },
   { id: 'motor', nombre: 'Motor', icono: '⚙️' },
   { id: 'embrague', nombre: 'Embrague', icono: '🔩' },
+  { id: 'refrigeracion', nombre: 'Refrigeración y A/C', icono: '❄️' },
   { id: 'suspension', nombre: 'Suspensión', icono: '🚗' },
   { id: 'vehiculo', nombre: 'Vehículos', icono: '🚙' },
   { id: 'taller', nombre: 'Taller', icono: '🏭' },
@@ -156,6 +157,7 @@ const categorias = [
           let categoria = 'todos';
           if (nombreCat.includes('kit-de-embrague')) categoria = 'embrague';
           else if (nombreCat.includes('cuerpo-de-aceleracion')) categoria = 'motor';
+          else if (nombreCat.includes('radiador') || nombreCat.includes('aire-acondicionado')) categoria = 'refrigeracion';
           else if (nombreCat.includes('frenos')) categoria = 'frenos';
           else if (nombreCat.includes('motor') || nombreCat.includes('distribucion') || nombreCat.includes('correa') || nombreCat.includes('refrigerante') || nombreCat.includes('turbo') || nombreCat.includes('desarme') || nombreCat.includes('tablero') || nombreCat.includes('interior')) categoria = 'motor';
           else if (nombreCat.includes('suspension') || nombreCat.includes('neumatico')) categoria = 'suspension';

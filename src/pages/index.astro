@@ -13,6 +13,7 @@ import QuoteForm from '@/components/QuoteForm.astro';
 import CotizacionBanner from '@/components/CotizacionBanner.astro';
 import TrabajoChevroletNKR from '@/components/TrabajoChevroletNKR.astro';
 import TrabajoNissanTiida from '@/components/TrabajoNissanTiida.astro';
+import TrabajoVolkswagenGolf from '@/components/TrabajoVolkswagenGolf.astro';
 import { config, waLink } from '@/data/config';
 import { servicios } from '@/data/servicios';
 import { marcas, totalVehiculos } from '@/data/marcas';
@@ -204,6 +205,9 @@ const homeSchema = {
 
   <!-- Trabajo destacado: Nissan Tiida mantención por km (modal con fotos) -->
   <TrabajoNissanTiida />
+
+  <!-- Trabajo destacado: Volkswagen Golf radiador + aire acondicionado (modal con fotos) -->
+  <TrabajoVolkswagenGolf />
 
   <!-- Banner asistencia-automotriz antes de vehículos -->
   <section class="py-8 md:py-12 relative overflow-hidden">
