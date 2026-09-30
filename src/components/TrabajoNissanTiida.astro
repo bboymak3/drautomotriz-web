@@ -1,0 +1,111 @@
+---
+// ============================================================
+// Trabajo destacado: Nissan Tiida
+// Mantención por km + correa de accesorios + cuerpo de aceleración
+// Tarjeta en el home que abre un modal con las fotos.
+// Fotos en /public/imagen/nuevoset/nissan-tiida/
+// ============================================================
+import { waLink } from '@/data/config';
+
+const base = '/imagen/nuevoset/nissan-tiida/drmecanico-automotriz-taller-en-penalolen-nissan-tiida-';
+
+const fotos = [
+  { file: 'mantencion-por-km', label: 'Nissan Tiida en servicio', alt: 'Nissan Tiida en mantención por kilometraje - DRAUTOMOTRIZ taller mecánico en Peñalolén' },
+  { file: 'mantencion-por-km-motor', label: 'Motor', alt: 'Motor Nissan Tiida durante mantención por km - mecánico en Peñalolén' },
+  { file: 'mantencion-por-km-cambio-de-bujias', label: 'Bujías usada vs nueva', alt: 'Cambio de bujías Nissan Tiida: bujía usada vs nueva NGK - mantención por kilometraje' },
+  { file: 'mantencion-por-km-cambio-filtro-de-habitaculo', label: 'Filtro de habitáculo', alt: 'Filtro de habitáculo nuevo vs usado Nissan Tiida - mantención por km en Peñalolén' },
+  { file: 'cambio-correa-de-accesorios', label: 'Correa de accesorios', alt: 'Cambio de correa de accesorios Nissan Tiida - DRAUTOMOTRIZ Peñalolén' },
+  { file: 'limpieza-y-calibracion-cuerpo-de-aceleracion-2', label: 'Cuerpo de aceleración', alt: 'Cuerpo de aceleración Nissan Tiida antes de limpieza y calibración' },
+  { file: 'limpieza-y-calibracion-cuerpo-de-aceleracion-1', label: 'Limpieza', alt: 'Limpieza de cuerpo de aceleración Nissan Tiida - taller mecánico en Peñalolén' },
+  { file: 'limpieza-y-calibracion-cuerpo-de-aceleracion-3', label: 'Calibración', alt: 'Cuerpo de aceleración Nissan Tiida limpio listo para calibración' },
+  { file: 'kit-de-embrague-nuevo-vs-usado', label: 'Kit de embrague', alt: 'Kit de embrague nuevo vs usado Nissan Tiida: prensa y disco - DRAUTOMOTRIZ' },
+];
+---
+
+<section class="py-16 md:py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-10">
+      <span class="badge-neon mb-4">⚙️ Trabajo Realizado</span>
+      <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
+        Nissan Tiida: <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Mantención por Km</span>
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+        Mantención por kilometraje completa a un Nissan Tiida: cambio de bujías y filtro de habitáculo, <strong class="text-white">cambio de correa de accesorios</strong> y <strong class="text-white">limpieza y calibración del cuerpo de aceleración</strong>. Lo hacemos a domicilio o en nuestro <strong class="text-white">taller mecánico en Peñalolén</strong>.
+      </p>
+    </div>
+
+    <!-- Tarjeta que abre el modal -->
+    <button
+      type="button"
+      data-abrir-modal="modal-nissan-tiida"
+      class="neon-card group block w-full max-w-5xl mx-auto rounded-2xl overflow-hidden text-left cursor-pointer"
+      aria-haspopup="dialog"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="relative h-64 md:h-full min-h-[16rem] overflow-hidden">
+          <img src={`${base}mantencion-por-km.webp`} alt={fotos[0].alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="1280" />
+          <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-dark-400/80 backdrop-blur text-xs text-neon-400 font-semibold border border-neon-500/30">
+            📷 {fotos.length} fotos
+          </div>
+        </div>
+        <div class="p-6 md:p-8 flex flex-col justify-center">
+          <h3 class="text-xl font-display font-bold text-white mb-4">¿Qué incluyó el trabajo?</h3>
+          <ul class="space-y-3 text-sm text-gray-300 mb-6">
+            <li class="flex gap-3"><span class="text-neon-400">✓</span>Mantención por kilometraje</li>
+            <li class="flex gap-3"><span class="text-neon-400">✓</span>Cambio de bujías y filtro de habitáculo</li>
+            <li class="flex gap-3"><span class="text-neon-400">✓</span>Cambio de correa de accesorios</li>
+            <li class="flex gap-3"><span class="text-neon-400">✓</span>Limpieza y calibración del cuerpo de aceleración</li>
+          </ul>
+          <span class="btn-neon text-xs py-2 px-4 self-start">Ver fotos del trabajo</span>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <!-- Modal con las fotos -->
+  <dialog
+    id="modal-nissan-tiida"
+    class="trabajo-modal w-[calc(100%-2rem)] max-w-5xl max-h-[90vh] rounded-2xl bg-dark-300 border border-neon-500/40 p-0 text-gray-300 backdrop:bg-dark-500/90 backdrop:backdrop-blur-sm"
+  >
+    <div class="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 py-4 bg-dark-300/95 backdrop-blur border-b border-neon-500/20">
+      <h3 class="text-lg md:text-xl font-display font-bold text-white">Nissan Tiida · Mantención por Km</h3>
+      <button type="button" data-cerrar-modal class="w-10 h-10 shrink-0 rounded-full bg-dark-200 border border-neon-500/40 text-neon-400 hover:bg-neon-500 hover:text-dark-500 flex items-center justify-center transition-all" aria-label="Cerrar">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-5">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {fotos.map(f => (
+          <figure class="group relative aspect-[3/4] rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
+            <img src={`${base}${f.file}.webp`} alt={f.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="1280" />
+            <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/95 to-transparent p-3">
+              <span class="text-xs text-neon-400 font-semibold">{f.label}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href={waLink('Hola! Quiero cotizar mantención por km para mi Nissan Tiida')} target="_blank" rel="noopener" class="btn-whatsapp text-sm">Cotizar mi mantención</a>
+        <a href="/servicios/mantencion-por-km/" class="btn-outline-neon text-sm">Ver servicio</a>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-abrir-modal]').forEach(btn => {
+    const modal = document.getElementById(btn.dataset.abrirModal!) as HTMLDialogElement | null;
+    if (!modal) return;
+    btn.addEventListener('click', () => modal.showModal());
+    modal.querySelector('[data-cerrar-modal]')?.addEventListener('click', () => modal.close());
+    // Cerrar al hacer clic fuera del contenido
+    modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+  });
+</script>

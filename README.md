@@ -47,6 +47,7 @@ src/
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)
 │   ├── TrabajoChevroletNKR.astro # Módulo home: Chevrolet NKR 512 cambio kit de embrague
+│   ├── TrabajoNissanTiida.astro  # Módulo home: Nissan Tiida mantención por km (tarjeta + modal con fotos)
 │   ├── Vehiculos.astro  # Grid de 32 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
@@ -101,6 +102,7 @@ public/
 │       ├── Peugeot/             # 14 fotos (distribución, filtros, frenos 3008...)
 │       ├── nissan-march/        # 6 fotos mantención por km
 │       ├── chevrolet-nkr-512/   # 7 fotos cambio kit de embrague (taller en Peñalolén)
+│       ├── nissan-tiida/        # 9 fotos mantención por km, correa de accesorios, cuerpo de aceleración
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg
