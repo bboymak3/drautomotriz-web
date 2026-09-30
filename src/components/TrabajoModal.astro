@@ -1,0 +1,112 @@
+---
+// ============================================================
+// Trabajo realizado: tarjeta en el home que abre un modal con fotos.
+// Usado por TrabajoNissanTiida, TrabajoVolkswagenGolf, etc.
+// ============================================================
+import { waLink } from '@/data/config';
+
+export interface Foto {
+  src: string;
+  label: string;
+  alt: string;
+}
+
+export interface Props {
+  id: string;                 // id único del <dialog>
+  vehiculo: string;           // "Nissan Tiida"
+  titulo: string;             // parte resaltada del h2: "Mantención por Km"
+  descripcion: string;        // HTML permitido (<strong>)
+  items: string[];            // lista "¿Qué incluyó el trabajo?"
+  fotos: Foto[];
+  portada: Foto;              // imagen de la tarjeta
+  whatsappTexto: string;
+  servicio: { href: string; nombre: string };
+}
+
+const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto, servicio } = Astro.props;
+---
+
+<section class="py-16 md:py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-10">
+      <span class="badge-neon mb-4">⚙️ Trabajo Realizado</span>
+      <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
+        {vehiculo}: <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">{titulo}</span>
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed" set:html={descripcion} />
+    </div>
+
+    <!-- Tarjeta que abre el modal -->
+    <button
+      type="button"
+      data-abrir-modal={id}
+      class="neon-card group block w-full max-w-5xl mx-auto rounded-2xl overflow-hidden text-left cursor-pointer"
+      aria-haspopup="dialog"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div class="relative h-64 md:h-full min-h-[16rem] overflow-hidden">
+          <img src={portada.src} alt={portada.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="1280" />
+          <div class="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-dark-400/80 backdrop-blur text-xs text-neon-400 font-semibold border border-neon-500/30">
+            📷 {fotos.length} fotos
+          </div>
+        </div>
+        <div class="p-6 md:p-8 flex flex-col justify-center">
+          <h3 class="text-xl font-display font-bold text-white mb-4">¿Qué incluyó el trabajo?</h3>
+          <ul class="space-y-3 text-sm text-gray-300 mb-6">
+            {items.map(item => (
+              <li class="flex gap-3"><span class="text-neon-400">✓</span>{item}</li>
+            ))}
+          </ul>
+          <span class="btn-neon text-xs py-2 px-4 self-start">Ver fotos del trabajo</span>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <!-- Modal con las fotos -->
+  <dialog
+    id={id}
+    class="w-[calc(100%-2rem)] max-w-5xl max-h-[90vh] rounded-2xl bg-dark-300 border border-neon-500/40 p-0 text-gray-300 backdrop:bg-dark-500/90 backdrop:backdrop-blur-sm"
+  >
+    <div class="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 py-4 bg-dark-300/95 backdrop-blur border-b border-neon-500/20">
+      <h3 class="text-lg md:text-xl font-display font-bold text-white">{vehiculo} · {titulo}</h3>
+      <button type="button" data-cerrar-modal class="w-10 h-10 shrink-0 rounded-full bg-dark-200 border border-neon-500/40 text-neon-400 hover:bg-neon-500 hover:text-dark-500 flex items-center justify-center transition-all" aria-label="Cerrar">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="p-5">
+      <div class={`grid grid-cols-2 ${fotos.length === 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-3`}>
+        {fotos.map(f => (
+          <figure class="group relative aspect-[3/4] rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
+            <img src={f.src} alt={f.alt} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="1280" />
+            <figcaption class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/95 to-transparent p-3">
+              <span class="text-xs text-neon-400 font-semibold">{f.label}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+        <a href={waLink(whatsappTexto)} target="_blank" rel="noopener" class="btn-whatsapp text-sm">Cotizar este servicio</a>
+        <a href={servicio.href} class="btn-outline-neon text-sm">{servicio.nombre}</a>
+      </div>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-abrir-modal]').forEach(btn => {
+    const modal = document.getElementById(btn.dataset.abrirModal!) as HTMLDialogElement | null;
+    if (!modal) return;
+    btn.addEventListener('click', () => modal.showModal());
+    modal.querySelector('[data-cerrar-modal]')?.addEventListener('click', () => modal.close());
+    // Cerrar al hacer clic fuera del contenido
+    modal.addEventListener('click', e => { if (e.target === modal) modal.close(); });
+  });
+</script>

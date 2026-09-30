@@ -9,14 +9,12 @@
 /politicas-de-privacidad        /politicas-de-privacidad/        301
 /quienes-somos        /quienes-somos/        301
 /contacto        /contacto/        301
-/faq        /faq/        301
 /comunas        /comunas/        301
 /vehiculos        /vehiculos/        301
 /vehiculos/todos        /vehiculos/todos/        301
 /servicios        /servicios/        301
-/marcas_automotrices        /marcas_automotrices/        301
 
-# ====== Servicios (12) ======
+# ====== Servicios (14) ======
 /servicios/cambio-kit-de-embrague        /servicios/cambio-kit-de-embrague/        301
 /servicios/cambio-kit-de-distribucion        /servicios/cambio-kit-de-distribucion/        301
 /servicios/diagnosticos        /servicios/diagnosticos/        301
@@ -29,8 +27,10 @@
 /servicios/servicio-de-pre-compra        /servicios/servicio-de-pre-compra/        301
 /servicios/tren-delantero        /servicios/tren-delantero/        301
 /servicios/recarga-y-mantencion-de-aire-acondicionado        /servicios/recarga-y-mantencion-de-aire-acondicionado/        301
+/servicios/servicio-de-revision-tecnica        /servicios/servicio-de-revision-tecnica/        301
+/servicios/venta-de-aceites-motor        /servicios/venta-de-aceites-motor/        301
 
-# ====== Comunas (47) ======
+# ====== Comunas (35) ======
 /comunas/conchali        /comunas/conchali/        301
 /comunas/huechuraba        /comunas/huechuraba/        301
 /comunas/independencia        /comunas/independencia/        301
@@ -61,22 +61,11 @@
 /comunas/quinta-normal        /comunas/quinta-normal/        301
 /comunas/pirque        /comunas/pirque/        301
 /comunas/san-jose-de-maipo        /comunas/san-jose-de-maipo/        301
-/comunas/buin        /comunas/buin/        301
-/comunas/calera-de-tango        /comunas/calera-de-tango/        301
-/comunas/paine        /comunas/paine/        301
-/comunas/colina        /comunas/colina/        301
-/comunas/lampa        /comunas/lampa/        301
-/comunas/tiltil        /comunas/tiltil/        301
 /comunas/el-monte        /comunas/el-monte/        301
 /comunas/isla-de-maipo        /comunas/isla-de-maipo/        301
 /comunas/padre-hurtado        /comunas/padre-hurtado/        301
 /comunas/penaflor        /comunas/penaflor/        301
 /comunas/talagante        /comunas/talagante/        301
-/comunas/alhue        /comunas/alhue/        301
-/comunas/curacavi        /comunas/curacavi/        301
-/comunas/maria-pinto        /comunas/maria-pinto/        301
-/comunas/melipilla        /comunas/melipilla/        301
-/comunas/san-pedro        /comunas/san-pedro/        301
 
 # ====== Vehículos (32) ======
 /vehiculos/mg/3        /vehiculos/mg/3/        301
@@ -136,35 +125,6 @@
 /revision-tecnica  /servicios/revision-tecnica-sin-estres/  301
 /revision          /servicios/revision-tecnica-sin-estres/  301
 
-# ====== Comunas eliminadas - 410 Gone para que Google desindexe ======
-/comunas/lo-prado        /404.html        410
-/comunas/lo-prado/       /404.html        410
-/comunas/la-pintana        /404.html        410
-/comunas/la-pintana/       /404.html        410
-/comunas/la-granja        /404.html        410
-/comunas/la-granja/       /404.html        410
-/comunas/san-bernardo        /404.html        410
-/comunas/san-bernardo/       /404.html        410
-/comunas/san-ramon        /404.html        410
-/comunas/san-ramon/       /404.html        410
-/comunas/puente-alto        /404.html        410
-/comunas/puente-alto/       /404.html        410
-/comunas/conchali        /404.html        410
-/comunas/conchali/       /404.html        410
-/comunas/renca        /404.html        410
-/comunas/renca/       /404.html        410
-
-# ====== Query strings problemáticas - redirigir a /comunas/ ======
-# Sintaxis Cloudflare Pages: query parameter matching
-/comunas  /comunas/  302
-  zona=Norte
-  zona=Sur
-  zona=Oriente
-  zona=Poniente
-  zona=Cordillera
-  zona=Maipo
-  zona=Chacabuco
-  zona=Melipilla
-  zona=Talagante
-
-# ====== Comunas eliminadas (2da tanda) - 410 Gone ======
+# ====== Comunas eliminadas ======
+# Pages no soporta 410 en este archivo: el 410 Gone se responde
+# desde functions/comunas/_middleware.ts

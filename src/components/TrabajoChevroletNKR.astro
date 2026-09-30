@@ -1,0 +1,74 @@
+---
+// ============================================================
+// Trabajo destacado: Chevrolet NKR 512 - Cambio kit de embrague
+// Fotos en /public/imagen/nuevoset/chevrolet-nkr-512/
+// ============================================================
+import { waLink } from '@/data/config';
+
+const base = '/imagen/nuevoset/chevrolet-nkr-512/drmecanico-automotriz-taller-en-penalolen-chevrolet-nkr-512-cambio-kit-de-embrague';
+
+const fotos = [
+  { n: 1, label: 'Cabina abatida', alt: 'Chevrolet NKR 512 con cabina abatida para cambio de kit de embrague - taller mecánico en Peñalolén DRAUTOMOTRIZ' },
+  { n: 3, label: 'Camión en trabajo', alt: 'Mecánico trabajando bajo Chevrolet NKR 512 en cambio de embrague - DRAUTOMOTRIZ Peñalolén' },
+  { n: 2, label: 'Desmontaje', alt: 'Chevrolet NKR 512 durante desmontaje de caja para cambio de kit de embrague en Peñalolén' },
+  { n: 7, label: 'Embrague montado', alt: 'Prensa de embrague montada en volante de motor Chevrolet NKR 512 - cambio kit de embrague' },
+  { n: 5, label: 'Kit nuevo vs usado', alt: 'Kit de embrague nuevo vs usado Chevrolet NKR 512: prensa y disco de embrague - taller en Peñalolén' },
+  { n: 4, label: 'Collarín nuevo vs usado', alt: 'Collarín de embrague nuevo vs gastado Chevrolet NKR 512 - cambio kit de embrague DRAUTOMOTRIZ' },
+  { n: 6, label: 'Maza y frenos', alt: 'Revisión de maza y frenos traseros Chevrolet NKR 512 durante cambio de embrague en Peñalolén' },
+];
+---
+
+<section class="py-16 md:py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-grid opacity-10"></div>
+  <div class="absolute top-0 right-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="container-x relative">
+    <div class="text-center mb-12">
+      <span class="badge-neon mb-4">⚙️ Trabajo Realizado</span>
+      <h2 class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4">
+        Chevrolet NKR 512: <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">Cambio Kit de Embrague</span>
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base leading-relaxed">
+        Cambio completo de kit de embrague a un camión Chevrolet NKR 512: prensa, disco y collarín nuevos, con revisión de maza y frenos traseros. Un trabajo pesado que hacemos en terreno o en nuestro <strong class="text-white">taller mecánico en Peñalolén</strong>, para que tu vehículo de trabajo vuelva rápido a la ruta.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto mb-8">
+      <!-- Foto principal: kit nuevo vs usado -->
+      <div class="neon-card rounded-2xl overflow-hidden">
+        <img src={`${base}-5.webp`} alt={fotos[4].alt} class="w-full h-64 md:h-80 object-cover" loading="lazy" width="1600" height="720" />
+      </div>
+
+      <div class="neon-card rounded-2xl p-6 md:p-8 flex flex-col justify-center">
+        <h3 class="text-xl font-display font-bold text-white mb-4">¿Qué incluyó el trabajo?</h3>
+        <ul class="space-y-3 text-sm text-gray-300 mb-6">
+          <li class="flex gap-3"><span class="text-neon-400">✓</span>Abatimiento de cabina y desmontaje de caja de cambios</li>
+          <li class="flex gap-3"><span class="text-neon-400">✓</span>Reemplazo de prensa y disco de embrague</li>
+          <li class="flex gap-3"><span class="text-neon-400">✓</span>Collarín de embrague nuevo</li>
+          <li class="flex gap-3"><span class="text-neon-400">✓</span>Revisión de volante, maza y frenos traseros</li>
+          <li class="flex gap-3"><span class="text-neon-400">✓</span>Prueba de ruta y ajuste final</li>
+        </ul>
+        <div class="flex flex-wrap gap-2">
+          <a href="/servicios/cambio-kit-de-embrague/" class="btn-neon text-xs py-2 px-4">Ver servicio de embrague</a>
+          <a href={waLink('Hola! Quiero cotizar cambio de kit de embrague para mi camión Chevrolet NKR')} target="_blank" rel="noopener" class="btn-outline-neon text-xs py-2 px-4">Cotizar mi camión</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Galería del trabajo -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3 max-w-6xl mx-auto">
+      {fotos.map(f => (
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all">
+          <img src={`${base}-${f.n}.webp`} alt={f.alt} class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
+          <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2">
+            <span class="text-[9px] text-neon-400 font-semibold">{f.label}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="/galeria/" class="text-sm text-neon-400 hover:text-neon-300 transition-colors">Ver todas las fotos en la galería →</a>
+    </div>
+  </div>
+</section>

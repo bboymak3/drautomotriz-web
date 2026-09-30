@@ -95,6 +95,8 @@ const categorias = [
   { id: 'mecanica', nombre: 'Mecánica General', icono: '🔧' },
   { id: 'frenos', nombre: 'Frenos', icono: '🛑' },
   { id: 'motor', nombre: 'Motor', icono: '⚙️' },
+  { id: 'embrague', nombre: 'Embrague', icono: '🔩' },
+  { id: 'refrigeracion', nombre: 'Refrigeración y A/C', icono: '❄️' },
   { id: 'suspension', nombre: 'Suspensión', icono: '🚗' },
   { id: 'vehiculo', nombre: 'Vehículos', icono: '🚙' },
   { id: 'taller', nombre: 'Taller', icono: '🏭' },
@@ -150,15 +152,20 @@ const categorias = [
         {todasLasImagenes.map((src, i) => {
           // Determinar categoría basada en el nombre del archivo
           const filename = src.split('/').pop() || '';
+          // El prefijo SEO "taller-en-penalolen" no define la categoría de la foto
+          const nombreCat = filename.replace('drmecanico-automotriz-taller-en-penalolen-', '');
           let categoria = 'todos';
-          if (filename.includes('frenos')) categoria = 'frenos';
-          else if (filename.includes('motor') || filename.includes('distribucion') || filename.includes('correa') || filename.includes('refrigerante') || filename.includes('turbo') || filename.includes('desarme') || filename.includes('tablero') || filename.includes('interior')) categoria = 'motor';
-          else if (filename.includes('suspension') || filename.includes('neumatico')) categoria = 'suspension';
-          else if (filename.includes('vehiculo') || filename.includes('drautomotriz-chevrolet') || filename.includes('drautomotriz-toyota') || filename.includes('drautomotriz-hyundai') || filename.includes('drautomotriz-kia') || filename.includes('drautomotriz-mazda') || filename.includes('drautomotriz-honda') || filename.includes('drautomotriz-ford') || filename.includes('drautomotriz-peugeot') || filename.includes('drautomotriz-renault') || filename.includes('drautomotriz-subaru') || filename.includes('drautomotriz-suzuki') || filename.includes('drautomotriz-volkswagen') || filename.includes('drautomotriz-nissan')) categoria = 'vehiculo';
-          else if (filename.includes('taller') || filename.includes('logo')) categoria = 'taller';
-          else if (filename.includes('revision')) categoria = 'revision';
-          else if (filename.includes('mantencion') || filename.includes('manutencion') || filename.includes('pre-compra') || filename.includes('ahorro-bencina')) categoria = 'mantencion';
-          else if (filename.includes('mecanica') || filename.includes('mecanico') || filename.includes('bujia') || filename.includes('culata') || filename.includes('empaque') || filename.includes('bomba') || filename.includes('aceite') || filename.includes('filtro')) categoria = 'mecanica';
+          if (nombreCat.includes('kit-de-embrague')) categoria = 'embrague';
+          else if (nombreCat.includes('cuerpo-de-aceleracion')) categoria = 'motor';
+          else if (nombreCat.includes('radiador') || nombreCat.includes('aire-acondicionado')) categoria = 'refrigeracion';
+          else if (nombreCat.includes('frenos')) categoria = 'frenos';
+          else if (nombreCat.includes('motor') || nombreCat.includes('distribucion') || nombreCat.includes('correa') || nombreCat.includes('refrigerante') || nombreCat.includes('turbo') || nombreCat.includes('desarme') || nombreCat.includes('tablero') || nombreCat.includes('interior')) categoria = 'motor';
+          else if (nombreCat.includes('suspension') || nombreCat.includes('neumatico')) categoria = 'suspension';
+          else if (nombreCat.includes('vehiculo') || nombreCat.includes('drautomotriz-chevrolet') || nombreCat.includes('drautomotriz-toyota') || nombreCat.includes('drautomotriz-hyundai') || nombreCat.includes('drautomotriz-kia') || nombreCat.includes('drautomotriz-mazda') || nombreCat.includes('drautomotriz-honda') || nombreCat.includes('drautomotriz-ford') || nombreCat.includes('drautomotriz-peugeot') || nombreCat.includes('drautomotriz-renault') || nombreCat.includes('drautomotriz-subaru') || nombreCat.includes('drautomotriz-suzuki') || nombreCat.includes('drautomotriz-volkswagen') || nombreCat.includes('drautomotriz-nissan')) categoria = 'vehiculo';
+          else if (nombreCat.includes('taller') || nombreCat.includes('logo')) categoria = 'taller';
+          else if (nombreCat.includes('revision')) categoria = 'revision';
+          else if (nombreCat.includes('mantencion') || nombreCat.includes('manutencion') || nombreCat.includes('pre-compra') || nombreCat.includes('ahorro-bencina')) categoria = 'mantencion';
+          else if (nombreCat.includes('mecanica') || nombreCat.includes('mecanico') || nombreCat.includes('bujia') || nombreCat.includes('culata') || nombreCat.includes('empaque') || nombreCat.includes('bomba') || nombreCat.includes('aceite') || nombreCat.includes('filtro')) categoria = 'mecanica';
 
           // Generar alt descriptivo
           const alt = filename

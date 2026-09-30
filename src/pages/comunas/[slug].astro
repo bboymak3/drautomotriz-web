@@ -6,6 +6,7 @@ import { waLink, waLinkServicio } from '@/data/config';
 import MarcasQueAtendemos from '@/components/MarcasQueAtendemos.astro';
 import Gallery from '@/components/Gallery.astro';
 import ComunaContenidoSEO from '@/components/ComunaContenidoSEO.astro';
+import LocalPenalolen from '@/components/LocalPenalolen.astro';
 
 export function getStaticPaths() {
   return comunas.map(c => ({
@@ -151,6 +152,7 @@ const faqSchema = {
   canonical={`/comunas/${comuna.slug}/`}
   skipBreadcrumb={true}
   skipAutoRepair={true}
+  skipLocalPenalolen={comuna.slug === 'penalolen'}
 >
   <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
@@ -251,6 +253,9 @@ const faqSchema = {
       </div>
     </div>
   </section>
+
+  <!-- Local físico en Peñalolén: versión destacada solo en su landing -->
+  {comuna.slug === 'penalolen' && <LocalPenalolen destacado />}
 
   <!-- Banner de la comuna (asistencia-automotriz personalizado) -->
   <section class="py-8 md:py-12 relative overflow-hidden">

@@ -1,0 +1,33 @@
+---
+// ============================================================
+// Trabajo destacado: Chevrolet Onix - Cambio kit de embrague
+// Fotos en /public/imagen/nuevoset/chevrolet-onix/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/chevrolet-onix/drmecanico-automotriz-taller-en-penalolen-chevrolet-onix-cambio-kit-de-embrague';
+
+const fotos = [
+  { src: `${base}.webp`, label: 'Chevrolet Onix en servicio', alt: 'Chevrolet Onix en cambio de kit de embrague - DRAUTOMOTRIZ taller mecánico en Peñalolén' },
+  { src: `${base}-desmontaje-caja-de-cambios.webp`, label: 'Desmontaje de caja', alt: 'Desmontaje de caja de cambios Chevrolet Onix para cambio de embrague - mecánico en Peñalolén' },
+  { src: `${base}-nuevo-vs-usado.webp`, label: 'Kit nuevo vs usado', alt: 'Kit de embrague nuevo vs usado Chevrolet Onix: prensa y disco - taller en Peñalolén' },
+  { src: `${base}-collarin-hidraulico.webp`, label: 'Collarín hidráulico usado', alt: 'Collarín hidráulico de embrague usado Chevrolet Onix - cambio kit de embrague DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  id="modal-chevrolet-onix"
+  vehiculo="Chevrolet Onix"
+  titulo="Cambio Kit de Embrague"
+  descripcion='<strong class="text-white">Cambio de kit de embrague</strong> a un Chevrolet Onix: desmontaje de caja de cambios, reemplazo de prensa, disco y collarín hidráulico, y montaje con prueba final. Lo hacemos a domicilio o en nuestro <strong class="text-white">taller mecánico en Peñalolén</strong>.'
+  items={[
+    'Desmontaje de caja de cambios',
+    'Reemplazo de prensa y disco de embrague',
+    'Cambio de collarín hidráulico',
+    'Montaje y prueba de funcionamiento',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de kit de embrague para mi Chevrolet Onix"
+  servicio={{ href: '/servicios/cambio-kit-de-embrague/', nombre: 'Ver servicio de embrague' }}
+/>

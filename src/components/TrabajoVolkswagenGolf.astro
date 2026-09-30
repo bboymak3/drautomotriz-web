@@ -1,0 +1,36 @@
+---
+// ============================================================
+// Trabajo destacado: Volkswagen Golf
+// Cambio de radiador + recarga y mantención de aire acondicionado
+// Fotos en /public/imagen/nuevoset/volkswagen-golf/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/volkswagen-golf/drmecanico-automotriz-taller-en-penalolen-volkswagen-golf-';
+
+const fotos = [
+  { src: `${base}recarga-y-mantencion-de-aire-acondicionado.webp`, label: 'Recarga de aire acondicionado', alt: 'Recarga y mantención de aire acondicionado Volkswagen Golf con manómetros - DRAUTOMOTRIZ taller en Peñalolén' },
+  { src: `${base}cambio-de-radiador-desarme-parachoques.webp`, label: 'Desarme de parachoques', alt: 'Volkswagen Golf con parachoques desmontado para cambio de radiador - mecánico en Peñalolén' },
+  { src: `${base}cambio-de-radiador-desmontaje.webp`, label: 'Desmontaje del radiador', alt: 'Desmontaje de radiador y condensador Volkswagen Golf - DRAUTOMOTRIZ' },
+  { src: `${base}cambio-de-radiador-nuevo-vs-usado.webp`, label: 'Radiador nuevo vs usado', alt: 'Radiador nuevo vs usado Volkswagen Golf - cambio de radiador en Peñalolén' },
+  { src: `${base}cambio-de-radiador-condensador.webp`, label: 'Radiador y condensador instalados', alt: 'Radiador nuevo y condensador de aire acondicionado instalados en Volkswagen Golf' },
+  { src: `${base}cambio-de-radiador.webp`, label: 'Trabajo terminado', alt: 'Volkswagen Golf tras cambio de radiador - taller mecánico en Peñalolén DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  id="modal-volkswagen-golf"
+  vehiculo="Volkswagen Golf"
+  titulo="Cambio de Radiador y Aire Acondicionado"
+  descripcion='<strong class="text-white">Cambio de radiador</strong> a un Volkswagen Golf, con desarme de parachoques y desmontaje del conjunto radiador-condensador, más <strong class="text-white">recarga y mantención del aire acondicionado</strong> con manómetros. Lo hacemos a domicilio o en nuestro <strong class="text-white">taller mecánico en Peñalolén</strong>.'
+  items={[
+    'Desarme de parachoques frontal',
+    'Cambio de radiador',
+    'Revisión del condensador de A/C',
+    'Recarga y mantención de aire acondicionado',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de radiador y recarga de aire acondicionado para mi Volkswagen Golf"
+  servicio={{ href: '/servicios/recarga-y-mantencion-de-aire-acondicionado/', nombre: 'Ver servicio de A/C' }}
+/>

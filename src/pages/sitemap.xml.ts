@@ -42,6 +42,9 @@ function collectAllImages(): string[] {
       if (entry.isDirectory()) {
         scanDir(fullPath, relativePath);
       } else if (/\.(jpg|jpeg|png|webp)$/i.test(entry.name)) {
+        // Si existe la versión .webp, se omite el original (jpeg/png conservado como respaldo)
+        const webpTwin = fullPath.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+        if (!/\.webp$/i.test(entry.name) && fs.existsSync(webpTwin)) continue;
         allImages.push(`/imagen/${relativePath}`);
       }
     }
@@ -115,7 +118,7 @@ function getImagesForPage(page: string): string[] {
   } else if (page.includes('/comunas/')) {
     // Páginas de comunas: banner específico de la comuna + banner revisión técnica
     const slug = page.split('/comunas/')[1].replace('/', '');
-    images.push(`/imagen/comunas/mecanico-a-domicilio-${slug}.png`);
+    images.push(`/imagen/comunas/mecanico-a-domicilio-${slug}.webp`);
     images.push('/imagen/banner/revision-tecnica-servicio-domicilio.webp');
     images.push('/imagen/banner/asistencia-automotriz.webp');
     // Todos los vehículos (para el widget MarcasQueAtendemos)
@@ -137,34 +140,8 @@ function getImagesForPage(page: string): string[] {
     }
     images.push('/imagen/banner/asistencia-automotriz.webp');
   } else if (page === '/galeria/') {
-    // Galería: todas las imágenes de /public/imagen/drautomotriz/
-    const galeriaDir = path.join(process.cwd(), 'public', 'imagen', 'drautomotriz');
-    if (fs.existsSync(galeriaDir)) {
-      const files = fs.readdirSync(galeriaDir)
-        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
-        .sort();
-      for (const f of files) {
-        images.push(`/imagen/drautomotriz/${f}`);
-      }
-    }
-    // + galería temática
-    const galeriaExtra = path.join(process.cwd(), 'public', 'imagen', 'galeria');
-    if (fs.existsSync(galeriaExtra)) {
-      const files = fs.readdirSync(galeriaExtra)
-        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
-      for (const f of files) {
-        images.push(`/imagen/galeria/${f}`);
-      }
-    }
-    // + banners
-    const bannerDir = path.join(process.cwd(), 'public', 'imagen', 'banner');
-    if (fs.existsSync(bannerDir)) {
-      const files = fs.readdirSync(bannerDir)
-        .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f));
-      for (const f of files) {
-        images.push(`/imagen/banner/${f}`);
-      }
-    }
+    // Galería: todas las fotos del sitio (drautomotriz, galeria, nuevoset, banners)
+    images.push(...collectAllImages());
   } else if (page.includes('/servicios/')) {
     // Servicios: banner asistencia + algunos vehículos
     images.push('/imagen/banner/asistencia-automotriz.webp');
@@ -172,8 +149,9 @@ function getImagesForPage(page: string): string[] {
     vehiculos.slice(0, 6).forEach(v => images.push(v.imagen));
   }
 
-  // Deduplicar
-  return [...new Set(images)];
+  // Deduplicar y descartar rutas que no existen en /public
+  const publicDir = path.join(process.cwd(), 'public');
+  return [...new Set(images)].filter(img => fs.existsSync(path.join(publicDir, img.replace(/^\//, ''))));
 }
 
 // Construir entradas del sitemap
@@ -196,26 +174,10 @@ const urlEntries = allPages.map(page => {
   </url>`;
 }).join('\n');
 
-// Sección separada para imágenes que no están asociadas a ninguna página específica
-// (imágenes sueltas de la galería, banners, etc.)
-const allImages = collectAllImages();
-const imagenOnlyEntries = allImages.slice(0, 200).map(img => `  <url>
-    <loc>${config.dominio}/galeria/</loc>
-    <lastmod>${lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-    <image:image>
-      <image:loc>${config.dominio}${img}</image:loc>
-      <image:title>DRAUTOMOTRIZ - Trabajo mecánico a domicilio en Santiago</image:title>
-      <image:caption>Foto de trabajo mecánico realizado por DRAUTOMOTRIZ en Santiago, Chile</image:caption>
-    </image:image>
-  </url>`).join('\n');
-
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urlEntries}
-${imagenOnlyEntries}
 </urlset>`;
 
 export const GET: APIRoute = () => {
