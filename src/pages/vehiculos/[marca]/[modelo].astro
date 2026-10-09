@@ -4,10 +4,18 @@ import { marcas, getMarcaBySlug, allModelos } from '@/data/marcas';
 import { servicios } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
 import TrabajoChevroletCorsa from '@/components/TrabajoChevroletCorsa.astro';
+import TrabajoChevroletOnix from '@/components/TrabajoChevroletOnix.astro';
+import TrabajoChevroletNKR from '@/components/TrabajoChevroletNKR.astro';
+import TrabajoNissanTiida from '@/components/TrabajoNissanTiida.astro';
+import TrabajoVolkswagenGolf from '@/components/TrabajoVolkswagenGolf.astro';
 
 // Trabajos realizados (modal con fotos) por vehículo, según slug completo
 const trabajosPorVehiculo: Record<string, any> = {
   'chevrolet-corsa': TrabajoChevroletCorsa,
+  'chevrolet-onix': TrabajoChevroletOnix,
+  'chevrolet-nkr-512': TrabajoChevroletNKR,
+  'nissan-tiida': TrabajoNissanTiida,
+  'volkswagen-golf': TrabajoVolkswagenGolf,
 };
 
 export function getStaticPaths() {
