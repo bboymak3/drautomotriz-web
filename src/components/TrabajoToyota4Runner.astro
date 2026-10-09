@@ -1,0 +1,39 @@
+---
+// ============================================================
+// Trabajo destacado: Toyota 4Runner - Inspección pre compra
+// Fotos en /public/imagen/nuevoset/toyota-4runner/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/toyota-4runner/mecanico-a-domicilio-en-penalolen-toyota-4runner-inspeccion-pre-compra';
+
+const fotos = [
+  { src: `${base}-diagnostico-electrico.webp`, label: 'Diagnóstico eléctrico', alt: 'Mecánico revisando sistema eléctrico con multímetro en Toyota 4Runner - inspección pre compra a domicilio en Peñalolén' },
+  { src: `${base}-exterior.webp`, label: 'Revisión exterior', alt: 'Toyota 4Runner en inspección pre compra a domicilio - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-interior.webp`, label: 'Revisión interior', alt: 'Interior y tablero Toyota 4Runner en inspección pre compra - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-test-de-bateria.webp`, label: 'Test de batería', alt: 'Test de batería Toyota 4Runner con resultado deficiente - inspección pre compra en Peñalolén' },
+  { src: `${base}-liquido-de-frenos.webp`, label: 'Líquido de frenos', alt: 'Medición de humedad del líquido de frenos DOT4 en Toyota 4Runner - inspección pre compra a domicilio' },
+  { src: `${base}-nivel-de-aceite.webp`, label: 'Nivel de aceite', alt: 'Revisión de nivel y estado del aceite de motor Toyota 4Runner - inspección pre compra en Peñalolén' },
+  { src: `${base}-tapa-de-aceite-motor.webp`, label: 'Interior del motor', alt: 'Revisión por tapa de aceite del motor Toyota 4Runner 3.4 V6 - inspección pre compra a domicilio' },
+  { src: `${base}-revision-de-bujias.webp`, label: 'Revisión de bujías', alt: 'Bujía retirada del motor 3400 Toyota 4Runner - inspección pre compra mecánico a domicilio en Peñalolén' },
+  { src: `${base}-estado-de-bujia.webp`, label: 'Estado de bujía', alt: 'Estado de bujía Toyota 4Runner - inspección pre compra a domicilio en Peñalolén' },
+  { src: `${base}-revision-bajo-carroceria.webp`, label: 'Bajo carrocería', alt: 'Revisión bajo carrocería y óxido Toyota 4Runner - inspección pre compra en Peñalolén' },
+];
+---
+
+<TrabajoModal
+  id="modal-toyota-4runner"
+  vehiculo="Toyota 4Runner"
+  titulo="Inspección Pre Compra"
+  descripcion='<strong class="text-white">Inspección pre compra</strong> a un Toyota 4Runner 3.4 V6 antes de comprarlo: sistema eléctrico, batería, líquido de frenos, aceite, bujías, interior y bajo carrocería. Vamos donde está el vehículo como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Diagnóstico eléctrico y test de batería',
+    'Medición de humedad del líquido de frenos',
+    'Revisión de aceite y estado interno del motor',
+    'Revisión de bujías, interior y bajo carrocería',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar una inspección pre compra para un Toyota 4Runner"
+  servicio={{ href: '/servicios/servicio-de-pre-compra/', nombre: 'Ver servicio pre compra' }}
+/>

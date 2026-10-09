@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 37 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 39 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -57,6 +57,7 @@ export const vehiculos: Vehiculo[] = [
 
   // Nissan
   { slug: 'nissan-kicks', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Kicks', imagen: vimg('nissan-kicks'), alt: 'Nissan Kicks mantención preventiva a domicilio - DRAUTOMOTRIZ', anioInicio: 2018, tipo: 'SUV' },
+  { slug: 'nissan-march', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'March', imagen: vimg('nissan-march'), alt: 'Nissan March mantención por kilometraje - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2011, tipo: 'Hatchback' },
   { slug: 'nissan-tiida', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Tiida', imagen: vimg('nissan-tiida'), alt: 'Nissan Tiida mantención por kilometraje - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2007, tipo: 'Sedán/Hatchback' },
   { slug: 'nissan-versa', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Versa', imagen: vimg('nissan-versa'), alt: 'Nissan Versa servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
 
@@ -78,6 +79,7 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'suzuki-swift', marca: 'Suzuki', marcaSlug: 'suzuki', modelo: 'Swift', imagen: vimg('suzuki-swift'), alt: 'Suzuki Swift servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
 
   // Toyota
+  { slug: 'toyota-4runner', marca: 'Toyota', marcaSlug: 'toyota', modelo: '4Runner', imagen: vimg('toyota-4runner'), alt: 'Toyota 4Runner inspección pre compra - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 1996, tipo: 'SUV' },
   { slug: 'toyota-corolla', marca: 'Toyota', marcaSlug: 'toyota', modelo: 'Corolla', imagen: vimg('toyota-corolla'), alt: 'Toyota Corolla servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
   { slug: 'toyota-yaris', marca: 'Toyota', marcaSlug: 'toyota', modelo: 'Yaris', imagen: vimg('toyota-yaris'), alt: 'Toyota Yaris mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2015, tipo: 'Sedán/Hatchback' },
 

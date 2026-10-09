@@ -8,6 +8,8 @@ import TrabajoChevroletOnix from '@/components/TrabajoChevroletOnix.astro';
 import TrabajoChevroletNKR from '@/components/TrabajoChevroletNKR.astro';
 import TrabajoNissanTiida from '@/components/TrabajoNissanTiida.astro';
 import TrabajoVolkswagenGolf from '@/components/TrabajoVolkswagenGolf.astro';
+import TrabajoNissanMarch from '@/components/TrabajoNissanMarch.astro';
+import TrabajoToyota4Runner from '@/components/TrabajoToyota4Runner.astro';
 
 // Trabajos realizados (modal con fotos) por vehículo, según slug completo
 const trabajosPorVehiculo: Record<string, any> = {
@@ -16,6 +18,8 @@ const trabajosPorVehiculo: Record<string, any> = {
   'chevrolet-nkr-512': TrabajoChevroletNKR,
   'nissan-tiida': TrabajoNissanTiida,
   'volkswagen-golf': TrabajoVolkswagenGolf,
+  'nissan-march': TrabajoNissanMarch,
+  'toyota-4runner': TrabajoToyota4Runner,
 };
 
 export function getStaticPaths() {

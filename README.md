@@ -14,9 +14,9 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 
 *(Actualizado sep-2026, verificado con `npm run build`)*
 
-- **96 páginas** HTML generadas
+- **98 páginas** HTML generadas
 - **35 comunas** con landing individual, en 6 zonas (Norte 6, Oriente 7, Sur 8, Poniente 7, Cordillera 2, Talagante 5)
-- **37 vehículos** de 15 marcas con landing individual
+- **39 vehículos** de 15 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **~200 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/`)
 - **1.902 imágenes** indexables en el sitemap (90 URLs únicas; la galería agrupa todas las fotos en `/galeria/`)
@@ -52,7 +52,9 @@ src/
 │   ├── TrabajoVolkswagenGolf.astro # Módulo home + landing: VW Golf radiador + aire acondicionado (usa TrabajoModal)
 │   ├── TrabajoChevroletOnix.astro  # Módulo home + landing: Chevrolet Onix cambio kit de embrague (usa TrabajoModal)
 │   ├── TrabajoChevroletCorsa.astro # Módulo home + landing: Chevrolet Corsa kit de distribución + bomba de agua + termostato (usa TrabajoModal)
-│   ├── Vehiculos.astro  # Grid de 37 vehículos
+│   ├── TrabajoToyota4Runner.astro  # Módulo home + landing: Toyota 4Runner inspección pre compra (usa TrabajoModal)
+│   ├── TrabajoNissanMarch.astro    # Módulo home + landing: Nissan March mantención por km (usa TrabajoModal)
+│   ├── Vehiculos.astro  # Grid de 39 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
 │   ├── GoogleReviewsModal.astro  # Modal de reseñas Google
@@ -64,7 +66,7 @@ src/
 │   ├── config.ts        # Configuración global (WhatsApp, dominio, etc.)
 │   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
 │   ├── comunas.ts       # 35 comunas en 6 zonas
-│   └── marcas.ts        # 37 vehículos de 15 marcas
+│   └── marcas.ts        # 39 vehículos de 15 marcas
 ├── layouts/
 │   └── BaseLayout.astro # Layout base con GTM, GA4, favicon, OG image
 ├── pages/
@@ -78,7 +80,7 @@ src/
 │   ├── vehiculos/
 │   │   ├── index.astro          # Catálogo por marca
 │   │   ├── todos.astro          # Grid completo con filtros
-│   │   └── [marca]/[modelo].astro  # Landing por vehículo (37) — muestra el modal del trabajo si el vehículo tiene uno
+│   │   └── [marca]/[modelo].astro  # Landing por vehículo (39) — muestra el modal del trabajo si el vehículo tiene uno
 │   ├── galeria.astro            # Galería con lightbox y filtro por categoría
 │   ├── 404.astro                # Página 404 (también usada para 410 de comunas eliminadas)
 │   ├── quienes-somos.astro
@@ -98,7 +100,7 @@ public/
 │   ├── logo/            # Logo en múltiples formatos y tamaños
 │   ├── banner/          # Banners (asistencia-automotriz, revisión-técnica, etc.)
 │   ├── comunas/         # 35 banners personalizados por comuna
-│   ├── vehiculos/       # 37 fotos de vehículos
+│   ├── vehiculos/       # 39 fotos de vehículos
 │   ├── drautomotriz/    # 105 fotos de galería
 │   ├── galeria/         # 11 fotos temáticas (nombres SEO)
 │   ├── payment/         # Imagen de métodos de pago

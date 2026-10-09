@@ -1,0 +1,34 @@
+---
+// ============================================================
+// Trabajo destacado: Nissan March - Mantención por km
+// Fotos en /public/imagen/nuevoset/nissan-march/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km';
+
+const fotos = [
+  { src: `${base}-revision-aire-acondicionado.webp`, label: 'Nissan March en servicio', alt: 'Nissan March en mantención por km a domicilio con revisión de aire acondicionado - mecánico en Peñalolén' },
+  { src: `${base}-tablero.webp`, label: 'Kilometraje', alt: 'Tablero y kilometraje Nissan March - mantención por km en Peñalolén' },
+  { src: `${base}-motor.webp`, label: 'Motor', alt: 'Motor Nissan March en mantención por kilometraje - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-cambio-de-aceite.webp`, label: 'Cambio de aceite', alt: 'Cambio de aceite Nissan March a domicilio - mantención por km en Peñalolén' },
+  { src: `${base}-cambio-filtro-de-aire.webp`, label: 'Filtro de aire nuevo', alt: 'Cambio de filtro de aire Nissan March - mantención por km a domicilio' },
+];
+---
+
+<TrabajoModal
+  id="modal-nissan-march"
+  vehiculo="Nissan March"
+  titulo="Mantención por Km"
+  descripcion='<strong class="text-white">Mantención por kilometraje</strong> a un Nissan March a domicilio: cambio de aceite y filtros, filtro de aire nuevo y revisión del aire acondicionado. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Cambio de aceite de motor',
+    'Cambio de filtro de aire',
+    'Revisión de aire acondicionado con manómetros',
+    'Revisión general según kilometraje',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar una mantención por km para mi Nissan March"
+  servicio={{ href: '/servicios/mantencion-por-km/', nombre: 'Ver mantención por km' }}
+/>
