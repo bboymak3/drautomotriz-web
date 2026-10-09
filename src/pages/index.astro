@@ -15,6 +15,12 @@ import TrabajoChevroletNKR from '@/components/TrabajoChevroletNKR.astro';
 import TrabajoNissanTiida from '@/components/TrabajoNissanTiida.astro';
 import TrabajoVolkswagenGolf from '@/components/TrabajoVolkswagenGolf.astro';
 import TrabajoChevroletOnix from '@/components/TrabajoChevroletOnix.astro';
+import TrabajoChevroletCorsa from '@/components/TrabajoChevroletCorsa.astro';
+import TrabajoToyota4Runner from '@/components/TrabajoToyota4Runner.astro';
+import TrabajoNissanMarch from '@/components/TrabajoNissanMarch.astro';
+import TrabajoSuzukiBaleno from '@/components/TrabajoSuzukiBaleno.astro';
+import TrabajoMGZS from '@/components/TrabajoMGZS.astro';
+import TrabajoHinoXZU from '@/components/TrabajoHinoXZU.astro';
 import { config, waLink } from '@/data/config';
 import { servicios } from '@/data/servicios';
 import { marcas, totalVehiculos } from '@/data/marcas';
@@ -191,12 +197,11 @@ const homeSchema = {
         <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/mecanico-a-domicilio-en-santiago-empaques-embriage.webp" alt="Cambio de empaques y embrague" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Embrague</span></div></div>
         <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/mecanico-a-domicilio-en-santiago-frenos.webp" alt="Reparación de frenos a domicilio en Santiago" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Frenos</span></div></div>
         <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/mecanico-a-domicilio-en-santiago-motor.webp" alt="Reparación de motor a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Motor</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-1.webp" alt="Mantención por km Nissan March - 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-2.webp" alt="Mantención por km Nissan March - 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-3.webp" alt="Mantención por km Nissan March - 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-4.webp" alt="Mantención por km Nissan March - 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-5.webp" alt="Mantención por km Nissan March - 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
-        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mantencion-por-km-nissan-march-6.webp" alt="Mantención por km Nissan March - 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km-tablero.webp" alt="Tablero y kilometraje Nissan March - mantención por km en Peñalolén" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km-motor.webp" alt="Motor Nissan March en mantención por kilometraje - mecánico a domicilio en Peñalolén" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km-revision-aire-acondicionado.webp" alt="Revisión de aire acondicionado Nissan March con manómetros - mantención por km" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km-cambio-de-aceite.webp" alt="Cambio de aceite Nissan March a domicilio - mantención por km en Peñalolén" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
+        <div class="group relative aspect-square rounded-xl overflow-hidden border border-neon-500/20 hover:border-neon-500/60 transition-all"><img src="/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km-cambio-filtro-de-aire.webp" alt="Cambio de filtro de aire Nissan March - mantención por km a domicilio" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" /><div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-dark-400/90 to-transparent p-2"><span class="text-[9px] text-neon-400 font-semibold">Mantención Nissan March</span></div></div>
       </div>
     </div>
   </section>
@@ -212,6 +217,24 @@ const homeSchema = {
 
   <!-- Trabajo destacado: Chevrolet Onix cambio kit de embrague (modal con fotos) -->
   <TrabajoChevroletOnix />
+
+  <!-- Trabajo destacado: Chevrolet Corsa kit de distribución + bomba de agua + termostato (modal con fotos) -->
+  <TrabajoChevroletCorsa />
+
+  <!-- Trabajo destacado: Toyota 4Runner inspección pre compra (modal con fotos) -->
+  <TrabajoToyota4Runner />
+
+  <!-- Trabajo destacado: Nissan March mantención por km (modal con fotos) -->
+  <TrabajoNissanMarch />
+
+  <!-- Trabajo destacado: Suzuki Baleno mantención + A/C + revisión técnica (modal con fotos) -->
+  <TrabajoSuzukiBaleno />
+
+  <!-- Trabajo destacado: MG ZS cambio de selectora de cambios (modal con fotos) -->
+  <TrabajoMGZS />
+
+  <!-- Trabajo destacado: Camión Hino XZU 425L cambio kit de embrague (modal con fotos) -->
+  <TrabajoHinoXZU />
 
   <!-- Banner asistencia-automotriz antes de vehículos -->
   <section class="py-8 md:py-12 relative overflow-hidden">

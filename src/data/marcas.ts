@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 32 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 40 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -19,6 +19,9 @@ const vimg = (slug: string, ext: string = 'webp') => `/imagen/vehiculos/drautomo
 
 export const vehiculos: Vehiculo[] = [
   // Chevrolet
+  { slug: 'chevrolet-corsa', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Corsa', imagen: vimg('chevrolet-corsa'), alt: 'Chevrolet Corsa cambio kit de distribución y bomba de agua - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2002, tipo: 'Sedán/Hatchback' },
+  { slug: 'chevrolet-nkr-512', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'NKR 512', imagen: vimg('chevrolet-nkr-512'), alt: 'Chevrolet NKR 512 cambio kit de embrague - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Camión' },
+  { slug: 'chevrolet-onix', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Onix', imagen: vimg('chevrolet-onix'), alt: 'Chevrolet Onix cambio kit de embrague - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2016, tipo: 'Hatchback/Sedán' },
   { slug: 'chevrolet-sail', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sail', imagen: vimg('chevrolet-sail'), alt: 'Chevrolet Sail servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Sedán' },
   { slug: 'chevrolet-sonic', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sonic', imagen: vimg('chevrolet-sonic'), alt: 'Chevrolet Sonic diagnostico computarizado a domicilio - DRAUTOMOTRIZ', anioInicio: 2012, tipo: 'Hatchback/Sedán' },
   { slug: 'chevrolet-spark', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Spark', imagen: vimg('chevrolet-spark'), alt: 'Chevrolet Spark mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Hatchback' },
@@ -29,6 +32,9 @@ export const vehiculos: Vehiculo[] = [
   // Ford
   { slug: 'ford-ecosport', marca: 'Ford', marcaSlug: 'ford', modelo: 'EcoSport', imagen: vimg('ford-ecosport'), alt: 'Ford EcoSport servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'SUV' },
   { slug: 'ford-fiesta', marca: 'Ford', marcaSlug: 'ford', modelo: 'Fiesta', imagen: vimg('ford-fiesta'), alt: 'Ford Fiesta mantención preventiva a domicilio - DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'Hatchback/Sedán' },
+
+  // Hino
+  { slug: 'hino-xzu-425l', marca: 'Hino', marcaSlug: 'hino', modelo: 'XZU 425L', imagen: vimg('hino-xzu-425l'), alt: 'Camión Hino XZU 425L cambio kit de embrague - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2011, tipo: 'Camión' },
 
   // Honda
   { slug: 'honda-city', marca: 'Honda', marcaSlug: 'honda', modelo: 'City', imagen: vimg('honda-city'), alt: 'Honda City servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
@@ -54,6 +60,8 @@ export const vehiculos: Vehiculo[] = [
 
   // Nissan
   { slug: 'nissan-kicks', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Kicks', imagen: vimg('nissan-kicks'), alt: 'Nissan Kicks mantención preventiva a domicilio - DRAUTOMOTRIZ', anioInicio: 2018, tipo: 'SUV' },
+  { slug: 'nissan-march', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'March', imagen: vimg('nissan-march'), alt: 'Nissan March mantención por kilometraje - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2011, tipo: 'Hatchback' },
+  { slug: 'nissan-tiida', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Tiida', imagen: vimg('nissan-tiida'), alt: 'Nissan Tiida mantención por kilometraje - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2007, tipo: 'Sedán/Hatchback' },
   { slug: 'nissan-versa', marca: 'Nissan', marcaSlug: 'nissan', modelo: 'Versa', imagen: vimg('nissan-versa'), alt: 'Nissan Versa servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
 
   // Peugeot
@@ -74,11 +82,13 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'suzuki-swift', marca: 'Suzuki', marcaSlug: 'suzuki', modelo: 'Swift', imagen: vimg('suzuki-swift'), alt: 'Suzuki Swift servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
 
   // Toyota
+  { slug: 'toyota-4runner', marca: 'Toyota', marcaSlug: 'toyota', modelo: '4Runner', imagen: vimg('toyota-4runner'), alt: 'Toyota 4Runner inspección pre compra - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 1996, tipo: 'SUV' },
   { slug: 'toyota-corolla', marca: 'Toyota', marcaSlug: 'toyota', modelo: 'Corolla', imagen: vimg('toyota-corolla'), alt: 'Toyota Corolla servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
   { slug: 'toyota-yaris', marca: 'Toyota', marcaSlug: 'toyota', modelo: 'Yaris', imagen: vimg('toyota-yaris'), alt: 'Toyota Yaris mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2015, tipo: 'Sedán/Hatchback' },
 
   // Volkswagen
   { slug: 'volkswagen-gol', marca: 'Volkswagen', marcaSlug: 'volkswagen', modelo: 'Gol', imagen: vimg('volkswagen-gol'), alt: 'Volkswagen Gol servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
+  { slug: 'volkswagen-golf', marca: 'Volkswagen', marcaSlug: 'volkswagen', modelo: 'Golf', imagen: vimg('volkswagen-golf'), alt: 'Volkswagen Golf cambio de radiador y aire acondicionado - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'Hatchback' },
 ];
 
 // Interfaces compatibles con código existente

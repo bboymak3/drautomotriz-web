@@ -1,0 +1,35 @@
+---
+// ============================================================
+// Trabajo destacado: Camión Hino XZU 425L - Cambio kit de embrague
+// Fotos en /public/imagen/nuevoset/hino-xzu-425l/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/hino-xzu-425l/mecanico-a-domicilio-en-penalolen-camion-hino-xzu-425l-cambio-kit-de-embrague';
+
+const fotos = [
+  { src: `${base}.webp`, label: 'Camión Hino XZU 425L', alt: 'Camión Hino XZU 425L serie 300 en cambio de kit de embrague - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-desmontaje-caja-de-cambios.webp`, label: 'Desmontaje de caja', alt: 'Desmontaje de caja de cambios bajo camión Hino XZU 425L para cambio de embrague - mecánico en Peñalolén' },
+  { src: `${base}-caja-de-cambios-desmontada.webp`, label: 'Caja de cambios fuera', alt: 'Caja de cambios desmontada camión Hino XZU 425L - cambio kit de embrague a domicilio' },
+  { src: `${base}-nuevo-vs-usado.webp`, label: 'Kit nuevo vs usado', alt: 'Kit de embrague nuevo vs usado camión Hino XZU 425L: prensa, disco y collarín - mecánico en Peñalolén' },
+  { src: `${base}-prensa-nueva-montada.webp`, label: 'Prensa nueva montada', alt: 'Prensa de embrague nueva montada en volante de motor camión Hino XZU 425L - cambio kit de embrague' },
+  { src: `${base}-montaje-caja-de-cambios.webp`, label: 'Montaje y prueba', alt: 'Montaje de caja de cambios camión Hino XZU 425L tras cambio de kit de embrague - DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  id="modal-hino-xzu-425l"
+  vehiculo="Camión Hino XZU 425L"
+  titulo="Cambio Kit de Embrague"
+  descripcion='<strong class="text-white">Cambio de kit de embrague</strong> a un camión Hino XZU 425L (serie 300): desmontaje de caja de cambios, prensa, disco y collarín nuevos, y montaje con prueba final. Atendemos camiones y vehículos de trabajo como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Desmontaje de caja de cambios',
+    'Reemplazo de prensa y disco de embrague',
+    'Collarín de embrague nuevo',
+    'Montaje de caja y prueba de funcionamiento',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de kit de embrague para mi camión Hino"
+  servicio={{ href: '/servicios/cambio-kit-de-embrague/', nombre: 'Ver servicio de embrague' }}
+/>

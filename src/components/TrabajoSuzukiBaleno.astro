@@ -1,0 +1,37 @@
+---
+// ============================================================
+// Trabajo destacado: Suzuki Baleno
+// Mantención por km + tapa fuga de aire acondicionado + revisión técnica sin estrés
+// Fotos en /public/imagen/nuevoset/suzuki-baleno/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/suzuki-baleno/mecanico-a-domicilio-en-penalolen-suzuki-baleno-';
+
+const fotos = [
+  { src: `${base}mantencion-por-km-y-tapa-fuga-aire-acondicionado.webp`, label: 'Suzuki Baleno en servicio', alt: 'Suzuki Baleno en mantención por km y tapa fuga de aire acondicionado - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}mantencion-por-km-repuestos.webp`, label: 'Repuestos de la mantención', alt: 'Aceite, filtros y bujías NGK para mantención por km Suzuki Baleno - mecánico a domicilio en Peñalolén' },
+  { src: `${base}mantencion-por-km-cambio-de-bujias.webp`, label: 'Bujías usadas vs nuevas', alt: 'Cambio de bujías Suzuki Baleno: bujías usadas vs nuevas NGK - mantención por km en Peñalolén' },
+  { src: `${base}mantencion-por-km-cambio-filtro-de-habitaculo.webp`, label: 'Filtro de habitáculo', alt: 'Filtro de habitáculo nuevo vs usado Suzuki Baleno - mantención por km a domicilio' },
+  { src: `${base}mantencion-por-km-cambio-filtro-de-aire.webp`, label: 'Filtro de aire', alt: 'Filtro de aire usado vs nuevo Suzuki Baleno - mantención por km en Peñalolén' },
+  { src: `${base}mantencion-por-km-cambio-filtro-de-aceite.webp`, label: 'Filtro de aceite', alt: 'Filtro de aceite original Suzuki vs usado Suzuki Baleno - mantención por km a domicilio' },
+  { src: `${base}servicio-de-revision-tecnica-sin-estres.webp`, label: 'Revisión técnica aprobada', alt: 'Suzuki Baleno en planta de revisión técnica - servicio de revisión técnica sin estrés DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  id="modal-suzuki-baleno"
+  vehiculo="Suzuki Baleno"
+  titulo="Mantención, A/C y Revisión Técnica"
+  descripcion='<strong class="text-white">Mantención por kilometraje</strong> a un Suzuki Baleno con aceite, filtros y bujías nuevas, <strong class="text-white">tapa fuga del sistema de aire acondicionado</strong> y luego nuestro <strong class="text-white">servicio de revisión técnica sin estrés</strong>: llevamos el auto a la planta por ti. Mecánico a domicilio en Peñalolén y toda la Región Metropolitana.'
+  items={[
+    'Cambio de aceite, filtro de aceite, aire y habitáculo',
+    'Cambio de bujías NGK',
+    'Tapa fuga del sistema de aire acondicionado',
+    'Revisión técnica sin estrés: llevamos el auto a la planta',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar mantención por km y revisión técnica para mi Suzuki Baleno"
+  servicio={{ href: '/servicios/revision-tecnica-sin-estres/', nombre: 'Ver revisión técnica sin estrés' }}
+/>
