@@ -71,6 +71,16 @@ function collectAllImages(): string[] {
   return allImages;
 }
 
+// Fotos de trabajos realizados: /public/imagen/nuevoset/<slug del vehículo>/ (solo .webp)
+function trabajoImages(slugVehiculo: string): string[] {
+  const dir = path.join(process.cwd(), 'public', 'imagen', 'nuevoset', slugVehiculo);
+  if (!fs.existsSync(dir)) return [];
+  return fs.readdirSync(dir)
+    .filter(f => /\.webp$/i.test(f))
+    .sort()
+    .map(f => `/imagen/nuevoset/${slugVehiculo}/${f}`);
+}
+
 function getPriority(page: string): string {
   if (page === '/') return '1.0';
   if (page.includes('/servicios/')) return '0.9';
@@ -115,6 +125,8 @@ function getImagesForPage(page: string): string[] {
     }
     // Primeros 8 vehículos
     vehiculos.slice(0, 8).forEach(v => images.push(v.imagen));
+    // Fotos de los trabajos realizados que se muestran en el home
+    vehiculos.forEach(v => images.push(...trabajoImages(v.slug)));
   } else if (page.includes('/comunas/')) {
     // Páginas de comunas: banner específico de la comuna + banner revisión técnica
     const slug = page.split('/comunas/')[1].replace('/', '');
@@ -136,6 +148,7 @@ function getImagesForPage(page: string): string[] {
       });
       if (vehiculo) {
         images.push(vehiculo.imagen);
+        images.push(...trabajoImages(vehiculo.slug));
       }
     }
     images.push('/imagen/banner/asistencia-automotriz.webp');

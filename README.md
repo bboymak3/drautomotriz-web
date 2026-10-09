@@ -18,8 +18,8 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 - **35 comunas** con landing individual, en 6 zonas (Norte 6, Oriente 7, Sur 8, Poniente 7, Cordillera 2, Talagante 5)
 - **40 vehículos** de 16 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
-- **~200 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/`)
-- **1.902 imágenes** indexables en el sitemap (90 URLs únicas; la galería agrupa todas las fotos en `/galeria/`)
+- **229 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/` + `banner/`)
+- **2.416 imágenes** indexables en el sitemap (98 URLs; la galería agrupa todas las fotos en `/galeria/` y cada landing de vehículo declara las fotos de su trabajo)
 
 ## 🛠️ Tecnologías
 
@@ -89,7 +89,7 @@ src/
 │   ├── quienes-somos.astro
 │   ├── contacto.astro
 │   ├── politicas-de-privacidad.astro
-│   └── sitemap.xml.ts           # Sitemap dinámico (90 URLs + 1.902 imágenes)
+│   └── sitemap.xml.ts           # Sitemap dinámico (98 URLs + 2.416 imágenes)
 ├── styles/
 │   └── global.css       # Estilos globales con paleta neón
 └── functions/
@@ -109,11 +109,16 @@ public/
 │   ├── payment/         # Imagen de métodos de pago
 │   └── nuevoset/        # Fotos reales de trabajos (sep-2026), .webp + .jpeg original
 │       ├── Peugeot/             # 14 fotos (distribución, filtros, frenos 3008...)
-│       ├── nissan-march/        # 6 fotos mantención por km
+│       ├── nissan-march/        # 5 fotos mantención por km
 │       ├── chevrolet-nkr-512/   # 7 fotos cambio kit de embrague (taller en Peñalolén)
 │       ├── nissan-tiida/        # 8 fotos mantención por km, correa de accesorios, cuerpo de aceleración
 │       ├── chevrolet-onix/      # 4 fotos cambio kit de embrague
 │       ├── volkswagen-golf/     # 6 fotos cambio de radiador + recarga de aire acondicionado
+│       ├── chevrolet-corsa/     # 7 fotos kit de distribución + bomba de agua + termostato
+│       ├── toyota-4runner/      # 10 fotos inspección pre compra
+│       ├── suzuki-baleno/       # 7 fotos mantención por km + tapa fuga A/C + revisión técnica
+│       ├── mg-zs/               # 4 fotos cambio de selectora de cambios
+│       ├── hino-xzu-425l/       # 6 fotos cambio kit de embrague (camión)
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg
@@ -127,6 +132,9 @@ public/
 ## 🧭 Contexto y convenciones
 
 - **Imágenes**: todas las fotos se sirven en **WebP**; el `.jpeg` original se conserva al lado. Nombres de archivo en minúsculas, con guiones y palabras clave SEO (ej. `cambio-filtro-de-aire-peugeot-santiago.webp`), nunca con espacios.
+- **Trabajos realizados (modales)**: cada trabajo es un componente `Trabajo<Vehiculo>.astro` que usa `TrabajoModal.astro`, va en el home (`index.astro`) y en la landing del vehículo vía `trabajosPorVehiculo` en `src/pages/vehiculos/[marca]/[modelo].astro`. Las fotos van en `nuevoset/<slug-del-vehiculo>/` (mismo slug que en `marcas.ts`), así el sitemap las asocia solas a la landing.
+- **Nombres de fotos de trabajos**: `mecanico-a-domicilio-en-<comuna>-<marca-modelo>-<servicio>[-detalle].webp` (comuna por defecto: Peñalolén).
+- **Patentes**: se pixelan en el `.webp` y en el `.jpeg` original antes de publicar (también las de otros autos que aparezcan en la foto).
 - **Galerías por servicio**: `GaleriaServicio.astro` muestra fotos de `nuevoset/` en pre-compra y mantención por km; `/galeria` y la home también las incluyen con labels y categorías.
 - **Iconos de servicios**: se unificaron a ⚙️ (engranaje) / 🔧 en vez de emojis variados.
 - **URLs**: siempre con trailing slash; los redirects 301 están explícitos en `_redirects` (Cloudflare usa 308 por defecto).
