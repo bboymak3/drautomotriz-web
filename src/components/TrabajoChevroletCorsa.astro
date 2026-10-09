@@ -1,0 +1,37 @@
+---
+// ============================================================
+// Trabajo destacado: Chevrolet Corsa
+// Cambio kit de distribución + bomba de agua + termostato
+// Fotos en /public/imagen/nuevoset/chevrolet-corsa/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/chevrolet-corsa/mecanico-a-domicilio-en-penalolen-chevrolet-corsa-';
+
+const fotos = [
+  { src: `${base}cambio-kit-de-distribucion-bomba-de-agua-y-termostato.webp`, label: 'Chevrolet Corsa en servicio', alt: 'Chevrolet Corsa en cambio de kit de distribución, bomba de agua y termostato - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}cambio-kit-de-distribucion-motor-sin-correa.webp`, label: 'Motor sin correa', alt: 'Motor Chevrolet Corsa sin correa de distribución, poleas y bomba de agua a la vista - mecánico a domicilio en Peñalolén' },
+  { src: `${base}cambio-kit-de-distribucion-michelin.webp`, label: 'Kit de distribución Michelin', alt: 'Kit de distribución Michelin para Chevrolet Corsa - cambio kit de distribución en Peñalolén' },
+  { src: `${base}cambio-kit-de-distribucion-correa-y-tensor-nuevos.webp`, label: 'Correa y tensor nuevos', alt: 'Correa de distribución y tensor nuevos Chevrolet Corsa - mecánico a domicilio en Peñalolén' },
+  { src: `${base}cambio-bomba-de-agua-repuesto-nuevo.webp`, label: 'Bomba de agua nueva', alt: 'Bomba de agua nueva ATC para Chevrolet Corsa - cambio de bomba de agua en Peñalolén' },
+  { src: `${base}cambio-bomba-de-agua-nueva-vs-usada.webp`, label: 'Bomba nueva vs usada', alt: 'Bomba de agua nueva vs usada Chevrolet Corsa - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}cambio-bomba-de-agua-motor-1-6.webp`, label: 'Motor 1.6 MPFI', alt: 'Bomba de agua nueva y usada sobre motor 1.6 MPFI Chevrolet Corsa - mecánico a domicilio en Peñalolén' },
+];
+---
+
+<TrabajoModal
+  id="modal-chevrolet-corsa"
+  vehiculo="Chevrolet Corsa"
+  titulo="Kit de Distribución y Bomba de Agua"
+  descripcion='<strong class="text-white">Cambio de kit de distribución</strong>, bomba de agua y termostato a un Chevrolet Corsa 1.6: correa y tensor Michelin, bomba de agua nueva y refrigerante nuevo. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Cambio de correa y tensor de distribución',
+    'Reemplazo de bomba de agua',
+    'Cambio de termostato',
+    'Refrigerante nuevo y prueba de temperatura',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de kit de distribución y bomba de agua para mi Chevrolet Corsa"
+  servicio={{ href: '/servicios/cambio-kit-de-distribucion/', nombre: 'Ver servicio de distribución' }}
+/>

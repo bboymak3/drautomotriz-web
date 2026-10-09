@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 32 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 33 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -19,6 +19,7 @@ const vimg = (slug: string, ext: string = 'webp') => `/imagen/vehiculos/drautomo
 
 export const vehiculos: Vehiculo[] = [
   // Chevrolet
+  { slug: 'chevrolet-corsa', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Corsa', imagen: vimg('chevrolet-corsa'), alt: 'Chevrolet Corsa cambio kit de distribución y bomba de agua - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2002, tipo: 'Sedán/Hatchback' },
   { slug: 'chevrolet-sail', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sail', imagen: vimg('chevrolet-sail'), alt: 'Chevrolet Sail servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Sedán' },
   { slug: 'chevrolet-sonic', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sonic', imagen: vimg('chevrolet-sonic'), alt: 'Chevrolet Sonic diagnostico computarizado a domicilio - DRAUTOMOTRIZ', anioInicio: 2012, tipo: 'Hatchback/Sedán' },
   { slug: 'chevrolet-spark', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Spark', imagen: vimg('chevrolet-spark'), alt: 'Chevrolet Spark mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Hatchback' },

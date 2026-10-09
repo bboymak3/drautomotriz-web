@@ -3,6 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import { marcas, getMarcaBySlug, allModelos } from '@/data/marcas';
 import { servicios } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
+import TrabajoChevroletCorsa from '@/components/TrabajoChevroletCorsa.astro';
+
+// Trabajos realizados (modal con fotos) por vehículo, según slug completo
+const trabajosPorVehiculo: Record<string, any> = {
+  'chevrolet-corsa': TrabajoChevroletCorsa,
+};
 
 export function getStaticPaths() {
   return allModelos.map(m => ({
@@ -17,6 +23,7 @@ const vehiculoNombre = `${modeloData.marca} ${modeloData.modelo}`;
 const vehiculoSlug = `${modeloData.marcaSlug}-${modeloData.modeloSlug}`;
 const imagenVehiculo = modeloData.imagen;
 const altVehiculo = modeloData.alt;
+const TrabajoVehiculo = trabajosPorVehiculo[modeloData.slugCompleto];
 
 // Servicios para este vehículo (todos)
 const serviciosVehiculo = servicios;
@@ -198,6 +205,9 @@ const otrosModelos = marca ? marca.modelos.filter(m => (m.slug || m.nombre.toLow
       </div>
     </div>
   </section>
+
+  <!-- TRABAJO REALIZADO EN ESTE VEHÍCULO (modal con fotos) -->
+  {TrabajoVehiculo && <TrabajoVehiculo />}
 
   <!-- SERVICIOS PARA ESTE VEHÍCULO -->
   <section id="servicios-vehiculo" class="py-16 relative">
