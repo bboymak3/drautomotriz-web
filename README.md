@@ -16,7 +16,7 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 
 - **99 páginas** HTML generadas
 - **35 comunas** con landing individual, en 6 zonas (Norte 6, Oriente 7, Sur 8, Poniente 7, Cordillera 2, Talagante 5)
-- **40 vehículos** de 15 marcas con landing individual
+- **40 vehículos** de 16 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **~200 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/`)
 - **1.902 imágenes** indexables en el sitemap (90 URLs únicas; la galería agrupa todas las fotos en `/galeria/`)
