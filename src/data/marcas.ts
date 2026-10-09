@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 39 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 40 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -32,6 +32,9 @@ export const vehiculos: Vehiculo[] = [
   // Ford
   { slug: 'ford-ecosport', marca: 'Ford', marcaSlug: 'ford', modelo: 'EcoSport', imagen: vimg('ford-ecosport'), alt: 'Ford EcoSport servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'SUV' },
   { slug: 'ford-fiesta', marca: 'Ford', marcaSlug: 'ford', modelo: 'Fiesta', imagen: vimg('ford-fiesta'), alt: 'Ford Fiesta mantención preventiva a domicilio - DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'Hatchback/Sedán' },
+
+  // Hino
+  { slug: 'hino-xzu-425l', marca: 'Hino', marcaSlug: 'hino', modelo: 'XZU 425L', imagen: vimg('hino-xzu-425l'), alt: 'Camión Hino XZU 425L cambio kit de embrague - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2011, tipo: 'Camión' },
 
   // Honda
   { slug: 'honda-city', marca: 'Honda', marcaSlug: 'honda', modelo: 'City', imagen: vimg('honda-city'), alt: 'Honda City servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Sedán' },
