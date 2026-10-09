@@ -95,7 +95,7 @@ const categorias = [
   { id: 'mecanica', nombre: 'Mecánica General', icono: '🔧' },
   { id: 'frenos', nombre: 'Frenos', icono: '🛑' },
   { id: 'motor', nombre: 'Motor', icono: '⚙️' },
-  { id: 'embrague', nombre: 'Embrague', icono: '🔩' },
+  { id: 'embrague', nombre: 'Embrague y Caja', icono: '🔩' },
   { id: 'refrigeracion', nombre: 'Refrigeración y A/C', icono: '❄️' },
   { id: 'suspension', nombre: 'Suspensión', icono: '🚗' },
   { id: 'vehiculo', nombre: 'Vehículos', icono: '🚙' },
@@ -157,7 +157,7 @@ const categorias = [
           const nombreCat = filename.replace('drmecanico-automotriz-taller-en-penalolen-', '');
           let categoria = 'todos';
           if (nombreCat.includes('pre-compra')) categoria = 'precompra';
-          else if (nombreCat.includes('kit-de-embrague')) categoria = 'embrague';
+          else if (nombreCat.includes('kit-de-embrague') || nombreCat.includes('selectora')) categoria = 'embrague';
           else if (nombreCat.includes('cuerpo-de-aceleracion')) categoria = 'motor';
           else if (nombreCat.includes('radiador') || nombreCat.includes('aire-acondicionado') || nombreCat.includes('bomba-de-agua') || nombreCat.includes('termostato')) categoria = 'refrigeracion';
           else if (nombreCat.includes('frenos')) categoria = 'frenos';

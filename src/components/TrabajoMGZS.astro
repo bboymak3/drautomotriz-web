@@ -1,0 +1,33 @@
+---
+// ============================================================
+// Trabajo destacado: MG ZS - Cambio de selectora de cambios
+// Fotos en /public/imagen/nuevoset/mg-zs/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const base = '/imagen/nuevoset/mg-zs/mecanico-a-domicilio-en-penalolen-mg-zs-cambio-de-selectora-de-cambios';
+
+const fotos = [
+  { src: `${base}.webp`, label: 'MG ZS a domicilio', alt: 'MG ZS en cambio de selectora de cambios a domicilio - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-desarme-consola-central.webp`, label: 'Desarme de consola', alt: 'Consola central desarmada MG ZS para cambio de selectora de cambios - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-nueva-vs-usada.webp`, label: 'Selectora nueva vs usada', alt: 'Selectora de cambios nueva vs usada con cables MG ZS - cambio de selectora a domicilio en Peñalolén' },
+  { src: `${base}-conexion-cables-caja.webp`, label: 'Conexión de cables a la caja', alt: 'Mecánico conectando cables de selectora a la caja de cambios MG ZS - mecánico a domicilio en Peñalolén' },
+];
+---
+
+<TrabajoModal
+  id="modal-mg-zs"
+  vehiculo="MG ZS"
+  titulo="Cambio de Selectora de Cambios"
+  descripcion='<strong class="text-white">Cambio de selectora de cambios</strong> a un MG ZS en la casa del cliente: desarme de consola central, reemplazo de la selectora con sus cables y conexión a la caja de cambios. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Desarme de consola central',
+    'Reemplazo de selectora de cambios y cables',
+    'Conexión y ajuste de cables en la caja de cambios',
+    'Prueba de todas las marchas',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de selectora de cambios para mi MG ZS"
+  servicio={{ href: '/servicios/cambio-kit-de-embrague/', nombre: 'Ver servicio de embrague y caja' }}
+/>

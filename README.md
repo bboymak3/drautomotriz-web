@@ -55,6 +55,7 @@ src/
 │   ├── TrabajoToyota4Runner.astro  # Módulo home + landing: Toyota 4Runner inspección pre compra (usa TrabajoModal)
 │   ├── TrabajoNissanMarch.astro    # Módulo home + landing: Nissan March mantención por km (usa TrabajoModal)
 │   ├── TrabajoSuzukiBaleno.astro   # Módulo home + landing: Suzuki Baleno mantención por km + tapa fuga A/C + revisión técnica (usa TrabajoModal)
+│   ├── TrabajoMGZS.astro           # Módulo home + landing: MG ZS cambio de selectora de cambios (usa TrabajoModal)
 │   ├── Vehiculos.astro  # Grid de 39 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
