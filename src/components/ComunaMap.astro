@@ -90,10 +90,12 @@ const comunasJson = JSON.stringify(comunasMapa.map(c => ({
         scrollWheelZoom: false,
       });
 
-      // Tile layer dark de CARTO
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap, © CARTO',
-        maxZoom: 18,
+      // Teselas de OpenStreetMap (sin API key), oscurecidas por CSS (.mapa-oscuro).
+      // CARTO dark_all empezó a exigir API key y mostraba "API KEY REQUIRED".
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19,
+        className: 'mapa-oscuro',
       }).addTo(map);
 
       // Agregar marcadores para cada comuna
@@ -199,7 +201,11 @@ const comunasJson = JSON.stringify(comunasMapa.map(c => ({
   })();
 </script>
 
-<style>
+<style is:global>
+  /* Global: Leaflet crea estos elementos en runtime, fuera del scope del componente */
+  .mapa-oscuro {
+    filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9) saturate(0.6);
+  }
   .comuna-tooltip {
     background: #0a0a0a !important;
     border: 1px solid rgba(0, 212, 255, 0.3) !important;
