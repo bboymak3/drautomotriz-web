@@ -15,7 +15,7 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 *(Actualizado sep-2026, verificado con `npm run build`)*
 
 - **99 páginas** HTML generadas
-- **35 comunas** con landing individual, en 6 zonas (Norte 6, Oriente 7, Sur 8, Poniente 7, Cordillera 2, Talagante 5)
+- **25 comunas** con landing individual, en 4 zonas (Norte 4, Oriente 7, Sur 8, Poniente 6)
 - **40 vehículos** de 16 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **229 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/` + `banner/`)
@@ -68,7 +68,7 @@ src/
 ├── data/                # Datos centralizados
 │   ├── config.ts        # Configuración global (WhatsApp, dominio, etc.)
 │   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
-│   ├── comunas.ts       # 35 comunas en 6 zonas
+│   ├── comunas.ts       # 25 comunas en 4 zonas
 │   └── marcas.ts        # 40 vehículos de 16 marcas
 ├── layouts/
 │   └── BaseLayout.astro # Layout base con GTM, GA4, favicon, OG image
@@ -79,7 +79,7 @@ src/
 │   │   └── [slug].astro         # Landing por servicio (14)
 │   ├── comunas/
 │   │   ├── index.astro          # Listado de comunas
-│   │   └── [slug].astro         # Landing por comuna (35)
+│   │   └── [slug].astro         # Landing por comuna (25)
 │   ├── vehiculos/
 │   │   ├── index.astro          # Catálogo por marca
 │   │   ├── todos.astro          # Grid completo con filtros
@@ -102,7 +102,7 @@ public/
 ├── imagen/
 │   ├── logo/            # Logo en múltiples formatos y tamaños
 │   ├── banner/          # Banners (asistencia-automotriz, revisión-técnica, etc.)
-│   ├── comunas/         # 35 banners personalizados por comuna
+│   ├── comunas/         # 25 banners personalizados por comuna
 │   ├── vehiculos/       # 40 fotos de vehículos
 │   ├── drautomotriz/    # 105 fotos de galería
 │   ├── galeria/         # 11 fotos temáticas (nombres SEO)
@@ -138,7 +138,7 @@ public/
 - **Galerías por servicio**: `GaleriaServicio.astro` muestra fotos de `nuevoset/` en pre-compra y mantención por km; `/galeria` y la home también las incluyen con labels y categorías.
 - **Iconos de servicios**: se unificaron a ⚙️ (engranaje) / 🔧 en vez de emojis variados.
 - **URLs**: siempre con trailing slash; los redirects 301 están explícitos en `_redirects` (Cloudflare usa 308 por defecto).
-- **Comunas eliminadas**: responden **410 Gone** desde `functions/comunas/_middleware.ts` (Pages no soporta 410 en `_redirects`). Al quitar una comuna: borrarla de `comunas.ts`, agregar su slug a `COMUNAS_ELIMINADAS` y quitar su 301 de `_redirects`.
+- **Comunas eliminadas**: responden **410 Gone** desde `functions/comunas/_middleware.ts` (Pages no soporta 410 en `_redirects`). Al quitar una comuna: borrarla de `comunas.ts`, agregar su slug a `COMUNAS_ELIMINADAS` quitar su 301 de `_redirects`, sus coordenadas en `ComunaMap.astro`, su banner en `public/imagen/comunas/` y cualquier regla en `robots.txt`/`_headers`.
 - **Schemas**: sin `aggregateRating` (causaba errores en Google Search Console).
 - **Encoding**: los archivos son UTF-8. Ojo al editar desde Windows (hubo un incidente de mojibake CP850 en `galeria`/`[slug]`/`GaleriaServicio`).
 - **Dominio canónico**: `config.dominio` en `src/data/config.ts` y `site` en `astro.config.mjs` → `https://drmecanicoautomotriz.com`.

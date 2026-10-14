@@ -12,7 +12,6 @@ Disallow: /node_modules/
 
 # Comunas excluidas - no indexar
 Disallow: /comunas/conchali
-Disallow: /comunas/renca
 
 # Sitemaps
 Sitemap: https://drmecanicoautomotriz.com/sitemap.xml
