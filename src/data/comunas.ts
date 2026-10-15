@@ -1,13 +1,13 @@
 // ============================================================
 // DRAUTOMOTRIZ - Comunas de Santiago con cobertura
-// 52 comunas totales (32 Provincia Santiago + 20 Periféricas)
-// 7 comunas marcadas como excluidas (no generan landing, noindex)
+// 25 comunas de la Provincia de Santiago en 4 zonas
+// Conchalí marcada como excluida (no genera landing, noindex)
 // ============================================================
 
 export interface Comuna {
   slug: string;
   nombre: string;
-  zona: 'Norte' | 'Oriente' | 'Sur' | 'Poniente' | 'Cordillera' | 'Maipo' | 'Chacabuco' | 'Talagante' | 'Melipilla';
+  zona: 'Norte' | 'Oriente' | 'Sur' | 'Poniente';
   descripcion: string;
   h1: string;
   metaTitle: string;
@@ -19,7 +19,7 @@ export interface Comuna {
 
 export const comunas: Comuna[] = [
   // =====================================================
-  // PROVINCIA DE SANTIAGO (32 comunas)
+  // PROVINCIA DE SANTIAGO (25 comunas)
   // =====================================================
 
   // SECTOR NORTE
@@ -47,17 +47,6 @@ export const comunas: Comuna[] = [
     sectoresPopulares: ['Ciudad Empresarial', 'Los Trapiales', 'Huechuraba Alto', 'El Cobres'],
   },
   {
-    slug: 'independencia',
-    nombre: 'Independencia',
-    zona: 'Norte',
-    descripcion: 'Servicio mecánico a domicilio en Independencia, cubriendo desde Av. Independencia hasta Huelén, incluyendo Barrio Independencia, Universidad de Chile y el sector norte de la comuna.',
-    h1: 'Mecánico a Domicilio en Independencia | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Independencia | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Independencia. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio independencia', 'mecanico independencia', 'auxilio mecanico independencia'],
-    sectoresPopulares: ['Av. Independencia', 'Barrio Independencia', 'Huelén', 'Universidad de Chile'],
-  },
-  {
     slug: 'quilicura',
     nombre: 'Quilicura',
     zona: 'Norte',
@@ -78,18 +67,6 @@ export const comunas: Comuna[] = [
     metaDescription: 'Mecánico a domicilio en Recoleta. Diagnóstico, mantención, frenos y auxilio 24/7. Atendemos Patronato, La Vega, Av. Independencia. WhatsApp +56962408735.',
     keywords: ['mecanico a domicilio recoleta', 'mecanico recoleta', 'auxilio mecanico recoleta', 'patronato mecanico'],
     sectoresPopulares: ['La Feria', 'Patronato', 'Vega Central', 'Cerro San Cristóbal', 'Av. Independencia'],
-  },
-  {
-    slug: 'renca',
-    nombre: 'Renca',
-    zona: 'Norte',
-    descripcion: 'Atención mecánica a domicilio en Renca, cubriendo Plaza de Armas, Av. Cerro Navia, Renca Centro y el sector del Cerro Renca.',
-    h1: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Renca | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Renca. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio renca', 'mecanico renca', 'auxilio mecanico renca'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Cerro Navia', 'Renca Centro', 'Cerro Renca'],
-    excluida: true,
   },
 
   // SECTOR ORIENTE
@@ -274,17 +251,6 @@ export const comunas: Comuna[] = [
     sectoresPopulares: ['Plaza de Armas', 'Av. Pedro Aguirre Cerda', 'Mall Plaza Oeste'],
   },
   {
-    slug: 'cerro-navia',
-    nombre: 'Cerro Navia',
-    zona: 'Poniente',
-    descripcion: 'Cobertura en Cerro Navia, desde Av. Neptuno hasta Huelén, incluyendo Cerro Navia Centro, Las Parcelas y Av. San Pablo.',
-    h1: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Cerro Navia | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Cerro Navia. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio cerro navia', 'mecanico cerro navia', 'auxilio mecanico cerro navia'],
-    sectoresPopulares: ['Av. Neptuno', 'Cerro Navia Centro', 'Las Parcelas', 'Av. San Pablo'],
-  },
-  {
     slug: 'estacion-central',
     nombre: 'Estación Central',
     zona: 'Poniente',
@@ -339,97 +305,6 @@ export const comunas: Comuna[] = [
     keywords: ['mecanico a domicilio quinta normal', 'mecanico quinta normal', 'auxilio mecanico quinta normal'],
     sectoresPopulares: ['Parque Quinta Normal', 'Matucana', 'Blanco Encalada'],
   },
-
-  // =====================================================
-  // COMUNAS PERIFÉRICAS Y RURALES (20 comunas)
-  // =====================================================
-
-  // PROVINCIA DE CORDILLERA (3)
-  {
-    slug: 'pirque',
-    nombre: 'Pirque',
-    zona: 'Cordillera',
-    descripcion: 'Atención mecánica a domicilio en Pirque, cubriendo Plaza de Armas, Av. Concha y Toro, sector Viña Cousiño y zonas rurales aledañas de la Provincia Cordillera.',
-    h1: 'Mecánico a Domicilio en Pirque | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Pirque | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Pirque. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio pirque', 'mecanico pirque', 'auxilio mecanico pirque'],
-    sectoresPopulares: ['Plaza de Armas', 'Av. Concha y Toro', 'Viña Cousiño'],
-  },
-  {
-    slug: 'san-jose-de-maipo',
-    nombre: 'San José de Maipo',
-    zona: 'Cordillera',
-    descripcion: 'Atención mecánica a domicilio en San José de Maipo, cubriendo el sector cordillerano de la Provincia de Cordillera, incluyendo El Volcán, El Ingenio y Guayacán.',
-    h1: 'Mecánico a Domicilio en San José de Maipo | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en San José de Maipo | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en San José de Maipo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio san jose de maipo', 'mecanico san jose de maipo', 'cajon del maipo mecanico'],
-    sectoresPopulares: ['San José de Maipo', 'El Volcán', 'El Ingenio', 'Guayacán'],
-  },
-
-  // PROVINCIA DE MAIPO (4)
-
-  // PROVINCIA DE CHACABUCO (3)
-
-  // PROVINCIA DE TALAGANTE (5)
-  {
-    slug: 'el-monte',
-    nombre: 'El Monte',
-    zona: 'Talagante',
-    descripcion: 'Servicio mecánico a domicilio en El Monte, cubriendo el sector urbano y rural de la Provincia de Talagante.',
-    h1: 'Mecánico a Domicilio en El Monte | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en El Monte | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en El Monte. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio el monte', 'mecanico el monte', 'auxilio mecanico el monte'],
-    sectoresPopulares: ['El Monte Centro', 'Sector Rural'],
-  },
-  {
-    slug: 'isla-de-maipo',
-    nombre: 'Isla de Maipo',
-    zona: 'Talagante',
-    descripcion: 'Atención mecánica a domicilio en Isla de Maipo, cubriendo el sector urbano y rural de la Provincia de Talagante.',
-    h1: 'Mecánico a Domicilio en Isla de Maipo | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Isla de Maipo | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Isla de Maipo. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio isla de maipo', 'mecanico isla de maipo'],
-    sectoresPopulares: ['Isla de Maipo Centro', 'Sector Rural'],
-  },
-  {
-    slug: 'padre-hurtado',
-    nombre: 'Padre Hurtado',
-    zona: 'Talagante',
-    descripcion: 'Servicio mecánico a domicilio en Padre Hurtado, cubriendo el sector urbano de la Provincia de Talagante.',
-    h1: 'Mecánico a Domicilio en Padre Hurtado | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Padre Hurtado | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Padre Hurtado. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio padre hurtado', 'mecanico padre hurtado'],
-    sectoresPopulares: ['Padre Hurtado Centro'],
-  },
-  {
-    slug: 'penaflor',
-    nombre: 'Peñaflor',
-    zona: 'Talagante',
-    descripcion: 'Atención mecánica a domicilio en Peñaflor, cubriendo el sector urbano y rural de la Provincia de Talagante.',
-    h1: 'Mecánico a Domicilio en Peñaflor | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Peñaflor | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Peñaflor. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio penaflor', 'mecanico penaflor'],
-    sectoresPopulares: ['Peñaflor Centro', 'Sector Rural'],
-  },
-  {
-    slug: 'talagante',
-    nombre: 'Talagante',
-    zona: 'Talagante',
-    descripcion: 'Servicio mecánico a domicilio en Talagante, cubriendo Plaza de Armas, sector urbano y rural de la Provincia de Talagante.',
-    h1: 'Mecánico a Domicilio en Talagante | DRAUTOMOTRIZ',
-    metaTitle: 'Mecánico a Domicilio en Talagante | DRAUTOMOTRIZ',
-    metaDescription: 'Mecánico a domicilio en Talagante. Diagnóstico, mantención, frenos y auxilio 24/7. WhatsApp +56962408735.',
-    keywords: ['mecanico a domicilio talagante', 'mecanico talagante', 'auxilio mecanico talagante'],
-    sectoresPopulares: ['Plaza de Armas', 'Talagante Centro', 'Sector Rural'],
-  },
-
-  // PROVINCIA DE MELIPILLA (5)
 ];
 
 // Helpers
@@ -448,4 +323,4 @@ export const getComunasExcluidas = (): Comuna[] =>
   comunas.filter(c => c.excluida);
 
 // Zonas
-export const zonas: string[] = ['Norte', 'Oriente', 'Sur', 'Poniente', 'Cordillera', 'Maipo', 'Chacabuco', 'Talagante', 'Melipilla'];
+export const zonas: string[] = ['Norte', 'Oriente', 'Sur', 'Poniente'];

@@ -33,10 +33,8 @@
 # ====== Comunas (35) ======
 /comunas/conchali        /comunas/conchali/        301
 /comunas/huechuraba        /comunas/huechuraba/        301
-/comunas/independencia        /comunas/independencia/        301
 /comunas/quilicura        /comunas/quilicura/        301
 /comunas/recoleta        /comunas/recoleta/        301
-/comunas/renca        /comunas/renca/        301
 /comunas/las-condes        /comunas/las-condes/        301
 /comunas/lo-barnechea        /comunas/lo-barnechea/        301
 /comunas/macul        /comunas/macul/        301
@@ -53,19 +51,11 @@
 /comunas/santiago-centro        /comunas/santiago-centro/        301
 /comunas/vitacura        /comunas/vitacura/        301
 /comunas/cerrillos        /comunas/cerrillos/        301
-/comunas/cerro-navia        /comunas/cerro-navia/        301
 /comunas/estacion-central        /comunas/estacion-central/        301
 /comunas/maipu        /comunas/maipu/        301
 /comunas/pedro-aguirre-cerda        /comunas/pedro-aguirre-cerda/        301
 /comunas/pudahuel        /comunas/pudahuel/        301
 /comunas/quinta-normal        /comunas/quinta-normal/        301
-/comunas/pirque        /comunas/pirque/        301
-/comunas/san-jose-de-maipo        /comunas/san-jose-de-maipo/        301
-/comunas/el-monte        /comunas/el-monte/        301
-/comunas/isla-de-maipo        /comunas/isla-de-maipo/        301
-/comunas/padre-hurtado        /comunas/padre-hurtado/        301
-/comunas/penaflor        /comunas/penaflor/        301
-/comunas/talagante        /comunas/talagante/        301
 
 # ====== Vehículos (32) ======
 /vehiculos/mg/3        /vehiculos/mg/3/        301
