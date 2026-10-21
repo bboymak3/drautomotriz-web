@@ -39,7 +39,7 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 src/
 ├── components/          # Componentes reutilizables
 │   ├── Header.astro     # Navegación fija con logo + menú
-│   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupos 360 Soluciones / makeseo.app)
+│   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupo 360 Soluciones / makeseo.app)
 │   ├── Hero.astro       # Sección principal (texto + imagen)
 │   ├── Services.astro   # Grid de 14 servicios
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
