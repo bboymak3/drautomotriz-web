@@ -16,7 +16,7 @@ const comunasTop = comunas.slice(0, 12);
 const marcasTop = marcas.slice(0, 10);
 ---
 
-<footer class="bg-dark-400 border-t border-neon-500/20 mt-20">
+<footer class="bg-dark-400 border-t border-neon-500/20">
   <!-- CTA superior -->
   <div class="container-x py-12 border-b border-neon-500/10">
     <div class="grid md:grid-cols-2 gap-8 items-center">
@@ -98,7 +98,7 @@ const marcasTop = marcas.slice(0, 10);
       <!-- Columna 3: Comunas -->
       <div>
         <h4 class="text-sm font-display font-bold uppercase tracking-widest text-neon-400 mb-4">Comunas</h4>
-        <ul class="space-y-2 grid grid-cols-2 gap-x-4">
+        <ul class="grid grid-cols-2 gap-x-4 gap-y-2">
           {comunasTop.map(c => (
             <li>
               <a href={`/comunas/${c.slug}`} class="text-sm text-gray-400 hover:text-neon-400 transition-colors">
@@ -138,7 +138,7 @@ const marcasTop = marcas.slice(0, 10);
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
-            <span>Santiago, Región Metropolitana<br/><span class="text-neon-400">Cobertura 40+ comunas</span></span>
+            <span>Santiago, Región Metropolitana<br/><span class="text-neon-400">Cobertura 25 comunas</span></span>
           </li>
           <li class="flex items-center gap-2">
             <svg class="w-4 h-4 text-neon-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -163,18 +163,39 @@ const marcasTop = marcas.slice(0, 10);
     </div>
   </div>
 
-  <!-- Footer bottom -->
+  <!-- Medios de pago -->
   <div class="border-t border-neon-500/10">
+    <div class="container-x py-6 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+      <p class="text-xs font-bold text-white uppercase tracking-widest shrink-0">💳 Medios de pago</p>
+      <img
+        src="/imagen/payment/payment-methods.jpg"
+        alt="Medios de pago: Webpay Plus, VISA, MasterCard, Magna, American Express, Diners Club, Red Compra, Transbank"
+        class="w-full max-w-sm rounded-lg"
+        width="384"
+        loading="lazy"
+      />
+      <p class="text-xs text-gray-400 text-center md:text-left max-w-xs">Webpay Plus · VISA · MasterCard · Magna · American Express · Diners Club · Red Compra · Transbank</p>
+    </div>
+  </div>
+
+  <!-- Footer bottom (en móvil: pb para el BottomNav y px para que los botones flotantes no tapen el texto) -->
+  <div class="border-t border-neon-500/10 pb-36 md:pb-0 px-14 md:px-28">
     <div class="container-x py-6 flex flex-col md:flex-row justify-between items-center gap-4">
       <p class="text-xs text-gray-500 text-center md:text-left">
         © {year} {config.marca}. Todos los derechos reservados. Servicio mecánico a domicilio en Santiago, Chile.
       </p>
-      <div class="flex flex-wrap items-center gap-4 text-xs">
+      <div class="flex flex-wrap justify-center items-center gap-4 text-xs">
         <a href="/quienes-somos" class="text-gray-500 hover:text-neon-400 transition-colors">Quiénes Somos</a>
         <a href="/contacto" class="text-gray-500 hover:text-neon-400 transition-colors">Contacto</a>
         <a href="/politicas-de-privacidad" class="text-gray-500 hover:text-neon-400 transition-colors">Políticas de Privacidad</a>
         <a href="/sitemap.xml" class="text-gray-500 hover:text-neon-400 transition-colors">Sitemap</a>
       </div>
+    </div>
+    <div class="container-x pb-6">
+      <p class="text-xs text-gray-500 text-center">
+        Página web desarrollada por <span class="text-gray-300">Grupos 360 Soluciones</span> · Creada por
+        <a href="https://makeseo.app" target="_blank" rel="noopener" class="text-neon-400 hover:underline">makeseo.app</a>
+      </p>
     </div>
   </div>
 </footer>

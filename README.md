@@ -39,10 +39,9 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 src/
 ├── components/          # Componentes reutilizables
 │   ├── Header.astro     # Navegación fija con logo + menú
-│   ├── Footer.astro     # Pie de página con 5 columnas
+│   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupos 360 Soluciones / makeseo.app)
 │   ├── Hero.astro       # Sección principal (texto + imagen)
 │   ├── Services.astro   # Grid de 14 servicios
-│   ├── PaymentMethods.astro     # Métodos de pago (Webpay/Transbank)
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)
@@ -60,7 +59,9 @@ src/
 │   ├── Vehiculos.astro  # Grid de 40 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
-│   ├── GoogleReviewsModal.astro  # Modal de reseñas Google
+│   ├── GoogleReviewsModal.astro  # Botón flotante + modal de reseñas Google
+│   ├── InstagramModal.astro  # Botón flotante + modal de Instagram (todas las páginas; [data-abrir-instagram] lo abre)
+│   ├── RedesSociales.astro  # Pre-footer: tarjetas de Google (reseñas) e Instagram lado a lado (todas las páginas)
 │   ├── BannerServicio.astro  # Banner para páginas de servicio
 │   ├── GaleriaServicio.astro  # Galería en páginas de servicio
 │   ├── ComunaContenidoSEO.astro  # Contenido SEO por comuna

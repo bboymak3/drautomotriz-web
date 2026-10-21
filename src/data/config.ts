@@ -6,7 +6,7 @@ export const config = {
   marca: 'DRAUTOMOTRIZ',
   marcaLarga: 'DRAUTOMOTRIZ',
   instagram: '@dr_automotrizz',
-  instagramUrl: 'https://instagram.com/dr_automotrizz',
+  instagramUrl: 'https://www.instagram.com/dr_automotrizz/',
   whatsappNumero: '56962408735',
   whatsappTexto: 'Hola, necesito un mecanico a domicilio',
   whatsappUrl: 'https://wa.me/56962408735?text=Hola,%20necesito%20un%20mecanico%20a%20domicilio',
@@ -15,7 +15,7 @@ export const config = {
   horario: 'Lun a Sáb: 08:00 - 20:00 · Auxilio 24/7',
   stats: {
     clientes: '2.500+',
-    cobertura: '40+ comunas',
+    cobertura: '25 comunas',
     experiencia: '8+ años',
     servicios: '13+ servicios'
   },

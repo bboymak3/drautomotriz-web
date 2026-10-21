@@ -1,0 +1,85 @@
+---
+// ============================================================
+// Instagram: botón flotante (encima del de Google) + modal.
+// Cualquier elemento con [data-abrir-instagram] abre el modal
+// (RedesSociales, tarjeta de /contacto).
+// ============================================================
+import { config } from '@/data/config';
+
+const igPath = 'M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z';
+const gradiente = 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)';
+---
+
+<!-- Botón flotante de Instagram (sobre el de Google Reviews) -->
+<button
+  type="button"
+  data-abrir-instagram
+  aria-label="Ver nuestro Instagram"
+  class="fixed bottom-[152px] md:bottom-[104px] left-4 md:left-6 z-40 group"
+>
+  <div
+    class="w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(220,39,67,0.55)] group-hover:scale-110 transition-transform border-2 border-white/80"
+    style={`background: ${gradiente};`}
+  >
+    <svg class="w-7 h-7 md:w-8 md:h-8 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d={igPath} /></svg>
+  </div>
+</button>
+
+<!-- Modal de Instagram -->
+<div id="instagramModal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="instagramModalTitulo">
+  <div class="absolute inset-0 bg-dark-500/90 backdrop-blur-sm" data-cerrar-instagram></div>
+  <div class="relative max-w-md w-full rounded-2xl p-0.5 shadow-2xl" style={`background: ${gradiente};`}>
+    <div class="bg-dark-300 rounded-2xl relative overflow-hidden">
+      <button type="button" data-cerrar-instagram aria-label="Cerrar" class="absolute top-3 right-3 w-9 h-9 rounded-full bg-dark-200 border border-white/10 text-gray-300 hover:text-white flex items-center justify-center transition-colors z-10">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <div class="p-6 md:p-8 text-center">
+        <div class="w-24 h-24 mx-auto rounded-full p-1 mb-4" style={`background: ${gradiente};`}>
+          <div class="w-full h-full rounded-full bg-dark-500 flex items-center justify-center overflow-hidden">
+            <img src="/imagen/logo/drautomotriz-logo.webp" alt="DRAUTOMOTRIZ en Instagram" class="w-16 h-16 object-contain" width="64" height="64" loading="lazy" />
+          </div>
+        </div>
+        <h3 id="instagramModalTitulo" class="text-xl font-display font-bold text-white mb-1">{config.instagram}</h3>
+        <p class="text-sm text-gray-400 mb-5">DRAUTOMOTRIZ · Mecánico a domicilio en Santiago</p>
+        <ul class="text-sm text-gray-300 space-y-2 mb-6 text-left max-w-xs mx-auto">
+          <li class="flex gap-2"><span class="text-pink-400">✓</span>Fotos y videos de trabajos reales</li>
+          <li class="flex gap-2"><span class="text-pink-400">✓</span>Antes y después de cada reparación</li>
+          <li class="flex gap-2"><span class="text-pink-400">✓</span>Consejos de mantención para tu auto</li>
+        </ul>
+        <a
+          href={config.instagramUrl}
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 text-white font-bold rounded-lg shadow-lg hover:opacity-90 transition-opacity"
+          style={`background: ${gradiente};`}
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d={igPath} /></svg>
+          Seguir en Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const igModal = document.getElementById('instagramModal');
+
+  function abrirInstagram(e: Event) {
+    e.preventDefault();
+    if (!igModal) return;
+    igModal.classList.remove('hidden');
+    igModal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarInstagram() {
+    if (!igModal || igModal.classList.contains('hidden')) return;
+    igModal.classList.add('hidden');
+    igModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-abrir-instagram]').forEach(el => el.addEventListener('click', abrirInstagram));
+  igModal?.querySelectorAll('[data-cerrar-instagram]').forEach(el => el.addEventListener('click', cerrarInstagram));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrarInstagram(); });
+</script>
