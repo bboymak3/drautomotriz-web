@@ -5,6 +5,8 @@ import Footer from '@/components/Footer.astro';
 import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 import BottomNav from '@/components/BottomNav.astro';
 import GoogleReviewsModal from '@/components/GoogleReviewsModal.astro';
+import InstagramModal from '@/components/InstagramModal.astro';
+import InstagramSection from '@/components/InstagramSection.astro';
 import TapizadoVolantes from '@/components/TapizadoVolantes.astro';
 import PaymentMethods from '@/components/PaymentMethods.astro';
 import LocalPenalolen from '@/components/LocalPenalolen.astro';
@@ -179,9 +181,11 @@ const ogImageUrl = new URL(ogImage, config.dominio).toString();
     {!skipLocalPenalolen && <LocalPenalolen />}
     <TapizadoVolantes />
     <PaymentMethods />
+    <InstagramSection />
     <Footer />
     <WhatsAppCTA />
     <BottomNav />
     <GoogleReviewsModal />
+    <InstagramModal />
   </body>
 </html>

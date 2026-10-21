@@ -61,6 +61,8 @@ src/
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
 │   ├── GoogleReviewsModal.astro  # Modal de reseñas Google
+│   ├── InstagramModal.astro  # Botón flotante + modal de Instagram (todas las páginas; [data-abrir-instagram] lo abre)
+│   ├── InstagramSection.astro  # Sección "Síguenos en Instagram" antes del footer (todas las páginas)
 │   ├── BannerServicio.astro  # Banner para páginas de servicio
 │   ├── GaleriaServicio.astro  # Galería en páginas de servicio
 │   ├── ComunaContenidoSEO.astro  # Contenido SEO por comuna
