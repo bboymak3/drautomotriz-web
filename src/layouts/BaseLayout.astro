@@ -6,9 +6,8 @@ import WhatsAppCTA from '@/components/WhatsAppCTA.astro';
 import BottomNav from '@/components/BottomNav.astro';
 import GoogleReviewsModal from '@/components/GoogleReviewsModal.astro';
 import InstagramModal from '@/components/InstagramModal.astro';
-import InstagramSection from '@/components/InstagramSection.astro';
+import RedesSociales from '@/components/RedesSociales.astro';
 import TapizadoVolantes from '@/components/TapizadoVolantes.astro';
-import PaymentMethods from '@/components/PaymentMethods.astro';
 import LocalPenalolen from '@/components/LocalPenalolen.astro';
 import { config } from '@/data/config';
 
@@ -180,8 +179,7 @@ const ogImageUrl = new URL(ogImage, config.dominio).toString();
     </main>
     {!skipLocalPenalolen && <LocalPenalolen />}
     <TapizadoVolantes />
-    <PaymentMethods />
-    <InstagramSection />
+    <RedesSociales />
     <Footer />
     <WhatsAppCTA />
     <BottomNav />
