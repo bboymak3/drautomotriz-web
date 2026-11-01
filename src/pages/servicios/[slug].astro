@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import BannerServicio from '@/components/BannerServicio.astro';
 import GaleriaServicio from '@/components/GaleriaServicio.astro';
+import TrabajosRealizados from '@/components/TrabajosRealizados.astro';
 import ComunaMap from '@/components/ComunaMap.astro';
 import { servicios, getServicioBySlug, getServiciosRelacionados } from '@/data/servicios';
 import { waLink, waLinkServicio } from '@/data/config';
@@ -510,6 +511,13 @@ const breadcrumbSchema = {
   </section>
 
   <!-- Galeria de fotos del servicio -->
+  <TrabajosRealizados
+    modo="compacto"
+    servicio={servicio.slug}
+    titulo={`Trabajos realizados: ${servicio.nombre}`}
+    subtitulo="Fichas reales de trabajos que hicimos. Toca una para ver todas las fotos."
+  />
+
   <GaleriaServicio servicioSlug={servicio.slug} servicioNombre={servicio.nombre} />
 
   <!-- CTA final -->

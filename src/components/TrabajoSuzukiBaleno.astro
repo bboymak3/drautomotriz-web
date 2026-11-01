@@ -6,6 +6,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/suzuki-baleno/mecanico-a-domicilio-en-penalolen-suzuki-baleno-';
 
 const fotos = [
@@ -20,6 +22,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-suzuki-baleno"
   vehiculo="Suzuki Baleno"
   titulo="Mantención, A/C y Revisión Técnica"

@@ -45,8 +45,9 @@ src/
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)
-│   ├── TrabajoChevroletNKR.astro # Módulo home + landing: Chevrolet NKR 512 cambio kit de embrague
-│   ├── TrabajoModal.astro        # Tarjeta + modal de fotos reutilizable para trabajos realizados
+│   ├── TrabajoChevroletNKR.astro # Ficha: Chevrolet NKR 512 cambio kit de embrague (usa TrabajoModal)
+│   ├── TrabajoModal.astro        # Ficha: tarjeta (completa o compacta) + modal de fotos
+│   ├── TrabajosRealizados.astro  # Publica las fichas de src/data/trabajos.ts (home, landing, servicios, galería)
 │   ├── TrabajoNissanTiida.astro  # Módulo home + landing: Nissan Tiida mantención por km (usa TrabajoModal)
 │   ├── TrabajoVolkswagenGolf.astro # Módulo home + landing: VW Golf radiador + aire acondicionado (usa TrabajoModal)
 │   ├── TrabajoChevroletOnix.astro  # Módulo home + landing: Chevrolet Onix cambio kit de embrague (usa TrabajoModal)
@@ -71,6 +72,7 @@ src/
 │   ├── config.ts        # Configuración global (WhatsApp, dominio, etc.)
 │   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
 │   ├── comunas.ts       # 25 comunas en 4 zonas
+│   ├── trabajos.ts      # Registro de fichas de trabajos realizados + servicios asociados
 │   └── marcas.ts        # 41 vehículos de 17 marcas
 ├── layouts/
 │   └── BaseLayout.astro # Layout base con GTM, GA4, favicon, OG image
@@ -135,7 +137,7 @@ public/
 ## 🧭 Contexto y convenciones
 
 - **Imágenes**: todas las fotos se sirven en **WebP**; el `.jpeg` original se conserva al lado. Nombres de archivo en minúsculas, con guiones y palabras clave SEO (ej. `cambio-filtro-de-aire-peugeot-santiago.webp`), nunca con espacios.
-- **Trabajos realizados (modales)**: cada trabajo es un componente `Trabajo<Vehiculo>.astro` que usa `TrabajoModal.astro`, va en el home (`index.astro`) y en la landing del vehículo vía `trabajosPorVehiculo` en `src/pages/vehiculos/[marca]/[modelo].astro`. Las fotos van en `nuevoset/<slug-del-vehiculo>/` (mismo slug que en `marcas.ts`), así el sitemap las asocia solas a la landing.
+- **Trabajos realizados (fichas)**: cada trabajo es un componente `Trabajo<Vehiculo>.astro` que usa `TrabajoModal.astro` (modo completo o compacto). El registro `src/data/trabajos.ts` define el orden y los servicios asociados; `TrabajosRealizados.astro` publica las fichas en el home, en la landing del vehículo, en las páginas de sus servicios y en la sección "Trabajos realizados" de `/galeria`. Las fotos van en `nuevoset/<slug-del-vehiculo>/` (mismo slug que en `marcas.ts`), así el sitemap las asocia solas a la landing. **Procedimiento completo y script de fotos: skill `.claude/skills/fichas-trabajos/`.**
 - **Nombres de fotos de trabajos**: `mecanico-a-domicilio-en-<comuna>-<marca-modelo>-<servicio>[-detalle].webp` (comuna por defecto: Peñalolén).
 - **Patentes**: se pixelan en el `.webp` y en el `.jpeg` original antes de publicar (también las de otros autos que aparezcan en la foto).
 - **Galerías por servicio**: `GaleriaServicio.astro` muestra fotos de `nuevoset/` en pre-compra y mantención por km; `/galeria` y la home también las incluyen con labels y categorías.

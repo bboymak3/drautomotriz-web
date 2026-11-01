@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrabajosRealizados from '@/components/TrabajosRealizados.astro';
 import { servicios } from '@/data/servicios';
 import { waLink } from '@/data/config';
 import fs from 'node:fs';
@@ -133,6 +134,16 @@ const categorias = [
           {totalImagenes} fotos de trabajos mecánicos a domicilio realizados por DRAUTOMOTRIZ en distintas comunas de Santiago. Explora nuestra galería para ver ejemplos de los servicios que ofrecemos.
         </p>
       </div>
+
+      <!-- Fichas de trabajos realizados (src/data/trabajos.ts) -->
+      <TrabajosRealizados
+        modo="compacto"
+        embebido
+        titulo="Trabajos realizados"
+        subtitulo="Cada ficha es un trabajo real, con el vehículo y el servicio que hicimos. Toca una para ver sus fotos."
+      />
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold text-white text-center mb-6">Todas las fotos</h2>
 
       <!-- Filtros por categoría -->
       <div class="flex flex-wrap justify-center gap-2 mb-10">

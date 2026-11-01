@@ -5,6 +5,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/nissan-march/mecanico-a-domicilio-en-penalolen-nissan-march-mantencion-por-km';
 
 const fotos = [
@@ -17,6 +19,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-nissan-march"
   vehiculo="Nissan March"
   titulo="Mantención por Km"

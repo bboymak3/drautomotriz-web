@@ -1,7 +1,9 @@
 ---
 // ============================================================
-// Trabajo realizado: tarjeta en el home que abre un modal con fotos.
-// Usado por TrabajoNissanTiida, TrabajoVolkswagenGolf, etc.
+// Ficha de trabajo realizado: tarjeta que abre un modal con fotos.
+// Usado por los componentes Trabajo<Vehiculo>.astro (ver src/data/trabajos.ts).
+// - completo (default): sección grande con título y descripción (home, landing de vehículo)
+// - compacto: tarjeta chica para grillas (galería, páginas de servicio)
 // ============================================================
 import { waLink } from '@/data/config';
 
@@ -21,11 +23,32 @@ export interface Props {
   portada: Foto;              // imagen de la tarjeta
   whatsappTexto: string;
   servicio: { href: string; nombre: string };
+  compacto?: boolean;
 }
 
-const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto, servicio } = Astro.props;
+const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto, servicio, compacto = false } = Astro.props;
 ---
 
+{compacto ? (
+  <button
+    type="button"
+    data-abrir-modal={id}
+    class="neon-card group flex flex-col w-full h-full rounded-2xl overflow-hidden text-left cursor-pointer"
+    aria-haspopup="dialog"
+  >
+    <div class="relative aspect-[4/3] overflow-hidden">
+      <img src={portada.src} alt={portada.alt} class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="960" height="720" />
+      <div class="absolute bottom-2 left-2 px-2.5 py-1 rounded-full bg-dark-400/80 backdrop-blur text-[11px] text-neon-400 font-semibold border border-neon-500/30">
+        📷 {fotos.length} fotos
+      </div>
+    </div>
+    <div class="p-3 md:p-4 flex flex-col gap-1 flex-1">
+      <span class="text-[11px] uppercase tracking-wide text-neon-400 font-semibold">{vehiculo}</span>
+      <h3 class="text-sm md:text-base font-display font-bold text-white leading-snug">{titulo}</h3>
+      <span class="mt-auto pt-3 text-xs text-neon-400 font-semibold group-hover:underline">Ver fotos del trabajo →</span>
+    </div>
+  </button>
+) : (
 <section class="py-16 md:py-20 relative overflow-hidden">
   <div class="absolute inset-0 bg-grid opacity-10"></div>
   <div class="absolute top-0 left-1/4 w-96 h-96 bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -65,6 +88,8 @@ const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto,
       </div>
     </button>
   </div>
+</section>
+)}
 
   <!-- Modal con las fotos -->
   <dialog
@@ -98,7 +123,6 @@ const { id, vehiculo, titulo, descripcion, items, fotos, portada, whatsappTexto,
       </div>
     </div>
   </dialog>
-</section>
 
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-abrir-modal]').forEach(btn => {

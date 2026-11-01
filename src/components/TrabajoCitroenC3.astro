@@ -6,6 +6,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/citroen-c3/mecanico-a-domicilio-en-penalolen-citroen-c3-cambio-discos-y-pastillas-de-frenos';
 
 const fotos = [
@@ -18,6 +20,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-citroen-c3"
   vehiculo="Citroën C3"
   titulo="Discos y Pastillas de Freno"
