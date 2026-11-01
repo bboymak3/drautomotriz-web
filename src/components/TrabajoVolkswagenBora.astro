@@ -1,0 +1,38 @@
+---
+// ============================================================
+// Trabajo destacado: Volkswagen Bora - Cambio kit de distribución
+// Fotos en /public/imagen/nuevoset/volkswagen-bora/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const { compacto = false } = Astro.props;
+
+const base = '/imagen/nuevoset/volkswagen-bora/mecanico-a-domicilio-en-penalolen-volkswagen-bora-cambio-kit-de-distribucion';
+
+const fotos = [
+  { src: `${base}.webp`, label: 'Volkswagen Bora en servicio', alt: 'Volkswagen Bora en cambio de kit de distribución - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-motor-1-6.webp`, label: 'Motor 1.6', alt: 'Motor 1.6 Volkswagen Bora antes del cambio de kit de distribución - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-desmontaje-correa-de-accesorios.webp`, label: 'Desmontaje correa de accesorios', alt: 'Correa de accesorios retirada para acceder a la distribución del Volkswagen Bora - cambio kit de distribución en Peñalolén' },
+  { src: `${base}-polea-arbol-de-levas.webp`, label: 'Polea del árbol de levas', alt: 'Polea del árbol de levas y correa de distribución Volkswagen Bora - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-correa-nueva.webp`, label: 'Correa de distribución nueva', alt: 'Correa de distribución nueva para Volkswagen Bora - cambio kit de distribución a domicilio en Peñalolén' },
+  { src: `${base}-poleas-y-tensor.webp`, label: 'Poleas y tensor', alt: 'Poleas, tensor y correa de distribución montados en Volkswagen Bora - DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  compacto={compacto}
+  id="modal-volkswagen-bora"
+  vehiculo="Volkswagen Bora"
+  titulo="Cambio Kit de Distribución"
+  descripcion='<strong class="text-white">Cambio de kit de distribución</strong> a un Volkswagen Bora 1.6: desmontaje de correa de accesorios, correa de distribución, tensor y poleas nuevas, puesta a punto y prueba del motor. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Desmontaje de correa de accesorios y tapas',
+    'Correa de distribución nueva',
+    'Cambio de tensor y poleas',
+    'Puesta a punto y prueba del motor',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de kit de distribución para mi Volkswagen Bora"
+  servicio={{ href: '/servicios/cambio-kit-de-distribucion/', nombre: 'Ver servicio de distribución' }}
+/>
