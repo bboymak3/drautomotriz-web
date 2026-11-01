@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 41 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 42 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -25,6 +25,7 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'chevrolet-sail', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sail', imagen: vimg('chevrolet-sail'), alt: 'Chevrolet Sail servicio mecánico a domicilio en Santiago - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Sedán' },
   { slug: 'chevrolet-sonic', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Sonic', imagen: vimg('chevrolet-sonic'), alt: 'Chevrolet Sonic diagnostico computarizado a domicilio - DRAUTOMOTRIZ', anioInicio: 2012, tipo: 'Hatchback/Sedán' },
   { slug: 'chevrolet-spark', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Spark', imagen: vimg('chevrolet-spark'), alt: 'Chevrolet Spark mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2010, tipo: 'Hatchback' },
+  { slug: 'chevrolet-tracker', marca: 'Chevrolet', marcaSlug: 'chevrolet', modelo: 'Tracker', imagen: vimg('chevrolet-tracker'), alt: 'Chevrolet Tracker cambio de enfriador de aceite y termostato - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'SUV' },
 
   // Citroën
   { slug: 'citroen-c3', marca: 'Citroën', marcaSlug: 'citroen', modelo: 'C3', imagen: vimg('citroen-c3'), alt: 'Citroën C3 cambio de discos y pastillas de freno - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2017, tipo: 'Hatchback/SUV' },

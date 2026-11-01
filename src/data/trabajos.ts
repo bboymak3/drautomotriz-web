@@ -31,6 +31,7 @@ export const trabajos: Trabajo[] = [
   { id: 'mg-zs', vehiculo: 'MG ZS', titulo: 'Cambio de selectora de cambios', servicios: ['cambio-kit-de-embrague'] },
   { id: 'hino-xzu-425l', vehiculo: 'Camión Hino XZU 425L', titulo: 'Cambio kit de embrague', servicios: ['cambio-kit-de-embrague'] },
   { id: 'citroen-c3', vehiculo: 'Citroën C3', titulo: 'Cambio de discos y pastillas de freno delanteras', servicios: ['servicio-de-frenos-a-domicilio'] },
+  { id: 'chevrolet-tracker', vehiculo: 'Chevrolet Tracker', titulo: 'Cambio de enfriador de aceite y termostato', servicios: ['mantencion-por-km', 'venta-de-aceites-motor'] },
 ];
 
 export const getTrabajosPorServicio = (servicioSlug: string): Trabajo[] =>

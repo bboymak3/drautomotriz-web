@@ -1,0 +1,37 @@
+---
+// ============================================================
+// Trabajo destacado: Chevrolet Tracker
+// Cambio de enfriador de aceite + cambio de termostato
+// Fotos en /public/imagen/nuevoset/chevrolet-tracker/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const { compacto = false } = Astro.props;
+
+const base = '/imagen/nuevoset/chevrolet-tracker/mecanico-a-domicilio-en-penalolen-chevrolet-tracker-cambio-de';
+
+const fotos = [
+  { src: `${base}-enfriador-de-aceite.webp`, label: 'Enfriador de aceite nuevo', alt: 'Enfriador de aceite nuevo con base de filtro para Chevrolet Tracker - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-enfriador-de-aceite-y-termostato-motor-ecotec.webp`, label: 'Motor Ecotec desarmado', alt: 'Motor Ecotec Chevrolet Tracker sin carcasa de termostato durante cambio de enfriador de aceite - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-termostato-nuevo-vs-usado.webp`, label: 'Termostato nuevo vs usado', alt: 'Carcasa de termostato nueva vs usada Chevrolet Tracker - cambio de termostato a domicilio en Peñalolén' },
+  { src: `${base}-aceite-mannol-5w-30.webp`, label: 'Aceite Mannol 5W-30', alt: 'Llenado de aceite Mannol Ceramic 5W-30 en Chevrolet Tracker tras cambio de enfriador de aceite - DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  compacto={compacto}
+  id="modal-chevrolet-tracker"
+  vehiculo="Chevrolet Tracker"
+  titulo="Enfriador de Aceite y Termostato"
+  descripcion='<strong class="text-white">Cambio de enfriador de aceite</strong> y <strong class="text-white">cambio de termostato</strong> a un Chevrolet Tracker con motor Ecotec: retiro de la carcasa de termostato, enfriador nuevo con base de filtro, termostato nuevo y llenado de aceite y refrigerante. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Cambio de enfriador de aceite con base de filtro',
+    'Cambio de termostato y su carcasa',
+    'Aceite nuevo Mannol 5W-30 y refrigerante',
+    'Revisión de fugas y prueba de temperatura',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de enfriador de aceite y termostato para mi Chevrolet Tracker"
+  servicio={{ href: '/servicios/mantencion-por-km/', nombre: 'Ver mantención por km' }}
+/>
