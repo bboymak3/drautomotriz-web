@@ -103,8 +103,35 @@ const categorias = [
   { id: 'taller', nombre: 'Taller', icono: '🏭' },
   { id: 'mantencion', nombre: 'Mantención', icono: '📊' },
   { id: 'precompra', nombre: 'Inspección Pre Compra', icono: '🔍' },
+  { id: 'laminas', nombre: 'Láminas de Seguridad', icono: '🛡️' },
   { id: 'revision', nombre: 'Revisión Técnica', icono: '⚙️' },
 ];
+
+// Categoría de una foto según su nombre de archivo
+function categoriaDe(src: string): string {
+  const filename = src.split('/').pop() || '';
+  // El prefijo SEO "taller-en-penalolen" no define la categoría de la foto
+  const nombreCat = filename.replace('drmecanico-automotriz-taller-en-penalolen-', '');
+  let categoria = 'todos';
+  if (nombreCat.includes('pre-compra')) categoria = 'precompra';
+  else if (nombreCat.includes('lamina')) categoria = 'laminas';
+  else if (nombreCat.includes('kit-de-embrague') || nombreCat.includes('selectora')) categoria = 'embrague';
+  else if (nombreCat.includes('cuerpo-de-aceleracion')) categoria = 'motor';
+  else if (nombreCat.includes('radiador') || nombreCat.includes('aire-acondicionado') || nombreCat.includes('bomba-de-agua') || nombreCat.includes('termostato')) categoria = 'refrigeracion';
+  else if (nombreCat.includes('frenos')) categoria = 'frenos';
+  else if (nombreCat.includes('motor') || nombreCat.includes('distribucion') || nombreCat.includes('correa') || nombreCat.includes('refrigerante') || nombreCat.includes('turbo') || nombreCat.includes('desarme') || nombreCat.includes('tablero') || nombreCat.includes('interior')) categoria = 'motor';
+  else if (nombreCat.includes('suspension') || nombreCat.includes('neumatico')) categoria = 'suspension';
+  else if (nombreCat.includes('vehiculo') || nombreCat.includes('drautomotriz-chevrolet') || nombreCat.includes('drautomotriz-toyota') || nombreCat.includes('drautomotriz-hyundai') || nombreCat.includes('drautomotriz-kia') || nombreCat.includes('drautomotriz-mazda') || nombreCat.includes('drautomotriz-honda') || nombreCat.includes('drautomotriz-ford') || nombreCat.includes('drautomotriz-peugeot') || nombreCat.includes('drautomotriz-renault') || nombreCat.includes('drautomotriz-subaru') || nombreCat.includes('drautomotriz-suzuki') || nombreCat.includes('drautomotriz-volkswagen') || nombreCat.includes('drautomotriz-nissan')) categoria = 'vehiculo';
+  else if (nombreCat.includes('taller') || nombreCat.includes('logo')) categoria = 'taller';
+  else if (nombreCat.includes('revision')) categoria = 'revision';
+  else if (nombreCat.includes('mantencion') || nombreCat.includes('manutencion') || nombreCat.includes('pre-compra') || nombreCat.includes('ahorro-bencina')) categoria = 'mantencion';
+  else if (nombreCat.includes('mecanica') || nombreCat.includes('mecanico') || nombreCat.includes('bujia') || nombreCat.includes('culata') || nombreCat.includes('empaque') || nombreCat.includes('bomba') || nombreCat.includes('aceite') || nombreCat.includes('filtro')) categoria = 'mecanica';
+  return categoria;
+}
+
+// Solo mostrar filtros que tienen fotos
+const categoriasConFotos = new Set(todasLasImagenes.map(categoriaDe));
+const categoriasVisibles = categorias.filter(c => c.id === 'todos' || categoriasConFotos.has(c.id));
 ---
 
 <BaseLayout
@@ -147,7 +174,7 @@ const categorias = [
 
       <!-- Filtros por categoría -->
       <div class="flex flex-wrap justify-center gap-2 mb-10">
-        {categorias.map(cat => (
+        {categoriasVisibles.map(cat => (
           <button
             type="button"
             data-categoria={cat.id}
@@ -162,23 +189,8 @@ const categorias = [
       <!-- Grid de fotos -->
       <div id="grid-galeria" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {todasLasImagenes.map((src, i) => {
-          // Determinar categoría basada en el nombre del archivo
           const filename = src.split('/').pop() || '';
-          // El prefijo SEO "taller-en-penalolen" no define la categoría de la foto
-          const nombreCat = filename.replace('drmecanico-automotriz-taller-en-penalolen-', '');
-          let categoria = 'todos';
-          if (nombreCat.includes('pre-compra')) categoria = 'precompra';
-          else if (nombreCat.includes('kit-de-embrague') || nombreCat.includes('selectora')) categoria = 'embrague';
-          else if (nombreCat.includes('cuerpo-de-aceleracion')) categoria = 'motor';
-          else if (nombreCat.includes('radiador') || nombreCat.includes('aire-acondicionado') || nombreCat.includes('bomba-de-agua') || nombreCat.includes('termostato')) categoria = 'refrigeracion';
-          else if (nombreCat.includes('frenos')) categoria = 'frenos';
-          else if (nombreCat.includes('motor') || nombreCat.includes('distribucion') || nombreCat.includes('correa') || nombreCat.includes('refrigerante') || nombreCat.includes('turbo') || nombreCat.includes('desarme') || nombreCat.includes('tablero') || nombreCat.includes('interior')) categoria = 'motor';
-          else if (nombreCat.includes('suspension') || nombreCat.includes('neumatico')) categoria = 'suspension';
-          else if (nombreCat.includes('vehiculo') || nombreCat.includes('drautomotriz-chevrolet') || nombreCat.includes('drautomotriz-toyota') || nombreCat.includes('drautomotriz-hyundai') || nombreCat.includes('drautomotriz-kia') || nombreCat.includes('drautomotriz-mazda') || nombreCat.includes('drautomotriz-honda') || nombreCat.includes('drautomotriz-ford') || nombreCat.includes('drautomotriz-peugeot') || nombreCat.includes('drautomotriz-renault') || nombreCat.includes('drautomotriz-subaru') || nombreCat.includes('drautomotriz-suzuki') || nombreCat.includes('drautomotriz-volkswagen') || nombreCat.includes('drautomotriz-nissan')) categoria = 'vehiculo';
-          else if (nombreCat.includes('taller') || nombreCat.includes('logo')) categoria = 'taller';
-          else if (nombreCat.includes('revision')) categoria = 'revision';
-          else if (nombreCat.includes('mantencion') || nombreCat.includes('manutencion') || nombreCat.includes('pre-compra') || nombreCat.includes('ahorro-bencina')) categoria = 'mantencion';
-          else if (nombreCat.includes('mecanica') || nombreCat.includes('mecanico') || nombreCat.includes('bujia') || nombreCat.includes('culata') || nombreCat.includes('empaque') || nombreCat.includes('bomba') || nombreCat.includes('aceite') || nombreCat.includes('filtro')) categoria = 'mecanica';
+          const categoria = categoriaDe(src);
 
           // Generar alt descriptivo
           const alt = filename

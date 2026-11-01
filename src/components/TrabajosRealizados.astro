@@ -50,8 +50,17 @@ interface Props {
 
 const { modo = 'completo', servicio, vehiculo, titulo = 'Trabajos realizados', subtitulo, embebido = false } = Astro.props;
 
-const lista = (servicio ? getTrabajosPorServicio(servicio) : vehiculo ? getTrabajosPorVehiculo(vehiculo) : trabajos)
+let lista = (servicio ? getTrabajosPorServicio(servicio) : vehiculo ? getTrabajosPorVehiculo(vehiculo) : trabajos)
   .filter(t => componentes[t.id]);
+
+// Servicio sin fichas propias todavía: mostrar los últimos trabajos del taller
+let tituloFinal = titulo;
+let subtituloFinal = subtitulo;
+if (servicio && modo === 'compacto' && lista.length === 0) {
+  lista = trabajos.filter(t => componentes[t.id]).slice(-3).reverse();
+  tituloFinal = 'Trabajos realizados';
+  subtituloFinal = 'Pronto publicaremos fichas de este servicio. Mientras tanto, mira algunos de nuestros últimos trabajos reales.';
+}
 ---
 
 {lista.length > 0 && (modo === 'completo' ? (
@@ -60,12 +69,12 @@ const lista = (servicio ? getTrabajosPorServicio(servicio) : vehiculo ? getTraba
     return <Ficha />;
   })
 ) : (
-  <section class={embebido ? 'mb-14' : 'py-12 md:py-16 relative overflow-hidden'} aria-label={titulo}>
+  <section class={embebido ? 'mb-14' : 'py-12 md:py-16 relative overflow-hidden'} aria-label={tituloFinal}>
     <div class={embebido ? '' : 'container-x relative'}>
       <div class="text-center mb-8">
         <span class="badge-neon mb-3">⚙️ Trabajos Realizados</span>
-        <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">{titulo}</h2>
-        {subtitulo && <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">{subtitulo}</p>}
+        <h2 class="text-2xl md:text-3xl font-display font-bold text-white mb-3">{tituloFinal}</h2>
+        {subtituloFinal && <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">{subtituloFinal}</p>}
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-6xl mx-auto">
         {lista.map(t => {

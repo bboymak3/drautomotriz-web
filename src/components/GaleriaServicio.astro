@@ -18,6 +18,7 @@ if (servicioSlug) {
   if (servicio) {
     // Primero chequear slugs específicos
     if (servicio.slug === 'servicio-de-pre-compra') categoriaFiltro = 'mantencion';
+    else if (servicio.slug === 'laminas-de-seguridad-certificadas') categoriaFiltro = 'laminas';
     // Mapear categoria del servicio a categoria de galería
     else if (servicio.categoria.toLowerCase().includes('frenos')) categoriaFiltro = 'frenos';
     else if (servicio.categoria.toLowerCase().includes('motor')) categoriaFiltro = 'motor';
@@ -61,6 +62,7 @@ try {
     else if (f.includes('aire') || f.includes('refriger')) categoria = 'refrigeracion';
     else if (f.includes('distribuc')) categoria = 'distribucion';
     else if (f.includes('embrague')) categoria = 'embrague';
+    else if (f.includes('lamina')) categoria = 'laminas';
     else if (f.includes('opticos') || f.includes('focos')) categoria = 'opticos';
     else if (f.includes('aceite')) categoria = 'aceites';
     else if (f.includes('mantencion') || f.includes('pre-compra') || f.includes('ahorro-bencina')) categoria = 'mantencion';
