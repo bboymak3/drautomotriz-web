@@ -33,6 +33,7 @@ export const trabajos: Trabajo[] = [
   { id: 'citroen-c3', vehiculo: 'Citroën C3', titulo: 'Cambio de discos y pastillas de freno delanteras', servicios: ['servicio-de-frenos-a-domicilio'] },
   { id: 'chevrolet-tracker', vehiculo: 'Chevrolet Tracker', titulo: 'Cambio de enfriador de aceite y termostato', servicios: ['mantencion-por-km', 'venta-de-aceites-motor'] },
   { id: 'volkswagen-bora', vehiculo: 'Volkswagen Bora', titulo: 'Cambio kit de distribución', servicios: ['cambio-kit-de-distribucion'] },
+  { id: 'volkswagen-voyage', vehiculo: 'Volkswagen Voyage', titulo: 'Mantención por km y recarga de aire acondicionado', servicios: ['mantencion-por-km', 'recarga-y-mantencion-de-aire-acondicionado'] },
 ];
 
 export const getTrabajosPorServicio = (servicioSlug: string): Trabajo[] =>
