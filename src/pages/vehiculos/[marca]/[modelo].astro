@@ -13,6 +13,7 @@ import TrabajoToyota4Runner from '@/components/TrabajoToyota4Runner.astro';
 import TrabajoSuzukiBaleno from '@/components/TrabajoSuzukiBaleno.astro';
 import TrabajoMGZS from '@/components/TrabajoMGZS.astro';
 import TrabajoHinoXZU from '@/components/TrabajoHinoXZU.astro';
+import TrabajoCitroenC3 from '@/components/TrabajoCitroenC3.astro';
 
 // Trabajos realizados (modal con fotos) por vehículo, según slug completo
 const trabajosPorVehiculo: Record<string, any> = {
@@ -26,6 +27,7 @@ const trabajosPorVehiculo: Record<string, any> = {
   'suzuki-baleno': TrabajoSuzukiBaleno,
   'mg-zs': TrabajoMGZS,
   'hino-xzu-425l': TrabajoHinoXZU,
+  'citroen-c3': TrabajoCitroenC3,
 };
 
 export function getStaticPaths() {
