@@ -6,6 +6,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/nissan-tiida/drmecanico-automotriz-taller-en-penalolen-nissan-tiida-';
 
 const fotos = [
@@ -21,6 +23,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-nissan-tiida"
   vehiculo="Nissan Tiida"
   titulo="Mantención por Km"

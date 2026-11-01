@@ -5,6 +5,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/toyota-4runner/mecanico-a-domicilio-en-penalolen-toyota-4runner-inspeccion-pre-compra';
 
 const fotos = [
@@ -22,6 +24,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-toyota-4runner"
   vehiculo="Toyota 4Runner"
   titulo="Inspección Pre Compra"

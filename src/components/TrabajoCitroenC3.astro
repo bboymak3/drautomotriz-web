@@ -1,0 +1,38 @@
+---
+// ============================================================
+// Trabajo destacado: Citroën C3
+// Cambio de discos y pastillas de freno delanteras
+// Fotos en /public/imagen/nuevoset/citroen-c3/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const { compacto = false } = Astro.props;
+
+const base = '/imagen/nuevoset/citroen-c3/mecanico-a-domicilio-en-penalolen-citroen-c3-cambio-discos-y-pastillas-de-frenos';
+
+const fotos = [
+  { src: `${base}.webp`, label: 'Citroën C3 en servicio', alt: 'Citroën C3 en cambio de discos y pastillas de freno delanteras - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ' },
+  { src: `${base}-pastillas-gastadas.webp`, label: 'Pastillas gastadas', alt: 'Pastillas de freno delanteras gastadas Citroën C3 junto al disco - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-disco-nuevo-vs-usado.webp`, label: 'Disco nuevo vs usado', alt: 'Disco de freno nuevo vs usado Citroën C3 - cambio de discos y pastillas en Peñalolén' },
+  { src: `${base}-pastilla-nueva-vs-usada.webp`, label: 'Pastilla nueva vs usada', alt: 'Pastilla de freno nueva vs usada Citroën C3 con sensor de desgaste - mecánico a domicilio en Peñalolén' },
+  { src: `${base}-disco-nuevo-instalado.webp`, label: 'Disco nuevo instalado', alt: 'Disco de freno nuevo y caliper instalados en Citroën C3 - frenos a domicilio DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  compacto={compacto}
+  id="modal-citroen-c3"
+  vehiculo="Citroën C3"
+  titulo="Discos y Pastillas de Freno"
+  descripcion='<strong class="text-white">Cambio de discos y pastillas de freno delanteras</strong> a un Citroën C3: retiro de pastillas gastadas, discos nuevos, pastillas nuevas con sensor de desgaste y prueba de frenado. Lo hacemos como <strong class="text-white">mecánico a domicilio en Peñalolén</strong> y toda la Región Metropolitana.'
+  items={[
+    'Revisión de desgaste de pastillas y discos',
+    'Cambio de discos de freno delanteros',
+    'Pastillas nuevas con sensor de desgaste',
+    'Limpieza de caliper y prueba de frenado',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar cambio de discos y pastillas de freno para mi Citroën C3"
+  servicio={{ href: '/servicios/servicio-de-frenos-a-domicilio/', nombre: 'Ver servicio de frenos' }}
+/>

@@ -5,6 +5,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/mg-zs/mecanico-a-domicilio-en-penalolen-mg-zs-cambio-de-selectora-de-cambios';
 
 const fotos = [
@@ -16,6 +18,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-mg-zs"
   vehiculo="MG ZS"
   titulo="Cambio de Selectora de Cambios"

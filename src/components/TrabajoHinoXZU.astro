@@ -5,6 +5,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/hino-xzu-425l/mecanico-a-domicilio-en-penalolen-camion-hino-xzu-425l-cambio-kit-de-embrague';
 
 const fotos = [
@@ -18,6 +20,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-hino-xzu-425l"
   vehiculo="Camión Hino XZU 425L"
   titulo="Cambio Kit de Embrague"

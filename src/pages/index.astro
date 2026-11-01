@@ -1,4 +1,5 @@
 ---
+import TrabajosRealizados from '@/components/TrabajosRealizados.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Hero from '@/components/Hero.astro';
 import BannerMidSize from '@/components/BannerMidSize.astro';
@@ -11,16 +12,6 @@ import ComunasHighlight from '@/components/ComunasHighlight.astro';
 import Gallery from '@/components/Gallery.astro';
 import QuoteForm from '@/components/QuoteForm.astro';
 import CotizacionBanner from '@/components/CotizacionBanner.astro';
-import TrabajoChevroletNKR from '@/components/TrabajoChevroletNKR.astro';
-import TrabajoNissanTiida from '@/components/TrabajoNissanTiida.astro';
-import TrabajoVolkswagenGolf from '@/components/TrabajoVolkswagenGolf.astro';
-import TrabajoChevroletOnix from '@/components/TrabajoChevroletOnix.astro';
-import TrabajoChevroletCorsa from '@/components/TrabajoChevroletCorsa.astro';
-import TrabajoToyota4Runner from '@/components/TrabajoToyota4Runner.astro';
-import TrabajoNissanMarch from '@/components/TrabajoNissanMarch.astro';
-import TrabajoSuzukiBaleno from '@/components/TrabajoSuzukiBaleno.astro';
-import TrabajoMGZS from '@/components/TrabajoMGZS.astro';
-import TrabajoHinoXZU from '@/components/TrabajoHinoXZU.astro';
 import { config, waLink } from '@/data/config';
 import { servicios } from '@/data/servicios';
 import { marcas, totalVehiculos } from '@/data/marcas';
@@ -206,35 +197,8 @@ const homeSchema = {
     </div>
   </section>
 
-  <!-- Trabajo destacado: Chevrolet NKR 512 cambio kit de embrague -->
-  <TrabajoChevroletNKR />
-
-  <!-- Trabajo destacado: Nissan Tiida mantención por km (modal con fotos) -->
-  <TrabajoNissanTiida />
-
-  <!-- Trabajo destacado: Volkswagen Golf radiador + aire acondicionado (modal con fotos) -->
-  <TrabajoVolkswagenGolf />
-
-  <!-- Trabajo destacado: Chevrolet Onix cambio kit de embrague (modal con fotos) -->
-  <TrabajoChevroletOnix />
-
-  <!-- Trabajo destacado: Chevrolet Corsa kit de distribución + bomba de agua + termostato (modal con fotos) -->
-  <TrabajoChevroletCorsa />
-
-  <!-- Trabajo destacado: Toyota 4Runner inspección pre compra (modal con fotos) -->
-  <TrabajoToyota4Runner />
-
-  <!-- Trabajo destacado: Nissan March mantención por km (modal con fotos) -->
-  <TrabajoNissanMarch />
-
-  <!-- Trabajo destacado: Suzuki Baleno mantención + A/C + revisión técnica (modal con fotos) -->
-  <TrabajoSuzukiBaleno />
-
-  <!-- Trabajo destacado: MG ZS cambio de selectora de cambios (modal con fotos) -->
-  <TrabajoMGZS />
-
-  <!-- Trabajo destacado: Camión Hino XZU 425L cambio kit de embrague (modal con fotos) -->
-  <TrabajoHinoXZU />
+  <!-- Fichas de trabajos realizados (orden y servicios en src/data/trabajos.ts) -->
+  <TrabajosRealizados />
 
   <!-- Banner asistencia-automotriz antes de vehículos -->
   <section class="py-8 md:py-12 relative overflow-hidden">

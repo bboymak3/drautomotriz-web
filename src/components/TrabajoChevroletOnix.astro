@@ -5,6 +5,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/chevrolet-onix/drmecanico-automotriz-taller-en-penalolen-chevrolet-onix-cambio-kit-de-embrague';
 
 const fotos = [
@@ -16,6 +18,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-chevrolet-onix"
   vehiculo="Chevrolet Onix"
   titulo="Cambio Kit de Embrague"

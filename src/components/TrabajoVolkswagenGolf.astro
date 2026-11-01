@@ -6,6 +6,8 @@
 // ============================================================
 import TrabajoModal from '@/components/TrabajoModal.astro';
 
+const { compacto = false } = Astro.props;
+
 const base = '/imagen/nuevoset/volkswagen-golf/drmecanico-automotriz-taller-en-penalolen-volkswagen-golf-';
 
 const fotos = [
@@ -19,6 +21,7 @@ const fotos = [
 ---
 
 <TrabajoModal
+  compacto={compacto}
   id="modal-volkswagen-golf"
   vehiculo="Volkswagen Golf"
   titulo="Cambio de Radiador y Aire Acondicionado"
