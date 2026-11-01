@@ -14,9 +14,9 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 
 *(Actualizado sep-2026, verificado con `npm run build`)*
 
-- **92 páginas** HTML generadas
+- **93 páginas** HTML generadas
 - **25 comunas** con landing individual, en 4 zonas (Norte 4, Oriente 7, Sur 8, Poniente 6)
-- **43 vehículos** de 17 marcas con landing individual
+- **44 vehículos** de 17 marcas con landing individual
 - **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **229 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/` + `banner/`)
 - **2.416 imágenes** indexables en el sitemap (98 URLs; la galería agrupa todas las fotos en `/galeria/` y cada landing de vehículo declara las fotos de su trabajo)
@@ -60,7 +60,8 @@ src/
 │   ├── TrabajoCitroenC3.astro      # Módulo home + landing: Citroën C3 discos y pastillas de freno delanteras (usa TrabajoModal)
 │   ├── TrabajoChevroletTracker.astro # Ficha: Chevrolet Tracker enfriador de aceite + termostato (usa TrabajoModal)
 │   ├── TrabajoVolkswagenBora.astro # Ficha: Volkswagen Bora cambio kit de distribución (usa TrabajoModal)
-│   ├── Vehiculos.astro  # Grid de 43 vehículos
+│   ├── TrabajoVolkswagenVoyage.astro # Ficha: Volkswagen Voyage mantención por km + A/C (usa TrabajoModal)
+│   ├── Vehiculos.astro  # Grid de 44 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
 │   ├── GoogleReviewsModal.astro  # Botón flotante + modal de reseñas Google
@@ -75,7 +76,7 @@ src/
 │   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
 │   ├── comunas.ts       # 25 comunas en 4 zonas
 │   ├── trabajos.ts      # Registro de fichas de trabajos realizados + servicios asociados
-│   └── marcas.ts        # 43 vehículos de 17 marcas
+│   └── marcas.ts        # 44 vehículos de 17 marcas
 ├── layouts/
 │   └── BaseLayout.astro # Layout base con GTM, GA4, favicon, OG image
 ├── pages/
@@ -89,7 +90,7 @@ src/
 │   ├── vehiculos/
 │   │   ├── index.astro          # Catálogo por marca
 │   │   ├── todos.astro          # Grid completo con filtros
-│   │   └── [marca]/[modelo].astro  # Landing por vehículo (43) — muestra el modal del trabajo si el vehículo tiene uno
+│   │   └── [marca]/[modelo].astro  # Landing por vehículo (44) — muestra el modal del trabajo si el vehículo tiene uno
 │   ├── galeria.astro            # Galería con lightbox y filtro por categoría
 │   ├── 404.astro                # Página 404 (también usada para 410 de comunas eliminadas)
 │   ├── quienes-somos.astro
@@ -109,7 +110,7 @@ public/
 │   ├── logo/            # Logo en múltiples formatos y tamaños
 │   ├── banner/          # Banners (asistencia-automotriz, revisión-técnica, etc.)
 │   ├── comunas/         # 25 banners personalizados por comuna
-│   ├── vehiculos/       # 43 fotos de vehículos
+│   ├── vehiculos/       # 44 fotos de vehículos
 │   ├── drautomotriz/    # 105 fotos de galería
 │   ├── galeria/         # 11 fotos temáticas (nombres SEO)
 │   ├── payment/         # Imagen de métodos de pago
@@ -128,6 +129,7 @@ public/
 │       ├── citroen-c3/          # 5 fotos cambio de discos y pastillas de freno delanteras
 │       ├── chevrolet-tracker/   # 4 fotos cambio de enfriador de aceite y termostato
 │       ├── volkswagen-bora/     # 6 fotos cambio kit de distribución
+│       ├── volkswagen-voyage/   # 5 fotos mantención por km + recarga de aire acondicionado
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg
