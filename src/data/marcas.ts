@@ -1,6 +1,6 @@
 // ============================================================
 // DRAUTOMOTRIZ - Catálogo de vehículos que atendemos
-// 42 modelos reales con fotos, basado en Globalpro y OptimusCars
+// 43 modelos reales con fotos, basado en Globalpro y OptimusCars
 // ============================================================
 
 export interface Vehiculo {
@@ -91,6 +91,7 @@ export const vehiculos: Vehiculo[] = [
   { slug: 'toyota-yaris', marca: 'Toyota', marcaSlug: 'toyota', modelo: 'Yaris', imagen: vimg('toyota-yaris'), alt: 'Toyota Yaris mantención a domicilio - DRAUTOMOTRIZ', anioInicio: 2015, tipo: 'Sedán/Hatchback' },
 
   // Volkswagen
+  { slug: 'volkswagen-bora', marca: 'Volkswagen', marcaSlug: 'volkswagen', modelo: 'Bora', imagen: vimg('volkswagen-bora'), alt: 'Volkswagen Bora cambio kit de distribución - mecánico a domicilio en Peñalolén DRAUTOMOTRIZ', anioInicio: 2007, tipo: 'Sedán' },
   { slug: 'volkswagen-gol', marca: 'Volkswagen', marcaSlug: 'volkswagen', modelo: 'Gol', imagen: vimg('volkswagen-gol'), alt: 'Volkswagen Gol servicio mecánico a domicilio - DRAUTOMOTRIZ', anioInicio: 2014, tipo: 'Hatchback' },
   { slug: 'volkswagen-golf', marca: 'Volkswagen', marcaSlug: 'volkswagen', modelo: 'Golf', imagen: vimg('volkswagen-golf'), alt: 'Volkswagen Golf cambio de radiador y aire acondicionado - taller mecánico en Peñalolén DRAUTOMOTRIZ', anioInicio: 2013, tipo: 'Hatchback' },
 ];
