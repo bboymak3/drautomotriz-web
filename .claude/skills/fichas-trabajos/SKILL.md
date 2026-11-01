@@ -32,7 +32,7 @@ Formato, todo en minúsculas, sin tildes ni ñ, palabras separadas por `-`:
 mecanico-a-domicilio-en-<comuna>-<marca>-<modelo>-<servicio>[-<detalle>].webp
 ```
 
-- `<servicio>` con palabras clave del servicio: `cambio-kit-de-embrague`, `cambio-kit-de-distribucion`, `cambio-discos-y-pastillas-de-frenos`, `mantencion-por-km`, `inspeccion-pre-compra`, `cambio-bomba-de-agua`, `cambio-de-radiador`, `servicio-de-revision-tecnica-sin-estres`, etc.
+- `<servicio>` con palabras clave del servicio: `instalacion-laminas-de-seguridad-certificadas`, `cambio-kit-de-embrague`, `cambio-kit-de-distribucion`, `cambio-discos-y-pastillas-de-frenos`, `mantencion-por-km`, `inspeccion-pre-compra`, `cambio-bomba-de-agua`, `cambio-de-radiador`, `servicio-de-revision-tecnica-sin-estres`, etc.
 - `<detalle>` describe la foto: `-nuevo-vs-usado`, `-desmontaje-caja-de-cambios`, `-disco-nuevo-instalado`, `-repuestos`…
 - La portada (foto del vehículo) va sin detalle.
 - Camiones: `...-en-penalolen-camion-hino-xzu-425l-...`.
@@ -40,7 +40,7 @@ mecanico-a-domicilio-en-<comuna>-<marca>-<modelo>-<servicio>[-<detalle>].webp
 - Carpeta: `public/imagen/nuevoset/<id>/` donde `<id>` = slug del vehículo en `src/data/marcas.ts` (ej. `citroen-c3`, `hino-xzu-425l`). **Tiene que coincidir**: el sitemap y el registro dependen de eso.
 - Se guarda `.webp` (lo que usa el sitio) + `.jpeg` (original, también se publica).
 
-Palabras que deciden la **categoría en la galería** (`src/pages/galeria.astro`, por nombre de archivo, en este orden): `pre-compra` → Inspección Pre Compra; `kit-de-embrague`/`selectora` → Embrague y Caja; `radiador`/`aire-acondicionado`/`bomba-de-agua`/`termostato` → Refrigeración y A/C; `frenos` → Frenos (ojo: `freno` singular no matchea); `motor`/`distribucion`/`correa`… → Motor; `mantencion` → Mantención; `revision` → Revisión Técnica. Si un trabajo nuevo no cae bien, agregar la palabra a esa cadena.
+Palabras que deciden la **categoría en la galería** (`src/pages/galeria.astro`, por nombre de archivo, en este orden): `pre-compra` → Inspección Pre Compra; `lamina` → Láminas de Seguridad; `kit-de-embrague`/`selectora` → Embrague y Caja; `radiador`/`aire-acondicionado`/`bomba-de-agua`/`termostato` → Refrigeración y A/C; `frenos` → Frenos (ojo: `freno` singular no matchea); `motor`/`distribucion`/`correa`… → Motor; `mantencion` → Mantención; `revision` → Revisión Técnica. Si un trabajo nuevo no cae bien, agregar la palabra a esa cadena.
 
 ## 2. Revisar las fotos antes de procesar
 
@@ -124,6 +124,7 @@ const fotos = [
 1. `src/data/trabajos.ts`: agregar `{ id, vehiculo, titulo, servicios: [...] }` al final (el orden del array = orden en el home). `servicios` = slugs reales de `src/data/servicios.ts` (verificar con `grep -n "slug:" src/data/servicios.ts`). Un trabajo puede ir en varios servicios (ej. Baleno: mantención + A/C + revisión técnica).
 2. `src/components/TrabajosRealizados.astro`: importar el componente y sumarlo a `componentes` con la clave `<id>`.
 3. Nada más: home, galería, servicios y landing se actualizan solos.
+4. Un servicio sin fichas propias muestra automáticamente los 3 últimos trabajos del registro (caso de `laminas-de-seguridad-certificadas` hasta que llegue su primera ficha). Los filtros de la galería sin fotos se ocultan solos.
 
 ## 6. Catálogo de vehículos (si el vehículo no existe)
 

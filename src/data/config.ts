@@ -17,7 +17,7 @@ export const config = {
     clientes: '2.500+',
     cobertura: '25 comunas',
     experiencia: '8+ años',
-    servicios: '13+ servicios'
+    servicios: '15 servicios'
   },
   email: 'contacto@drautomotriz.cl',
   dominio: 'https://drmecanicoautomotriz.com',

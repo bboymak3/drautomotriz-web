@@ -14,10 +14,10 @@ Sitio web oficial de DRAUTOMOTRIZ, servicio de mecánica automotriz a domicilio 
 
 *(Actualizado sep-2026, verificado con `npm run build`)*
 
-- **93 páginas** HTML generadas
+- **94 páginas** HTML generadas
 - **25 comunas** con landing individual, en 4 zonas (Norte 4, Oriente 7, Sur 8, Poniente 6)
 - **44 vehículos** de 17 marcas con landing individual
-- **14 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
+- **15 servicios** con landing individual (destacado: Revisión Técnica Sin Estrés)
 - **229 fotos** en la galería (`drautomotriz/` + `galeria/` + `nuevoset/` + `banner/`)
 - **2.416 imágenes** indexables en el sitemap (98 URLs; la galería agrupa todas las fotos en `/galeria/` y cada landing de vehículo declara las fotos de su trabajo)
 
@@ -41,7 +41,7 @@ src/
 │   ├── Header.astro     # Navegación fija con logo + menú
 │   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupo 360 Soluciones / makeseo.app)
 │   ├── Hero.astro       # Sección principal (texto + imagen)
-│   ├── Services.astro   # Grid de 14 servicios
+│   ├── Services.astro   # Grid de 15 servicios
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)
@@ -73,7 +73,7 @@ src/
 │   └── ...
 ├── data/                # Datos centralizados
 │   ├── config.ts        # Configuración global (WhatsApp, dominio, etc.)
-│   ├── servicios.ts     # 14 servicios (1 destacado + 13 prioritarios)
+│   ├── servicios.ts     # 15 servicios (1 destacado + 14 prioritarios, incl. Láminas de Seguridad Certificadas)
 │   ├── comunas.ts       # 25 comunas en 4 zonas
 │   ├── trabajos.ts      # Registro de fichas de trabajos realizados + servicios asociados
 │   └── marcas.ts        # 44 vehículos de 17 marcas
