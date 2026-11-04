@@ -42,6 +42,7 @@ src/
 │   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupo 360 Soluciones / makeseo.app)
 │   ├── Hero.astro       # Sección principal (texto + imagen)
 │   ├── Services.astro   # Grid de 15 servicios
+│   ├── LaminasSeguridadHighlight.astro # Home: sección del servicio Láminas de Seguridad Certificadas
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)

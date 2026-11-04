@@ -1,0 +1,64 @@
+---
+// ============================================================
+// Home: sección "Láminas de Seguridad Certificadas en Santiago".
+// Contenido del servicio en src/data/servicios.ts (laminas-de-seguridad-certificadas);
+// fotos de la ficha en /public/imagen/nuevoset/laminas-de-seguridad/.
+// ============================================================
+import { getServicioBySlug } from '@/data/servicios';
+import { waLink } from '@/data/config';
+
+const servicio = getServicioBySlug('laminas-de-seguridad-certificadas');
+const base = '/imagen/nuevoset/laminas-de-seguridad/laminas-de-seguridad-certificadas-en-santiago';
+
+const puntos = [
+  { icono: '🛡️', titulo: 'Antirrobo y antiportonazo', desc: 'El vidrio se triza pero no se desarma al primer golpe: dificulta y retrasa la entrada al vehículo.' },
+  { icono: '🚗', titulo: 'Protección en choques', desc: 'Los fragmentos quedan pegados a la lámina y no caen sobre el conductor ni los pasajeros.' },
+  { icono: '✅', titulo: 'Sello y certificado', desc: 'Sello con FTRL, nombre y RUT del instalador, según la Ley 21.147, para pasar la revisión técnica.' },
+];
+---
+
+{servicio && (
+  <section class="py-16 md:py-20 relative overflow-hidden" aria-labelledby="laminas-home-titulo">
+    <div class="absolute inset-0 bg-grid opacity-10"></div>
+    <div class="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[400px] bg-neon-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="container-x relative">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Fotos reales -->
+        <div class="grid grid-cols-2 gap-3 order-2 lg:order-1">
+          <img src={`${base}-audi-a3-vidrios-laterales.webp`} alt="Audi A3 con láminas de seguridad certificadas en vidrios laterales - Santiago DRAUTOMOTRIZ" class="col-span-2 w-full aspect-[16/9] object-cover rounded-2xl border border-neon-500/30" loading="lazy" width="1280" height="720" />
+          <img src={`${base}-sello-certificado-ftrl-70.webp`} alt="Sello certificado de lámina de seguridad con FTRL 70% - láminas de seguridad en Santiago" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" width="640" height="640" />
+          <img src={`${base}-camioneta-foton-vidrios-laterales.webp`} alt="Láminas de seguridad en vidrios laterales de camioneta Foton - Santiago" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" width="640" height="640" />
+        </div>
+
+        <!-- Texto -->
+        <div class="order-1 lg:order-2">
+          <span class="badge-neon mb-4">🛡️ Nuevo servicio</span>
+          <h2 id="laminas-home-titulo" class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4 leading-tight">
+            Láminas de Seguridad Certificadas <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">en Santiago</span>
+          </h2>
+          <p class="text-gray-400 mb-6 leading-relaxed">
+            Instalamos <strong class="text-white">láminas de seguridad certificadas</strong> en los vidrios laterales y la luneta de tu auto o camioneta. Protegen frente a robos, encerronas y portonazos, y en un choque evitan que el vidrio se desarme sobre los ocupantes.
+          </p>
+
+          <ul class="space-y-4 mb-8">
+            {puntos.map(p => (
+              <li class="flex gap-3">
+                <span class="w-10 h-10 shrink-0 rounded-lg bg-neon-500/10 border border-neon-500/30 flex items-center justify-center text-xl" aria-hidden="true">{p.icono}</span>
+                <div>
+                  <h3 class="text-sm font-display font-bold text-white">{p.titulo}</h3>
+                  <p class="text-sm text-gray-400">{p.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href={`/servicios/${servicio.slug}/`} class="btn-neon text-sm">Ver láminas de seguridad</a>
+            <a href={waLink('Hola! Quiero cotizar láminas de seguridad certificadas para mi auto')} target="_blank" rel="noopener" class="btn-whatsapp text-sm">Cotizar por WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)}

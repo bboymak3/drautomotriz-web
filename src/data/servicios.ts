@@ -79,6 +79,49 @@ export const servicios: Servicio[] = [
   // SERVICIOS PRIORITARIOS (13)
   // =====================================================
   {
+    slug: 'laminas-de-seguridad-certificadas',
+    nombre: 'Láminas de Seguridad Certificadas',
+    categoria: 'Seguridad',
+    tagline: 'Láminas de seguridad certificadas para los vidrios de tu auto: más resistencia ante robos y portonazos, y vidrios que no se desarman sobre los ocupantes en un choque.',
+    h1: 'Láminas de Seguridad Certificadas para Autos en Santiago | DRAUTOMOTRIZ',
+    metaTitle: 'Láminas de Seguridad Certificadas para Autos en Santiago | DRAUTOMOTRIZ',
+    metaDescription: 'Instalación de láminas de seguridad certificadas en vidrios de autos en Santiago. Antirrobo, antiportonazo, con sello y certificado para la revisión técnica (Ley 21.147). WhatsApp +56962408735.',
+    icono: '🛡️',
+    imagen: '/imagen/nuevoset/laminas-de-seguridad/laminas-de-seguridad-certificadas-en-santiago-audi-a3-vidrios-laterales.webp',
+    descripcionCorta: 'Láminas de seguridad certificadas para vidrios laterales y luneta: más resistencia antirrobo y vidrios que no se fragmentan sobre los ocupantes.',
+    paragraphs: [
+      'La lámina de seguridad es una película de poliéster de alta resistencia que se adhiere por el interior de los vidrios del vehículo. Su función es mantener unido el vidrio cuando recibe un golpe: el vidrio se puede trizar, pero no se desarma de inmediato. Así se dificulta y se retrasa la entrada de un delincuente en un robo, una encerrona o un portonazo, y en un choque los fragmentos quedan pegados a la lámina en lugar de caer sobre el conductor y los pasajeros.',
+      'En Chile las láminas se fabrican en distintos espesores, medidos en micras (lo habitual va de 4 a 12 micras). Las de 4 micras dan una protección básica contra robos menores y vandalismo; a mayor espesor, mayor resistencia al impacto. Hay láminas 100% transparentes y láminas con tono (polarizadas). Te recomendamos el espesor y el tono según el uso del vehículo, dónde se estaciona y los vidrios que tiene de fábrica.',
+      'La instalación está regulada por la Ley 21.147, que modificó la Ley de Tránsito, y su reglamento del Ministerio de Transportes, exigido en la revisión técnica desde agosto de 2022. La lámina debe llevar un sello en relieve e indeleble con el porcentaje de transmisión de luz (FTRL), el nombre y el RUT del instalador, y el propietario recibe un certificado. En vehículos livianos los vidrios laterales delanteros deben dejar pasar al menos un 70% de la luz y los laterales traseros y la luneta al menos un 28%. Están prohibidas las láminas reflectivas, metálicas o espejadas y las de color ámbar, amarillo, rojo o azul. Una lámina sin sello o fuera de norma puede hacer que el auto sea rechazado en la revisión técnica.'
+    ],
+    beneficios: [
+      { title: 'Antirrobo y antiportonazo', desc: 'El vidrio se triza pero no se desarma al primer golpe, lo que dificulta y retrasa la entrada al vehículo.' },
+      { title: 'Protección en choques', desc: 'Los fragmentos quedan adheridos a la lámina y no caen sobre el conductor ni los pasajeros.' },
+      { title: 'Lista para la revisión técnica', desc: 'Láminas con sello (FTRL, nombre y RUT del instalador) y certificado, según la Ley 21.147.' },
+      { title: 'Transparente o con tono', desc: 'Elegimos contigo el espesor en micras y el tono permitido para cada vidrio, con filtro UV.' }
+    ],
+    incluye: [
+      'Asesoría de espesor (micras) y tono según el uso del vehículo',
+      'Verificación de los vidrios de fábrica (polarizados o no)',
+      'Limpieza y preparación de cada vidrio',
+      'Instalación por el interior en vidrios laterales y luneta',
+      'Corte a medida y sellado de bordes',
+      'Sello en relieve e indeleble con FTRL, nombre y RUT del instalador',
+      'Certificado para presentar en la revisión técnica',
+      'Recomendaciones de cuidado y tiempo de secado'
+    ],
+    faq: [
+      { q: '¿Las láminas de seguridad son legales en Chile?', a: 'Sí. La Ley 21.147 y su reglamento permiten láminas de seguridad con o sin tono, siempre que respeten los porcentajes de transmisión de luz (70% en laterales delanteros y 28% en laterales traseros y luneta en vehículos livianos) y lleven el sello y el certificado del instalador. Los furgones escolares tienen reglas propias.' },
+      { q: '¿Se puede poner lámina en el parabrisas?', a: 'No. La normativa no permite instalar láminas en el parabrisas. Además, el parabrisas ya es de vidrio laminado de fábrica, por lo que no se desarma sobre los ocupantes. Las láminas van en los vidrios laterales y la luneta.' },
+      { q: '¿Qué espesor de lámina me conviene?', a: 'Lo habitual en Chile va de 4 a 12 micras. Las de 4 micras dan una protección básica; las de mayor espesor resisten más impactos. Te recomendamos el espesor según dónde circulas y estacionas.' },
+      { q: '¿Una lámina de seguridad evita completamente un robo?', a: 'No hay lámina que haga un vidrio irrompible. Lo que hace es mantener el vidrio unido y retrasar la entrada, lo que muchas veces basta para que el delincuente desista o tengas tiempo de reaccionar.' },
+      { q: '¿Pasaré la revisión técnica con láminas?', a: 'Sí, si la lámina cumple los porcentajes de transmisión de luz y tiene el sello y el certificado del instalador. Las plantas miden la transmisión de luz de los vidrios; una lámina sin sello o fuera de norma puede ser causa de rechazo.' },
+      { q: '¿Cuánto cuesta instalar láminas de seguridad?', a: 'Depende del tipo de vehículo, la cantidad de vidrios, el espesor en micras y si la lámina es transparente o con tono. Escríbenos por WhatsApp con el modelo de tu auto y te enviamos una cotización.' }
+    ],
+    keywords: ['laminas de seguridad autos santiago', 'lamina de seguridad certificada', 'laminas antiportonazo', 'laminas antirrobo vidrios auto', 'laminas de seguridad revision tecnica', 'lamina seguridad ley 21147'],
+    relacionados: ['revision-tecnica-sin-estres', 'servicio-de-revision-tecnica', 'pulido-de-opticos-focos-delanteros']
+  },
+  {
     slug: 'mantencion-por-km',
     nombre: 'Mantención por Kilometraje',
     categoria: 'Mantenimiento',
@@ -610,49 +653,6 @@ export const servicios: Servicio[] = [
     ],
     keywords: ['diagnostico automotriz domicilio', 'diagnostico mecanico auto', 'diagnostico electronico vehiculo', 'revisar falla auto santiago'],
     relacionados: ['escaner-para-autos-y-camiones', 'servicio-de-pre-compra', 'servicio-de-revision-tecnica']
-  },
-  {
-    slug: 'laminas-de-seguridad-certificadas',
-    nombre: 'Láminas de Seguridad Certificadas',
-    categoria: 'Seguridad',
-    tagline: 'Láminas de seguridad certificadas para los vidrios de tu auto: más resistencia ante robos y portonazos, y vidrios que no se desarman sobre los ocupantes en un choque.',
-    h1: 'Láminas de Seguridad Certificadas para Autos en Santiago | DRAUTOMOTRIZ',
-    metaTitle: 'Láminas de Seguridad Certificadas para Autos en Santiago | DRAUTOMOTRIZ',
-    metaDescription: 'Instalación de láminas de seguridad certificadas en vidrios de autos en Santiago. Antirrobo, antiportonazo, con sello y certificado para la revisión técnica (Ley 21.147). WhatsApp +56962408735.',
-    icono: '🛡️',
-    imagen: '/imagen/nuevoset/laminas-de-seguridad/laminas-de-seguridad-certificadas-en-santiago-audi-a3-vidrios-laterales.webp',
-    descripcionCorta: 'Láminas de seguridad certificadas para vidrios laterales y luneta: más resistencia antirrobo y vidrios que no se fragmentan sobre los ocupantes.',
-    paragraphs: [
-      'La lámina de seguridad es una película de poliéster de alta resistencia que se adhiere por el interior de los vidrios del vehículo. Su función es mantener unido el vidrio cuando recibe un golpe: el vidrio se puede trizar, pero no se desarma de inmediato. Así se dificulta y se retrasa la entrada de un delincuente en un robo, una encerrona o un portonazo, y en un choque los fragmentos quedan pegados a la lámina en lugar de caer sobre el conductor y los pasajeros.',
-      'En Chile las láminas se fabrican en distintos espesores, medidos en micras (lo habitual va de 4 a 12 micras). Las de 4 micras dan una protección básica contra robos menores y vandalismo; a mayor espesor, mayor resistencia al impacto. Hay láminas 100% transparentes y láminas con tono (polarizadas). Te recomendamos el espesor y el tono según el uso del vehículo, dónde se estaciona y los vidrios que tiene de fábrica.',
-      'La instalación está regulada por la Ley 21.147, que modificó la Ley de Tránsito, y su reglamento del Ministerio de Transportes, exigido en la revisión técnica desde agosto de 2022. La lámina debe llevar un sello en relieve e indeleble con el porcentaje de transmisión de luz (FTRL), el nombre y el RUT del instalador, y el propietario recibe un certificado. En vehículos livianos los vidrios laterales delanteros deben dejar pasar al menos un 70% de la luz y los laterales traseros y la luneta al menos un 28%. Están prohibidas las láminas reflectivas, metálicas o espejadas y las de color ámbar, amarillo, rojo o azul. Una lámina sin sello o fuera de norma puede hacer que el auto sea rechazado en la revisión técnica.'
-    ],
-    beneficios: [
-      { title: 'Antirrobo y antiportonazo', desc: 'El vidrio se triza pero no se desarma al primer golpe, lo que dificulta y retrasa la entrada al vehículo.' },
-      { title: 'Protección en choques', desc: 'Los fragmentos quedan adheridos a la lámina y no caen sobre el conductor ni los pasajeros.' },
-      { title: 'Lista para la revisión técnica', desc: 'Láminas con sello (FTRL, nombre y RUT del instalador) y certificado, según la Ley 21.147.' },
-      { title: 'Transparente o con tono', desc: 'Elegimos contigo el espesor en micras y el tono permitido para cada vidrio, con filtro UV.' }
-    ],
-    incluye: [
-      'Asesoría de espesor (micras) y tono según el uso del vehículo',
-      'Verificación de los vidrios de fábrica (polarizados o no)',
-      'Limpieza y preparación de cada vidrio',
-      'Instalación por el interior en vidrios laterales y luneta',
-      'Corte a medida y sellado de bordes',
-      'Sello en relieve e indeleble con FTRL, nombre y RUT del instalador',
-      'Certificado para presentar en la revisión técnica',
-      'Recomendaciones de cuidado y tiempo de secado'
-    ],
-    faq: [
-      { q: '¿Las láminas de seguridad son legales en Chile?', a: 'Sí. La Ley 21.147 y su reglamento permiten láminas de seguridad con o sin tono, siempre que respeten los porcentajes de transmisión de luz (70% en laterales delanteros y 28% en laterales traseros y luneta en vehículos livianos) y lleven el sello y el certificado del instalador. Los furgones escolares tienen reglas propias.' },
-      { q: '¿Se puede poner lámina en el parabrisas?', a: 'No. La normativa no permite instalar láminas en el parabrisas. Además, el parabrisas ya es de vidrio laminado de fábrica, por lo que no se desarma sobre los ocupantes. Las láminas van en los vidrios laterales y la luneta.' },
-      { q: '¿Qué espesor de lámina me conviene?', a: 'Lo habitual en Chile va de 4 a 12 micras. Las de 4 micras dan una protección básica; las de mayor espesor resisten más impactos. Te recomendamos el espesor según dónde circulas y estacionas.' },
-      { q: '¿Una lámina de seguridad evita completamente un robo?', a: 'No hay lámina que haga un vidrio irrompible. Lo que hace es mantener el vidrio unido y retrasar la entrada, lo que muchas veces basta para que el delincuente desista o tengas tiempo de reaccionar.' },
-      { q: '¿Pasaré la revisión técnica con láminas?', a: 'Sí, si la lámina cumple los porcentajes de transmisión de luz y tiene el sello y el certificado del instalador. Las plantas miden la transmisión de luz de los vidrios; una lámina sin sello o fuera de norma puede ser causa de rechazo.' },
-      { q: '¿Cuánto cuesta instalar láminas de seguridad?', a: 'Depende del tipo de vehículo, la cantidad de vidrios, el espesor en micras y si la lámina es transparente o con tono. Escríbenos por WhatsApp con el modelo de tu auto y te enviamos una cotización.' }
-    ],
-    keywords: ['laminas de seguridad autos santiago', 'lamina de seguridad certificada', 'laminas antiportonazo', 'laminas antirrobo vidrios auto', 'laminas de seguridad revision tecnica', 'lamina seguridad ley 21147'],
-    relacionados: ['revision-tecnica-sin-estres', 'servicio-de-revision-tecnica', 'pulido-de-opticos-focos-delanteros']
   }
 ];
 
