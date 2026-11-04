@@ -24,15 +24,15 @@ const puntos = [
 
     <div class="container-x relative">
       <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <!-- Fotos reales -->
-        <div class="grid grid-cols-2 gap-3 order-2 lg:order-1">
+        <!-- Galería de fotos reales (va antes del título, también en móvil) -->
+        <div class="grid grid-cols-2 gap-3">
           <img src={`${base}-audi-a3-vidrios-laterales.webp`} alt="Audi A3 con láminas de seguridad certificadas en vidrios laterales - Santiago DRAUTOMOTRIZ" class="col-span-2 w-full aspect-[16/9] object-cover rounded-2xl border border-neon-500/30" loading="lazy" width="1280" height="720" />
           <img src={`${base}-sello-certificado-ftrl-70.webp`} alt="Sello certificado de lámina de seguridad con FTRL 70% - láminas de seguridad en Santiago" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" width="640" height="640" />
           <img src={`${base}-camioneta-foton-vidrios-laterales.webp`} alt="Láminas de seguridad en vidrios laterales de camioneta Foton - Santiago" class="w-full aspect-square object-cover rounded-xl border border-neon-500/20" loading="lazy" width="640" height="640" />
         </div>
 
         <!-- Texto -->
-        <div class="order-1 lg:order-2">
+        <div>
           <span class="badge-neon mb-4">🛡️ Nuevo servicio</span>
           <h2 id="laminas-home-titulo" class="text-3xl md:text-4xl font-display font-extrabold text-white mb-4 leading-tight">
             Láminas de Seguridad Certificadas <span class="text-transparent bg-clip-text bg-gradient-neon glow-text">en Santiago</span>
