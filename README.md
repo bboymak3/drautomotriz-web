@@ -42,6 +42,7 @@ src/
 │   ├── Footer.astro     # Pie de página: CTA, 5 columnas, medios de pago y crédito (Grupo 360 Soluciones / makeseo.app)
 │   ├── Hero.astro       # Sección principal (texto + imagen)
 │   ├── Services.astro   # Grid de 15 servicios
+│   ├── LaminasSeguridadHighlight.astro # Home: sección del servicio Láminas de Seguridad Certificadas
 │   ├── TapizadoVolantes.astro   # Ficha Tapizado de Volantes (antes del footer)
 │   ├── BottomNav.astro          # Navegación inferior móvil
 │   ├── LocalPenalolen.astro     # Aviso local físico en Peñalolén (todas las páginas; versión destacada en /comunas/penalolen/)
@@ -61,6 +62,7 @@ src/
 │   ├── TrabajoChevroletTracker.astro # Ficha: Chevrolet Tracker enfriador de aceite + termostato (usa TrabajoModal)
 │   ├── TrabajoVolkswagenBora.astro # Ficha: Volkswagen Bora cambio kit de distribución (usa TrabajoModal)
 │   ├── TrabajoVolkswagenVoyage.astro # Ficha: Volkswagen Voyage mantención por km + A/C (usa TrabajoModal)
+│   ├── TrabajoLaminasSeguridad.astro # Ficha: láminas de seguridad certificadas en Santiago (varios vehículos)
 │   ├── Vehiculos.astro  # Grid de 44 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
@@ -130,6 +132,7 @@ public/
 │       ├── chevrolet-tracker/   # 4 fotos cambio de enfriador de aceite y termostato
 │       ├── volkswagen-bora/     # 6 fotos cambio kit de distribución
 │       ├── volkswagen-voyage/   # 5 fotos mantención por km + recarga de aire acondicionado
+│       ├── laminas-de-seguridad/ # 9 fotos láminas de seguridad certificadas (Audi A3, Foton, Suzuki Swift)
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg

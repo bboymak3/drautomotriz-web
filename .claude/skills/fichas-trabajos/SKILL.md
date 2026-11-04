@@ -40,6 +40,8 @@ mecanico-a-domicilio-en-<comuna>-<marca>-<modelo>-<servicio>[-<detalle>].webp
 - Carpeta: `public/imagen/nuevoset/<id>/` donde `<id>` = slug del vehículo en `src/data/marcas.ts` (ej. `citroen-c3`, `hino-xzu-425l`). **Tiene que coincidir**: el sitemap y el registro dependen de eso.
 - Se guarda `.webp` (lo que usa el sitio) + `.jpeg` (original, también se publica).
 
+- **Fichas de un servicio con varios vehículos** (ej. láminas de seguridad): `id` = tema (`laminas-de-seguridad`), carpeta `nuevoset/<tema>/`, prefijo `<servicio>-en-<comuna>-<vehiculo>-<detalle>` y sin portada de catálogo (no es un vehículo de `marcas.ts`). Se publica en home, galería y su servicio; no en landings de vehículos.
+
 Palabras que deciden la **categoría en la galería** (`src/pages/galeria.astro`, por nombre de archivo, en este orden): `pre-compra` → Inspección Pre Compra; `lamina` → Láminas de Seguridad; `kit-de-embrague`/`selectora` → Embrague y Caja; `radiador`/`aire-acondicionado`/`bomba-de-agua`/`termostato` → Refrigeración y A/C; `frenos` → Frenos (ojo: `freno` singular no matchea); `motor`/`distribucion`/`correa`… → Motor; `mantencion` → Mantención; `revision` → Revisión Técnica. Si un trabajo nuevo no cae bien, agregar la palabra a esa cadena.
 
 ## 2. Revisar las fotos antes de procesar

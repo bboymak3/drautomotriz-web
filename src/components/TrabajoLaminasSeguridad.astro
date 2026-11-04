@@ -1,0 +1,42 @@
+---
+// ============================================================
+// Trabajo destacado: Láminas de seguridad certificadas en Santiago
+// Instalaciones en Audi A3, camioneta Foton y Suzuki Swift
+// Fotos en /public/imagen/nuevoset/laminas-de-seguridad/
+// ============================================================
+import TrabajoModal from '@/components/TrabajoModal.astro';
+
+const { compacto = false } = Astro.props;
+
+const base = '/imagen/nuevoset/laminas-de-seguridad/laminas-de-seguridad-certificadas-en-santiago';
+
+const fotos = [
+  { src: `${base}-audi-a3-vidrios-laterales.webp`, label: 'Audi A3 con láminas', alt: 'Audi A3 con láminas de seguridad certificadas en vidrios laterales - instalación en Santiago DRAUTOMOTRIZ' },
+  { src: `${base}-audi-a3-luneta-y-vidrios-traseros.webp`, label: 'Audi A3: luneta y traseros', alt: 'Láminas de seguridad en luneta y vidrios traseros de Audi A3 - láminas certificadas en Santiago' },
+  { src: `${base}-sello-certificado-ftrl-70.webp`, label: 'Sello certificado FTRL 70%', alt: 'Sello de lámina de seguridad certificada con FTRL 70% en vidrio lateral delantero - láminas de seguridad en Santiago' },
+  { src: `${base}-camioneta-foton-instalacion.webp`, label: 'Camioneta Foton', alt: 'Instalación de láminas de seguridad certificadas en camioneta Foton - DRAUTOMOTRIZ Santiago' },
+  { src: `${base}-camioneta-foton-vidrios-laterales.webp`, label: 'Foton: vidrios laterales', alt: 'Láminas de seguridad en vidrios laterales de camioneta Foton doble cabina - láminas antirrobo en Santiago' },
+  { src: `${base}-suzuki-swift-desarme-de-puertas.webp`, label: 'Suzuki Swift: desarme de puertas', alt: 'Suzuki Swift con paneles de puertas desmontados para instalar láminas de seguridad - Santiago' },
+  { src: `${base}-suzuki-swift-instalacion-vidrios-traseros.webp`, label: 'Suzuki Swift: vidrios traseros', alt: 'Instalación de láminas de seguridad en vidrios traseros de Suzuki Swift - láminas certificadas en Santiago' },
+  { src: `${base}-suzuki-swift-luneta.webp`, label: 'Suzuki Swift: luneta', alt: 'Lámina de seguridad en luneta de Suzuki Swift - instalación de láminas antiportonazo en Santiago' },
+  { src: `${base}-lamina-interfilm-y-herramientas.webp`, label: 'Lámina Interfilm', alt: 'Lámina de seguridad Interfilm y herramientas de instalación - láminas de seguridad certificadas DRAUTOMOTRIZ' },
+];
+---
+
+<TrabajoModal
+  compacto={compacto}
+  id="modal-laminas-de-seguridad"
+  vehiculo="Audi A3, Foton y Suzuki Swift"
+  titulo="Láminas de Seguridad Certificadas"
+  descripcion='<strong class="text-white">Instalación de láminas de seguridad certificadas</strong> en un Audi A3, una camioneta Foton y un Suzuki Swift: láminas en vidrios laterales y luneta, con <strong class="text-white">sello certificado</strong> de transmisión de luz para la revisión técnica. Más resistencia antirrobo y antiportonazo, y vidrios que no se desarman sobre los ocupantes. Atendemos en <strong class="text-white">Santiago</strong> y toda la Región Metropolitana.'
+  items={[
+    'Láminas en vidrios laterales y luneta',
+    'Desarme de paneles cuando el vidrio lo requiere',
+    'Sello certificado con FTRL para la revisión técnica',
+    'Láminas Interfilm de seguridad',
+  ]}
+  fotos={fotos}
+  portada={fotos[0]}
+  whatsappTexto="Hola! Quiero cotizar láminas de seguridad certificadas para mi auto"
+  servicio={{ href: '/servicios/laminas-de-seguridad-certificadas/', nombre: 'Ver láminas de seguridad' }}
+/>

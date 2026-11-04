@@ -13,7 +13,7 @@
 // ============================================================
 
 export interface Trabajo {
-  id: string;          // = slug del vehículo en marcas.ts = carpeta en nuevoset/
+  id: string;          // = slug del vehículo en marcas.ts = carpeta en nuevoset/ (o un tema, si la ficha agrupa varios vehículos)
   vehiculo: string;    // "Citroën C3"
   titulo: string;      // trabajo realizado, corto
   servicios: string[]; // slugs de servicios.ts donde se muestra la ficha
@@ -34,6 +34,7 @@ export const trabajos: Trabajo[] = [
   { id: 'chevrolet-tracker', vehiculo: 'Chevrolet Tracker', titulo: 'Cambio de enfriador de aceite y termostato', servicios: ['mantencion-por-km', 'venta-de-aceites-motor'] },
   { id: 'volkswagen-bora', vehiculo: 'Volkswagen Bora', titulo: 'Cambio kit de distribución', servicios: ['cambio-kit-de-distribucion'] },
   { id: 'volkswagen-voyage', vehiculo: 'Volkswagen Voyage', titulo: 'Mantención por km y recarga de aire acondicionado', servicios: ['mantencion-por-km', 'recarga-y-mantencion-de-aire-acondicionado'] },
+  { id: 'laminas-de-seguridad', vehiculo: 'Audi A3, Foton y Suzuki Swift', titulo: 'Láminas de seguridad certificadas', servicios: ['laminas-de-seguridad-certificadas'] },
 ];
 
 export const getTrabajosPorServicio = (servicioSlug: string): Trabajo[] =>

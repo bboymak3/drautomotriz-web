@@ -80,6 +80,24 @@ try {
   console.warn('No se pudo leer galeria:', e);
 }
 
+// Fotos reales de trabajos en /public/imagen/nuevoset/ (subcarpetas), solo .webp.
+// Se suman a la galería del servicio cuando su nombre cae en la categoría del servicio.
+const nuevosetDir = path.join(process.cwd(), 'public', 'imagen', 'nuevoset');
+const fotosNuevoset: { src: string; alt: string; categoria: string }[] = [];
+try {
+  for (const dir of fs.readdirSync(nuevosetDir, { withFileTypes: true })) {
+    if (!dir.isDirectory()) continue;
+    for (const f of fs.readdirSync(path.join(nuevosetDir, dir.name)).filter(f => f.endsWith('.webp')).sort()) {
+      if (!f.includes('lamina')) continue; // por ahora solo láminas de seguridad
+      const alt = f.replace(/\.webp$/i, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      fotosNuevoset.push({ src: `/imagen/nuevoset/${dir.name}/${f}`, alt, categoria: 'laminas' });
+    }
+  }
+} catch (e) {
+  console.warn('No se pudo leer nuevoset:', e);
+}
+fotosGaleria = [...fotosNuevoset, ...fotosGaleria];
+
 // Filtrar fotos por categoria del servicio, si no hay suficientes, mostrar todas
 let fotosServicio = fotosGaleria;
 if (categoriaFiltro !== 'todos') {
