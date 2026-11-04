@@ -61,6 +61,7 @@ src/
 │   ├── TrabajoChevroletTracker.astro # Ficha: Chevrolet Tracker enfriador de aceite + termostato (usa TrabajoModal)
 │   ├── TrabajoVolkswagenBora.astro # Ficha: Volkswagen Bora cambio kit de distribución (usa TrabajoModal)
 │   ├── TrabajoVolkswagenVoyage.astro # Ficha: Volkswagen Voyage mantención por km + A/C (usa TrabajoModal)
+│   ├── TrabajoLaminasSeguridad.astro # Ficha: láminas de seguridad certificadas en Santiago (varios vehículos)
 │   ├── Vehiculos.astro  # Grid de 44 vehículos
 │   ├── ComunasHighlight.astro  # Buscador + lista + mapa Leaflet
 │   ├── ComunaMap.astro   # Mapa interactivo con Leaflet
@@ -130,6 +131,7 @@ public/
 │       ├── chevrolet-tracker/   # 4 fotos cambio de enfriador de aceite y termostato
 │       ├── volkswagen-bora/     # 6 fotos cambio kit de distribución
 │       ├── volkswagen-voyage/   # 5 fotos mantención por km + recarga de aire acondicionado
+│       ├── laminas-de-seguridad/ # 9 fotos láminas de seguridad certificadas (Audi A3, Foton, Suzuki Swift)
 │       └── inspeccion/          # Pre-compra: subaru/ (9) y volkswagen-tiguan-r/ (7)
 ├── favicon.ico          # Multi-resolución (16/32/48/64)
 ├── favicon.svg

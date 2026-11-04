@@ -620,6 +620,7 @@ export const servicios: Servicio[] = [
     metaTitle: 'Láminas de Seguridad Certificadas para Autos en Santiago | DRAUTOMOTRIZ',
     metaDescription: 'Instalación de láminas de seguridad certificadas en vidrios de autos en Santiago. Antirrobo, antiportonazo, con sello y certificado para la revisión técnica (Ley 21.147). WhatsApp +56962408735.',
     icono: '🛡️',
+    imagen: '/imagen/nuevoset/laminas-de-seguridad/laminas-de-seguridad-certificadas-en-santiago-audi-a3-vidrios-laterales.webp',
     descripcionCorta: 'Láminas de seguridad certificadas para vidrios laterales y luneta: más resistencia antirrobo y vidrios que no se fragmentan sobre los ocupantes.',
     paragraphs: [
       'La lámina de seguridad es una película de poliéster de alta resistencia que se adhiere por el interior de los vidrios del vehículo. Su función es mantener unido el vidrio cuando recibe un golpe: el vidrio se puede trizar, pero no se desarma de inmediato. Así se dificulta y se retrasa la entrada de un delincuente en un robo, una encerrona o un portonazo, y en un choque los fragmentos quedan pegados a la lámina en lugar de caer sobre el conductor y los pasajeros.',
